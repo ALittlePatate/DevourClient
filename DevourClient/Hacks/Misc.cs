@@ -1,26 +1,81 @@
 ﻿using UnityEngine;
 using MelonLoader;
 using UnityEngine.UI;
+using System.Reflection;
+using System.Runtime.InteropServices;
 
 namespace DevourClient.Hacks
 {
     public class Misc
     {
+		public static void Fly(float speed) //normal speed 0.5f
+		{
+			NolanBehaviour Nolan = UnityEngine.Object.FindObjectOfType<NolanBehaviour>();
+			Vector3 PlayerAngles = Nolan.transform.position;
+
+			if (Input.GetKey(KeyCode.Space))
+            {
+				PlayerAngles.y += speed;
+			}
+			if (Input.GetKey(KeyCode.LeftShift))
+			{
+				PlayerAngles.y -= speed;
+			}
+			if (Input.GetKey(KeyCode.LeftArrow))
+			{
+				PlayerAngles.x -= speed;
+			}
+			if (Input.GetKey(KeyCode.RightArrow))
+			{
+				PlayerAngles.x += speed;
+			}
+			if (Input.GetKey(KeyCode.UpArrow))
+			{
+				PlayerAngles.z += speed;
+			}
+			if (Input.GetKey(KeyCode.DownArrow))
+			{
+				PlayerAngles.z -= speed;
+			}
+
+			Nolan.locomotion.SetPosition(PlayerAngles, false);
+		}
+		public static void SetSteamName(string name)
+		{
+			Horror.Menu Menu_ = UnityEngine.Object.FindObjectOfType<Horror.Menu>();
+			Menu_.steamName = name;
+		}
+		public static void SetServerName(string name)
+        {
+			Horror.Menu Menu_ = UnityEngine.Object.FindObjectOfType<Horror.Menu>();
+			Menu_.serverNameText.text = name;
+		}
+
 		public static void BigFlashlight(bool reset)
         {
-			NolanBehaviour Nolan = UnityEngine.Object.FindObjectOfType<NolanBehaviour>();
-			Light flashlightSpot = Nolan.flashlightSpot;
-			
-			if (reset)
+			//Ohhhh yes, that's some great code, don't you like try and catches ?
+			//it's for fixing a glitch that activates the big flashlight during the loading of a map
+			//so the things are not loaded and it throws a shit ton of errors in the console
+			try
             {
-				flashlightSpot.intensity = 1.5f;
-				flashlightSpot.range = 9f;
+				NolanBehaviour Nolan = UnityEngine.Object.FindObjectOfType<NolanBehaviour>();
+				Light flashlightSpot = Nolan.flashlightSpot;
+
+				if (reset)
+				{
+					flashlightSpot.intensity = 1.5f;
+					flashlightSpot.range = 9f;
+				}
+				else
+				{
+					flashlightSpot.intensity = 1.5f;
+					flashlightSpot.range = 200f;
+				}
 			}
-			else
+			catch
             {
-				flashlightSpot.intensity = 1.5f;
-				flashlightSpot.range = 200f;
-			}
+				return;
+            }
 			
 		}
 		public static void FlashlightColor(Color color)
@@ -46,11 +101,11 @@ namespace DevourClient.Hacks
 			}
 		}
 
-		public static void MaxRank()
+		public static void SetRank(int rank)
         {
 			NolanRankController NolanRank = UnityEngine.Object.FindObjectOfType<NolanRankController>();
 
-			NolanRank.SetRank(70);
+			NolanRank.SetRank(rank);
 		}
 
 		public static void MessageSpam(string message)
@@ -69,7 +124,6 @@ namespace DevourClient.Hacks
 				menu_class.OnChatMessageSubmit();
 			}
 		}
-
 		public static void InstantWin()
         {
 			Survival survival_class = UnityEngine.Object.FindObjectOfType<Survival>();
@@ -85,7 +139,14 @@ namespace DevourClient.Hacks
 				}
 				catch
                 {
-					survival_class.PlayWinEnding("Win");
+					try
+                    {
+						survival_class.PlayWinEnding("TownWin");
+					}
+					catch
+                    {
+						survival_class.PlayWinEnding("Win");
+					}
 				}
             }
 		}

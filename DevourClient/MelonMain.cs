@@ -8,8 +8,13 @@ namespace DevourClient
     public class Load : MelonMod
     {
         bool flashlight_toggle = false;
-        bool flashlight_reset = false;
         bool flashlight_colorpick = false;
+        bool level_70 = false;
+        bool level_666 = false;
+        bool change_server_name = false;
+        bool change_steam_name = false;
+        bool fly = false;
+        float fly_speed = 0.5f;
 
         bool spam_message = false;
 
@@ -26,22 +31,45 @@ namespace DevourClient
                 Settings.Settings.menu_enable = !Settings.Settings.menu_enable;
             }
 
-            if (this.flashlight_toggle && !flashlight_reset && Player.IsInGame())
+            if (this.flashlight_toggle && Player.IsInGame())
             {
-                flashlight_reset = true;
                 Hacks.Misc.BigFlashlight(false);
-                MelonLogger.Msg("Big Flashlight enabled !");
             }
-            else if (!this.flashlight_toggle && flashlight_reset && Player.IsInGame())
+            else if (!this.flashlight_toggle && Player.IsInGame())
             {
-                flashlight_reset = false;
                 Hacks.Misc.BigFlashlight(true);
-                MelonLogger.Msg("Big Flashlight disabled !");
             }
 
             if (this.spam_message)
             {
                 Hacks.Misc.MessageSpam(Settings.Settings.message_to_spam);
+            }
+
+            if (this.level_70 != this.level_666 && !Player.IsInGame())
+            {
+                if (this.level_70)
+                {
+                    Hacks.Misc.SetRank(70);
+                }
+                else
+                {
+                    Hacks.Misc.SetRank(666);
+                }
+            }
+
+            if (this.change_server_name && !Player.IsInGame())
+            {
+                Hacks.Misc.SetServerName("patate on top !");
+            }
+
+            if (this.change_steam_name && !Player.IsInGame())
+            {
+                Hacks.Misc.SetSteamName("patate");
+            }
+
+            if (this.fly && Player.IsInGame())
+            {
+                Hacks.Misc.Fly(this.fly_speed);
             }
         }
 
@@ -51,7 +79,14 @@ namespace DevourClient
             {
                 GUI.Label(new Rect(300, Settings.Settings.y, 100, 30), "Devour Client"); //Titre du menu
                 this.flashlight_toggle = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 100, 150, 20), this.flashlight_toggle, "Big Flashlight"); //Checkbox Flashlight
-                this.spam_message = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 220, 150, 20), this.spam_message, "Chat Spam"); //Checkbox Chat Spam
+                this.spam_message = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 250, 150, 20), this.spam_message, "Chat Spam"); //Checkbox Chat Spam
+                this.level_70 = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 190, 150, 20), this.level_70, "Level 70"); //Checkbox lvl 70
+                this.level_666 = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 220, 150, 20), this.level_666, "Level 666"); //Checkbox lvl 70
+                this.change_server_name = GUI.Toggle(new Rect(Settings.Settings.x + 200, Settings.Settings.y + 40, 150, 20), this.change_server_name, "Change server name"); //Checkbox servername
+                this.change_steam_name = GUI.Toggle(new Rect(Settings.Settings.x + 200, Settings.Settings.y + 70, 150, 20), this.change_steam_name, "Change steam name"); //Checkbox servername
+                this.fly = GUI.Toggle(new Rect(Settings.Settings.x + 200, Settings.Settings.y + 100, 150, 20), this.fly, "Fly"); //Checkbox fly
+                this.fly_speed = GUI.HorizontalSlider(new Rect(Settings.Settings.x + 200, Settings.Settings.y + 130, 100, 10), this.fly_speed, 0f, 1f); //Slider for the fly speed
+                GUI.Label(new Rect(Settings.Settings.x + 310, Settings.Settings.y + 125, 100, 30), this.fly_speed.ToString()); //Prints the value of the slider
 
                 if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 40, 150, 20), "Unlock Achievements"))
                 {
@@ -93,13 +128,7 @@ namespace DevourClient
                     MelonLogger.Msg("Here are your keys !");
                 }
 
-                if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 190, 150, 20), "Rank 70"))
-                {
-                    Hacks.Misc.MaxRank();
-                    MelonLogger.Msg("EZ LV 70");
-                }
-
-                if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 250, 150, 20), "Instant WIn") && Player.IsInGame())
+                if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 280, 150, 20), "Instant WIn") && Player.IsInGame())
                 {
                     Hacks.Misc.InstantWin();
                     MelonLogger.Msg("EZ Win");

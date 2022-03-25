@@ -1,0 +1,4 @@
+#Visual studio stuff
+.vs
+DevourClient/bin
+DevourClient/obj

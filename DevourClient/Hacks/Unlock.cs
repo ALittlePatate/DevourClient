@@ -6,7 +6,7 @@
         {
             AchievementHelpers ah = UnityEngine.Object.FindObjectOfType<AchievementHelpers>();
 
-            /*
+			/*
 		    string[] names = { "hasAchievedFusesUsed", "hasAchievedGasolineUsed", "hasAchievedNoKnockout", "hasCollectedAllPatches", "hasCollectedAllRoses",
                     "hasCompletedHardAsylumGame", "hasCompletedHardGame", "hasCompletedNightmareAsylumGame", "hasCompletedNightmareGame", "hasCompletedNormalGame",
                     "hasCompletedHardInnGamehasCompletedNightmareInnGame", "hasCollectedAllCherryBlossom", "hasAchievedEggsDestroyed", "hasCollectedAllPumpkins",
@@ -19,7 +19,7 @@
             */
 
 
-            string[] achievments = { "ACH_WON_INN_NIGHTMARE", "ACH_WON_INN_NIGHTMARE_SP", "ACH_WON_INN_HARD", "ACH_WON_INN_HARD_SP", "ACH_WON_INN_COOP", "ACH_ALL_ROSES", "ACH_BURNT_GOAT",
+			string[] achievments = { "ACH_WON_INN_NIGHTMARE", "ACH_WON_INN_NIGHTMARE_SP", "ACH_WON_INN_HARD", "ACH_WON_INN_HARD_SP", "ACH_WON_INN_COOP", "ACH_ALL_ROSES", "ACH_BURNT_GOAT",
                 "ACH_ALL_CHERRY_BLOSSOM", "ACH_100_EGGS_DESTROYED", "ACH_WON_INN_SP", "ACH_SURVIVED_TO_3_GOATS", "ACH_SURVIVED_TO_5_GOATS", "ACH_SURVIVED_TO_7_GOATS", "ACH_WON_SP", "ACH_WON_COOP",
                 "ACH_LOST", "ACH_LURED_20_GOATS", "ACH_REVIVED_20_PLAYERS", "ACH_ALL_NOTES_READ", "ACH_KNOCKED_OUT_BY_ANNA", "ACH_KNOCKOUT_OUT_BY_DEMON", "ACH_KNOCKED_OUT_20_TIMES",
                 "ACH_NEVER_KNOCKED_OUT", "ACH_ONLY_ONE_KNOCKED_OUT", "ACH_UNLOCKED_CAGE", "ACH_UNLOCKED_ATTIC_CAGE", "ACH_BEAT_GAME_5_TIMES", "ACH_100_GASOLINE_USED",
