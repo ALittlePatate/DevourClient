@@ -1,3 +1,7 @@
+# The Town Update
+Everything should be 100% fixed and working for the last update of Devour, have fun !
+Also if you pay attention to the code you'll see a "Hooks" file that contains a Prefix for SetIsBeingKnockedOut, this would normally sets a godmode but as i'm a pussy i'm too scared to test this so yeah, you may be in godmode 24/7. Please create an issue for the feadback of this feature.
+
 # DevourClient
 
 I wasn't home for 2 days so i made that, i learnt a lot about C# programming and about Unity IL2CPP game hacking.
@@ -12,6 +16,7 @@ ps : my computer was really bad so i couldn't do a lot of testing in game becaus
 Well at this point i don't really know, i think there is some sort of native Unity anti cheat template but it doesn't seem active. You're fine, no anti cheat !
 
 ## Features
+Everything about spoofing ehre (steam name, server name, level...) will persist if you don't uncheck it (it will be reseted when you'll restart the game obv).
 * An IMGUI menu thanks to UnityEngine
 * Fully compatible with the new IL2CPP version of the game
 * Detects if you're in game (with bad code lol), so no chances of crashing on main menu by activating features
@@ -23,6 +28,10 @@ Well at this point i don't really know, i think there is some sort of native Uni
 * Doors unlocker (should work fine, though it doesn't seem to work sometimes)
 * Keys teleporter (broken, works sometimes but doesn't TP all the keys for some reasons)
 * LV 70 (puts you to the max level of the game !)
+* LV 666 (secret level, thanks to the guy who told me it exists lol)
+* Steam name spoofer (sets it to "patate", again no input text :/)
+* Server name spoofer (sets it to "patate on top !", again no input text :/)
+* Fly !! YES ! YOU CAN FLY ! You can also change the speed of it (left shift : down, space : up, up arrow : forward, back arrow : backward, left arrow : left, right arrow : right)
 * Instant Win (allows you to win instantaniously on any map, works in singleplayer, but not as a client. May be working as host)
 
 ## Installation
@@ -46,6 +55,7 @@ Well at this point i don't really know, i think there is some sort of native Uni
 3. Go to : Project --> Add a reference --> Browse --> Click on the browse button in the down right corner of the window.
 4. Add those files :
 * `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\MelonLoader.dll`
+* `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\0Harmony.dll`
 * `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\Managed\UnityEngine.IMGUIModule.dll`
 * `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\Managed\UnityEngine.InputLegacyModule.dll`
 * `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\Managed\bolt.user.dll`
@@ -55,6 +65,7 @@ Well at this point i don't really know, i think there is some sort of native Uni
 * `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\Managed\UnityEngine.CoreModule.dll`
 * `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\Managed\Il2Cppmscorlib.dll`
 * `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\Managed\Assembly-CSharp.dll`
+* `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\Managed\Opsive.UltimateCharacterController.dll`
 * `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\Managed\UnityENgine.InputModule.dll`
 * `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\Dependencies\Il2CppAssemblyGenerator\Il2CppUnhollower\UnhollowerBaseLib.dll`
 * `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\Dependencies\Il2CppAssemblyGenerator\Il2CppUnhollower\UnhollowerRuntimeLib.dll`
