@@ -1,4 +1,5 @@
 #Visual studio stuff
 .vs
+.git
 DevourClient/bin
 DevourClient/obj

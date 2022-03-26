@@ -129,23 +129,23 @@ namespace DevourClient.Hacks
 			Survival survival_class = UnityEngine.Object.FindObjectOfType<Survival>();
 			try
             {
-				survival_class.PlayWinEnding("InnWin");
+				survival_class.PlayEnding("InnWin");
 			}
 			catch
             {
 				try
                 {
-					survival_class.PlayWinEnding("AsylumWin");
+					survival_class.PlayEnding("AsylumWin");
 				}
 				catch
                 {
 					try
                     {
-						survival_class.PlayWinEnding("TownWin");
+						survival_class.PlayEnding("TownWin");
 					}
 					catch
                     {
-						survival_class.PlayWinEnding("Win");
+						survival_class.PlayEnding("Win");
 					}
 				}
             }
