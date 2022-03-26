@@ -1,3 +1,5 @@
+# Unknowncheats thread [here](https://www.unknowncheats.me/forum/other-fps-games/475950-devour-multihack-update.html)
+
 # The Town Update
 Now includes an Unlock All !!!
 Everything should be 100% fixed and working for the last update of Devour, have fun !
