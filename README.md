@@ -36,6 +36,7 @@ Everything about spoofing ehre (steam name, server name, level...) will persist 
 * Fly !! YES ! YOU CAN FLY ! You can also change the speed of it (left shift : down, space : up, up arrow : forward, back arrow : backward, left arrow : left, right arrow : right)
 * Unlock all, including flashlights, perks, outfits. Active by default, can't be turned off, no persistance.
 * Instant Win (allows you to win instantaniously on any map, works in singleplayer, but not as a client. May be working as host)
+* Random Sound (make your character play a random acting sound)
 
 ## Installation
 
