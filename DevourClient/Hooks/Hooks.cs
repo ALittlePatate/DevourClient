@@ -4,19 +4,6 @@ namespace DevourClient.Hooks
 {
     public class Hooks
     {
-
-        [HarmonyPatch(typeof(NolanBehaviour))]
-        [HarmonyPatch(nameof(NolanBehaviour.SetIsBeingKnockedOut))] //annotation boiler plate to tell Harmony what to patch. Refer to docs.
-        static class NolanBehaviour_SetIsBeingKnockedOut_Patch
-        {
-            static void Prefix(ref bool enable)
-            {
-                MelonLoader.MelonLogger.Msg("called ! : " + enable);
-                enable = false;
-                return;
-            }
-        }
-
         [HarmonyPatch(typeof(Horror.Menu))]
         [HarmonyPatch(nameof(Horror.Menu.SetupPerk))] //annotation boiler plate to tell Harmony what to patch. Refer to docs.
         static class Horror_Menu_SetupPerk_Patch
