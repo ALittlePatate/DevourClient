@@ -137,6 +137,7 @@ namespace DevourClient
                 if (GUI.Button(new Rect(Settings.Settings.x + 200, Settings.Settings.y + 160, 150, 20), "Random sound"))
                 {
                     Hacks.Misc.PlaySound();
+                    MelonLogger.Msg("Playing a random sound !");
                 }
 
             }

@@ -136,6 +136,7 @@ namespace DevourClient.Hacks
 			public PlayRandomAudioClip burnGoatClips;
 			public PlayRandomAudioClip laughClips;
 			*/
+
 			PlayRandomAudioClip playRandomAudioClip = UnityEngine.Object.FindObjectOfType<PlayRandomAudioClip>();
 			NolanVoiceOvers nolanVoiceOvers = UnityEngine.Object.FindObjectOfType<NolanVoiceOvers>();
 
