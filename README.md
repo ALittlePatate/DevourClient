@@ -28,7 +28,7 @@ Everything about spoofing ehre (steam name, server name, level...) will persist 
 * A chat spammer for Lobby and InGame chat (i couldn't do a text entry because of the limitations of [Il2CppAssemblyUnhollower](https://github.com/knah/Il2CppAssemblyUnhollower))
 * Achievements unlocker (couldn't do all of them, my code is crashing for some reasons at some point, i may fix it, for now it's commented out)
 * Doors unlocker (should work fine, though it doesn't seem to work sometimes)
-* Keys teleporter (broken, works sometimes but doesn't TP all the keys for some reasons)
+* Keys teleporter
 * LV 70 (puts you to the max level of the game !)
 * LV 666 (secret level, thanks to the guy who told me it exists lol)
 * Steam name spoofer (sets it to "patate", again no input text :/)
@@ -40,7 +40,7 @@ Everything about spoofing ehre (steam name, server name, level...) will persist 
 ## Installation
 
 0. Download the [release version](https://github.com/ALittlePatate/DevourClient/releases/) or [build it from source](https://github.com/ALittlePatate/DevourClient#building-from-source).
-1. Install [MelonLoader](https://github.com/LavaGang/MelonLoader/releases/tag/v0.4.3) to Devour.
+1. Install [MelonLoader](https://github.com/LavaGang/MelonLoader/releases) to Devour.
 2. Start your game. A cmd should appear, don't close it, MelonLoader is installing and decompiling Devour's game assemblies.
 3. Wait for the process to finish, once it's done close the game.
 4. Put the DevourClient.dll file inside `C:\Program Files (x86)\Steam\steamapps\common\Devour\Mods` folder.
