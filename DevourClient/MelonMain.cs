@@ -128,10 +128,15 @@ namespace DevourClient
                     MelonLogger.Msg("Here are your keys !");
                 }
 
-                if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 280, 150, 20), "Instant WIn") && Player.IsInGame())
+                if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 280, 150, 20), "Instant Win") && Player.IsInGame())
                 {
                     Hacks.Misc.InstantWin();
                     MelonLogger.Msg("EZ Win");
+                }
+
+                if (GUI.Button(new Rect(Settings.Settings.x + 200, Settings.Settings.y + 160, 150, 20), "Random sound"))
+                {
+                    Hacks.Misc.PlaySound();
                 }
 
             }

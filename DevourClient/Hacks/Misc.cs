@@ -124,6 +124,54 @@ namespace DevourClient.Hacks
 				menu_class.OnChatMessageSubmit();
 			}
 		}
+		public static void PlaySound()
+        {
+			/*
+			public PlayRandomAudioClip yesClips;
+			public PlayRandomAudioClip noClips;
+			public PlayRandomAudioClip beckonClips;
+			public PlayRandomAudioClip showOffClips;
+			public PlayRandomAudioClip screamClips;
+			public PlayRandomAudioClip pickupClips;
+			public PlayRandomAudioClip burnGoatClips;
+			public PlayRandomAudioClip laughClips;
+			*/
+			PlayRandomAudioClip playRandomAudioClip = UnityEngine.Object.FindObjectOfType<PlayRandomAudioClip>();
+			NolanVoiceOvers nolanVoiceOvers = UnityEngine.Object.FindObjectOfType<NolanVoiceOvers>();
+
+			playRandomAudioClip.delay = 0f;
+
+			int num = Random.RandomRangeInt(0, 8);
+			switch (num)
+            {
+				case 0:
+					nolanVoiceOvers.yesClips.Play();
+					return;
+				case 1:
+					nolanVoiceOvers.noClips.Play();
+					return;
+				case 2:
+					nolanVoiceOvers.beckonClips.Play();
+					return;
+				case 3:
+					nolanVoiceOvers.showOffClips.Play();
+					return;
+				case 4:
+					nolanVoiceOvers.screamClips.Play();
+					return;
+				case 5:
+					nolanVoiceOvers.pickupClips.Play();
+					return;
+				case 6:
+					nolanVoiceOvers.burnGoatClips.Play();
+					return;
+				case 7:
+					nolanVoiceOvers.laughClips.Play();
+					return;
+				default:
+					return;
+            }
+		}
 		public static void InstantWin()
         {
 			Survival survival_class = UnityEngine.Object.FindObjectOfType<Survival>();
