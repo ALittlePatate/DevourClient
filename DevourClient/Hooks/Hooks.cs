@@ -4,7 +4,7 @@ namespace DevourClient.Hooks
 {
     public class Hooks
     {
-        /* Commented out for UC release
+
         [HarmonyPatch(typeof(NolanBehaviour))]
         [HarmonyPatch(nameof(NolanBehaviour.SetIsBeingKnockedOut))] //annotation boiler plate to tell Harmony what to patch. Refer to docs.
         static class NolanBehaviour_SetIsBeingKnockedOut_Patch
@@ -16,7 +16,7 @@ namespace DevourClient.Hooks
                 return;
             }
         }
-        */
+
         [HarmonyPatch(typeof(Horror.Menu))]
         [HarmonyPatch(nameof(Horror.Menu.SetupPerk))] //annotation boiler plate to tell Harmony what to patch. Refer to docs.
         static class Horror_Menu_SetupPerk_Patch
