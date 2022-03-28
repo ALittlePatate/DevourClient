@@ -8,37 +8,35 @@ namespace DevourClient.Hacks
 {
     public class Misc
     {
-		public static void Fly(float speed) //normal speed 0.5f
+		public static void Fly(float speed) //normal speed 5f
 		{
-			NolanBehaviour Nolan = UnityEngine.Object.FindObjectOfType<NolanBehaviour>();
-			Vector3 PlayerAngles = Nolan.transform.position;
-
-			if (Input.GetKey(KeyCode.Space))
-            {
-				PlayerAngles.y += speed;
-			}
-			if (Input.GetKey(KeyCode.LeftShift))
-			{
-				PlayerAngles.y -= speed;
-			}
-			if (Input.GetKey(KeyCode.LeftArrow))
-			{
-				PlayerAngles.x -= speed;
-			}
-			if (Input.GetKey(KeyCode.RightArrow))
-			{
-				PlayerAngles.x += speed;
-			}
+			NolanBehaviour nb = Object.FindObjectOfType<NolanBehaviour>();
+			Vector3 pos = nb.transform.position;
 			if (Input.GetKey(KeyCode.UpArrow))
 			{
-				PlayerAngles.z += speed;
+				pos += nb.transform.forward * speed * Time.deltaTime;
 			}
-			if (Input.GetKey(KeyCode.DownArrow))
+			else if (Input.GetKey(KeyCode.DownArrow))
 			{
-				PlayerAngles.z -= speed;
+				pos += -nb.transform.forward * speed * Time.deltaTime;
 			}
-
-			Nolan.locomotion.SetPosition(PlayerAngles, false);
+			else if (Input.GetKey(KeyCode.RightArrow))
+			{
+				pos += nb.transform.right * speed * Time.deltaTime;
+			}
+			else if (Input.GetKey(KeyCode.LeftArrow))
+			{
+				pos += -nb.transform.right * speed * Time.deltaTime;
+			}
+			else if (Input.GetKey(KeyCode.Space))
+			{
+				pos += nb.transform.up * speed * Time.deltaTime;
+			}
+			else if (Input.GetKey(KeyCode.LeftControl))
+			{
+				pos += -nb.transform.up * speed * Time.deltaTime;
+			}
+			nb.locomotion.SetPosition(pos, false);
 		}
 		public static void SetSteamName(string name)
 		{
