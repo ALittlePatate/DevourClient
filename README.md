@@ -37,6 +37,7 @@ Everything about spoofing ehre (steam name, server name, level...) will persist 
 * Unlock all, including flashlights, perks, outfits. Active by default, can't be turned off, no persistance.
 * Instant Win (allows you to win instantaniously on any map, works in singleplayer, but not as a client. May be working as host)
 * Random Sound (make your character play a random acting sound)
+* Always carrying a medkit
 
 ## Installation
 
