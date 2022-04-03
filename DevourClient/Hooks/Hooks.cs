@@ -1,9 +1,26 @@
 ﻿using HarmonyLib;
+using DevourClient;
 
 namespace DevourClient.Hooks
 {
     public class Hooks
     {
+        [HarmonyPatch(typeof(NolanBehaviour))]
+        [HarmonyPatch(nameof(NolanBehaviour.IsCarryingFirstAidOnLocalCharacter))] //annotation boiler plate to tell Harmony what to patch. Refer to docs.
+        static class NolanBehaviour_IsCarryingFirstAidOnLocalCharacter_Patch
+        {
+            static void Postfix(ref bool __result)
+            {
+                Load settings = new Load();
+                if (settings._IsCarryingFirstAidOnLocalCharacter)
+                {
+                    __result = true;
+                }
+                
+                return;
+            }
+        }
+
         [HarmonyPatch(typeof(Horror.Menu))]
         [HarmonyPatch(nameof(Horror.Menu.SetupPerk))] //annotation boiler plate to tell Harmony what to patch. Refer to docs.
         static class Horror_Menu_SetupPerk_Patch
