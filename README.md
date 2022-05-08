@@ -38,6 +38,7 @@ Everything about spoofing ehre (steam name, server name, level...) will persist 
 * Instant Win (allows you to win instantaniously on any map, works in singleplayer, but not as a client. May be working as host)
 * Random Sound (make your character play a random acting sound)
 * Always carrying a medkit
+* Change your exp at the end of the game, changing it is permanant !
 
 ## Installation
 
