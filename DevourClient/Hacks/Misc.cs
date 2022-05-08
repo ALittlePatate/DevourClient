@@ -57,6 +57,7 @@ namespace DevourClient.Hacks
 			try
             {
 				NolanBehaviour Nolan = UnityEngine.Object.FindObjectOfType<NolanBehaviour>();
+
 				Light flashlightSpot = Nolan.flashlightSpot;
 
 				if (reset)
@@ -135,6 +136,18 @@ namespace DevourClient.Hacks
 			public PlayRandomAudioClip laughClips;
 			*/
 
+			/*
+			NolanBehaviour[] Nolan_t = UnityEngine.Object.FindObjectsOfType<NolanBehaviour>();
+
+			for (int i = 0; i < Nolan_t.Length; i++)
+			{
+				NolanBehaviour Nolan = Nolan_t[i];
+
+				MelonLogger.Msg("-------------------------");
+				MelonLogger.Msg("isClient : " + Nolan.gameUI.isClient);
+				MelonLogger.Msg("senderName : " + Nolan.gameUI.name);
+			}
+			*/
 			PlayRandomAudioClip playRandomAudioClip = UnityEngine.Object.FindObjectOfType<PlayRandomAudioClip>();
 			NolanVoiceOvers nolanVoiceOvers = UnityEngine.Object.FindObjectOfType<NolanVoiceOvers>();
 
@@ -174,6 +187,8 @@ namespace DevourClient.Hacks
 		public static void InstantWin()
         {
 			Survival survival_class = UnityEngine.Object.FindObjectOfType<Survival>();
+			survival_class.m_InnMapController.AddEggToWorld();
+
 			try
             {
 				survival_class.PlayEnding("InnWin");

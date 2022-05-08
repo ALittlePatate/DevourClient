@@ -31,6 +31,17 @@ namespace DevourClient
 
             if (Input.GetKeyDown(KeyCode.Insert))
             {
+                GameUI gameUI = UnityEngine.Object.FindObjectOfType<GameUI>();
+
+                if (Settings.Settings.menu_enable)
+                {
+                    gameUI.HideMouseCursor();
+                }
+                else
+                {
+                    gameUI.ShowMouseCursor();
+                }
+
                 Settings.Settings.menu_enable = !Settings.Settings.menu_enable;
             }
 
