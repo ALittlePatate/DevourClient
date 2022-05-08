@@ -175,7 +175,6 @@ namespace DevourClient.Hacks
 		public static void InstantWin()
         {
 			Survival survival_class = UnityEngine.Object.FindObjectOfType<Survival>();
-			survival_class.m_InnMapController.AddEggToWorld();
 
 			try
             {

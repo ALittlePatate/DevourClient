@@ -16,6 +16,8 @@ namespace DevourClient
         bool fly = false;
         float fly_speed = 5;
         public bool _IsCarryingFirstAidOnLocalCharacter = false;
+        public static bool exp_modifier = false;
+        public static float exp = 1000f;
 
         bool spam_message = false;
 
@@ -106,6 +108,10 @@ namespace DevourClient
                 this.fly_speed = GUI.HorizontalSlider(new Rect(Settings.Settings.x + 200, Settings.Settings.y + 130, 100, 10), this.fly_speed, 5f, 20f); //Slider for the fly speed
                 GUI.Label(new Rect(Settings.Settings.x + 310, Settings.Settings.y + 125, 100, 30), this.fly_speed.ToString()); //Prints the value of the slider;
                 this._IsCarryingFirstAidOnLocalCharacter = GUI.Toggle(new Rect(Settings.Settings.x + 200, Settings.Settings.y + 190, 150, 20), this._IsCarryingFirstAidOnLocalCharacter, "IsCarryingFirstAid");
+
+                Load.exp_modifier = GUI.Toggle(new Rect(Settings.Settings.x + 350, Settings.Settings.y + 40, 150, 20), Load.exp_modifier, "Exp Modifier");
+                Load.exp = GUI.HorizontalSlider(new Rect(Settings.Settings.x + 350, Settings.Settings.y + 70, 100, 10), Load.exp, 1000f, 50000f); //Slider for the fly speed
+                GUI.Label(new Rect(Settings.Settings.x + 410, Settings.Settings.y + 75, 100, 30), Load.exp.ToString()); //Prints the value of the slider;
 
                 if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 40, 150, 20), "Unlock Achievements"))
                 {
