@@ -26,6 +26,8 @@ namespace DevourClient
 
         public override void OnUpdate()
         {
+            Photon.Bolt.BoltConfig boltconfig = new Photon.Bolt.BoltConfig();
+            boltconfig.serverConnectionLimit = 20;
 
             if (Input.GetKeyDown(KeyCode.Insert))
             {

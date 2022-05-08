@@ -5,21 +5,19 @@ namespace DevourClient.Hooks
 {
     public class Hooks
     {
-        [HarmonyPatch(typeof(NolanBehaviour))]
-        [HarmonyPatch(nameof(NolanBehaviour.IsCarryingFirstAidOnLocalCharacter))] //annotation boiler plate to tell Harmony what to patch. Refer to docs.
-        static class NolanBehaviour_IsCarryingFirstAidOnLocalCharacter_Patch
+        /*
+        [HarmonyPatch(typeof(Photon.Bolt.BoltLauncher))]
+        [HarmonyPatch(nameof(Photon.Bolt.BoltLauncher.StartServer))] //annotation boiler plate to tell Harmony what to patch. Refer to docs.
+        static class Photon_Bolt_BoltLauncher_StartServer_Patch
         {
-            static void Postfix(ref bool __result)
+            static void Prefix(ref Photon.Bolt.BoltConfig boltconfig, string scene)
             {
-                Load settings = new Load();
-                if (settings._IsCarryingFirstAidOnLocalCharacter)
-                {
-                    __result = true;
-                }
-                
+                MelonLoader.MelonLogger.Msg("serverConnectionLimit : " + boltconfig.serverConnectionLimit);
+                boltconfig.serverConnectionLimit = 20;
                 return;
             }
         }
+        */
 
         [HarmonyPatch(typeof(Horror.Menu))]
         [HarmonyPatch(nameof(Horror.Menu.SetupPerk))] //annotation boiler plate to tell Harmony what to patch. Refer to docs.
