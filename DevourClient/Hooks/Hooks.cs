@@ -18,6 +18,23 @@ namespace DevourClient.Hooks
             }
         }
         */
+        /*
+        [HarmonyPatch(typeof(RankHelpers))]
+        [HarmonyPatch(nameof(RankHelpers.CalculateExpGain))] //annotation boiler plate to tell Harmony what to patch. Refer to docs.
+        static class RankHelpers_CalculateExpGain
+        {
+            static void Postfix(ref RankHelpers.ExpGainInfo __result)
+            {
+                __result.baseExp = 200;
+                __result.winBonus = 200;
+                __result.awardsBonus = 200;
+                __result.totalExp = 200;
+                __result.gameModeBonus = 200;
+                MelonLoader.MelonLogger.Msg("called");
+                return;
+            }
+        }
+        */
 
         [HarmonyPatch(typeof(Horror.Menu))]
         [HarmonyPatch(nameof(Horror.Menu.SetupPerk))] //annotation boiler plate to tell Harmony what to patch. Refer to docs.

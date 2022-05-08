@@ -136,18 +136,6 @@ namespace DevourClient.Hacks
 			public PlayRandomAudioClip laughClips;
 			*/
 
-			/*
-			NolanBehaviour[] Nolan_t = UnityEngine.Object.FindObjectsOfType<NolanBehaviour>();
-
-			for (int i = 0; i < Nolan_t.Length; i++)
-			{
-				NolanBehaviour Nolan = Nolan_t[i];
-
-				MelonLogger.Msg("-------------------------");
-				MelonLogger.Msg("isClient : " + Nolan.gameUI.isClient);
-				MelonLogger.Msg("senderName : " + Nolan.gameUI.name);
-			}
-			*/
 			PlayRandomAudioClip playRandomAudioClip = UnityEngine.Object.FindObjectOfType<PlayRandomAudioClip>();
 			NolanVoiceOvers nolanVoiceOvers = UnityEngine.Object.FindObjectOfType<NolanVoiceOvers>();
 
