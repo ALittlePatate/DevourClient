@@ -87,7 +87,7 @@ namespace DevourClient
                 Hacks.Misc.SetSteamName("patate");
             }
 
-            if (this.fly && Player.IsInGame())
+            if (this.fly && Player.IsInGameOrLobby())
             {
                 Hacks.Misc.Fly(this.fly_speed);
             }

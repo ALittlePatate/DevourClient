@@ -1,3 +1,5 @@
+﻿using UnityEngine;
+
 ﻿namespace DevourClient.Helpers
 {
     public class Player
@@ -6,6 +8,23 @@
         {
             OptionsHelpers optionsHelpers = UnityEngine.Object.FindObjectOfType<OptionsHelpers>();
             return optionsHelpers.inGame;
+        }
+        
+        public static bool IsInGameOrLobby()
+        {
+            return GetPlayer() != null;
+        }
+        
+        public static NolanBehaviour GetPlayer()
+        {
+            foreach (NolanBehaviour nb in UnityEngine.Object.FindObjectsOfType<NolanBehaviour>())
+            {
+                if (nb.entity.IsOwner)
+                {
+                    return nb;
+                }
+            }
+            return null;
         }
     }
 }
