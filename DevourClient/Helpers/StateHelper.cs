@@ -1,3 +1,5 @@
+﻿using UnityEngine;
+
 ﻿namespace DevourClient.Helpers
 {
     public class Player
