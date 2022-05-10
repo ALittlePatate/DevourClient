@@ -5,20 +5,6 @@ namespace DevourClient.Hooks
 {
     public class Hooks
     {
-        /*
-        [HarmonyPatch(typeof(Photon.Bolt.BoltLauncher))]
-        [HarmonyPatch(nameof(Photon.Bolt.BoltLauncher.StartServer))] //annotation boiler plate to tell Harmony what to patch. Refer to docs.
-        static class Photon_Bolt_BoltLauncher_StartServer_Patch
-        {
-            static void Prefix(ref Photon.Bolt.BoltConfig boltconfig, string scene)
-            {
-                MelonLoader.MelonLogger.Msg("serverConnectionLimit : " + boltconfig.serverConnectionLimit);
-                boltconfig.serverConnectionLimit = 20;
-                return;
-            }
-        }
-        */
-        
         [HarmonyPatch(typeof(RankHelpers))]
         [HarmonyPatch(nameof(RankHelpers.CalculateExpGain))] //annotation boiler plate to tell Harmony what to patch. Refer to docs.
         static class RankHelpers_CalculateExpGain

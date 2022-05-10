@@ -138,7 +138,6 @@ namespace DevourClient.Hacks
 
 			PlayRandomAudioClip playRandomAudioClip = UnityEngine.Object.FindObjectOfType<PlayRandomAudioClip>();
 			NolanVoiceOvers nolanVoiceOvers = UnityEngine.Object.FindObjectOfType<NolanVoiceOvers>();
-
 			playRandomAudioClip.delay = 0f;
 
 			int num = Random.RandomRangeInt(0, 8);

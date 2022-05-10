@@ -23,14 +23,11 @@ namespace DevourClient
 
         public override void OnApplicationStart()
         {
-            
+            MelonLogger.Msg("For the Queen !");
         }
 
         public override void OnUpdate()
         {
-            Photon.Bolt.BoltConfig boltconfig = new Photon.Bolt.BoltConfig();
-            boltconfig.serverConnectionLimit = 20;
-
             if (Input.GetKeyDown(KeyCode.Insert))
             {
                 try
@@ -62,6 +59,7 @@ namespace DevourClient
 
             if (this.spam_message)
             {
+                MelonLogger.Msg("done");
                 Hacks.Misc.MessageSpam(Settings.Settings.message_to_spam);
             }
 
