@@ -12,19 +12,19 @@ namespace DevourClient.Hacks
 		{
 			NolanBehaviour nb = Object.FindObjectOfType<NolanBehaviour>();
 			Vector3 pos = nb.transform.position;
-			if (Input.GetKey(KeyCode.UpArrow))
+			if (Input.GetKey(KeyCode.W))
 			{
 				pos += nb.transform.forward * speed * Time.deltaTime;
 			}
-			if (Input.GetKey(KeyCode.DownArrow))
+			if (Input.GetKey(KeyCode.S))
 			{
 				pos += -nb.transform.forward * speed * Time.deltaTime;
 			}
-			if (Input.GetKey(KeyCode.RightArrow))
+			if (Input.GetKey(KeyCode.D))
 			{
 				pos += nb.transform.right * speed * Time.deltaTime;
 			}
-			if (Input.GetKey(KeyCode.LeftArrow))
+			if (Input.GetKey(KeyCode.A))
 			{
 				pos += -nb.transform.right * speed * Time.deltaTime;
 			}
