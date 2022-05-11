@@ -3,6 +3,7 @@ using MelonLoader;
 using UnityEngine.UI;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using DevourClient.Helpers;
 
 namespace DevourClient.Hacks
 {
@@ -10,29 +11,29 @@ namespace DevourClient.Hacks
     {
 		public static void Fly(float speed) //normal speed 5f
 		{
-			NolanBehaviour nb = Object.FindObjectOfType<NolanBehaviour>();
+			NolanBehaviour nb = Player.GetPlayer();
 			Vector3 pos = nb.transform.position;
-			if (Input.GetKey(KeyCode.UpArrow))
+			if (Input.GetKey(KeyCode.W))
 			{
 				pos += nb.transform.forward * speed * Time.deltaTime;
 			}
-			else if (Input.GetKey(KeyCode.DownArrow))
+			if (Input.GetKey(KeyCode.S))
 			{
 				pos += -nb.transform.forward * speed * Time.deltaTime;
 			}
-			else if (Input.GetKey(KeyCode.RightArrow))
+			if (Input.GetKey(KeyCode.D))
 			{
 				pos += nb.transform.right * speed * Time.deltaTime;
 			}
-			else if (Input.GetKey(KeyCode.LeftArrow))
+			if (Input.GetKey(KeyCode.A))
 			{
 				pos += -nb.transform.right * speed * Time.deltaTime;
 			}
-			else if (Input.GetKey(KeyCode.Space))
+			if (Input.GetKey(KeyCode.Space))
 			{
 				pos += nb.transform.up * speed * Time.deltaTime;
 			}
-			else if (Input.GetKey(KeyCode.LeftControl))
+			if (Input.GetKey(KeyCode.LeftControl))
 			{
 				pos += -nb.transform.up * speed * Time.deltaTime;
 			}
