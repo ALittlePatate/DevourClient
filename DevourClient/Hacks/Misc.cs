@@ -16,23 +16,23 @@ namespace DevourClient.Hacks
 			{
 				pos += nb.transform.forward * speed * Time.deltaTime;
 			}
-			else if (Input.GetKey(KeyCode.DownArrow))
+			if (Input.GetKey(KeyCode.DownArrow))
 			{
 				pos += -nb.transform.forward * speed * Time.deltaTime;
 			}
-			else if (Input.GetKey(KeyCode.RightArrow))
+			if (Input.GetKey(KeyCode.RightArrow))
 			{
 				pos += nb.transform.right * speed * Time.deltaTime;
 			}
-			else if (Input.GetKey(KeyCode.LeftArrow))
+			if (Input.GetKey(KeyCode.LeftArrow))
 			{
 				pos += -nb.transform.right * speed * Time.deltaTime;
 			}
-			else if (Input.GetKey(KeyCode.Space))
+			if (Input.GetKey(KeyCode.Space))
 			{
 				pos += nb.transform.up * speed * Time.deltaTime;
 			}
-			else if (Input.GetKey(KeyCode.LeftControl))
+			if (Input.GetKey(KeyCode.LeftControl))
 			{
 				pos += -nb.transform.up * speed * Time.deltaTime;
 			}
