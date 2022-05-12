@@ -13,19 +13,20 @@ namespace DevourClient.Hacks
 		{
 			NolanBehaviour nb = Player.GetPlayer();
 			Vector3 pos = nb.transform.position;
-			if (Input.GetKey(KeyCode.W))
+			RewiredHelpers helpers = UnityEngine.Object.FindObjectOfType<RewiredHelpers>();
+			if (Input.GetKey((KeyCode)System.Enum.Parse(typeof(KeyCode), helpers.GetCurrentBinding("Move Up").ToString().Replace(" ", ""))))
 			{
 				pos += nb.transform.forward * speed * Time.deltaTime;
 			}
-			if (Input.GetKey(KeyCode.S))
+			if (Input.GetKey((KeyCode)System.Enum.Parse(typeof(KeyCode), helpers.GetCurrentBinding("Move Down").ToString().Replace(" ", ""))))
 			{
 				pos += -nb.transform.forward * speed * Time.deltaTime;
 			}
-			if (Input.GetKey(KeyCode.D))
+			if (Input.GetKey((KeyCode)System.Enum.Parse(typeof(KeyCode), helpers.GetCurrentBinding("Move Right").ToString().Replace(" ", ""))))
 			{
 				pos += nb.transform.right * speed * Time.deltaTime;
 			}
-			if (Input.GetKey(KeyCode.A))
+			if (Input.GetKey((KeyCode)System.Enum.Parse(typeof(KeyCode), helpers.GetCurrentBinding("Move Left").ToString().Replace(" ", ""))))
 			{
 				pos += -nb.transform.right * speed * Time.deltaTime;
 			}
