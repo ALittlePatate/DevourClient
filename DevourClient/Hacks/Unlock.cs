@@ -39,6 +39,15 @@
             //Pour chaques portes, on les ouvre
             foreach (Horror.DoorBehaviour doorBehaviour in UnityEngine.Object.FindObjectsOfType<Horror.DoorBehaviour>())
             {
+                doorBehaviour.state.Locked = false;
+                if (doorBehaviour.IsOpen())
+                {
+                    doorBehaviour.m_DoorGraphUpdate.DoorOpening();
+                }
+                else
+                {
+                    doorBehaviour.m_DoorGraphUpdate.DoorClosed();
+                }
                 doorBehaviour.Unlock();
             }
         }
