@@ -42,12 +42,9 @@ Everything about spoofing ehre (steam name, server name, level...) will persist 
 
 ## Installation
 
-0. Download the [release version](https://github.com/ALittlePatate/DevourClient/releases/) or [build it from source](https://github.com/ALittlePatate/DevourClient#building-from-source).
-1. Install [MelonLoader](https://github.com/LavaGang/MelonLoader/releases) to Devour.
-2. Start your game. A cmd should appear, don't close it, MelonLoader is installing and decompiling Devour's game assemblies.
-3. Wait for the process to finish, once it's done close the game.
-4. Put the DevourClient.dll file inside `C:\Program Files (x86)\Steam\steamapps\common\Devour\Mods` folder.
-5. Start the game, now you have successfully installed DevourClient. Use INSERT to open the menu
+0. [Build the cheat from source](https://github.com/ALittlePatate/DevourClient#building-from-source).
+1. Put the DevourClient.dll file inside `C:\Program Files (x86)\Steam\steamapps\common\Devour\Mods` folder.
+2. Start the game, now you have successfully installed DevourClient. Use INSERT to open the menu
 
 ## Uninstallation
 
@@ -57,9 +54,11 @@ Everything about spoofing ehre (steam name, server name, level...) will persist 
 
 0. Clone the repository
 1. Install MelonLoader (see [Installation](https://github.com/ALittlePatate/DevourClient#installation))
-2. Open the solution file in Visual Studio (i used 2019, i don't know about the compatibility with the other versions)
-3. Go to : Project --> Add a reference --> Browse --> Click on the browse button in the down right corner of the window.
-4. Add those files :
+2. Start your game. A cmd should appear, don't close it, MelonLoader is installing and decompiling Devour's game assemblies.
+3. Wait for the process to finish, once it's done close the game.
+4. Open the solution file in Visual Studio (i used 2019, i don't know about the compatibility with the other versions)
+5. Go to : Project --> Add a reference --> Browse --> Click on the browse button in the down right corner of the window.
+6. Add those files :
 * `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\MelonLoader.dll`
 * `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\0Harmony.dll`
 * `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\Managed\UnityEngine.IMGUIModule.dll`
@@ -75,7 +74,7 @@ Everything about spoofing ehre (steam name, server name, level...) will persist 
 * `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\Managed\UnityENgine.InputModule.dll`
 * `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\Dependencies\Il2CppAssemblyGenerator\Il2CppUnhollower\UnhollowerBaseLib.dll`
 * `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\Dependencies\Il2CppAssemblyGenerator\Il2CppUnhollower\UnhollowerRuntimeLib.dll`
-5. Build the solutions in Release | Any CPU mode
+7. Build the solutions in Release | Any CPU mode
 
 ## Contact
 
