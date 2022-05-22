@@ -53,7 +53,7 @@ Everything about spoofing ehre (steam name, server name, level...) will persist 
 ## Building from source
 
 0. Clone the repository
-1. Install MelonLoader (see [Installation](https://github.com/ALittlePatate/DevourClient#installation))
+1. Install [MelonLoader](https://github.com/LavaGang/MelonLoader/releases) to Devour.
 2. Start your game. A cmd should appear, don't close it, MelonLoader is installing and decompiling Devour's game assemblies.
 3. Wait for the process to finish, once it's done close the game.
 4. Open the solution file in Visual Studio (i used 2019, i don't know about the compatibility with the other versions)
