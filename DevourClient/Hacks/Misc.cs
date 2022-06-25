@@ -58,7 +58,7 @@ namespace DevourClient.Hacks
 			//so the things are not loaded and it throws a shit ton of errors in the console
 			try
             {
-				NolanBehaviour Nolan = UnityEngine.Object.FindObjectOfType<NolanBehaviour>();
+				NolanBehaviour Nolan = Player.GetPlayer();//UnityEngine.Object.FindObjectOfType<NolanBehaviour>();
 
 				Light flashlightSpot = Nolan.flashlightSpot;
 
@@ -81,7 +81,7 @@ namespace DevourClient.Hacks
 		}
 		public static void FlashlightColor(Color color)
         {
-			NolanBehaviour Nolan = UnityEngine.Object.FindObjectOfType<NolanBehaviour>();
+			NolanBehaviour Nolan = Player.GetPlayer(); //UnityEngine.Object.FindObjectOfType<NolanBehaviour>();
 			Light flashlightSpot = Nolan.flashlightSpot;
 
 			flashlightSpot.color = color;
@@ -89,7 +89,7 @@ namespace DevourClient.Hacks
 
 		public static void TPKeys()
         {
-			NolanBehaviour Nolan = UnityEngine.Object.FindObjectOfType<NolanBehaviour>();
+			NolanBehaviour Nolan = Player.GetPlayer(); //UnityEngine.Object.FindObjectOfType<NolanBehaviour>();
 
 			foreach (KeyBehaviour keyBehaviour in UnityEngine.Object.FindObjectsOfType<KeyBehaviour>())
 			{
