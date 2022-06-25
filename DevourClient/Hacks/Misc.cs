@@ -125,6 +125,12 @@ namespace DevourClient.Hacks
 				menu_class.OnChatMessageSubmit();
 			}
 		}
+
+		public static void ShowMessageBox(string message)
+        {
+			Horror.Menu menu = UnityEngine.Object.FindObjectOfType<Horror.Menu>();
+			menu.ShowMessageModal(message);
+		}
 		public static void PlaySound()
         {
 			/*
