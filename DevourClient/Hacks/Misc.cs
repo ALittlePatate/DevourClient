@@ -40,6 +40,17 @@ namespace DevourClient.Hacks
 			}
 			nb.locomotion.SetPosition(pos, false);
 		}
+	    
+	    	
+	    	public static void AutoRespawn()
+		{
+			NolanBehaviour nb = Player.GetPlayer();
+
+			Vector3 setNewPosition = nb.transform.position = new Vector3(0.0f, -100.0f, 0.0f);
+			nb.locomotion.SetPosition(setNewPosition);
+		}
+	    
+	    
 		public static void SetSteamName(string name)
 		{
 			Horror.Menu Menu_ = UnityEngine.Object.FindObjectOfType<Horror.Menu>();
