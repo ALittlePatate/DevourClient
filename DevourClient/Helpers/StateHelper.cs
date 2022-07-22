@@ -26,5 +26,17 @@
             }
             return null;
         }
+        
+        public static bool IsPlayerCrawling()
+        {
+            NolanBehaviour nb = Player.GetPlayer();
+
+            if (nb.IsCrawling())
+            {
+                return true;
+            }
+
+            return false;
+        }
     }
 }
