@@ -16,7 +16,7 @@ namespace DevourClient
         bool fly = false;
         float fly_speed = 5;
         public bool _IsCarryingFirstAidOnLocalCharacter = false;
-        public bool _IsAutoRespawn = true;
+        public bool _IsAutoRespawn = false;
         public static bool exp_modifier = false;
         public static float exp = 1000f;
 
