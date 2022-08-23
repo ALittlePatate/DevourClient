@@ -11,8 +11,6 @@ DevourClient is a rather uncommon cheat for Devour, i've seen multiple cheats fo
 This cheat hasn't many features and some of them may broke with the time, but hey, spaming the chat with "Deez Nutz" is funny.
 Also don't mind french comments lol, google translate is your friend !
 
-ps : my computer was really bad so i couldn't do a lot of testing in game because it required too much time to load
-
 ## Detection rate
 
 Well at this point i don't really know, i think there is some sort of native Unity anti cheat template but it doesn't seem active. You're fine, no anti cheat !
@@ -41,9 +39,10 @@ Everything about spoofing ehre (steam name, server name, level...) will persist 
 * Change your exp at the end of the game, changing it is permanant !
 
 ## Installation
+In order to get all of this working you need to generate the DevourClient.dll file by building the source code.
 
 0. [Build the cheat from source](https://github.com/ALittlePatate/DevourClient#building-from-source).
-1. Put the DevourClient.dll file inside `C:\Program Files (x86)\Steam\steamapps\common\Devour\Mods` folder.
+1. Put the DevourClient.dll file located in `DevourClient\bin\Release` inside `C:\Program Files (x86)\Steam\steamapps\common\Devour\Mods` folder.
 2. Start the game, now you have successfully installed DevourClient. Use INSERT to open the menu
 
 ## Uninstallation
@@ -52,11 +51,11 @@ Everything about spoofing ehre (steam name, server name, level...) will persist 
 
 ## Building from source
 
-0. Clone the repository
+0. Clone the repository (or Code -> Download Zip)
 1. Install [MelonLoader](https://github.com/LavaGang/MelonLoader/releases) to Devour.
 2. Start your game. A cmd should appear, don't close it, MelonLoader is installing and decompiling Devour's game assemblies.
 3. Wait for the process to finish, once it's done close the game.
-4. Open the solution file in Visual Studio (i used 2019, i don't know about the compatibility with the other versions)
+4. Open the solution file (DevourClient.sln) in Visual Studio
 5. Go to : Project --> Add a reference --> Browse --> Click on the browse button in the down right corner of the window.
 6. Add those files :
 * `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\MelonLoader.dll`
