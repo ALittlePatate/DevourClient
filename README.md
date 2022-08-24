@@ -37,6 +37,10 @@ Everything about spoofing ehre (steam name, server name, level...) will persist 
 * Random Sound (make your character play a random acting sound)
 * Always carrying a medkit
 * Change your exp at the end of the game, changing it is permanant !
+* Player ESP (with a home made color picker)
+* Player snaplines (with a home made color picker)
+* Azazel ESP (with a home made color picker)
+* Azazel snapline (with a home made color picker)
 
 ## Installation
 In order to get all of this working you need to generate the DevourClient.dll file by building the source code.
