@@ -24,7 +24,6 @@ namespace DevourClient
         bool player_snapline = false;
         bool azazel_esp = false;
         bool azazel_snapline = false;
-        bool item_esp = false;
         bool spam_message = false;
 
         public override void OnApplicationStart()
