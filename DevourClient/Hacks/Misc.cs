@@ -4,6 +4,8 @@ using UnityEngine.UI;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using DevourClient.Helpers;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace DevourClient.Hacks
 {
@@ -50,6 +52,22 @@ namespace DevourClient.Hacks
 			nb.locomotion.SetPosition(setNewPosition);
 		}
 	    
+	    	public static void TPItems()
+		{
+		    try
+		    {
+			NolanBehaviour Nolan = Player.GetPlayer();
+
+			List<SurvivalInteractable> items = new List<SurvivalInteractable>();
+			items = Object.FindObjectsOfType<SurvivalInteractable>().ToList<SurvivalInteractable>();
+
+			foreach (SurvivalInteractable item in items)
+			{
+			    item.transform.position = Nolan.transform.position + Nolan.transform.forward * Random.RandomRange(1f, 3f);
+				}
+		    }
+		    catch { }
+		}
 	    
 		public static void SetSteamName(string name)
 		{
