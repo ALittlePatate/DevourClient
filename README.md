@@ -41,6 +41,7 @@ Everything about spoofing ehre (steam name, server name, level...) will persist 
 * Player snaplines (with a home made color picker)
 * Azazel ESP (with a home made color picker)
 * Azazel snapline (with a home made color picker)
+* TP all the items to your position ! (thanks to [@jadis0x](https://github.com/jadis0x))
 
 ## Installation
 In order to get all of this working you need to generate the DevourClient.dll file by building the source code.
