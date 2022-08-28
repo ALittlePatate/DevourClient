@@ -258,6 +258,12 @@ namespace DevourClient
                     Hacks.Misc.InstantWin();
                     MelonLogger.Msg("EZ Win");
                 }
+                
+                if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 310, 150, 20), "TP Items") && Player.IsInGame())
+                {
+                    Hacks.Misc.TPItems();
+                    MelonLogger.Msg("TP Items !");
+                }
 
                 if (GUI.Button(new Rect(Settings.Settings.x + 200, Settings.Settings.y + 160, 150, 20), "Random sound"))
                 {
