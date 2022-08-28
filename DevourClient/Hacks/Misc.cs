@@ -44,7 +44,7 @@ namespace DevourClient.Hacks
 		}
 	    
 	    	
-	    	public static void AutoRespawn()
+	    public static void AutoRespawn()
 		{
 			NolanBehaviour nb = Player.GetPlayer();
 
@@ -52,7 +52,7 @@ namespace DevourClient.Hacks
 			nb.locomotion.SetPosition(setNewPosition);
 		}
 	    
-	    	public static void TPItems()
+	    public static void TPItems()
 		{
 		    try
 		    {

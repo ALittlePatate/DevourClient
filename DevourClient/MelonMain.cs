@@ -25,6 +25,7 @@ namespace DevourClient
         bool azazel_esp = false;
         bool azazel_snapline = false;
         bool spam_message = false;
+        bool item_esp = false;
 
         public override void OnApplicationStart()
         {
@@ -51,6 +52,26 @@ namespace DevourClient
                 catch { }
 
                 Settings.Settings.menu_enable = !Settings.Settings.menu_enable;
+            }
+
+            if (Input.GetKeyDown(KeyCode.Keypad1))
+            {
+                MelonLoader.MelonLogger.Msg("First aid outline on");
+                FirstAidOutline[] array = Object.FindObjectsOfType<FirstAidOutline>();
+                for (int i = 0; i < array.Length; i++)
+                {
+                    array[i].SetCrawlOutline();
+                }
+            }
+
+            if (Input.GetKeyDown(KeyCode.Keypad2))
+            {
+                MelonLoader.MelonLogger.Msg("First aid outline off");
+                FirstAidOutline[] array = Object.FindObjectsOfType<FirstAidOutline>();
+                for (int i = 0; i < array.Length; i++)
+                {
+                    array[i].SetNormalOutline();
+                }
             }
 
             if (this.flashlight_toggle && Player.IsInGame())
@@ -139,6 +160,42 @@ namespace DevourClient
                 }
             }
 
+            if (this.item_esp)
+            {
+                foreach (SurvivalInteractable obj in UnityEngine.Object.FindObjectsOfType<SurvivalInteractable>() as UnhollowerBaseLib.Il2CppReferenceArray<SurvivalInteractable>)
+                {
+                    if (obj != null)
+                    {
+
+
+                        Vector3 pivotPos = obj.transform.position; //Pivot point NOT at the origin, at the center
+                        Vector3 playerFootPos; playerFootPos.x = pivotPos.x; playerFootPos.z = pivotPos.z; playerFootPos.y = pivotPos.y - 2f; //At the feet
+                        Vector3 playerHeadPos;
+                        playerHeadPos.x = pivotPos.x;
+                        playerHeadPos.z = pivotPos.z;
+                        playerHeadPos.y = pivotPos.y + 0.3f; //At the middle
+
+                        if (Camera.main == null)
+                        {
+                            continue;
+                        }
+
+                        Vector3 w2s_footpos = Camera.main.WorldToScreenPoint(playerFootPos);
+                        Vector3 w2s_headpos = Camera.main.WorldToScreenPoint(playerHeadPos);
+
+                        if (w2s_footpos.z > 0f)
+                        {
+                            //string playername = player.field_Private_PhotonView_0.field_Private_ObjectPublicObInBoStBoHaStObInHaUnique_0.field_Private_String_0;//player.photonView._Controller_k__BackingField.NickName;
+
+                            
+
+                            Render.Render.DrawBoxESP(w2s_footpos, w2s_headpos, new Color(), obj.prefabName.Replace("Survival", ""), false, false, true);
+                        }
+
+                    }
+                }
+            }
+
             if (this.azazel_esp || this.azazel_snapline)
             {
                 SurvivalAzazelBehaviour survivalAzazel = UnityEngine.Object.FindObjectOfType<SurvivalAzazelBehaviour>();
@@ -186,6 +243,8 @@ namespace DevourClient
 
                 this.azazel_esp = GUI.Toggle(new Rect(Settings.Settings.x + 390, Settings.Settings.y + 190, 150, 20), this.azazel_esp, "Azazel ESP");
                 this.azazel_snapline = GUI.Toggle(new Rect(Settings.Settings.x + 390, Settings.Settings.y + 220, 150, 20), this.azazel_snapline, "Azazel Snapline");
+
+                this.item_esp = GUI.Toggle(new Rect(Settings.Settings.x + 390, Settings.Settings.y + 280, 150, 20), this.item_esp, "Item ESP");
 
                 if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 40, 150, 20), "Unlock Achievements"))
                 {

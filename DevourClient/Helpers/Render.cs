@@ -54,13 +54,13 @@ namespace DevourClient.Render
 			DrawLine(new Vector2(x, y + h), new Vector2(x + w, y + h), color, thickness);
 		}
 
-		public static void DrawBoxESP(Vector3 footpos, Vector3 headpos, Color color, string playername = "", bool snapline = false, bool esp = true)
+		public static void DrawBoxESP(Vector3 footpos, Vector3 headpos, Color color, string playername = "", bool snapline = false, bool esp = true, bool only_name = false)
 		{
 			float height = headpos.y - footpos.y;
 			float widthOffset = 2f;
 			float width = height / widthOffset;
 
-			if (playername != "" && esp)
+			if (playername != "" && esp || playername != "" && only_name)
             {
 				Render.DrawString(new Vector2((footpos.x - (width / 2)) + 25, (float)Screen.height - footpos.y - height), playername, false);
 			}
