@@ -247,7 +247,7 @@ namespace DevourClient
 
                 this.item_esp = GUI.Toggle(new Rect(Settings.Settings.x + 390, Settings.Settings.y + 280, 150, 20), this.item_esp, "Item ESP");
                 
-                Load.unlimitedUV = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 340, 150, 20), Load.unlimitedUV, "Unlimited UV");
+                Load.unlimitedUV = GUI.Toggle(new Rect(Settings.Settings.x + 200, Settings.Settings.y + 220, 150, 20), Load.unlimitedUV, "Unlimited UV");
 
                 if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 40, 150, 20), "Unlock Achievements"))
                 {
