@@ -5,6 +5,20 @@ namespace DevourClient.Hooks
 {
     public class Hooks
     {
+	[HarmonyPatch(typeof(NolanBehaviour), "OnAttributeUpdateValue")]
+        static class NolanBehaviour_UV
+        {
+            [HarmonyPrefix]
+            static void Prefix(ref Opsive.UltimateCharacterController.Traits.Attribute attribute)
+            {
+                if (attribute.m_Name == "Battery")
+                {
+                    attribute.m_Value = 100.0f;
+                    return;
+                }
+            }
+        }
+	    
         [HarmonyPatch(typeof(RankHelpers))]
         [HarmonyPatch(nameof(RankHelpers.CalculateExpGain))] //annotation boiler plate to tell Harmony what to patch. Refer to docs.
         static class RankHelpers_CalculateExpGain
