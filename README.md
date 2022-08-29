@@ -23,6 +23,7 @@ Everything about spoofing ehre (steam name, server name, level...) will persist 
 * Detects the map you are playing on (useful for the instant win)
 * Big Flashlight (allows your flashlight to light a lot more)
 * Flashlight color customization (with a home made color picker)
+* Unlimited UV light (thanks to [@jadis0x](https://github.com/jadis0x))
 * A chat spammer for Lobby and InGame chat (i couldn't do a text entry because of the limitations of [Il2CppAssemblyUnhollower](https://github.com/knah/Il2CppAssemblyUnhollower))
 * Achievements unlocker (couldn't do all of them, my code is crashing for some reasons at some point, i may fix it, for now it's commented out)
 * Doors unlocker (should work fine, though it doesn't seem to work sometimes)
