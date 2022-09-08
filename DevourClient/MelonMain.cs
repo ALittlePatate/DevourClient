@@ -2,6 +2,7 @@
 using MelonLoader;
 using System.Threading;
 using DevourClient.Helpers;
+using Photon.Bolt;
 
 namespace DevourClient
 {
@@ -126,7 +127,7 @@ namespace DevourClient
             
             if (Player.GetActiveScene() == "Menu")
             {
-                Misc.WalkInLobby(_walkInLobby);
+                Hacks.Misc.WalkInLobby(_walkInLobby);
             }
         }
 
