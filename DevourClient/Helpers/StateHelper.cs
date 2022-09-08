@@ -44,4 +44,25 @@
             return UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
         }
     }
+     
+     public class LocalPlayer
+    {
+        public static GameObject player;
+
+        public static GameObject GetLocalPlayer()
+        {
+            GameObject[] currentPlayers = GameObject.FindGameObjectsWithTag("Player");
+
+            for (int i = 0; i < currentPlayers.Length; i++)
+            {
+                if (currentPlayers[i].GetComponent<NolanBehaviour>().entity.IsOwner)
+                {
+                    player = currentPlayers[i];
+                    break;
+                }
+            }
+
+            return player;
+        }
+    }
 }
