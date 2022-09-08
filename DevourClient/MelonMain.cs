@@ -27,6 +27,8 @@ namespace DevourClient
         bool azazel_snapline = false;
         bool spam_message = false;
         bool item_esp = false;
+        public static bool _walkInLobby = false;
+
 
         public override void OnApplicationStart()
         {
@@ -120,6 +122,11 @@ namespace DevourClient
             if(Player.IsInGame() && _IsAutoRespawn && Helpers.Player.IsPlayerCrawling())
             {
                 Hacks.Misc.AutoRespawn();                
+            }
+            
+            if (Player.GetActiveScene() == "Menu")
+            {
+                Misc.WalkInLobby(_walkInLobby);
             }
         }
 
