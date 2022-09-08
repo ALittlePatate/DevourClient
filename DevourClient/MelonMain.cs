@@ -18,17 +18,20 @@ namespace DevourClient
         bool change_steam_name = false;
         bool fly = false;
         float fly_speed = 5;
+        bool fastMove = false;
+        float _PlayerSpeedMultiplier = 1;
         public bool _IsAutoRespawn = false;
         public static bool unlimitedUV = false;
         public static bool exp_modifier = false;
         public static float exp = 1000f;
+        public static bool _walkInLobby = false;
         bool player_esp = false;
         bool player_snapline = false;
         bool azazel_esp = false;
         bool azazel_snapline = false;
         bool spam_message = false;
         bool item_esp = false;
-        public static bool _walkInLobby = false;
+        
 
 
         public override void OnApplicationStart()
@@ -128,6 +131,15 @@ namespace DevourClient
             if (Player.GetActiveScene() == "Menu")
             {
                 Hacks.Misc.WalkInLobby(_walkInLobby);
+            }
+            
+            if (this.fastMove)
+            {
+                try
+                {
+                    Helpers.LocalPlayer.GetLocalPlayer().GetComponent<UltimateCharacterLocomotion>().TimeScale = this._PlayerSpeedMultiplier;
+                }
+                catch { return;  }
             }
         }
 
@@ -257,6 +269,10 @@ namespace DevourClient
                 
                 Load.unlimitedUV = GUI.Toggle(new Rect(Settings.Settings.x + 200, Settings.Settings.y + 220, 150, 20), Load.unlimitedUV, "Unlimited UV");
                 Load._walkInLobby = GUI.Toggle(new Rect(Settings.Settings.x + 200, Settings.Settings.y + 250, 150, 20), Load._walkInLobby, "Walk In Lobby");
+                
+                this.fastMove = GUI.Toggle(new Rect(Settings.Settings.x + 200, Settings.Settings.y + 280, 150, 20), this.fastMove, "Player Speed");
+                this._PlayerSpeedMultiplier = GUI.HorizontalSlider(new Rect(Settings.Settings.x + 200, Settings.Settings.y + 310, 100, 10), this._PlayerSpeedMultiplier, 1f, 10f);
+                GUI.Label(new Rect(Settings.Settings.x + 310, Settings.Settings.y + 305, 100, 30), this._PlayerSpeedMultiplier.ToString());
 
                 if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 40, 150, 20), "Unlock Achievements"))
                 {
