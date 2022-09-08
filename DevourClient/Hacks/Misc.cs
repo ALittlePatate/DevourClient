@@ -6,6 +6,7 @@ using System.Runtime.InteropServices;
 using DevourClient.Helpers;
 using System.Linq;
 using System.Collections.Generic;
+using Opsive.UltimateCharacterController.Character;
 
 namespace DevourClient.Hacks
 {
@@ -42,6 +43,20 @@ namespace DevourClient.Hacks
 			}
 			nb.locomotion.SetPosition(pos, false);
 		}
+	    
+	    	public static void WalkInLobby(bool walk)
+        	{
+		  try {	
+                	if (Helpers.LocalPlayer.GetLocalPlayer().GetComponent<UltimateCharacterLocomotionHandler>() == null)
+			{
+                    		Helpers.LocalPlayer.GetLocalPlayer().AddComponent<UltimateCharacterLocomotionHandler>();
+                    		Helpers.LocalPlayer.GetLocalPlayer().GetComponent<UltimateCharacterLocomotionHandler>().enabled = false;
+                	}
+
+               		Helpers.LocalPlayer.GetLocalPlayer().GetComponent<UltimateCharacterLocomotionHandler>().enabled = walk;
+            	 }
+		catch { return; }	
+        	}
 	    
 	    	public static void BurnRitualObj(string map, bool burnAll)
 		{
