@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Opsive.UltimateCharacterController.Character;
 
 ﻿namespace DevourClient.Helpers
 {
