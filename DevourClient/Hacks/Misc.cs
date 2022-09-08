@@ -7,6 +7,7 @@ using DevourClient.Helpers;
 using System.Linq;
 using System.Collections.Generic;
 using Opsive.UltimateCharacterController.Character;
+using Photon.Bolt;
 
 namespace DevourClient.Hacks
 {
