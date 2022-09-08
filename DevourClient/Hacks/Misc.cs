@@ -43,6 +43,34 @@ namespace DevourClient.Hacks
 			nb.locomotion.SetPosition(pos, false);
 		}
 	    
+	    	public static void BurnRitualObj(string map, bool burnAll)
+		{
+		    SurvivalObjectBurnController _altar = UnityEngine.Object.FindObjectOfType<SurvivalObjectBurnController>();
+		    InnShrineController _innShrineController = UnityEngine.Object.FindObjectOfType<InnShrineController>();
+
+		    if (map != "Inn")
+		    {
+			if (burnAll)
+			{
+			    _altar.SkipToGoat(10);
+			}
+			else
+			{
+			    _altar.BurnGoat();
+			}
+		    }
+			
+		    else
+		    {
+			if (burnAll){
+			 	return;
+			}
+			else{
+				_innShrineController.OnEgg();
+			}
+		    }
+        	}
+	    
 	    	public static void SpawnAzazel(PrefabId _azazelPrefabId)
 		{
 			GameObject _azazel;
