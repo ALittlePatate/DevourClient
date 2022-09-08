@@ -332,6 +332,19 @@ namespace DevourClient
                     Hacks.Misc.PlaySound();
                     MelonLogger.Msg("Playing a random sound !");
                 }
+                
+                
+                if (GUI.Button(new Rect(Settings.Settings.x + 580, Settings.Settings.y + 40, 150, 20), "Spawn Azazel Sam") && Player.IsInGameOrLobby())
+                {
+                    Hacks.Misc.SpawnAzazel((PrefabId)BoltPrefabs.AzazelSam);
+                    MelonLogger.Msg("Azazel Sam Spawned !");
+                }
+
+                if (GUI.Button(new Rect(Settings.Settings.x + 580, Settings.Settings.y + 70, 150, 20), "Spawn Azazel Molly") && Player.IsInGameOrLobby())
+                {
+                    Hacks.Misc.SpawnAzazel((PrefabId)BoltPrefabs.SurvivalAzazelMolly);
+                    MelonLogger.Msg("Azazel Molly Spawned !");
+                }
 
             }
         }
