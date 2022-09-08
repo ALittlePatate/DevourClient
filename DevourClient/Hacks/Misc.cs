@@ -177,7 +177,7 @@ namespace DevourClient.Hacks
 			NolanVoiceOvers nolanVoiceOvers = UnityEngine.Object.FindObjectOfType<NolanVoiceOvers>();
 			playRandomAudioClip.delay = 0f;
 
-			int num = Random.RandomRangeInt(0, 8);
+			int num = Random.RandomRangeInt(0, 10);
 			switch (num)
             {
 				case 0:
@@ -203,6 +203,12 @@ namespace DevourClient.Hacks
 					return;
 				case 7:
 					nolanVoiceOvers.laughClips.Play();
+					return;
+				case 8:
+					nolanVoiceOvers.PlayMoan();
+					return;
+				case 9:
+					nolanVoiceOvers.Scream();
 					return;
 				default:
 					return;
