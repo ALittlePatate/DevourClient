@@ -43,6 +43,15 @@ namespace DevourClient.Hacks
 			nb.locomotion.SetPosition(pos, false);
 		}
 	    
+	    	public static void SpawnAzazel(PrefabId _azazelPrefabId)
+		{
+			GameObject _azazel;
+			Vector3 pos = Player.GetPlayer().transform.position;
+
+			_azazel = BoltNetwork.Instantiate(_azazelPrefabId, new Vector3(pos.x, pos.y, pos.z + 1f), Quaternion.identity);
+
+			_azazel.gameObject.GetComponent<SurvivalAzazelBehaviour>().Spawn();
+		}
 	    	
 	    public static void AutoRespawn()
 		{
