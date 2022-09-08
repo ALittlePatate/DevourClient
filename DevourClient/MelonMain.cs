@@ -333,17 +333,73 @@ namespace DevourClient
                     MelonLogger.Msg("Playing a random sound !");
                 }
                 
-                
-                if (GUI.Button(new Rect(Settings.Settings.x + 580, Settings.Settings.y + 40, 150, 20), "Spawn Azazel Sam") && Player.IsInGameOrLobby())
+                GUI.Label(new Rect(Settings.Settings.x + 580, Settings.Settings.y + 40, 150, 30), "Azazel & Demons");
+
+                if (GUI.Button(new Rect(Settings.Settings.x + 580, Settings.Settings.y + 70, 120, 20), "Sam") && Player.IsInGameOrLobby())
                 {
                     Hacks.Misc.SpawnAzazel((PrefabId)BoltPrefabs.AzazelSam);
-                    MelonLogger.Msg("Azazel Sam Spawned !");
                 }
 
-                if (GUI.Button(new Rect(Settings.Settings.x + 580, Settings.Settings.y + 70, 150, 20), "Spawn Azazel Molly") && Player.IsInGameOrLobby())
+                if (GUI.Button(new Rect(Settings.Settings.x + 580, Settings.Settings.y + 100, 120, 20), "Molly") && Player.IsInGameOrLobby())
                 {
                     Hacks.Misc.SpawnAzazel((PrefabId)BoltPrefabs.SurvivalAzazelMolly);
-                    MelonLogger.Msg("Azazel Molly Spawned !");
+                }
+
+                if (GUI.Button(new Rect(Settings.Settings.x + 580, Settings.Settings.y + 130, 120, 20), "Anna") && Player.IsInGameOrLobby())
+                {
+                    BoltNetwork.Instantiate(BoltPrefabs.SurvivalAnnaNew, Player.GetPlayer().transform.position, Quaternion.identity);
+                }
+
+                if (GUI.Button(new Rect(Settings.Settings.x + 580, Settings.Settings.y + 160, 120, 20), "Demon") && Player.IsInGameOrLobby())
+                {
+                    BoltNetwork.Instantiate(BoltPrefabs.SurvivalDemon, Player.GetPlayer().transform.position, Quaternion.identity);
+                }
+
+                if (GUI.Button(new Rect(Settings.Settings.x + 580, Settings.Settings.y + 190, 120, 20), "Ghost") && Player.IsInGameOrLobby())
+                {
+                    BoltNetwork.Instantiate(BoltPrefabs.Ghost, Player.GetPlayer().transform.position, Quaternion.identity);
+                }
+
+                if (GUI.Button(new Rect(Settings.Settings.x + 580, Settings.Settings.y + 220, 120, 20), "Inmate") && Player.IsInGameOrLobby())
+                {
+                    BoltNetwork.Instantiate(BoltPrefabs.SurvivalInmate, Player.GetPlayer().transform.position, Quaternion.identity);
+                }
+
+                if (GUI.Button(new Rect(Settings.Settings.x + 580, Settings.Settings.y + 250, 120, 20), "Spider") && Player.IsInGameOrLobby())
+                {
+                    BoltNetwork.Instantiate(BoltPrefabs.Spider, Player.GetPlayer().transform.position, Quaternion.identity);
+                }
+
+                GUI.Label(new Rect(Settings.Settings.x + 730, Settings.Settings.y + 40, 120, 30), "Items");
+
+                if (GUI.Button(new Rect(Settings.Settings.x + 730, Settings.Settings.y + 70, 110, 20), "Hay") && Player.IsInGameOrLobby())
+                {
+                    BoltNetwork.Instantiate(BoltPrefabs.SurvivalHay, Player.GetPlayer().transform.position, Quaternion.identity);
+                }
+
+                if (GUI.Button(new Rect(Settings.Settings.x + 730, Settings.Settings.y + 100, 110, 20), "First Aid") && Player.IsInGameOrLobby())
+                {
+                    BoltNetwork.Instantiate(BoltPrefabs.SurvivalFirstAid, Player.GetPlayer().transform.position, Quaternion.identity);
+                }
+
+                if (GUI.Button(new Rect(Settings.Settings.x + 730, Settings.Settings.y + 130, 110, 20), "Battery") && Player.IsInGameOrLobby())
+                {
+                    BoltNetwork.Instantiate(BoltPrefabs.SurvivalBattery, Player.GetPlayer().transform.position, Quaternion.identity);
+                }
+
+                if (GUI.Button(new Rect(Settings.Settings.x + 730, Settings.Settings.y + 160, 110, 20), "Gasoline") && Player.IsInGameOrLobby())
+                {
+                    BoltNetwork.Instantiate(BoltPrefabs.SurvivalGasoline, Player.GetPlayer().transform.position, Quaternion.identity);
+                }
+
+                if (GUI.Button(new Rect(Settings.Settings.x + 730, Settings.Settings.y + 190, 110, 20), "Fuse") && Player.IsInGameOrLobby())
+                {
+                    BoltNetwork.Instantiate(BoltPrefabs.SurvivalFuse, Player.GetPlayer().transform.position, Quaternion.identity);
+                }
+
+                if (GUI.Button(new Rect(Settings.Settings.x + 730, Settings.Settings.y + 220, 110, 20), "Food") && Player.IsInGameOrLobby())
+                {
+                    BoltNetwork.Instantiate(BoltPrefabs.SurvivalRottenFood, Player.GetPlayer().transform.position, Quaternion.identity);
                 }
 
             }
