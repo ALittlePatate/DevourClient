@@ -73,11 +73,12 @@ In order to get all of this working you need to generate the DevourClient.dll fi
 * `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\Managed\bolt.dll`
 * `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\Managed\UnityEngine.HotReloadModule.dll`
 * `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\Managed\UnityEngine.UI.dll`
+* * `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\Managed\UnityEngine.dll`
 * `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\Managed\UnityEngine.CoreModule.dll`
 * `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\Managed\Il2Cppmscorlib.dll`
 * `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\Managed\Assembly-CSharp.dll`
 * `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\Managed\Opsive.UltimateCharacterController.dll`
-* `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\Managed\UnityENgine.InputModule.dll`
+* `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\Managed\UnityEngine.InputModule.dll`
 * `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\Dependencies\Il2CppAssemblyGenerator\Il2CppUnhollower\UnhollowerBaseLib.dll`
 * `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\Dependencies\Il2CppAssemblyGenerator\Il2CppUnhollower\UnhollowerRuntimeLib.dll`
 7. Build the solutions in Release | Any CPU mode
