@@ -137,7 +137,7 @@ namespace DevourClient
             {
                 try
                 {
-                    Helpers.LocalPlayer.GetLocalPlayer().GetComponent<UltimateCharacterLocomotion>().TimeScale = this._PlayerSpeedMultiplier;
+                    Helpers.LocalPlayer.GetLocalPlayer().GetComponent<Opsive.UltimateCharacterController.Character.UltimateCharacterLocomotion>().TimeScale = this._PlayerSpeedMultiplier;
                 }
                 catch { return;  }
             }
