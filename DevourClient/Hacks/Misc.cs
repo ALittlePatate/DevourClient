@@ -62,7 +62,7 @@ namespace DevourClient.Hacks
 	    	public static void BurnRitualObj(string map, bool burnAll)
 		{
 		    SurvivalObjectBurnController _altar = UnityEngine.Object.FindObjectOfType<SurvivalObjectBurnController>();
-		    InnShrineController _innShrineController = UnityEngine.Object.FindObjectOfType<InnShrineController>();
+		    InnMapController _innMapController = UnityEngine.Object.FindObjectOfType<InnMapController>();
 
 		    if (map != "Inn")
 		    {
@@ -79,10 +79,10 @@ namespace DevourClient.Hacks
 		    else
 		    {
 			if (burnAll){
-			 	return;
+			 	_innMapController.SetProgressTo(10);
 			}
 			else{
-				_innShrineController.OnEgg();
+				_innMapController.IncreaseProgress();
 			}
 		    }
         	}
