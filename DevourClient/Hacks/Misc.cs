@@ -89,6 +89,12 @@ namespace DevourClient.Hacks
 	    
 	    	public static void SpawnAzazel(PrefabId _azazelPrefabId)
 		{
+			if (!Photon.Bolt.BoltNetwork.IsServer)
+			{
+				MelonLogger.Msg("You need to be host to spawn stuff !");
+				return;
+			}
+
 			GameObject _azazel;
 			Vector3 pos = Player.GetPlayer().transform.position;
 
@@ -99,6 +105,12 @@ namespace DevourClient.Hacks
 
 		public static void SpawnGoatOrRat(PrefabId _goatPrefabID)
 		{
+			if (!Photon.Bolt.BoltNetwork.IsServer)
+			{
+				MelonLogger.Msg("You need to be host to spawn stuff !");
+				return;
+			}
+
 			GameObject _goat;
 			Vector3 pos = Player.GetPlayer().transform.position;
 
