@@ -48,13 +48,13 @@ namespace DevourClient.Hacks
 	    	public static void WalkInLobby(bool walk)
         	{
 		  try {	
-                	if (Helpers.LocalPlayer.GetLocalPlayer().GetComponent<UltimateCharacterLocomotionHandler>() == null)
+                	if (Helpers.LocalPlayer.LocalPlayer_.GetComponent<UltimateCharacterLocomotionHandler>() == null)
 			{
-                    		Helpers.LocalPlayer.GetLocalPlayer().AddComponent<UltimateCharacterLocomotionHandler>();
-                    		Helpers.LocalPlayer.GetLocalPlayer().GetComponent<UltimateCharacterLocomotionHandler>().enabled = false;
+                    		Helpers.LocalPlayer.LocalPlayer_.AddComponent<UltimateCharacterLocomotionHandler>();
+                    		Helpers.LocalPlayer.LocalPlayer_.GetComponent<UltimateCharacterLocomotionHandler>().enabled = false;
                 	}
 
-               		Helpers.LocalPlayer.GetLocalPlayer().GetComponent<UltimateCharacterLocomotionHandler>().enabled = walk;
+               		Helpers.LocalPlayer.LocalPlayer_.GetComponent<UltimateCharacterLocomotionHandler>().enabled = walk;
             	 }
 		catch { return; }	
         	}

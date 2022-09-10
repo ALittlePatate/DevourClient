@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using Opsive.UltimateCharacterController.Character;
 using System.Collections.Generic;
+using System.Collections;
 
-﻿namespace DevourClient.Helpers
+namespace DevourClient.Helpers
 {
     public class Player
     {
@@ -19,14 +20,12 @@ using System.Collections.Generic;
         
         public static NolanBehaviour GetPlayer()
         {
-            foreach (NolanBehaviour nb in UnityEngine.Object.FindObjectsOfType<NolanBehaviour>())
+            if (LocalPlayer.LocalPlayer_ == null)
             {
-                if (nb.entity.IsOwner)
-                {
-                    return nb;
-                }
+                return null;
             }
-            return null;
+
+            return LocalPlayer.LocalPlayer_.GetComponent<NolanBehaviour>();
         }
         
         public static bool IsPlayerCrawling()
@@ -45,22 +44,26 @@ using System.Collections.Generic;
      
      public class LocalPlayer
     {
-        public static GameObject player;
+        public static GameObject LocalPlayer_;
 
-        public static GameObject GetLocalPlayer()
+        public static IEnumerator GetLocalPlayer()
         {
-            GameObject[] currentPlayers = GameObject.FindGameObjectsWithTag("Player");
-
-            for (int i = 0; i < currentPlayers.Length; i++)
+            for (;;)
             {
-                if (currentPlayers[i].GetComponent<NolanBehaviour>().entity.IsOwner)
-                {
-                    player = currentPlayers[i];
-                    break;
-                }
-            }
+                GameObject[] currentPlayers = GameObject.FindGameObjectsWithTag("Player");
 
-            return player;
+                for (int i = 0; i < currentPlayers.Length; i++)
+                {
+                    if (currentPlayers[i].GetComponent<NolanBehaviour>().entity.IsOwner)
+                    {
+                        LocalPlayer_ = currentPlayers[i];
+                        break;
+                    }
+                }
+
+                // Wait 5 seconds before caching objects again.
+                yield return new WaitForSeconds(5f);
+            }
         }
          
         public static List<GameObject> GetAllPlayers()

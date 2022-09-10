@@ -39,6 +39,7 @@ namespace DevourClient
         public override void OnApplicationStart()
         {
             MelonLogger.Msg("For the Queen !");
+            MelonCoroutines.Start(Helpers.LocalPlayer.GetLocalPlayer());
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -129,7 +130,7 @@ namespace DevourClient
             {
                 try
                 {
-                    Helpers.LocalPlayer.GetLocalPlayer().GetComponent<Opsive.UltimateCharacterController.Character.UltimateCharacterLocomotion>().TimeScale = this._PlayerSpeedMultiplier;
+                    Helpers.LocalPlayer.LocalPlayer_.GetComponent<Opsive.UltimateCharacterController.Character.UltimateCharacterLocomotion>().TimeScale = this._PlayerSpeedMultiplier;
                 }
                 catch { return;  }
             }
