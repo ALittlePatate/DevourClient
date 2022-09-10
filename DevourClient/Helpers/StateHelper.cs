@@ -40,10 +40,6 @@ using Opsive.UltimateCharacterController.Character;
             return false;
         }
         
-        public static string GetActiveScene()
-        {
-            return UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
-        }
     }
      
      public class LocalPlayer

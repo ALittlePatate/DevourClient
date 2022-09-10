@@ -111,7 +111,7 @@ namespace DevourClient
                 Hacks.Misc.AutoRespawn();                
             }
             
-            if (Player.GetActiveScene() == "Menu")
+            if (Helpers.Map.GetActiveScene() == "Menu")
             {
                 Hacks.Misc.WalkInLobby(_walkInLobby);
             }
@@ -601,6 +601,65 @@ namespace DevourClient
                 if (GUI.Button(new Rect(Settings.Settings.x + 880, Settings.Settings.y + 130, 110, 20), "Spider") && Player.IsInGameOrLobby())
                 {
                     BoltNetwork.Instantiate(BoltPrefabs.Spider, Player.GetPlayer().transform.position, Quaternion.identity);
+                }
+                
+                if (Helpers.Map.GetActiveScene() != "Menu")
+                {
+                    GUI.Label(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 360, 200, 30), $"Functions for the map: {Helpers.Map.GetMapName(Helpers.Map.GetActiveScene())}");
+
+                    switch (Helpers.Map.GetActiveScene())
+                    {
+                        case "Devour":
+                            if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 390, 120, 20), "Burn One Goat"))
+                            {
+                                Hacks.Misc.BurnRitualObj(Helpers.Map.GetActiveScene(), false);
+                            }
+
+                            if (GUI.Button(new Rect(Settings.Settings.x + 150, Settings.Settings.y + 390, 120, 20), "Burn All Goats"))
+                            {
+                                Hacks.Misc.BurnRitualObj(Helpers.Map.GetActiveScene(), true);
+                            }
+                            return;
+
+                        case "Molly":
+                            if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 390, 120, 20), "Burn One Rat"))
+                            {
+                                Hacks.Misc.BurnRitualObj(Helpers.Map.GetActiveScene(), false);
+                            }
+
+                            if (GUI.Button(new Rect(Settings.Settings.x + 150, Settings.Settings.y + 390, 120, 20), "Burn All Rats"))
+                            {
+                                Hacks.Misc.BurnRitualObj(Helpers.Map.GetActiveScene(), true);
+                            }
+                            return;
+
+                        case "Inn":
+                            if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 390, 120, 20), "Burn One Egg"))
+                            {
+                                Hacks.Misc.BurnRitualObj(Helpers.Map.GetActiveScene(), false);
+                            }
+
+                            if (GUI.Button(new Rect(Settings.Settings.x + 150, Settings.Settings.y + 390, 120, 20), "Burn All Eggs"))
+                            {
+                                Hacks.Misc.BurnRitualObj(Helpers.Map.GetActiveScene(), true);
+                            }
+                            return;
+
+                        case "Town":
+                            if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 390, 120, 20), "Burn One Book"))
+                            {
+                                Hacks.Misc.BurnRitualObj(Helpers.Map.GetActiveScene(), false);
+                            }
+
+                            if (GUI.Button(new Rect(Settings.Settings.x + 150, Settings.Settings.y + 390, 120, 20), "Burn All Books"))
+                            {
+                                Hacks.Misc.BurnRitualObj(Helpers.Map.GetActiveScene(), true);
+                            }
+                            return;
+
+                        default:
+                            return;
+                    }
                 }
             }
         }
