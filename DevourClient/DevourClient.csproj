@@ -98,6 +98,7 @@
   <ItemGroup>
     <Compile Include="Hacks\Misc.cs" />
     <Compile Include="Hacks\Unlock.cs" />
+    <Compile Include="Helpers\Map.cs" />
     <Compile Include="Helpers\GUIHelper.cs" />
     <Compile Include="Helpers\Render.cs" />
     <Compile Include="Helpers\StateHelper.cs" />
