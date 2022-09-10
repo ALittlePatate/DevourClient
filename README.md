@@ -67,13 +67,14 @@ In order to get all of this working you need to generate the DevourClient.dll fi
 6. Add those files :
 * `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\MelonLoader.dll`
 * `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\0Harmony.dll`
+* `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\Managed\BehaviorDesigner.Runtime.dll`
 * `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\Managed\UnityEngine.IMGUIModule.dll`
 * `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\Managed\UnityEngine.InputLegacyModule.dll`
 * `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\Managed\bolt.user.dll`
 * `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\Managed\bolt.dll`
 * `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\Managed\UnityEngine.HotReloadModule.dll`
 * `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\Managed\UnityEngine.UI.dll`
-* * `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\Managed\UnityEngine.dll`
+* `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\Managed\UnityEngine.dll`
 * `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\Managed\UnityEngine.CoreModule.dll`
 * `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\Managed\Il2Cppmscorlib.dll`
 * `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\Managed\Assembly-CSharp.dll`
