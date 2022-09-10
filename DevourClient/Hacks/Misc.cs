@@ -159,11 +159,13 @@ namespace DevourClient.Hacks
 				{
 					flashlightSpot.intensity = 1.5f;
 					flashlightSpot.range = 9f;
+					flashlightSpot.spotAngle = 90f;
 				}
 				else
 				{
 					flashlightSpot.intensity = 1.5f;
 					flashlightSpot.range = 200f;
+					flashlightSpot.spotAngle = 70f;
 				}
 			}
 			catch
