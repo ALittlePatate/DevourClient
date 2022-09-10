@@ -370,12 +370,7 @@ namespace DevourClient
                     BoltNetwork.Instantiate(BoltPrefabs.SurvivalInmate, Player.GetPlayer().transform.position, Quaternion.identity);
                 }
 
-                if (GUI.Button(new Rect(Settings.Settings.x + 580, Settings.Settings.y + 250, 120, 20), "Spider") && Player.IsInGameOrLobby())
-                {
-                    BoltNetwork.Instantiate(BoltPrefabs.Spider, Player.GetPlayer().transform.position, Quaternion.identity);
-                }
-
-                if (GUI.Button(new Rect(Settings.Settings.x + 580, Settings.Settings.y + 280, 120, 20), "Zara") && Player.IsInGameOrLobby())
+                if (GUI.Button(new Rect(Settings.Settings.x + 580, Settings.Settings.y + 250, 120, 20), "Zara") && Player.IsInGameOrLobby())
                 {
                     BoltNetwork.Instantiate(BoltPrefabs.AzazelZara, Player.GetPlayer().transform.position, Quaternion.identity);
                 }
@@ -430,6 +425,23 @@ namespace DevourClient
                 if (GUI.Button(new Rect(Settings.Settings.x + 730, Settings.Settings.y + 340, 110, 20), "Matchbox") && Player.IsInGameOrLobby())
                 {
                     BoltNetwork.Instantiate(BoltPrefabs.SurvivalMatchbox, Player.GetPlayer().transform.position, Quaternion.identity);
+                }
+
+                GUI.Label(new Rect(Settings.Settings.x + 880, Settings.Settings.y + 40, 120, 30), "Animals");
+
+                if (GUI.Button(new Rect(Settings.Settings.x + 880, Settings.Settings.y + 70, 110, 20), "Rat") && Player.IsInGameOrLobby())
+                {
+                    Hacks.Misc.SpawnGoatOrRat((PrefabId)BoltPrefabs.SurvivalRat);
+                }
+
+                if (GUI.Button(new Rect(Settings.Settings.x + 880, Settings.Settings.y + 100, 110, 20), "Goat") && Player.IsInGameOrLobby())
+                {
+                    Hacks.Misc.SpawnGoatOrRat((PrefabId)BoltPrefabs.SurvivalGoat);
+                }
+
+                if (GUI.Button(new Rect(Settings.Settings.x + 880, Settings.Settings.y + 130, 110, 20), "Spider") && Player.IsInGameOrLobby())
+                {
+                    BoltNetwork.Instantiate(BoltPrefabs.Spider, Player.GetPlayer().transform.position, Quaternion.identity);
                 }
             }
         }

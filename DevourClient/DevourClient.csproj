@@ -38,6 +38,10 @@
     <Reference Include="Assembly-CSharp">
       <HintPath>D:\Jeux\steamapps\common\Devour\MelonLoader\Managed\Assembly-CSharp.dll</HintPath>
     </Reference>
+    <Reference Include="BehaviorDesigner.Runtime, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\Jeux\steamapps\common\Devour\MelonLoader\Managed\BehaviorDesigner.Runtime.dll</HintPath>
+    </Reference>
     <Reference Include="bolt, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>D:\Jeux\steamapps\common\Devour\MelonLoader\Managed\bolt.dll</HintPath>

@@ -96,8 +96,19 @@ namespace DevourClient.Hacks
 
 			_azazel.gameObject.GetComponent<SurvivalAzazelBehaviour>().Spawn();
 		}
-	    	
-	    public static void AutoRespawn()
+
+		public static void SpawnGoatOrRat(PrefabId _goatPrefabID)
+		{
+			GameObject _goat;
+			Vector3 pos = Player.GetPlayer().transform.position;
+
+			_goat = BoltNetwork.Instantiate(_goatPrefabID, new Vector3(pos.x, pos.y, pos.z + 1f), Quaternion.identity);
+			_goat.gameObject.GetComponent<GoatBehaviour>().Spawn();
+			BehaviorDesigner.Runtime.Behavior goat_behavior = _goat.gameObject.GetComponent<GoatBehaviour>().m_mainBehaviour;
+			goat_behavior.EnableBehavior();
+		}
+
+		public static void AutoRespawn()
 		{
 			NolanBehaviour nb = Player.GetPlayer();
 
