@@ -23,5 +23,10 @@
                     return "";
             }
         }
+        
+        public static GameObject GetAzazel()
+        {
+            return GameObject.FindGameObjectWithTag("Azazel");
+        }
     }
 }
