@@ -664,6 +664,11 @@ namespace DevourClient
                             {
                                 Hacks.Misc.BurnRitualObj(Helpers.Map.GetActiveScene(), true);
                             }
+                            
+                            if (GUI.Button(new Rect(Settings.Settings.x + 290, Settings.Settings.y + 390, 150, 20), "Clean The Fountains"))
+                            {
+                                Hacks.Misc.CleanFountain();
+                            }
                             return;
 
                         case "Town":
