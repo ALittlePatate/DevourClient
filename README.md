@@ -15,6 +15,9 @@ Also don't mind french comments lol, google translate is your friend !
 
 Well at this point i don't really know, i think there is some sort of native Unity anti cheat template but it doesn't seem active. You're fine, no anti cheat !
 
+## Menu
+![menu screenshot](Screenshots/menu.png)
+
 ## Features
 Everything about spoofing ehre (steam name, server name, level...) will persist if you don't uncheck it (it will be reseted when you'll restart the game obv).
 * An IMGUI menu thanks to UnityEngine
