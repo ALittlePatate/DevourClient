@@ -61,26 +61,6 @@ namespace DevourClient
                 Settings.Settings.menu_enable = !Settings.Settings.menu_enable;
             }
 
-            if (Input.GetKeyDown(KeyCode.Keypad1))
-            {
-                MelonLoader.MelonLogger.Msg("First aid outline on");
-                FirstAidOutline[] array = Object.FindObjectsOfType<FirstAidOutline>();
-                for (int i = 0; i < array.Length; i++)
-                {
-                    array[i].SetCrawlOutline();
-                }
-            }
-
-            if (Input.GetKeyDown(KeyCode.Keypad2))
-            {
-                MelonLoader.MelonLogger.Msg("First aid outline off");
-                FirstAidOutline[] array = Object.FindObjectsOfType<FirstAidOutline>();
-                for (int i = 0; i < array.Length; i++)
-                {
-                    array[i].SetNormalOutline();
-                }
-            }
-
             if (this.flashlight_toggle && Player.IsInGame())
             {
                 Hacks.Misc.BigFlashlight(false);
