@@ -45,6 +45,7 @@ namespace DevourClient.Helpers
      public class Entities
      {
         public static GameObject LocalPlayer_;
+        public static GameObject[] Players;
         public static GoatBehaviour[] GoatsAndRats;
         public static SurvivalInteractable[] SurvivalInteractables;
         public static KeyBehaviour[] Keys;
@@ -73,18 +74,15 @@ namespace DevourClient.Helpers
             }
         }
          
-        public static List<GameObject> GetAllPlayers()
+        public static IEnumerator GetAllPlayers()
         {
-            GameObject[] currentPlayers = GameObject.FindGameObjectsWithTag("Player");
-            List<GameObject> result = new List<GameObject>();
-
-            for (int i = 0; i < currentPlayers.Length; i++)
+            for (;;)
             {
-                result.Add(currentPlayers[i]);      
-            }
+                Players = GameObject.FindGameObjectsWithTag("Player");
 
-            return result;
-            
+                // Wait 5 seconds before caching objects again.
+                yield return new WaitForSeconds(5f);
+            }
         }
 
         public static IEnumerator GetGoatsAndRats()
@@ -153,7 +151,7 @@ namespace DevourClient.Helpers
             }
         }
 
-        public static IEnumerator GeAzazels()
+        public static IEnumerator GetAzazels()
         {
             /*
              * ikr AzazelS, because in case we spawn multiple we want the esp to render all of them

@@ -46,7 +46,8 @@ namespace DevourClient
             MelonCoroutines.Start(Helpers.Entities.GetDemons());
             MelonCoroutines.Start(Helpers.Entities.GetSpiders());
             MelonCoroutines.Start(Helpers.Entities.GetGhosts());
-            MelonCoroutines.Start(Helpers.Entities.GeAzazels());
+            MelonCoroutines.Start(Helpers.Entities.GetAzazels());
+            MelonCoroutines.Start(Helpers.Entities.GetAllPlayers());
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -150,7 +151,7 @@ namespace DevourClient
             {
                 if (this.player_esp || this.player_snapline)
                 {
-                    foreach (NolanBehaviour player in UnityEngine.Object.FindObjectsOfType<NolanBehaviour>() as UnhollowerBaseLib.Il2CppReferenceArray<NolanBehaviour>)
+                    foreach (GameObject player in Helpers.Entities.Players)
                     {
                         if (player != null)
                         {
@@ -172,7 +173,7 @@ namespace DevourClient
                             {
                                 //string playername = player.field_Private_PhotonView_0.field_Private_ObjectPublicObInBoStBoHaStObInHaUnique_0.field_Private_String_0;//player.photonView._Controller_k__BackingField.NickName;
 
-                                if (player.entity.IsOwner)
+                                if (player.GetComponent<NolanBehaviour>().entity.IsOwner)
                                 {
                                     continue;
                                 }
