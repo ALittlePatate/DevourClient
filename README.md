@@ -52,6 +52,7 @@ Everything about spoofing ehre (steam name, server name, level...) will persist 
 * Spawn any item/entity to your position
 * Walk in the lobby
 * Change the player's speed
+* Fullbright
 
 ## Installation
 In order to get all of this working you need to generate the DevourClient.dll file by building the source code.
