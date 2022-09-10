@@ -380,7 +380,7 @@ namespace DevourClient
 
             if (Settings.Settings.menu_enable) //Si on appuie sur INSERT
             {
-                GUI.Label(new Rect(300, Settings.Settings.y, 100, 30), "Devour Client"); //Titre du menu
+                GUI.Label(new Rect(Settings.Settings.x + 450, Settings.Settings.y, 100, 30), "Devour Client"); //Titre du menu
                 this.flashlight_toggle = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 100, 150, 20), this.flashlight_toggle, "Big Flashlight"); //Checkbox Flashlight
                 this.spam_message = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 250, 150, 20), this.spam_message, "Chat Spam"); //Checkbox Chat Spam
                 this.level_70 = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 190, 150, 20), this.level_70, "Level 70"); //Checkbox lvl 70
