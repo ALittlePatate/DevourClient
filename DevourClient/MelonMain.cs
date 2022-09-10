@@ -3,6 +3,7 @@ using MelonLoader;
 using System.Threading;
 using DevourClient.Helpers;
 using Photon.Bolt;
+using System.Runtime.CompilerServices;
 
 namespace DevourClient
 {
@@ -31,7 +32,8 @@ namespace DevourClient
         bool azazel_snapline = false;
         bool spam_message = false;
         bool item_esp = false;
-        
+        bool goat_rat_esp = false;
+        bool demon_esp = false;
 
 
         public override void OnApplicationStart()
@@ -39,6 +41,7 @@ namespace DevourClient
             MelonLogger.Msg("For the Queen !");
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public override void OnUpdate()
         {
             if (Input.GetKeyDown(KeyCode.Insert))
@@ -125,101 +128,255 @@ namespace DevourClient
 
         public override void OnGUI()
         {
-            if (this.player_esp || this.player_snapline)
+            //from https://www.unknowncheats.me/forum/unity/437277-mono-internal-optimisation-tips.html
+            if (UnityEngine.Event.current.type == EventType.Repaint)
             {
-                foreach (NolanBehaviour player in UnityEngine.Object.FindObjectsOfType<NolanBehaviour>() as UnhollowerBaseLib.Il2CppReferenceArray<NolanBehaviour>)
+                if (this.player_esp || this.player_snapline)
                 {
-                    if (player != null)
+                    foreach (NolanBehaviour player in UnityEngine.Object.FindObjectsOfType<NolanBehaviour>() as UnhollowerBaseLib.Il2CppReferenceArray<NolanBehaviour>)
                     {
-
-
-                        Vector3 pivotPos = player.transform.position; //Pivot point NOT at the origin, at the center
-                        Vector3 playerFootPos; playerFootPos.x = pivotPos.x; playerFootPos.z = pivotPos.z; playerFootPos.y = pivotPos.y - 2f; //At the feet
-                        Vector3 playerHeadPos; playerHeadPos.x = pivotPos.x; playerHeadPos.z = pivotPos.z; playerHeadPos.y = pivotPos.y + 2f; //At the head
-
-                        if (Camera.main == null)
+                        if (player != null)
                         {
-                            continue;
-                        }
 
-                        Vector3 w2s_footpos = Camera.main.WorldToScreenPoint(playerFootPos);
-                        Vector3 w2s_headpos = Camera.main.WorldToScreenPoint(playerHeadPos);
 
-                        if (w2s_footpos.z > 0f)
-                        {
-                            //string playername = player.field_Private_PhotonView_0.field_Private_ObjectPublicObInBoStBoHaStObInHaUnique_0.field_Private_String_0;//player.photonView._Controller_k__BackingField.NickName;
+                            Vector3 pivotPos = player.transform.position; //Pivot point NOT at the origin, at the center
+                            Vector3 playerFootPos; playerFootPos.x = pivotPos.x; playerFootPos.z = pivotPos.z; playerFootPos.y = pivotPos.y - 2f; //At the feet
+                            Vector3 playerHeadPos; playerHeadPos.x = pivotPos.x; playerHeadPos.z = pivotPos.z; playerHeadPos.y = pivotPos.y + 2f; //At the head
 
-                            if (player.entity.IsOwner)
+                            if (Camera.main == null)
                             {
                                 continue;
                             }
 
-                            Render.Render.DrawBoxESP(w2s_footpos, w2s_headpos, Settings.Settings.player_esp_color, "", this.player_snapline, this.player_esp);
-                        }
+                            Vector3 w2s_footpos = Camera.main.WorldToScreenPoint(playerFootPos);
+                            Vector3 w2s_headpos = Camera.main.WorldToScreenPoint(playerHeadPos);
 
+                            if (w2s_footpos.z > 0f)
+                            {
+                                //string playername = player.field_Private_PhotonView_0.field_Private_ObjectPublicObInBoStBoHaStObInHaUnique_0.field_Private_String_0;//player.photonView._Controller_k__BackingField.NickName;
+
+                                if (player.entity.IsOwner)
+                                {
+                                    continue;
+                                }
+
+                                Render.Render.DrawBoxESP(w2s_footpos, w2s_headpos, Settings.Settings.player_esp_color, "", this.player_snapline, this.player_esp);
+                            }
+
+                        }
                     }
                 }
-            }
 
-            if (this.item_esp)
-            {
-                foreach (SurvivalInteractable obj in UnityEngine.Object.FindObjectsOfType<SurvivalInteractable>() as UnhollowerBaseLib.Il2CppReferenceArray<SurvivalInteractable>)
+                if (this.goat_rat_esp)
                 {
-                    if (obj != null)
+                    foreach (GoatBehaviour goat in UnityEngine.Object.FindObjectsOfType<GoatBehaviour>() as UnhollowerBaseLib.Il2CppReferenceArray<GoatBehaviour>)
+                    {
+                        if (goat != null)
+                        {
+
+
+                            Vector3 pivotPos = goat.transform.position; //Pivot point NOT at the origin, at the center
+                            Vector3 playerFootPos; playerFootPos.x = pivotPos.x; playerFootPos.z = pivotPos.z; playerFootPos.y = pivotPos.y - 2f; //At the feet
+                            Vector3 playerHeadPos;
+                            playerHeadPos.x = pivotPos.x;
+                            playerHeadPos.z = pivotPos.z;
+                            playerHeadPos.y = pivotPos.y + 0.3f; //At the middle
+
+                            if (Camera.main == null)
+                            {
+                                continue;
+                            }
+
+                            Vector3 w2s_footpos = Camera.main.WorldToScreenPoint(playerFootPos);
+                            Vector3 w2s_headpos = Camera.main.WorldToScreenPoint(playerHeadPos);
+
+                            if (w2s_footpos.z > 0f)
+                            {
+                                Render.Render.DrawBoxESP(w2s_footpos, w2s_headpos, new Color(0.94f, 0.61f, 0.18f, 1.0f), goat.name.Replace("Survival", "").Replace("(Clone)", ""), false, false, true);
+                            }
+
+                        }
+                    }
+                }
+
+                if (this.item_esp)
+                {
+                    foreach (SurvivalInteractable obj in UnityEngine.Object.FindObjectsOfType<SurvivalInteractable>() as UnhollowerBaseLib.Il2CppReferenceArray<SurvivalInteractable>)
+                    {
+                        if (obj != null)
+                        {
+
+                            Vector3 pivotPos = obj.transform.position; //Pivot point NOT at the origin, at the center
+                            Vector3 playerFootPos; playerFootPos.x = pivotPos.x; playerFootPos.z = pivotPos.z; playerFootPos.y = pivotPos.y - 2f; //At the feet
+                            Vector3 playerHeadPos;
+                            playerHeadPos.x = pivotPos.x;
+                            playerHeadPos.z = pivotPos.z;
+                            playerHeadPos.y = pivotPos.y + 0.3f; //At the middle
+
+                            if (Camera.main == null)
+                            {
+                                continue;
+                            }
+
+                            Vector3 w2s_footpos = Camera.main.WorldToScreenPoint(playerFootPos);
+                            Vector3 w2s_headpos = Camera.main.WorldToScreenPoint(playerHeadPos);
+
+                            if (w2s_footpos.z > 0f)
+                            {
+                                //string playername = player.field_Private_PhotonView_0.field_Private_ObjectPublicObInBoStBoHaStObInHaUnique_0.field_Private_String_0;//player.photonView._Controller_k__BackingField.NickName;
+
+
+                                Render.Render.DrawBoxESP(w2s_footpos, w2s_headpos, new Color(1.0f, 1.0f, 1.0f), obj.prefabName.Replace("Survival", ""), false, false, true);
+                            }
+
+                        }
+                    }
+
+                    foreach (KeyBehaviour key in UnityEngine.Object.FindObjectsOfType<KeyBehaviour>() as UnhollowerBaseLib.Il2CppReferenceArray<KeyBehaviour>)
+                    {
+                        if (key != null)
+                        {
+
+
+                            Vector3 pivotPos = key.transform.position; //Pivot point NOT at the origin, at the center
+                            Vector3 playerFootPos; playerFootPos.x = pivotPos.x; playerFootPos.z = pivotPos.z; playerFootPos.y = pivotPos.y - 2f; //At the feet
+                            Vector3 playerHeadPos;
+                            playerHeadPos.x = pivotPos.x;
+                            playerHeadPos.z = pivotPos.z;
+                            playerHeadPos.y = pivotPos.y + 0.3f; //At the middle
+
+                            if (Camera.main == null)
+                            {
+                                continue;
+                            }
+
+                            Vector3 w2s_footpos = Camera.main.WorldToScreenPoint(playerFootPos);
+                            Vector3 w2s_headpos = Camera.main.WorldToScreenPoint(playerHeadPos);
+
+                            if (w2s_footpos.z > 0f)
+                            {
+                                //string playername = player.field_Private_PhotonView_0.field_Private_ObjectPublicObInBoStBoHaStObInHaUnique_0.field_Private_String_0;//player.photonView._Controller_k__BackingField.NickName;
+                                Render.Render.DrawBoxESP(w2s_footpos, w2s_headpos, new Color(1.0f, 1.0f, 1.0f), "Key", false, false, true);
+                            }
+                        }
+                    }
+                }
+
+                if (this.demon_esp)
+                {
+                    foreach (SurvivalDemonBehaviour demon in UnityEngine.Object.FindObjectsOfType<SurvivalDemonBehaviour>() as UnhollowerBaseLib.Il2CppReferenceArray<SurvivalDemonBehaviour>)
+                    {
+                        if (demon != null)
+                        {
+
+
+                            Vector3 pivotPos = demon.transform.position; //Pivot point NOT at the origin, at the center
+                            Vector3 playerFootPos; playerFootPos.x = pivotPos.x; playerFootPos.z = pivotPos.z; playerFootPos.y = pivotPos.y - 2f; //At the feet
+                            Vector3 playerHeadPos;
+                            playerHeadPos.x = pivotPos.x;
+                            playerHeadPos.z = pivotPos.z;
+                            playerHeadPos.y = pivotPos.y + 0.3f; //At the middle
+
+                            if (Camera.main == null)
+                            {
+                                continue;
+                            }
+
+                            Vector3 w2s_footpos = Camera.main.WorldToScreenPoint(playerFootPos);
+                            Vector3 w2s_headpos = Camera.main.WorldToScreenPoint(playerHeadPos);
+
+                            if (w2s_footpos.z > 0f)
+                            {
+                                Render.Render.DrawBoxESP(w2s_footpos, w2s_headpos, new Color(1.0f, 0.0f, 0.0f, 1.0f), demon.name.Replace("Survival", "").Replace("(Clone)", ""), false, false, true);
+                            }
+
+                        }
+                    }
+
+                    foreach (SpiderBehaviour spider in UnityEngine.Object.FindObjectsOfType<SpiderBehaviour>() as UnhollowerBaseLib.Il2CppReferenceArray<SpiderBehaviour>)
+                    {
+                        if (spider != null)
+                        {
+
+
+                            Vector3 pivotPos = spider.transform.position; //Pivot point NOT at the origin, at the center
+                            Vector3 playerFootPos; playerFootPos.x = pivotPos.x; playerFootPos.z = pivotPos.z; playerFootPos.y = pivotPos.y - 2f; //At the feet
+                            Vector3 playerHeadPos;
+                            playerHeadPos.x = pivotPos.x;
+                            playerHeadPos.z = pivotPos.z;
+                            playerHeadPos.y = pivotPos.y + 0.3f; //At the middle
+
+                            if (Camera.main == null)
+                            {
+                                continue;
+                            }
+
+                            Vector3 w2s_footpos = Camera.main.WorldToScreenPoint(playerFootPos);
+                            Vector3 w2s_headpos = Camera.main.WorldToScreenPoint(playerHeadPos);
+
+                            if (w2s_footpos.z > 0f)
+                            {
+                                Render.Render.DrawBoxESP(w2s_footpos, w2s_headpos, new Color(1.0f, 0.0f, 0.0f, 1.0f), "Spider", false, false, true);
+                            }
+
+                        }
+                    }
+
+                    foreach (GhostBehaviour ghost in UnityEngine.Object.FindObjectsOfType<GhostBehaviour>() as UnhollowerBaseLib.Il2CppReferenceArray<GhostBehaviour>)
+                    {
+                        if (ghost != null)
+                        {
+
+
+                            Vector3 pivotPos = ghost.transform.position; //Pivot point NOT at the origin, at the center
+                            Vector3 playerFootPos; playerFootPos.x = pivotPos.x; playerFootPos.z = pivotPos.z; playerFootPos.y = pivotPos.y - 2f; //At the feet
+                            Vector3 playerHeadPos;
+                            playerHeadPos.x = pivotPos.x;
+                            playerHeadPos.z = pivotPos.z;
+                            playerHeadPos.y = pivotPos.y + 0.3f; //At the middle
+
+                            if (Camera.main == null)
+                            {
+                                continue;
+                            }
+
+                            Vector3 w2s_footpos = Camera.main.WorldToScreenPoint(playerFootPos);
+                            Vector3 w2s_headpos = Camera.main.WorldToScreenPoint(playerHeadPos);
+
+                            if (w2s_footpos.z > 0f)
+                            {
+                                Render.Render.DrawBoxESP(w2s_footpos, w2s_headpos, new Color(1.0f, 0.0f, 0.0f, 1.0f), "Ghost", false, false, true);
+                            }
+
+                        }
+                    }
+                }
+
+                if (this.azazel_esp || this.azazel_snapline)
+                {
+                    SurvivalAzazelBehaviour survivalAzazel = UnityEngine.Object.FindObjectOfType<SurvivalAzazelBehaviour>();
+                    if (survivalAzazel != null)
                     {
 
 
-                        Vector3 pivotPos = obj.transform.position; //Pivot point NOT at the origin, at the center
+                        Vector3 pivotPos = survivalAzazel.transform.position; //Pivot point NOT at the origin, at the center
                         Vector3 playerFootPos; playerFootPos.x = pivotPos.x; playerFootPos.z = pivotPos.z; playerFootPos.y = pivotPos.y - 2f; //At the feet
-                        Vector3 playerHeadPos;
-                        playerHeadPos.x = pivotPos.x;
-                        playerHeadPos.z = pivotPos.z;
-                        playerHeadPos.y = pivotPos.y + 0.3f; //At the middle
+                        Vector3 playerHeadPos; playerHeadPos.x = pivotPos.x; playerHeadPos.z = pivotPos.z; playerHeadPos.y = pivotPos.y + 2f; //At the head
 
-                        if (Camera.main == null)
+                        if (Camera.main != null)
                         {
-                            continue;
-                        }
+                            Vector3 w2s_footpos = Camera.main.WorldToScreenPoint(playerFootPos);
+                            Vector3 w2s_headpos = Camera.main.WorldToScreenPoint(playerHeadPos);
 
-                        Vector3 w2s_footpos = Camera.main.WorldToScreenPoint(playerFootPos);
-                        Vector3 w2s_headpos = Camera.main.WorldToScreenPoint(playerHeadPos);
-
-                        if (w2s_footpos.z > 0f)
-                        {
-                            //string playername = player.field_Private_PhotonView_0.field_Private_ObjectPublicObInBoStBoHaStObInHaUnique_0.field_Private_String_0;//player.photonView._Controller_k__BackingField.NickName;
-
-                            
-
-                            Render.Render.DrawBoxESP(w2s_footpos, w2s_headpos, new Color(), obj.prefabName.Replace("Survival", ""), false, false, true);
-                        }
-
-                    }
-                }
-            }
-
-            if (this.azazel_esp || this.azazel_snapline)
-            {
-                SurvivalAzazelBehaviour survivalAzazel = UnityEngine.Object.FindObjectOfType<SurvivalAzazelBehaviour>();
-                if (survivalAzazel != null)
-                {
-
-
-                    Vector3 pivotPos = survivalAzazel.transform.position; //Pivot point NOT at the origin, at the center
-                    Vector3 playerFootPos; playerFootPos.x = pivotPos.x; playerFootPos.z = pivotPos.z; playerFootPos.y = pivotPos.y - 2f; //At the feet
-                    Vector3 playerHeadPos; playerHeadPos.x = pivotPos.x; playerHeadPos.z = pivotPos.z; playerHeadPos.y = pivotPos.y + 2f; //At the head
-
-                    if (Camera.main != null)
-                    {
-                        Vector3 w2s_footpos = Camera.main.WorldToScreenPoint(playerFootPos);
-                        Vector3 w2s_headpos = Camera.main.WorldToScreenPoint(playerHeadPos);
-
-                        if (w2s_footpos.z > 0f)
-                        {
-                            Render.Render.DrawBoxESP(w2s_footpos, w2s_headpos, Settings.Settings.azazel_esp_color, "Azazel", this.azazel_snapline, this.azazel_esp);
+                            if (w2s_footpos.z > 0f)
+                            {
+                                Render.Render.DrawBoxESP(w2s_footpos, w2s_headpos, Settings.Settings.azazel_esp_color, "Azazel", this.azazel_snapline, this.azazel_esp);
+                            }
                         }
                     }
                 }
             }
+            
 
             if (Settings.Settings.menu_enable) //Si on appuie sur INSERT
             {
@@ -246,7 +403,9 @@ namespace DevourClient
                 this.azazel_snapline = GUI.Toggle(new Rect(Settings.Settings.x + 390, Settings.Settings.y + 220, 150, 20), this.azazel_snapline, "Azazel Snapline");
 
                 this.item_esp = GUI.Toggle(new Rect(Settings.Settings.x + 390, Settings.Settings.y + 280, 150, 20), this.item_esp, "Item ESP");
-                
+                this.goat_rat_esp = GUI.Toggle(new Rect(Settings.Settings.x + 390, Settings.Settings.y + 310, 150, 20), this.goat_rat_esp, "Goat/Rat ESP");
+                this.demon_esp = GUI.Toggle(new Rect(Settings.Settings.x + 390, Settings.Settings.y + 340, 150, 20), this.demon_esp, "Demon ESP");
+
                 Load.unlimitedUV = GUI.Toggle(new Rect(Settings.Settings.x + 200, Settings.Settings.y + 220, 150, 20), Load.unlimitedUV, "Unlimited UV");
                 Load._walkInLobby = GUI.Toggle(new Rect(Settings.Settings.x + 200, Settings.Settings.y + 250, 150, 20), Load._walkInLobby, "Walk In Lobby");
                 

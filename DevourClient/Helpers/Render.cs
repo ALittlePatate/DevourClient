@@ -17,12 +17,15 @@ namespace DevourClient.Render
 			set { GUI.color = value; }
 		}
 
-		public static void DrawString(Vector2 position, string label, bool centered = true)
+		public static void DrawString(Vector2 position, Color color, string label, bool centered = true)
 		{
 			var content = new GUIContent(label);
 			var size = StringStyle.CalcSize(content);
 			var upperLeft = centered ? position - size / 2f : position;
+			Color color2 = GUI.color;
+			GUI.color = color;
 			GUI.Label(new Rect(upperLeft, size), content);
+			GUI.color = color2;
 		}
 
 		public static Texture2D lineTex;
@@ -62,7 +65,7 @@ namespace DevourClient.Render
 
 			if (playername != "" && esp || playername != "" && only_name)
             {
-				Render.DrawString(new Vector2((footpos.x - (width / 2)) + 25, (float)Screen.height - footpos.y - height), playername, false);
+				Render.DrawString(new Vector2((footpos.x - (width / 2)) + 25, (float)Screen.height - footpos.y - height), color, playername, false);
 			}
 			
 			//ESP BOX
