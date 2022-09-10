@@ -48,6 +48,9 @@ namespace DevourClient.Helpers
         public static GoatBehaviour[] GoatsAndRats;
         public static SurvivalInteractable[] SurvivalInteractables;
         public static KeyBehaviour[] Keys;
+        public static SurvivalDemonBehaviour[] Demons;
+        public static SpiderBehaviour[] Spiders;
+        public static GhostBehaviour[] Ghosts;
 
         public static IEnumerator GetLocalPlayer()
         {
@@ -110,6 +113,39 @@ namespace DevourClient.Helpers
             for (;;)
             {
                 Keys = KeyBehaviour.FindObjectsOfType<KeyBehaviour>();
+
+                // Wait 5 seconds before caching objects again.
+                yield return new WaitForSeconds(5f);
+            }
+        }
+
+        public static IEnumerator GetDemons()
+        {
+            for (;;)
+            {
+                Demons = SurvivalDemonBehaviour.FindObjectsOfType<SurvivalDemonBehaviour>();
+
+                // Wait 5 seconds before caching objects again.
+                yield return new WaitForSeconds(5f);
+            }
+        }
+
+        public static IEnumerator GetSpiders()
+        {
+            for (;;)
+            {
+                Spiders = SpiderBehaviour.FindObjectsOfType<SpiderBehaviour>();
+
+                // Wait 5 seconds before caching objects again.
+                yield return new WaitForSeconds(5f);
+            }
+        }
+
+        public static IEnumerator GetGhosts()
+        {
+            for (;;)
+            {
+                Ghosts = GhostBehaviour.FindObjectsOfType<GhostBehaviour>();
 
                 // Wait 5 seconds before caching objects again.
                 yield return new WaitForSeconds(5f);

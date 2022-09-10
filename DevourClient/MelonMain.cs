@@ -43,6 +43,9 @@ namespace DevourClient
             MelonCoroutines.Start(Helpers.Entities.GetGoatsAndRats());
             MelonCoroutines.Start(Helpers.Entities.GetSurvivalInteractables());
             MelonCoroutines.Start(Helpers.Entities.GetKeys());
+            MelonCoroutines.Start(Helpers.Entities.GetDemons());
+            MelonCoroutines.Start(Helpers.Entities.GetSpiders());
+            MelonCoroutines.Start(Helpers.Entities.GetGhosts());
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -276,7 +279,7 @@ namespace DevourClient
 
                 if (this.demon_esp)
                 {
-                    foreach (SurvivalDemonBehaviour demon in UnityEngine.Object.FindObjectsOfType<SurvivalDemonBehaviour>() as UnhollowerBaseLib.Il2CppReferenceArray<SurvivalDemonBehaviour>)
+                    foreach (SurvivalDemonBehaviour demon in Helpers.Entities.Demons)
                     {
                         if (demon != null)
                         {
@@ -305,7 +308,7 @@ namespace DevourClient
                         }
                     }
 
-                    foreach (SpiderBehaviour spider in UnityEngine.Object.FindObjectsOfType<SpiderBehaviour>() as UnhollowerBaseLib.Il2CppReferenceArray<SpiderBehaviour>)
+                    foreach (SpiderBehaviour spider in Helpers.Entities.Spiders)
                     {
                         if (spider != null)
                         {
@@ -334,7 +337,7 @@ namespace DevourClient
                         }
                     }
 
-                    foreach (GhostBehaviour ghost in UnityEngine.Object.FindObjectsOfType<GhostBehaviour>() as UnhollowerBaseLib.Il2CppReferenceArray<GhostBehaviour>)
+                    foreach (GhostBehaviour ghost in Helpers.Entities.Ghosts)
                     {
                         if (ghost != null)
                         {
