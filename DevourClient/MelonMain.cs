@@ -640,6 +640,20 @@ namespace DevourClient
                             {
                                 Hacks.Misc.BurnRitualObj(Helpers.Map.GetActiveScene(), true);
                             }
+                            
+                            if (GUI.Button(new Rect(Settings.Settings.x + 290, Settings.Settings.y + 390, 120, 20), "TP Azazel"))
+                            {
+                                try
+                                {
+                                    NolanBehaviour nb = Player.GetPlayer();
+
+                                    nb.TeleportTo(Helpers.Map.GetAzazel().transform.position, Quaternion.identity);
+                                }
+                                catch
+                                {
+                                    MelonLogger.Msg("Azazel not found !");
+                                }
+                            }
                             return;
 
                         case "Molly":
@@ -651,6 +665,20 @@ namespace DevourClient
                             if (GUI.Button(new Rect(Settings.Settings.x + 150, Settings.Settings.y + 430, 120, 20), "Burn All Rats"))
                             {
                                 Hacks.Misc.BurnRitualObj(Helpers.Map.GetActiveScene(), true);
+                            }
+                            
+                            if (GUI.Button(new Rect(Settings.Settings.x + 290, Settings.Settings.y + 390, 120, 20), "TP Azazel"))
+                            {
+                                try
+                                {
+                                    NolanBehaviour nb = Player.GetPlayer();
+
+                                    nb.TeleportTo(Helpers.Map.GetAzazel().transform.position, Quaternion.identity);
+                                }
+                                catch
+                                {
+                                    MelonLogger.Msg("Azazel not found !");
+                                }
                             }
                             return;
 
@@ -669,6 +697,20 @@ namespace DevourClient
                             {
                                 Hacks.Misc.CleanFountain();
                             }
+                            
+                            if (GUI.Button(new Rect(Settings.Settings.x + 460, Settings.Settings.y + 390, 120, 20), "TP Azazel"))
+                            {
+                                try
+                                {
+                                    NolanBehaviour nb = Player.GetPlayer();
+
+                                    nb.TeleportTo(Helpers.Map.GetAzazel().transform.position, Quaternion.identity);
+                                }
+                                catch
+                                {
+                                    MelonLogger.Msg("Azazel not found !");
+                                }                            
+                            }
                             return;
 
                         case "Town":
@@ -680,6 +722,20 @@ namespace DevourClient
                             if (GUI.Button(new Rect(Settings.Settings.x + 150, Settings.Settings.y + 430, 120, 20), "Burn All Books"))
                             {
                                 Hacks.Misc.BurnRitualObj(Helpers.Map.GetActiveScene(), true);
+                            }
+                            
+                            if (GUI.Button(new Rect(Settings.Settings.x + 290, Settings.Settings.y + 390, 120, 20), "TP Azazel"))
+                            {
+                                try
+                                {
+                                    NolanBehaviour nb = Player.GetPlayer();
+
+                                    nb.TeleportTo(Helpers.Map.GetAzazel().transform.position, Quaternion.identity);
+                                }
+                                catch
+                                {
+                                    MelonLogger.Msg("Azazel not found !");
+                                }
                             }
                             return;
 
