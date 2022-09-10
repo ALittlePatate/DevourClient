@@ -146,33 +146,62 @@ namespace DevourClient.Hacks
 
 		public static void BigFlashlight(bool reset)
         {
-			//Ohhhh yes, that's some great code, don't you like try and catches ?
-			//it's for fixing a glitch that activates the big flashlight during the loading of a map
-			//so the things are not loaded and it throws a shit ton of errors in the console
-			try
-            {
-				NolanBehaviour Nolan = Player.GetPlayer();//UnityEngine.Object.FindObjectOfType<NolanBehaviour>();
-
-				Light flashlightSpot = Nolan.flashlightSpot;
-
-				if (reset)
-				{
-					flashlightSpot.intensity = 1.5f;
-					flashlightSpot.range = 9f;
-					flashlightSpot.spotAngle = 90f;
-				}
-				else
-				{
-					flashlightSpot.intensity = 1.5f;
-					flashlightSpot.range = 200f;
-					flashlightSpot.spotAngle = 70f;
-				}
-			}
-			catch
+			NolanBehaviour Nolan = Player.GetPlayer();//UnityEngine.Object.FindObjectOfType<NolanBehaviour>();
+			if (Nolan == null)
             {
 				return;
             }
+
+			Light flashlightSpot = Nolan.flashlightSpot;
+			if (flashlightSpot == null)
+            {
+				return;
+            }
+
+			if (reset)
+			{
+				flashlightSpot.intensity = 1.5f;
+				flashlightSpot.range = 9f;
+				flashlightSpot.spotAngle = 70f;
+			}
+			else
+			{
+				flashlightSpot.intensity = 1.5f;
+				flashlightSpot.range = 200f;
+				flashlightSpot.spotAngle = 90f;
+			}
 			
+		}
+
+		public static void Fullbright(bool reset)
+		{
+			NolanBehaviour Nolan = Player.GetPlayer();//UnityEngine.Object.FindObjectOfType<NolanBehaviour>();
+			if (Nolan == null)
+			{
+				return;
+			}
+
+			Light flashlightSpot = Nolan.flashlightSpot;
+			if (flashlightSpot == null)
+			{
+				return;
+			}
+
+			if (reset)
+			{
+				flashlightSpot.intensity = 1.5f;
+				flashlightSpot.range = 9f;
+				flashlightSpot.spotAngle = 70f;
+				flashlightSpot.type = LightType.Spot;
+			}
+			else
+			{
+				flashlightSpot.intensity = 1.5f;
+				flashlightSpot.range = 200f;
+				flashlightSpot.spotAngle = 180f;
+				flashlightSpot.type = LightType.Point;
+			}
+
 		}
 		public static void FlashlightColor(Color color)
         {

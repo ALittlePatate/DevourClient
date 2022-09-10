@@ -34,7 +34,7 @@ namespace DevourClient
         bool item_esp = false;
         bool goat_rat_esp = false;
         bool demon_esp = false;
-
+        bool fullbright = false;
 
         public override void OnApplicationStart()
         {
@@ -64,13 +64,22 @@ namespace DevourClient
                 Settings.Settings.menu_enable = !Settings.Settings.menu_enable;
             }
 
-            if (this.flashlight_toggle && Player.IsInGame())
+            if (this.flashlight_toggle && Player.IsInGame() && !this.fullbright)
             {
                 Hacks.Misc.BigFlashlight(false);
             }
-            else if (!this.flashlight_toggle && Player.IsInGame())
+            else if (!this.flashlight_toggle && Player.IsInGame() && !this.fullbright)
             {
                 Hacks.Misc.BigFlashlight(true);
+            }
+
+            if (this.fullbright && Player.IsInGame() && !this.flashlight_toggle)
+            {
+                Hacks.Misc.Fullbright(false);
+            }
+            else if (!this.fullbright && Player.IsInGame() && !this.flashlight_toggle)
+            {
+                Hacks.Misc.Fullbright(true);
             }
 
             if (this.spam_message)
@@ -413,6 +422,8 @@ namespace DevourClient
                 this._PlayerSpeedMultiplier = GUI.HorizontalSlider(new Rect(Settings.Settings.x + 200, Settings.Settings.y + 310, 100, 10), this._PlayerSpeedMultiplier, 1f, 10f);
                 GUI.Label(new Rect(Settings.Settings.x + 310, Settings.Settings.y + 305, 100, 30), this._PlayerSpeedMultiplier.ToString());
 
+                this.fullbright = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 340, 150, 20), this.fullbright, "Fullbright");
+
                 if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 40, 150, 20), "Unlock Achievements"))
                 {
                     Thread AchievementsThread = new Thread(
@@ -605,53 +616,53 @@ namespace DevourClient
                 
                 if (Helpers.Map.GetActiveScene() != "Menu")
                 {
-                    GUI.Label(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 360, 200, 30), $"Functions for the map: {Helpers.Map.GetMapName(Helpers.Map.GetActiveScene())}");
+                    GUI.Label(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 400, 200, 30), $"Functions for the map: {Helpers.Map.GetMapName(Helpers.Map.GetActiveScene())}");
 
                     switch (Helpers.Map.GetActiveScene())
                     {
                         case "Devour":
-                            if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 390, 120, 20), "Burn One Goat"))
+                            if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 430, 120, 20), "Burn One Goat"))
                             {
                                 Hacks.Misc.BurnRitualObj(Helpers.Map.GetActiveScene(), false);
                             }
 
-                            if (GUI.Button(new Rect(Settings.Settings.x + 150, Settings.Settings.y + 390, 120, 20), "Burn All Goats"))
+                            if (GUI.Button(new Rect(Settings.Settings.x + 150, Settings.Settings.y + 430, 120, 20), "Burn All Goats"))
                             {
                                 Hacks.Misc.BurnRitualObj(Helpers.Map.GetActiveScene(), true);
                             }
                             return;
 
                         case "Molly":
-                            if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 390, 120, 20), "Burn One Rat"))
+                            if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 430, 120, 20), "Burn One Rat"))
                             {
                                 Hacks.Misc.BurnRitualObj(Helpers.Map.GetActiveScene(), false);
                             }
 
-                            if (GUI.Button(new Rect(Settings.Settings.x + 150, Settings.Settings.y + 390, 120, 20), "Burn All Rats"))
+                            if (GUI.Button(new Rect(Settings.Settings.x + 150, Settings.Settings.y + 430, 120, 20), "Burn All Rats"))
                             {
                                 Hacks.Misc.BurnRitualObj(Helpers.Map.GetActiveScene(), true);
                             }
                             return;
 
                         case "Inn":
-                            if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 390, 120, 20), "Burn One Egg"))
+                            if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 430, 120, 20), "Burn One Egg"))
                             {
                                 Hacks.Misc.BurnRitualObj(Helpers.Map.GetActiveScene(), false);
                             }
 
-                            if (GUI.Button(new Rect(Settings.Settings.x + 150, Settings.Settings.y + 390, 120, 20), "Burn All Eggs"))
+                            if (GUI.Button(new Rect(Settings.Settings.x + 150, Settings.Settings.y + 430, 120, 20), "Burn All Eggs"))
                             {
                                 Hacks.Misc.BurnRitualObj(Helpers.Map.GetActiveScene(), true);
                             }
                             return;
 
                         case "Town":
-                            if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 390, 120, 20), "Burn One Book"))
+                            if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 430, 120, 20), "Burn One Book"))
                             {
                                 Hacks.Misc.BurnRitualObj(Helpers.Map.GetActiveScene(), false);
                             }
 
-                            if (GUI.Button(new Rect(Settings.Settings.x + 150, Settings.Settings.y + 390, 120, 20), "Burn All Books"))
+                            if (GUI.Button(new Rect(Settings.Settings.x + 150, Settings.Settings.y + 430, 120, 20), "Burn All Books"))
                             {
                                 Hacks.Misc.BurnRitualObj(Helpers.Map.GetActiveScene(), true);
                             }
