@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using Opsive.UltimateCharacterController.Character;
+using System.Collections.Generic;
 
 ﻿namespace DevourClient.Helpers
 {
@@ -60,6 +61,20 @@ using Opsive.UltimateCharacterController.Character;
             }
 
             return player;
+        }
+         
+        public static List<GameObject> GetAllPlayers()
+        {
+            GameObject[] currentPlayers = GameObject.FindGameObjectsWithTag("Player");
+            List<GameObject> result = new List<GameObject>();
+
+            for (int i = 0; i < currentPlayers.Length; i++)
+            {
+                result.Add(currentPlayers[i]);         
+            }
+
+            return result;
+            
         }
     }
 }
