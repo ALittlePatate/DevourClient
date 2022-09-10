@@ -39,7 +39,10 @@ namespace DevourClient
         public override void OnApplicationStart()
         {
             MelonLogger.Msg("For the Queen !");
-            MelonCoroutines.Start(Helpers.LocalPlayer.GetLocalPlayer());
+            MelonCoroutines.Start(Helpers.Entities.GetLocalPlayer());
+            MelonCoroutines.Start(Helpers.Entities.GetGoatsAndRats());
+            MelonCoroutines.Start(Helpers.Entities.GetSurvivalInteractables());
+            MelonCoroutines.Start(Helpers.Entities.GetKeys());
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -130,7 +133,7 @@ namespace DevourClient
             {
                 try
                 {
-                    Helpers.LocalPlayer.LocalPlayer_.GetComponent<Opsive.UltimateCharacterController.Character.UltimateCharacterLocomotion>().TimeScale = this._PlayerSpeedMultiplier;
+                    Helpers.Entities.LocalPlayer_.GetComponent<Opsive.UltimateCharacterController.Character.UltimateCharacterLocomotion>().TimeScale = this._PlayerSpeedMultiplier;
                 }
                 catch { return;  }
             }
@@ -179,11 +182,10 @@ namespace DevourClient
 
                 if (this.goat_rat_esp)
                 {
-                    foreach (GoatBehaviour goat in UnityEngine.Object.FindObjectsOfType<GoatBehaviour>() as UnhollowerBaseLib.Il2CppReferenceArray<GoatBehaviour>)
+                    foreach (GoatBehaviour goat in Helpers.Entities.GoatsAndRats)
                     {
                         if (goat != null)
                         {
-
 
                             Vector3 pivotPos = goat.transform.position; //Pivot point NOT at the origin, at the center
                             Vector3 playerFootPos; playerFootPos.x = pivotPos.x; playerFootPos.z = pivotPos.z; playerFootPos.y = pivotPos.y - 2f; //At the feet
@@ -211,7 +213,7 @@ namespace DevourClient
 
                 if (this.item_esp)
                 {
-                    foreach (SurvivalInteractable obj in UnityEngine.Object.FindObjectsOfType<SurvivalInteractable>() as UnhollowerBaseLib.Il2CppReferenceArray<SurvivalInteractable>)
+                    foreach (SurvivalInteractable obj in Helpers.Entities.SurvivalInteractables)
                     {
                         if (obj != null)
                         {
@@ -242,7 +244,7 @@ namespace DevourClient
                         }
                     }
 
-                    foreach (KeyBehaviour key in UnityEngine.Object.FindObjectsOfType<KeyBehaviour>() as UnhollowerBaseLib.Il2CppReferenceArray<KeyBehaviour>)
+                    foreach (KeyBehaviour key in Helpers.Entities.Keys)
                     {
                         if (key != null)
                         {

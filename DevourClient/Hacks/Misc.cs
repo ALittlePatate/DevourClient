@@ -48,13 +48,13 @@ namespace DevourClient.Hacks
 	    	public static void WalkInLobby(bool walk)
         	{
 		  try {	
-                	if (Helpers.LocalPlayer.LocalPlayer_.GetComponent<UltimateCharacterLocomotionHandler>() == null)
+                	if (Helpers.Entities.LocalPlayer_.GetComponent<UltimateCharacterLocomotionHandler>() == null)
 			{
-                    		Helpers.LocalPlayer.LocalPlayer_.AddComponent<UltimateCharacterLocomotionHandler>();
-                    		Helpers.LocalPlayer.LocalPlayer_.GetComponent<UltimateCharacterLocomotionHandler>().enabled = false;
+                    		Helpers.Entities.LocalPlayer_.AddComponent<UltimateCharacterLocomotionHandler>();
+                    		Helpers.Entities.LocalPlayer_.GetComponent<UltimateCharacterLocomotionHandler>().enabled = false;
                 	}
 
-               		Helpers.LocalPlayer.LocalPlayer_.GetComponent<UltimateCharacterLocomotionHandler>().enabled = walk;
+               		Helpers.Entities.LocalPlayer_.GetComponent<UltimateCharacterLocomotionHandler>().enabled = walk;
             	 }
 		catch { return; }	
         	}
@@ -122,10 +122,7 @@ namespace DevourClient.Hacks
 		    {
 			NolanBehaviour Nolan = Player.GetPlayer();
 
-			List<SurvivalInteractable> items = new List<SurvivalInteractable>();
-			items = Object.FindObjectsOfType<SurvivalInteractable>().ToList<SurvivalInteractable>();
-
-			foreach (SurvivalInteractable item in items)
+			foreach (SurvivalInteractable item in Helpers.Entities.SurvivalInteractables)
 			{
 			    item.transform.position = Nolan.transform.position + Nolan.transform.forward * Random.RandomRange(1f, 3f);
 				}
@@ -215,7 +212,7 @@ namespace DevourClient.Hacks
         {
 			NolanBehaviour Nolan = Player.GetPlayer(); //UnityEngine.Object.FindObjectOfType<NolanBehaviour>();
 
-			foreach (KeyBehaviour keyBehaviour in UnityEngine.Object.FindObjectsOfType<KeyBehaviour>())
+			foreach (KeyBehaviour keyBehaviour in Helpers.Entities.Keys)
 			{
 				bool flag = keyBehaviour == null;
 				if (flag)

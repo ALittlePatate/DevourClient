@@ -20,12 +20,12 @@ namespace DevourClient.Helpers
         
         public static NolanBehaviour GetPlayer()
         {
-            if (LocalPlayer.LocalPlayer_ == null)
+            if (Entities.LocalPlayer_ == null)
             {
                 return null;
             }
 
-            return LocalPlayer.LocalPlayer_.GetComponent<NolanBehaviour>();
+            return Entities.LocalPlayer_.GetComponent<NolanBehaviour>();
         }
         
         public static bool IsPlayerCrawling()
@@ -42,9 +42,12 @@ namespace DevourClient.Helpers
         
     }
      
-     public class LocalPlayer
-    {
+     public class Entities
+     {
         public static GameObject LocalPlayer_;
+        public static GoatBehaviour[] GoatsAndRats;
+        public static SurvivalInteractable[] SurvivalInteractables;
+        public static KeyBehaviour[] Keys;
 
         public static IEnumerator GetLocalPlayer()
         {
@@ -73,11 +76,44 @@ namespace DevourClient.Helpers
 
             for (int i = 0; i < currentPlayers.Length; i++)
             {
-                result.Add(currentPlayers[i]);         
+                result.Add(currentPlayers[i]);      
             }
 
             return result;
             
+        }
+
+        public static IEnumerator GetGoatsAndRats()
+        {
+            for (;;)
+            {
+                GoatsAndRats = GoatBehaviour.FindObjectsOfType<GoatBehaviour>();
+
+                // Wait 5 seconds before caching objects again.
+                yield return new WaitForSeconds(5f);
+            }
+        }
+
+        public static IEnumerator GetSurvivalInteractables()
+        {
+            for (;;)
+            {
+                SurvivalInteractables = SurvivalInteractable.FindObjectsOfType<SurvivalInteractable>();
+
+                // Wait 5 seconds before caching objects again.
+                yield return new WaitForSeconds(5f);
+            }
+        }
+
+        public static IEnumerator GetKeys()
+        {
+            for (;;)
+            {
+                Keys = KeyBehaviour.FindObjectsOfType<KeyBehaviour>();
+
+                // Wait 5 seconds before caching objects again.
+                yield return new WaitForSeconds(5f);
+            }
         }
     }
 }
