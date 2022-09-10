@@ -32,6 +32,11 @@ namespace DevourClient.Helpers
         {
             NolanBehaviour nb = Player.GetPlayer();
 
+            if (nb == null)
+            {
+                return false;
+            }
+
             if (nb.IsCrawling())
             {
                 return true;
