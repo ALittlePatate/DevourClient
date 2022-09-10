@@ -119,7 +119,21 @@ namespace DevourClient.Hacks
 			BehaviorDesigner.Runtime.Behavior goat_behavior = _goat.gameObject.GetComponent<GoatBehaviour>().m_mainBehaviour;
 			goat_behavior.EnableBehavior();
 		}
+		
+	    	public static void CleanFountain()
+		{
+			try
+			{
+                		GameObject[] fountains = GameObject.FindGameObjectsWithTag("InnFountain");
 
+                		for (int i = 0; i < fountains.Length; i++)
+                		{
+                    			fountains[i].GetComponent<InnFountainController>().Clean();
+                		}
+            		}
+			catch { return;  }
+		}
+	    
 		public static void AutoRespawn()
 		{
 			NolanBehaviour nb = Player.GetPlayer();
