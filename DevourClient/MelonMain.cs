@@ -111,7 +111,7 @@ namespace DevourClient
                 Hacks.Misc.AutoRespawn();                
             }
             
-            if (Player.GetActiveScene() == "Menu")
+            if (Helpers.Map.GetActiveScene() == "Menu")
             {
                 Hacks.Misc.WalkInLobby(_walkInLobby);
             }
