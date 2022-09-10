@@ -375,6 +375,11 @@ namespace DevourClient
                     BoltNetwork.Instantiate(BoltPrefabs.Spider, Player.GetPlayer().transform.position, Quaternion.identity);
                 }
 
+                if (GUI.Button(new Rect(Settings.Settings.x + 580, Settings.Settings.y + 280, 120, 20), "Zara") && Player.IsInGameOrLobby())
+                {
+                    BoltNetwork.Instantiate(BoltPrefabs.AzazelZara, Player.GetPlayer().transform.position, Quaternion.identity);
+                }
+
                 GUI.Label(new Rect(Settings.Settings.x + 730, Settings.Settings.y + 40, 120, 30), "Items");
 
                 if (GUI.Button(new Rect(Settings.Settings.x + 730, Settings.Settings.y + 70, 110, 20), "Hay") && Player.IsInGameOrLobby())
@@ -407,6 +412,25 @@ namespace DevourClient
                     BoltNetwork.Instantiate(BoltPrefabs.SurvivalRottenFood, Player.GetPlayer().transform.position, Quaternion.identity);
                 }
 
+                if (GUI.Button(new Rect(Settings.Settings.x + 730, Settings.Settings.y + 250, 110, 20), "Egg") && Player.IsInGameOrLobby())
+                {
+                    BoltNetwork.Instantiate(BoltPrefabs.SurvivalEgg, Player.GetPlayer().transform.position, Quaternion.identity);
+                }
+
+                if (GUI.Button(new Rect(Settings.Settings.x + 730, Settings.Settings.y + 280, 110, 20), "Bleach") && Player.IsInGameOrLobby())
+                {
+                    BoltNetwork.Instantiate(BoltPrefabs.SurvivalBleach, Player.GetPlayer().transform.position, Quaternion.identity);
+                }
+
+                if (GUI.Button(new Rect(Settings.Settings.x + 730, Settings.Settings.y + 310, 110, 20), "Ritual Book") && Player.IsInGameOrLobby())
+                {
+                    BoltNetwork.Instantiate(BoltPrefabs.SurvivalRitualBook, Player.GetPlayer().transform.position, Quaternion.identity);
+                }
+
+                if (GUI.Button(new Rect(Settings.Settings.x + 730, Settings.Settings.y + 340, 110, 20), "Matchbox") && Player.IsInGameOrLobby())
+                {
+                    BoltNetwork.Instantiate(BoltPrefabs.SurvivalMatchbox, Player.GetPlayer().transform.position, Quaternion.identity);
+                }
             }
         }
     }
