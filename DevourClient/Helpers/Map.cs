@@ -24,9 +24,9 @@
             }
         }
         
-        public static GameObject GetAzazel()
+        public static UnityEngine.GameObject GetAzazel()
         {
-            return GameObject.FindGameObjectWithTag("Azazel");
+            return UnityEngine.GameObject.FindGameObjectWithTag("Azazel");
         }
     }
 }
