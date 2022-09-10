@@ -51,6 +51,7 @@ namespace DevourClient.Helpers
         public static SurvivalDemonBehaviour[] Demons;
         public static SpiderBehaviour[] Spiders;
         public static GhostBehaviour[] Ghosts;
+        public static SurvivalAzazelBehaviour[] Azazels;
 
         public static IEnumerator GetLocalPlayer()
         {
@@ -146,6 +147,20 @@ namespace DevourClient.Helpers
             for (;;)
             {
                 Ghosts = GhostBehaviour.FindObjectsOfType<GhostBehaviour>();
+
+                // Wait 5 seconds before caching objects again.
+                yield return new WaitForSeconds(5f);
+            }
+        }
+
+        public static IEnumerator GeAzazels()
+        {
+            /*
+             * ikr AzazelS, because in case we spawn multiple we want the esp to render all of them
+            */
+            for (;;)
+            {
+                Azazels = SurvivalAzazelBehaviour.FindObjectsOfType<SurvivalAzazelBehaviour>();
 
                 // Wait 5 seconds before caching objects again.
                 yield return new WaitForSeconds(5f);

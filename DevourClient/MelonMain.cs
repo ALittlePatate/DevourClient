@@ -46,6 +46,7 @@ namespace DevourClient
             MelonCoroutines.Start(Helpers.Entities.GetDemons());
             MelonCoroutines.Start(Helpers.Entities.GetSpiders());
             MelonCoroutines.Start(Helpers.Entities.GetGhosts());
+            MelonCoroutines.Start(Helpers.Entities.GeAzazels());
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -369,23 +370,25 @@ namespace DevourClient
 
                 if (this.azazel_esp || this.azazel_snapline)
                 {
-                    SurvivalAzazelBehaviour survivalAzazel = UnityEngine.Object.FindObjectOfType<SurvivalAzazelBehaviour>();
-                    if (survivalAzazel != null)
+                    foreach (SurvivalAzazelBehaviour survivalAzazel in Helpers.Entities.Azazels)
                     {
-
-
-                        Vector3 pivotPos = survivalAzazel.transform.position; //Pivot point NOT at the origin, at the center
-                        Vector3 playerFootPos; playerFootPos.x = pivotPos.x; playerFootPos.z = pivotPos.z; playerFootPos.y = pivotPos.y - 2f; //At the feet
-                        Vector3 playerHeadPos; playerHeadPos.x = pivotPos.x; playerHeadPos.z = pivotPos.z; playerHeadPos.y = pivotPos.y + 2f; //At the head
-
-                        if (Camera.main != null)
+                        if (survivalAzazel != null)
                         {
-                            Vector3 w2s_footpos = Camera.main.WorldToScreenPoint(playerFootPos);
-                            Vector3 w2s_headpos = Camera.main.WorldToScreenPoint(playerHeadPos);
 
-                            if (w2s_footpos.z > 0f)
+
+                            Vector3 pivotPos = survivalAzazel.transform.position; //Pivot point NOT at the origin, at the center
+                            Vector3 playerFootPos; playerFootPos.x = pivotPos.x; playerFootPos.z = pivotPos.z; playerFootPos.y = pivotPos.y - 2f; //At the feet
+                            Vector3 playerHeadPos; playerHeadPos.x = pivotPos.x; playerHeadPos.z = pivotPos.z; playerHeadPos.y = pivotPos.y + 2f; //At the head
+
+                            if (Camera.main != null)
                             {
-                                Render.Render.DrawBoxESP(w2s_footpos, w2s_headpos, Settings.Settings.azazel_esp_color, "Azazel", this.azazel_snapline, this.azazel_esp);
+                                Vector3 w2s_footpos = Camera.main.WorldToScreenPoint(playerFootPos);
+                                Vector3 w2s_headpos = Camera.main.WorldToScreenPoint(playerHeadPos);
+
+                                if (w2s_footpos.z > 0f)
+                                {
+                                    Render.Render.DrawBoxESP(w2s_footpos, w2s_headpos, Settings.Settings.azazel_esp_color, "Azazel", this.azazel_snapline, this.azazel_esp);
+                                }
                             }
                         }
                     }
