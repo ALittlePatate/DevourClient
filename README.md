@@ -105,6 +105,9 @@ For decompiling and looking in the source code of the game :
 For teaching me the basics about Devour game hacking, and i pasted the Key TP hack and the non working part of the Achievements Unlocker from it :
 * [DevourCheatMonoInjector](https://github.com/Glatrix/DevourCheatMonoInjector)
 
+Game's last update before il2cpp :
+* https://steamdb.info/depot/1274571/history/?changeid=M:1960656865974212833
+
 ## Contributing
 
 Open an [issue](https://github.com/ALittlePatate/DevourClient/issues/new) or make a [pull request](https://github.com/ALittlePatate/DevourClient/pulls), i'll be glad to improve my project with you !
