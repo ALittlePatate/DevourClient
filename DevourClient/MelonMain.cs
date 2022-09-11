@@ -654,6 +654,12 @@ namespace DevourClient
                                     MelonLogger.Msg("Azazel not found !");
                                 }
                             }
+
+                            if (GUI.Button(new Rect(Settings.Settings.x + 290, Settings.Settings.y + 460, 120, 20), "Despawn demons"))
+                            {
+                                Hacks.Misc.DespawnDemons();
+                            }
+
                             return;
 
                         case "Molly":
@@ -680,6 +686,12 @@ namespace DevourClient
                                     MelonLogger.Msg("Azazel not found !");
                                 }
                             }
+
+                            if (GUI.Button(new Rect(Settings.Settings.x + 290, Settings.Settings.y + 460, 120, 20), "Despawn demons"))
+                            {
+                                Hacks.Misc.DespawnDemons();
+                            }
+
                             return;
 
                         case "Inn":
@@ -711,6 +723,11 @@ namespace DevourClient
                                     MelonLogger.Msg("Azazel not found !");
                                 }                            
                             }
+
+                            if (GUI.Button(new Rect(Settings.Settings.x + 290, Settings.Settings.y + 460, 120, 20), "Despawn spiders"))
+                            {
+                                Hacks.Misc.DespawnSpiders();
+                            }
                             return;
 
                         case "Town":
@@ -736,6 +753,11 @@ namespace DevourClient
                                 {
                                     MelonLogger.Msg("Azazel not found !");
                                 }
+                            }
+
+                            if (GUI.Button(new Rect(Settings.Settings.x + 290, Settings.Settings.y + 460, 120, 20), "Despawn ghosts"))
+                            {
+                                Hacks.Misc.DespawnGhosts();
                             }
                             return;
 

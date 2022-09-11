@@ -273,6 +273,39 @@ namespace DevourClient.Hacks
 			}
 		}
 
+		public static void DespawnDemons()
+		{
+			foreach (SurvivalDemonBehaviour demon in Helpers.Entities.Demons)
+			{
+				if (demon != null)
+				{
+					demon.Despawn();
+				}
+			}
+		}
+
+		public static void DespawnSpiders()
+		{
+			foreach (SpiderBehaviour spider in Helpers.Entities.Spiders)
+			{
+				if (spider != null)
+				{
+					spider.Despawn();
+				}
+			}
+		}
+
+		public static void DespawnGhosts()
+		{
+			foreach (GhostBehaviour ghost in Helpers.Entities.Ghosts)
+			{
+				if (ghost != null)
+				{
+					ghost.Despawn();
+				}
+			}
+		}
+
 		public static void ShowMessageBox(string message)
         {
 			Horror.Menu menu = UnityEngine.Object.FindObjectOfType<Horror.Menu>();
