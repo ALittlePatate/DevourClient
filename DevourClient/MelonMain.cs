@@ -624,12 +624,20 @@ namespace DevourClient
                     BoltNetwork.Instantiate(BoltPrefabs.Spider, Player.GetPlayer().transform.position, Quaternion.identity);
                 }
                 
-                if (Helpers.Map.GetActiveScene() != "Menu")
+                if (Helpers.Map.GetActiveScene() != "")
                 {
                     GUI.Label(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 400, 200, 30), $"Functions for the map: {Helpers.Map.GetMapName(Helpers.Map.GetActiveScene())}");
 
                     switch (Helpers.Map.GetActiveScene())
                     {
+                        case "Menu":
+                            if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 430, 120, 20), "Force Start"))
+                            {
+                                Horror.Menu menu = UnityEngine.Object.FindObjectOfType<Horror.Menu>();
+                                menu.OnLobbyStartButtonClick();
+                            }
+                            return;
+                    
                         case "Devour":
                             if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 430, 120, 20), "Burn One Goat"))
                             {
