@@ -20,7 +20,7 @@
                 case "Town":
                     return "Town";
                 default:
-                    return "";
+                    return "Menu";
             }
         }
         
