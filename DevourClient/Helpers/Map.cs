@@ -26,7 +26,7 @@
         
         public static UnityEngine.GameObject GetAzazel()
         {
-            return UnityEngine.GameObject.FindGameObjectWithTag("Azazel");
+            return Helpers.Entities.Azazels[0].gameObject;
         }
     }
 }
