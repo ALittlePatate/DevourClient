@@ -1,8 +1,14 @@
 # Unknowncheats thread [here](https://www.unknowncheats.me/forum/other-fps-games/475950-devour-multihack-update.html)
 
-# The Town Update
-Now includes an Unlock All !!!
-Everything should be 100% fixed and working for the last update of Devour, have fun !
+# /!\ READ THIS
+```
+Kalybr50 — Today at 10:02 PM
+It's detects the Assembly of MelonLoader and closes your game
+```
+
+So, the current beta of Devour implemented an anti cheat that detects Melon Loader and closes your game. I don't know if a ban is possible, so do not update to the beta before i fix the issue. If i can't fix it i'll have to switch to [BepInEx](https://github.com/BepInEx/BepInEx).
+I'll keep this updated to let you know about new potential infos.
+You can contact me at patate#1252 on discord.
 
 # DevourClient
 
