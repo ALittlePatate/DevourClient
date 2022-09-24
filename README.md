@@ -9,8 +9,9 @@ It's detects the Assembly of MelonLoader and closes your game
 So, the current beta of Devour implemented an anti cheat that detects Melon Loader and closes your game.
 I am currently re-writing the whole cheat in C++, it's gonna take a few days.
 Current state of the cheat :
-- Menu : 100%
-- Features : 0%
+* Menu : 100%
+* Features : 0%
+
 You can contact me at patate#1252 on discord.
 
 # DevourClient
