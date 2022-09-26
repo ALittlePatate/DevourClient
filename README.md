@@ -1,5 +1,7 @@
 # Unknowncheats thread [here](https://www.unknowncheats.me/forum/other-fps-games/475950-devour-multihack-update.html)
 
+# Discord server [here](https://discord.gg/2amMFvqjYd)
+
 # /!\ READ THIS
 ```
 Kalybr50 — Today at 10:02 PM
@@ -8,11 +10,10 @@ It's detects the Assembly of MelonLoader and closes your game
 
 So, the current beta of Devour implemented an anti cheat that detects Melon Loader and closes your game.
 I am currently re-writing the whole cheat in C++, it's gonna take a few days.
+The cheat will use [Il2CppInspector](https://github.com/djkaty/Il2CppInspector#dll-injection-workflow), [ImGui](https://github.com/ocornut/imgui) and [MinHook](https://github.com/TsudaKageyu/minhook).
 Current state of the cheat :
 * Menu : 100%
 * Features : 0%
-
-You can contact me at patate#1252 on discord.
 
 # DevourClient
 
@@ -105,7 +106,7 @@ In order to get all of this working you need to generate the DevourClient.dll fi
 
 ## Contact
 
-You can add me on discord at patate#1252
+You can add me on discord at patate#1252 or on the [discord server](https://discord.gg/2amMFvqjYd)
 
 ## Code used
 
