@@ -174,6 +174,107 @@ void DrawMapSpecificTab() {
 	}
 }
 
+bool inspector = false;
+void DrawInspector() {
+	ImGui::SetNextWindowSize(ImVec2(600.000f, 600.000f), ImGuiCond_Once);
+	if (!ImGui::Begin("Inspector", &inspector, 2)) {
+		ImGui::End();
+		return;
+	}
+
+	static std::vector<std::string> components;
+	static std::vector<std::string> classes;
+	static std::vector<std::string> methods;
+	static std::string current_comp = "";
+
+	ImGui::Text("Components");
+	if (ImGui::Button("Update##comp")) {
+		components = Dumper::DumpComponentsString();
+	}
+
+	ImGui::SetNextItemWidth(150.000f);
+	static int component_current_idx = 0; // Here we store our selection data as an index.
+	static ImGuiTextFilter c_filter;
+	c_filter.Draw("Search##compfilter");
+	if (ImGui::BeginListBox("##Components", ImVec2(-FLT_MIN, 5 * ImGui::GetTextLineHeightWithSpacing())))
+	{
+		for (size_t n = 0; n < components.size(); n++)
+		{
+			if (!c_filter.PassFilter(components[n].c_str())) {
+				continue;
+			}
+			const bool comp_is_selected = (component_current_idx == (int)n);
+			if (ImGui::Selectable(components[n].c_str(), comp_is_selected))
+				component_current_idx = (int)n;
+
+			// Set the initial focus when opening the combo (scrolling + keyboard navigation focus)
+			if (comp_is_selected)
+				ImGui::SetItemDefaultFocus();
+		}
+		ImGui::EndListBox();
+	}
+
+	ImGui::Spacing();
+	ImGui::Text("Classes");
+	if (ImGui::Button("Update##class")) {
+		classes = Dumper::DumpClassesString(components[component_current_idx]);
+		current_comp = components[component_current_idx];
+	}
+
+	ImGui::SetNextItemWidth(150.000f);
+	static int class_current_idx = 0; // Here we store our selection data as an index.
+	static ImGuiTextFilter cl_filter;
+	cl_filter.Draw("Search##classfilter");
+	if (ImGui::BeginListBox("##Class", ImVec2(-FLT_MIN, 5 * ImGui::GetTextLineHeightWithSpacing())))
+	{
+		for (size_t n = 0; n < classes.size(); n++)
+		{
+			if (!cl_filter.PassFilter(classes[n].c_str())) {
+				continue;
+			}
+			const bool class_is_selected = (class_current_idx == (int)n);
+			if (ImGui::Selectable(classes[n].c_str(), class_is_selected)) {
+				class_current_idx = (int)n;
+			}
+
+			// Set the initial focus when opening the combo (scrolling + keyboard navigation focus)
+			if (class_is_selected)
+				ImGui::SetItemDefaultFocus();
+		}
+		ImGui::EndListBox();
+	}
+
+	ImGui::Spacing();
+	ImGui::Text("Methods");
+	if (ImGui::Button("Update##Methods")) {
+		methods = Dumper::DumpMethodsString(current_comp, classes[class_current_idx]);
+	}
+
+	ImGui::SetNextItemWidth(150.000f);
+	static int method_current_idx = 0; // Here we store our selection data as an index.
+	static ImGuiTextFilter me_filter;
+	me_filter.Draw("Search##methodfilter");
+	if (ImGui::BeginListBox("##Methods", ImVec2(-FLT_MIN, -1)))
+	{
+		for (size_t n = 0; n < methods.size(); n++)
+		{
+			if (!me_filter.PassFilter(methods[n].c_str())) {
+				continue;
+			}
+			const bool meth_is_selected = (method_current_idx == (int)n);
+			if (ImGui::Selectable(methods[n].c_str(), meth_is_selected))
+				method_current_idx = (int)n;
+
+			// Set the initial focus when opening the combo (scrolling + keyboard navigation focus)
+			if (meth_is_selected)
+				ImGui::SetItemDefaultFocus();
+		}
+		ImGui::EndListBox();
+	}
+
+	ImGui::End();
+}
+
 void DrawMiscTab() {
 	ImGui::Checkbox("Chat spam", &settings::chat_spam);
 	ImGui::InputText("Message", &settings::message);
@@ -220,10 +321,12 @@ void DrawMiscTab() {
 
 #if _DEBUG
 	ImGui::Spacing();
-	static std::string component = "NolanBehaviour";
-	ImGui::InputText("##component", &component);
-	if (ImGui::Button("FindObjectsOfType")) {
-		Dump(component);
+	if (ImGui::Button("Inspector")) {
+		inspector = !inspector;
+	}
+
+	if (inspector) {
+		DrawInspector();
 	}
 #endif
 

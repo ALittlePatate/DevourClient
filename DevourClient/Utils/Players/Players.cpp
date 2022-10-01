@@ -40,7 +40,7 @@ void Players::GetPlayersThread() {
             }
         }
 
-        Sleep(500);
+        Sleep(5000); //FIXME //waiting 5 sec here to avoid crash cuz we're trying to get players when stuff load
     }
     
 }
