@@ -9,4 +9,5 @@
 //define functions the same as in misc.hpp/cpp
 namespace Helpers {
   bool isPlayerCrawling();
+  bool IsInGame();
 }
