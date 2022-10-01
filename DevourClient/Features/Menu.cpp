@@ -220,9 +220,9 @@ void DrawMiscTab() {
 
 #if _DEBUG
 	ImGui::Spacing();
-	std::string component = "PlayerCharacterBehaviour";
-	ImGui::InputText("##PlayerCharacterBehaviour", &component);
-	if (ImGui::Button("Dump component")) {
+	static std::string component = "NolanBehaviour";
+	ImGui::InputText("##component", &component);
+	if (ImGui::Button("FindObjectsOfType")) {
 		Dump(component);
 	}
 #endif

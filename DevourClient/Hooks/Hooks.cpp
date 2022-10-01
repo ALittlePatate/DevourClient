@@ -1,5 +1,6 @@
 #include "Hooks.hpp"
 #include "../Utils/Output/Output.hpp"
+#include "../Dependencies/IL2CPP_Resolver/il2cpp_resolver.hpp"
 #include "../Features/Menu.hpp"
 #include "../dllmain.hpp"
 
@@ -30,6 +31,17 @@
         return 0; //We exit
     }
 */
+
+
+void CreateHooks() {
+	/*
+	//Exemple :
+	MH_STATUS SceneLoadLocalDoneStatus = MH_CreateHook((LPVOID*)test_sig, &hkSceneLoadLocalDone, reinterpret_cast<LPVOID*>(&oSceneLoadLocalDone));
+	//We say that for every call to the test_sig address we want to redirect it to the address of the function named test_hook (& gives the pointer to it)
+	//We can store the original pointer to the original function into test_org if we want to call the org later --> trampoline hook
+	//original_sum can be NULL if we don't want to trampoline hook
+	*/
+}
 
 typedef HRESULT(__stdcall* D3D11PresentHook) (IDXGISwapChain* pSwapChain, UINT SyncInterval, UINT Flags);
 D3D11PresentHook phookD3D11Present = NULL;

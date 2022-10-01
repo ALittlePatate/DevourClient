@@ -5,6 +5,7 @@ namespace Players {
     Unity::CGameObject* LocalPlayer = NULL;
 }
 
+
 void Players::GetPlayersThread() {
     /*
     * Will always lop and get the players + the localplayer
@@ -16,21 +17,23 @@ void Players::GetPlayersThread() {
     while (1) {
         PlayerList.clear();
 
-        auto list = Unity::Object::FindObjectsOfType<Unity::CComponent>("PlayerCharacterBehaviour");
+        auto list = Unity::Object::FindObjectsOfType<Unity::CComponent>("NolanBehaviour");
         for (int i = 0; i < list->m_uMaxLength + 1; i++)
         {
             if (!list->operator[](i))
                 continue;
 
             Unity::CGameObject* object = list->operator[](i)->GetMemberValue<Unity::CGameObject*>("gameObject"); //SurvivalPlayer(Clone)
-            if (object != NULL) {
-                PlayerList.push_back(object);
+            if (!object) {
+                continue;
             }
+
+            PlayerList.push_back(object);
 
             Unity::CComponent* BoltEntity = object->GetComponent("BoltEntity");
             if (BoltEntity)
             {
-                if (BoltEntity->CallMethod<bool>("get_IsOwner"))//local player check
+                if (BoltEntity->GetMemberValue<bool>("IsOwner"))//local player check
                 {
                     LocalPlayer = object;
                 }

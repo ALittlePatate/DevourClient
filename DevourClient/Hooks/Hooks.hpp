@@ -10,5 +10,6 @@
 
 bool HookDX11();
 
+void CreateHooks();
 bool InitializeHooks();
 void DisableHooks();

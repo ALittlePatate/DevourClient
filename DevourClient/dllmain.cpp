@@ -57,6 +57,8 @@ DWORD WINAPI Main() {
         return false;
     }
 
+    CreateHooks();
+    print("[+] Created hooks\n");
 
     IL2CPP::Callback::Initialize();
     IL2CPP::Callback::OnUpdate::Add(OnUpdate);
