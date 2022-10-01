@@ -8,9 +8,11 @@
 
 #include "../Features/Misc/Misc.hpp"
 
-
 void OnUpdate() {
 	if (settings::spoof_level) {
 		Misc::SetRank(settings::new_level);
+	}
+	if (settings::walk_in_lobby) {
+		Misc::WalkInlobby(settings::walk_in_lobby);
 	}
 }

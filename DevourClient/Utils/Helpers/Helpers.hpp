@@ -5,7 +5,8 @@
 #include "../../Utils/Settings/Settings.hpp"
 #include <iostream>
 
-namespace Misc {
-    void SetRank(int rank);
-    void WalkInlobby(bool walk);
+
+//define functions the same as in misc.hpp/cpp
+namespace Helpers {
+
 }
