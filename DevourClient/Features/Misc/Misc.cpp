@@ -136,3 +136,63 @@ void Misc::PlayRandomSound() {
         break;
     }
 }
+
+void Misc::CarryItem(const char* item) {
+    std::string setItemName = "";
+
+    if (item == "Hay") {
+        setItemName = "SurvivalHay";
+    }
+    if (item == "First aid") {
+        setItemName = "SurvivalFirstAid";
+    }
+    if (item == "Battery") {
+        setItemName = "SurvivalBattery";
+    }
+    if (item == "Gasoline") {
+        setItemName = "SurvivalGasoline";
+    }
+    if (item == "Fuse") {
+        setItemName = "SurvivalFuse";
+    }
+    if (item == "Food") {
+        setItemName = "SurvivalRottenFood";
+    }
+    if (item == "Egg (dirty)") {
+        // clean egg example: "Egg-Clean-<int>"
+        // dirty egg example: "Egg-Dirty-<int>"
+        setItemName = "Egg-Dirty-1";
+    }
+    if (item == "Egg (clean)") {
+        setItemName = "Egg-Clean-1";
+    }
+    if (item == "Bleach") {
+        setItemName = "SurvivalBleach";
+    }
+    if (item == "Ritual Book (inactive)") {
+        // inactive book example: RitualBook-InActive-<int>
+        // active book example: RitualBook-Active-1
+        setItemName = "RitualBook-InActive-1";
+    }
+    if (item == "Ritual Book (active)") {
+        // inactive book example: RitualBook-InActive-<int>
+        // active book example: RitualBook-Active-1
+        setItemName = "RitualBook-Active-1";
+    }
+    if (item == "Matchbox") {
+        setItemName = "Matchbox-3";
+    }
+
+
+    try {
+        Unity::CComponent* NolanBehaviour = Players::LocalPlayer->GetComponent("NolanBehaviour");
+        if (!NolanBehaviour) {
+            return;
+        }
+
+        NolanBehaviour->CallMethod<void*>("StartCarry", IL2CPP::String::New(setItemName));
+    }
+    catch (...) {
+        print("Error!");
+    }
+}
