@@ -8,4 +8,5 @@
 namespace Misc {
     void SetRank(int rank);
     void WalkInlobby(bool walk);
+    void UnlimitedUV(bool active);
 }
