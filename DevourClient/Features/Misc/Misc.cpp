@@ -200,3 +200,18 @@ void Misc::CarryItem(const char* item) {
         print("Error!");
     }
 }
+
+void Misc::PlayerSpeed(int speed) {
+    try {
+        Unity::CComponent* UltimateCharacterLocomotion = Players::LocalPlayer->GetComponent("Opsive.UltimateCharacterController.Character.UltimateCharacterLocomotion");
+
+        if (!UltimateCharacterLocomotion)
+            return;
+
+        UltimateCharacterLocomotion->SetMemberValue("TimeScale", (float)settings::new_speed);
+    }
+    catch (...) {
+        settings::change_player_speed = false;
+        print("[ERROR] speed error\n");
+    }
+}
