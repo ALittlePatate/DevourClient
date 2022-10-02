@@ -65,3 +65,55 @@ void Misc::SetServerName(std::string name) {
 
     serverNameText->SetMemberValue<Unity::System_String*>("m_Text", IL2CPP::String::New(name));
 }
+
+void Misc::PlayRandomSound() {
+    Unity::CComponent* NolanVoiceOvers = Players::LocalPlayer->GetComponent("NolanVoiceOvers");
+    if (!NolanVoiceOvers) {
+        return;
+    }
+
+    srand(time(NULL));
+    int num = 1;// rand() % 10 + 1;
+    switch (num)
+    {
+    case 1: {
+        Unity::CComponent* yesClips = NolanVoiceOvers->GetMemberValue<Unity::CComponent*>("yesClips");
+        if (!yesClips) {
+            return;
+        }
+        yesClips->CallMethodSafe<void*>("Play");
+        break;
+    }
+    /*
+    case 2:
+        nolanVoiceOvers.noClips.Play();
+        return;
+    case 3:
+        nolanVoiceOvers.beckonClips.Play();
+        return;
+    case 4:
+        nolanVoiceOvers.showOffClips.Play();
+        return;
+    case 5:
+        nolanVoiceOvers.screamClips.Play();
+        return;
+    case 6:
+        nolanVoiceOvers.pickupClips.Play();
+        return;
+    case 7:
+        nolanVoiceOvers.burnGoatClips.Play();
+        return;
+    case 8:
+        nolanVoiceOvers.laughClips.Play();
+        return;
+    case 9:
+        nolanVoiceOvers.PlayMoan();
+        return;
+    case 10:
+        nolanVoiceOvers.Scream();
+        return;
+        */
+    default:
+        break;
+    }
+}

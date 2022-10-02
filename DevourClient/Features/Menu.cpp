@@ -145,7 +145,7 @@ void DrawEntitiesTab() {
 	const char* azazel_demons_items[] = { "Sam", "Molly", "Anna", "Zara", "Ghost", "Inmate", "Demon"};
 	static int entity_current = 0;
 	ImGui::Combo("##a", &entity_current, azazel_demons_items, IM_ARRAYSIZE(azazel_demons_items));
-	if (ImGui::Button("Spawn")) {
+	if (ImGui::Button("Spawn##a")) {
 		//call spawn function
 	}
 
@@ -154,7 +154,8 @@ void DrawEntitiesTab() {
 	const char* items_items[] = { "Hay", "First aid", "Battery", "Gasoline", "Fuse", "Food", "Egg", "Bleach", "Ritual Book", "Matchbox"};
 	static int item_current = 0;
 	ImGui::Combo("##i", &item_current, items_items, IM_ARRAYSIZE(items_items));
-	if (ImGui::Button("Spawn")) {
+	if (ImGui::Button("Spawn##i")) {
+		print("--> %s\n",items_items[item_current]);
 		//call spawn function
 	}
 
@@ -163,7 +164,7 @@ void DrawEntitiesTab() {
 	const char* animals_items[] = { "Rat", "Goat", "Spider"};
 	static int animal_current = 0;
 	ImGui::Combo("##an", &animal_current, animals_items, IM_ARRAYSIZE(animals_items));
-	if (ImGui::Button("Spawn")) {
+	if (ImGui::Button("Spawn##an")) {
 		//call spawn function
 	}
 }

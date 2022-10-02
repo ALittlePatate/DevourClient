@@ -11,4 +11,5 @@ namespace Misc {
     void UnlimitedUV(bool active);
     void SetSteamName(std::string name);
     void SetServerName(std::string name);
+    void PlayRandomSound();
 }
