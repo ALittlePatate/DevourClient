@@ -5,6 +5,7 @@ void Misc::SetRank(int rank) {
 }
 
 void Misc::WalkInlobby(bool walk) {
+    /*
     if (!Players::LocalPlayer->GetComponent("UltimateCharacterLocomotionHandler")) {
         Unity::il2cppClass* Character = IL2CPP::Class::Find("Opsive.UltimateCharacterController.Character::UltimateCharacterLocomotionHandler");
         Unity::CGameObject* UltimateCharacterLocomotionHandler =
@@ -14,4 +15,5 @@ void Misc::WalkInlobby(bool walk) {
 
         Players::LocalPlayer->AddComponent(UltimateCharacterLocomotionHandler);
     }
+    */
 }
