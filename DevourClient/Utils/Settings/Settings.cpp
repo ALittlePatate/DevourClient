@@ -36,6 +36,7 @@ namespace settings {
 	bool exp_modifier = false;
 	int new_exp = 2000;
 	bool walk_in_lobby = false;
+	bool auto_respawn = false;
 	bool change_player_speed = false;
 	int new_speed = 1;
 }
