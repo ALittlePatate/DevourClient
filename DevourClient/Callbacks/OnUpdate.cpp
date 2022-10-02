@@ -29,4 +29,7 @@ void OnUpdate() {
 		Misc::UnlimitedUV(false);
 		settings::unlimited_uv_reset = false;
 	}
+	if (settings::change_player_speed) {
+		Misc::PlayerSpeed(settings::new_speed);
+	}
 }
