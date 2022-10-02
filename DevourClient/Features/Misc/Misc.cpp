@@ -1,4 +1,5 @@
 #include "Misc.hpp"
+#include "../../Utils/Output/Output.hpp"
 
 void Misc::SetRank(int rank) {
     Players::LocalPlayer->GetComponent("NolanRankController")->CallMethodSafe<void*>("SetRank", rank);
@@ -20,13 +21,18 @@ void Misc::WalkInlobby(bool walk) {
 
 void Misc::UnlimitedUV(bool active) {
     try {
-        Players::LocalPlayer->GetComponent("NolanBehaviour")->CallMethodSafe<void*>("SetPurgatory", active);
+        Unity::CComponent* NolanBehaviour = Players::LocalPlayer->GetComponent("NolanBehaviour");
+        if (!NolanBehaviour) {
+            return;
+        }
+        NolanBehaviour->CallMethodSafe<void*>("SetPurgatory", active);
     }
     catch (...) {
         settings::unlimited_uv = false;
-        std::cout << "Unlimited UV error";
+        print("Unlimited UV error");
     }
 }
+
 void Misc::SetSteamName(std::string name) {
     Unity::CGameObject* MenuController = Unity::GameObject::Find("MenuController");
     if (!MenuController) {
