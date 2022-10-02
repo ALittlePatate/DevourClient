@@ -72,7 +72,7 @@ void Misc::PlayRandomSound() {
         return;
     }
 
-    srand(time(NULL));
+    srand((unsigned int)time(0));
     int num = 1;// rand() % 10 + 1;
     switch (num)
     {
@@ -81,6 +81,25 @@ void Misc::PlayRandomSound() {
         if (!yesClips) {
             return;
         }
+
+        yesClips->SetMemberValue<float>("delay", 0.f);
+        yesClips->SetMemberValue<bool>("useGoatBurnCount", false);
+        yesClips->SetMemberValue<bool>("noDuplicateSelection", false);
+
+        std::vector<Unity::il2cppMethodInfo*> methods;
+        std::vector<Unity::il2cppFieldInfo*> fields;
+        yesClips->FetchMethods(&methods);
+        yesClips->FetchFields(&fields);
+
+        for (Unity::il2cppMethodInfo* method : methods) {
+            print("--> %s\n", method->m_pName);
+        }
+        print("\n\n\n");
+
+        for (Unity::il2cppFieldInfo* field : fields) {
+            print("--> %s\n", field->m_pName);
+        }
+
         yesClips->CallMethodSafe<void*>("Play");
         break;
     }

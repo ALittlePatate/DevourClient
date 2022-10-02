@@ -3,6 +3,7 @@
 #include "../dllmain.hpp"
 #include "../Utils/Settings/Settings.hpp"
 #include "../Utils/Dumper/Dumper.hpp"
+#include "Misc/Misc.hpp"
 
 #include <string>
 
@@ -309,7 +310,7 @@ void DrawMiscTab() {
 	ImGui::Checkbox("Fly", &settings::fly);
 	
 	if (ImGui::Button("Make random noise")) {
-		//call make random noise
+		Misc::PlayRandomSound();
 	}
 
 	ImGui::Checkbox("EXP modifier", &settings::exp_modifier);
