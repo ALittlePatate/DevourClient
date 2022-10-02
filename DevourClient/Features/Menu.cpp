@@ -317,7 +317,9 @@ void DrawMiscTab() {
 	ImGui::SliderInt("Amount", &settings::new_exp, 0, 5000);
 
 	ImGui::Checkbox("Walk in lobby", &settings::walk_in_lobby);
-
+	
+	ImGui::Checkbox("Auto respawn", &settings::auto_respawn);
+	
 	ImGui::Checkbox("Change player speed", &settings::change_player_speed);
 	ImGui::SliderInt("Multiplier", &settings::new_speed, 0, 10);
 
