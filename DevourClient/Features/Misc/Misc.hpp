@@ -12,4 +12,5 @@ namespace Misc {
     void SetSteamName(std::string name);
     void SetServerName(std::string name);
     void PlayRandomSound();
+    void CarryItem(const char* itemName);
 }
