@@ -21,6 +21,12 @@ void OnUpdate() {
 	if (settings::server_name_spoof) {
 		Misc::SetServerName(settings::server_name);
 	}
-
-	Misc::UnlimitedUV(settings::unlimited_uv);
+	if (settings::unlimited_uv) {
+		settings::unlimited_uv_reset = true;
+		Misc::UnlimitedUV(settings::unlimited_uv);
+	}
+	if (!settings::unlimited_uv && settings::unlimited_uv_reset) {
+		Misc::UnlimitedUV(false);
+		settings::unlimited_uv_reset = false;
+	}
 }

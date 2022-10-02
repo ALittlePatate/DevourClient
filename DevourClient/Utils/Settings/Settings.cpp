@@ -5,6 +5,7 @@ namespace settings {
 	float flashlight_color[4] = { 255.f, 255.f, 255.f, 255.f };
 
 	bool unlimited_uv = false;
+	bool unlimited_uv_reset = true;
 	bool fullbright = false;
 
 	bool player_esp = false;

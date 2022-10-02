@@ -13,7 +13,7 @@ void Players::GetPlayersThread() {
     * Used as a "cache" - sorta
     * I use this instead of my good old corroutine
     */
-
+    IL2CPP::Thread::Attach(IL2CPP::Domain::Get());
     while (1) {
         PlayerList.clear();
 

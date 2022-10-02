@@ -9,6 +9,7 @@ namespace settings {
 	extern float flashlight_color[4];
 
 	extern bool unlimited_uv;
+	extern bool unlimited_uv_reset;
 	extern bool fullbright;
 
 	extern bool player_esp;

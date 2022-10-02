@@ -9,6 +9,7 @@
 #include "Utils/Output/Output.hpp"
 #include "Callbacks/OnUpdate.hpp"
 #include "Utils/Players/Players.hpp"
+#include "Features/ESP/ESP.hpp"
 
 #include <IL2CPP_Resolver/il2cpp_resolver.hpp>
 
@@ -64,6 +65,7 @@ DWORD WINAPI Main() {
     IL2CPP::Callback::OnUpdate::Add(OnUpdate);
 
     CreateThread(0, 0, (LPTHREAD_START_ROUTINE)Players::GetPlayersThread, 0, 0, 0);
+    CreateThread(0, 0, (LPTHREAD_START_ROUTINE)ESP::PlayerESP, 0, 0, 0); //running in a different thread to help performance
 
     return TRUE;
 }

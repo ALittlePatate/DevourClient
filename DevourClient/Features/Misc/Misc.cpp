@@ -1,8 +1,13 @@
 #include "Misc.hpp"
 #include "../../Utils/Output/Output.hpp"
+#include <time.h>
 
 void Misc::SetRank(int rank) {
-    Players::LocalPlayer->GetComponent("NolanRankController")->CallMethodSafe<void*>("SetRank", rank);
+    Unity::CComponent* NolanRankController = Players::LocalPlayer->GetComponent("NolanRankController");
+    if (!NolanRankController) {
+        return;
+    }
+    NolanRankController->CallMethodSafe<void*>("SetRank", rank);
 }
 
 void Misc::WalkInlobby(bool walk) {
@@ -29,7 +34,6 @@ void Misc::UnlimitedUV(bool active) {
     }
     catch (...) {
         settings::unlimited_uv = false;
-        print("Unlimited UV error");
     }
 }
 

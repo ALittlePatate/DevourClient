@@ -303,6 +303,7 @@
     <ClInclude Include="Dependencies\Minhook\src\HDE\table64.h" />
     <ClInclude Include="Dependencies\Minhook\src\trampoline.h" />
     <ClInclude Include="dllmain.hpp" />
+    <ClInclude Include="Features\ESP\ESP.hpp" />
     <ClInclude Include="Features\Menu.hpp" />
     <ClInclude Include="Features\Misc\Misc.hpp" />
     <ClInclude Include="framework.h" />
@@ -346,6 +347,7 @@
     <ClCompile Include="Dependencies\Minhook\src\hook.c" />
     <ClCompile Include="Dependencies\Minhook\src\trampoline.c" />
     <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="Features\ESP\ESP.cpp" />
     <ClCompile Include="Features\Menu.cpp" />
     <ClCompile Include="Features\Misc\Misc.cpp" />
     <ClCompile Include="Hooks\Hooks.cpp" />
