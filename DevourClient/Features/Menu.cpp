@@ -156,8 +156,8 @@ void DrawEntitiesTab() {
 	static int item_current = 0;
 	ImGui::Combo("##i", &item_current, items_items, IM_ARRAYSIZE(items_items));
 	if (ImGui::Button("Spawn##i")) {
-		print("--> %s\n",items_items[item_current]);
-		//call spawn function
+		//print("--> %s\n",items_items[item_current]);
+		Misc::CarryItem(items_items[item_current]);
 	}
 
 	ImGui::Spacing();
