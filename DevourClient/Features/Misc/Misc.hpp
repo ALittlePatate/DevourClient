@@ -10,4 +10,5 @@ namespace Misc {
     void WalkInlobby(bool walk);
     void UnlimitedUV(bool active);
     void SetSteamName(std::string name);
+    void SetServerName(std::string name);
 }

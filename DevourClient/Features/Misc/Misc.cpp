@@ -46,3 +46,22 @@ void Misc::SetSteamName(std::string name) {
 
     Menu->SetMemberValue<Unity::System_String*>("steamName", IL2CPP::String::New(name));
 }
+
+void Misc::SetServerName(std::string name) {
+    Unity::CGameObject* MenuController = Unity::GameObject::Find("MenuController");
+    if (!MenuController) {
+        return;
+    }
+
+    Unity::CComponent* Menu = MenuController->GetComponent("Horror.Menu");
+    if (!Menu) {
+        return;
+    }
+
+    Unity::CComponent* serverNameText = Menu->GetMemberValue<Unity::CComponent*>("serverNameText");
+    if (!serverNameText) {
+        return;
+    }
+
+    serverNameText->SetMemberValue<Unity::System_String*>("m_Text", IL2CPP::String::New(name));
+}

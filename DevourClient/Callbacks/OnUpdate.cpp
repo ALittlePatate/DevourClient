@@ -21,4 +21,7 @@ void OnUpdate() {
 	if (settings::steam_name_spoof) {
 		Misc::SetSteamName(settings::new_name);
 	}
+	if (settings::server_name_spoof) {
+		Misc::SetServerName(settings::server_name);
+	}
 }
