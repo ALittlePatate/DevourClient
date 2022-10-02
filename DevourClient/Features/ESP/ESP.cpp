@@ -7,6 +7,11 @@
 
 void ESP::PlayerESP() {
 	IL2CPP::Thread::Attach(IL2CPP::Domain::Get());
+
+	ImGui::SetNextWindowPos(ImVec2(0, 0));
+	ImGui::SetNextWindowSize(ImVec2(1024, 768));
+	ImGui::Begin("PlayerESPOverlay", nullptr, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoInputs | ImGuiWindowFlags_NoBackground);
+
 	while (1) {
 		if (settings::player_esp || settings::player_snaplines) {
 			for (Unity::CGameObject* player : Players::PlayerList) {
@@ -36,11 +41,16 @@ void ESP::PlayerESP() {
 					continue;
 				}
 
-				std::vector<Unity::il2cppFieldInfo*> fields;
-				CameraMain->FetchFields(&fields);
+				Unity::Vector3 w2s_footpos = CameraMain->CallMethodSafe<Unity::Vector3>("WorldToScreenPoint");
+				Unity::Vector3 w2s_headpos = CameraMain->CallMethodSafe<Unity::Vector3>("WorldToScreenPoint");
+				
+				if (w2s_footpos.z > 0.f)
+				{
+					auto pDrawList = ImGui::GetWindowDrawList();
 
-				for (Unity::il2cppFieldInfo* field : fields) {
-					print("--> %s\n", field->m_pName);
+					pDrawList->AddRect(ImVec2(10, 10), ImVec2(100, 100), ImColor(255, 0, 0));
+					pDrawList->AddText(ImVec2(10, 10), ImColor(255, 0, 0), "test");
+					//Render.Render.DrawBoxESP(w2s_footpos, w2s_headpos, settings::player_esp_color, "", settings::player_snaplines, settings::player_esp);
 				}
 			}
 		}
