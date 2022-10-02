@@ -300,10 +300,10 @@ void DrawMiscTab() {
 	}
 
 	ImGui::Checkbox("Change Steam name", &settings::steam_name_spoof);
-	ImGui::InputText("New name", &settings::new_name);
+	ImGui::InputText("New name##steam", &settings::new_name);
 
 	ImGui::Checkbox("Change server name", &settings::server_name_spoof);
-	ImGui::InputText("New name", &settings::server_name);
+	ImGui::InputText("New name##server", &settings::server_name);
 
 	ImGui::Checkbox("Fly", &settings::fly);
 	
@@ -324,10 +324,6 @@ void DrawMiscTab() {
 	if (ImGui::Button("Inspector")) {
 		inspector = !inspector;
 	}
-
-	if (inspector) {
-		DrawInspector();
-	}
 #endif
 
 	ImGui::Spacing();
@@ -340,6 +336,12 @@ tabs current_tab = tabs::VISUALS;
 void DrawMenu(bool open_menu) {
 	ImGui::SetNextWindowSize(ImVec2(240.000f, 300.000f), ImGuiCond_Once);
 	ImGui::Begin("Devour Client", NULL, 2);
+
+#if _DEBUG
+	if (inspector) {
+		DrawInspector();
+	}
+#endif
 
 	ImGui::SameLine();
 	if (ImGui::Button("Visuals")) {//, ImVec2(0.000f, 0.000f))) {

@@ -27,3 +27,16 @@ void Misc::UnlimitedUV(bool active) {
         std::cout << "Unlimited UV error";
     }
 }
+void Misc::SetSteamName(std::string name) {
+    Unity::CGameObject* MenuController = Unity::GameObject::Find("MenuController");
+    if (!MenuController) {
+        return;
+    }
+
+    Unity::CComponent* Menu = MenuController->GetComponent("Horror.Menu");
+    if (!Menu) {
+        return;
+    }
+
+    Menu->SetMemberValue<Unity::System_String*>("steamName", IL2CPP::String::New(name));
+}
