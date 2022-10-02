@@ -152,7 +152,7 @@ void DrawEntitiesTab() {
 
 	ImGui::Spacing();
 	ImGui::Text("Items");
-	const char* items_items[] = { "Hay", "First aid", "Battery", "Gasoline", "Fuse", "Food", "Egg", "Bleach", "Ritual Book", "Matchbox"};
+	const char* items_items[] = { "Hay", "First aid", "Battery", "Gasoline", "Fuse", "Food", "Egg (dirty)", "Egg (clean)", "Bleach", "Ritual Book (inactive)", "Ritual Book (active)", "Matchbox"};
 	static int item_current = 0;
 	ImGui::Combo("##i", &item_current, items_items, IM_ARRAYSIZE(items_items));
 	if (ImGui::Button("Spawn##i")) {
