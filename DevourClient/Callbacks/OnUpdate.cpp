@@ -15,4 +15,7 @@ void OnUpdate() {
 	if (settings::walk_in_lobby) {
 		Misc::WalkInlobby(settings::walk_in_lobby);
 	}
+	if (settings::unlimited_uv) {
+		Misc::UnlimitedUV(settings::unlimited_uv);
+	}
 }
