@@ -17,3 +17,13 @@ void Misc::WalkInlobby(bool walk) {
     }
     */
 }
+
+void Misc::UnlimitedUV(bool active) {
+    try {
+        Players::LocalPlayer->GetComponent("NolanBehaviour")->CallMethodSafe<void*>("SetPurgatory", active);
+    }
+    catch (...) {
+        settings::unlimited_uv = false;
+        std::cout << "Unlimited UV error";
+    }
+}
