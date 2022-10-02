@@ -40,6 +40,7 @@ namespace settings {
 	extern bool exp_modifier;
 	extern int new_exp;
 	extern bool walk_in_lobby;
+	extern bool auto_respawn;
 	extern bool change_player_speed;
 	extern int new_speed;
 }
