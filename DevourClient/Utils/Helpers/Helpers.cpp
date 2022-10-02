@@ -19,3 +19,19 @@ bool Helpers::IsInGame() {
 
     return OptionsHelpersData->GetMemberValue<bool*>("inGame");
 }
+
+std::string Helpers::GetActiveScene() {
+    Unity::CGameObject* MapHelper = Unity::GameObject::Find("SaveHelpers");
+
+    if (!MapHelper) {
+        return "";
+    }
+
+    Unity::CComponent* MapHelperData = MapHelper->GetComponent("SaveHelpers");
+
+    if (!MapHelperData) {
+        return "";
+    }
+
+    return MapHelperData->GetMemberValue<Unity::System_String*>("sceneName")->ToString();
+}
