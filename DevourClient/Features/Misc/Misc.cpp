@@ -197,7 +197,8 @@ void Misc::CarryItem(const char* item) {
         NolanBehaviour->CallMethod<void*>("StartCarry", IL2CPP::String::New(setItemName));
     }
     catch (...) {
-        print("Error!");
+        return;
+        //print("Error!");
     }
 }
 
@@ -212,6 +213,6 @@ void Misc::PlayerSpeed(int speed) {
     }
     catch (...) {
         settings::change_player_speed = false;
-        print("[ERROR] speed error\n");
+        //print("[ERROR] speed error\n");
     }
 }
