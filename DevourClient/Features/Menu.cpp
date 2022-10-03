@@ -166,7 +166,7 @@ void DrawEntitiesTab() {
 	static int animal_current = 0;
 	ImGui::Combo("##an", &animal_current, animals_items, IM_ARRAYSIZE(animals_items));
 	if (ImGui::Button("Spawn##an")) {
-		//call spawn function
+		Misc::SpawnAnimal(animals_items[animal_current]);
 	}
 }
 
