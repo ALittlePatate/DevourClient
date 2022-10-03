@@ -1,8 +1,13 @@
 #include "Misc.hpp"
 #include "../../Utils/Output/Output.hpp"
+#include "../../Utils/Helpers/Helpers.hpp"
 #include <time.h>
 
 void Misc::SetRank(int rank) {
+    if (!Players::LocalPlayer) {
+        return;
+    }
+
     Unity::CComponent* NolanRankController = Players::LocalPlayer->GetComponent("NolanRankController");
     if (!NolanRankController) {
         return;
@@ -142,6 +147,10 @@ void Misc::PlayRandomSound() {
 }
 
 void Misc::CarryItem(const char* item) {
+    if (Helpers::GetActiveScene() == std::string("Menu")) {
+        return;
+    }
+
     std::string setItemName = "";
 
     if (item == "Hay") {
@@ -218,6 +227,10 @@ void Misc::PlayerSpeed(int speed) {
 }
 
 void Misc::SpawnAnimal(const char* animalName) {
+    if (Helpers::GetActiveScene() == std::string("Menu")) {
+        return;
+    }
+
     std::string AnimalId = "";
 
     if (animalName == "Goat") {
