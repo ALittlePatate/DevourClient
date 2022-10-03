@@ -216,3 +216,30 @@ void Misc::PlayerSpeed(int speed) {
         //print("[ERROR] speed error\n");
     }
 }
+
+void Misc::SpawnAnimal(const char* animalName) {
+    std::string AnimalId = "";
+
+    if (animalName == "Goat") {
+        AnimalId = "SurvivalGoat";
+    }
+    if (animalName == "Rat") {
+        AnimalId = "SurvivalRat";
+    }
+    if (animalName == "Spider") {
+        // spawn spider
+        return;
+    }
+
+    try {
+        Unity::CComponent* NolanBehaviour = Players::LocalPlayer->GetComponent("NolanBehaviour");
+        if (!NolanBehaviour) {
+            return;
+        }
+
+        NolanBehaviour->CallMethod<void*>("StartCarry", IL2CPP::String::New(AnimalId));
+    }
+    catch (...) {
+        return;
+    }
+}
