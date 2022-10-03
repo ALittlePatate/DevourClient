@@ -5,6 +5,9 @@
 #include <string>
 
 namespace settings {
+	extern int height;
+	extern int width;
+
 	extern bool big_flashlight;
 	extern float flashlight_color[4];
 

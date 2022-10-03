@@ -9,7 +9,7 @@
 #include "Utils/Output/Output.hpp"
 #include "Callbacks/OnUpdate.hpp"
 #include "Utils/Players/Players.hpp"
-#include "Features/ESP/ESP.hpp"
+#include "Utils/Objects/Objects.hpp"
 
 #include <IL2CPP_Resolver/il2cpp_resolver.hpp>
 
@@ -61,12 +61,17 @@ DWORD WINAPI Main() {
     CreateHooks();
     print("[+] Created hooks\n");
 
+    RECT desktop;
+    const HWND hDesktop = GetDesktopWindow();
+    GetWindowRect(hDesktop, &desktop);
+    settings::height = desktop.right;
+    settings::width = desktop.bottom;
+
     IL2CPP::Callback::Initialize();
     IL2CPP::Callback::OnUpdate::Add(OnUpdate);
 
     CreateThread(0, 0, (LPTHREAD_START_ROUTINE)Players::GetPlayersThread, 0, 0, 0);
-    CreateThread(0, 0, (LPTHREAD_START_ROUTINE)ESP::PlayerESP, 0, 0, 0); //running in a different thread to help performance
-
+    CreateThread(0, 0, (LPTHREAD_START_ROUTINE)Objects::GetObjectsThread, 0, 0, 0);
     return TRUE;
 }
 

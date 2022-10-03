@@ -1,6 +1,9 @@
 #include "Settings.hpp"
 
 namespace settings {
+	int height = 1080;
+	int width = 1920;
+
 	bool big_flashlight = false;
 	float flashlight_color[4] = { 255.f, 255.f, 255.f, 255.f };
 
