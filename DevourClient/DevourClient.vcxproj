@@ -312,6 +312,7 @@
     <ClInclude Include="Callbacks\OnUpdate.hpp" />
     <ClInclude Include="Utils\Dumper\Dumper.hpp" />
     <ClInclude Include="Utils\Helpers\Helpers.hpp" />
+    <ClInclude Include="Utils\Objects\Objects.hpp" />
     <ClInclude Include="Utils\Output\Output.hpp" />
     <ClInclude Include="Utils\Players\Players.hpp" />
     <ClInclude Include="Utils\Settings\Settings.hpp" />
@@ -360,6 +361,7 @@
     <ClCompile Include="Callbacks\OnUpdate.cpp" />
     <ClCompile Include="Utils\Dumper\Dumper.cpp" />
     <ClCompile Include="Utils\Helpers\Helpers.cpp" />
+    <ClCompile Include="Utils\Objects\Objects.cpp" />
     <ClCompile Include="Utils\Output\Output.cpp" />
     <ClCompile Include="Utils\Players\Players.cpp" />
     <ClCompile Include="Utils\Settings\Settings.cpp" />
