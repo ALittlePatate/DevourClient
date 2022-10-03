@@ -2,6 +2,7 @@
 #include "../Utils/Output/Output.hpp"
 #include "../Dependencies/IL2CPP_Resolver/il2cpp_resolver.hpp"
 #include "../Features/Menu.hpp"
+#include "../Features/ESP/ESP.hpp"
 #include "../dllmain.hpp"
 
 #pragma warning(push, 0) //important cuz dx11 throws so much warnings
@@ -68,10 +69,13 @@ LRESULT __stdcall WndProc(const HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lPar
 
 static bool pressed = false;
 bool initonce = false;
+static bool failed = false;
+static bool cursor_switch = false;
+Unity::CComponent* UI = NULL;
 ID3D11RenderTargetView* mainRenderTargetViewD3D11 = NULL;
 
 HRESULT __stdcall hookD3D11Present(IDXGISwapChain* pSwapChain, UINT SyncInterval, UINT Flags) {
-
+	failed = false;
 	if (!initonce)
 	{
 		if (SUCCEEDED(pSwapChain->GetDevice(__uuidof(ID3D11Device), (void**)&pDevice)))
@@ -95,12 +99,26 @@ HRESULT __stdcall hookD3D11Present(IDXGISwapChain* pSwapChain, UINT SyncInterval
 			return phookD3D11Present(pSwapChain, SyncInterval, Flags);
 	}
 
-	if (GetKeyState(VK_INSERT) & 0x8000)
+	if (GetKeyState(VK_INSERT) & 0x8000) {
 		pressed = true;
+	}
+		
 
 	else if (!(GetKeyState(VK_INSERT) & 0x8000) && pressed) {
 		open_menu = !open_menu;
 		pressed = false;
+	}
+
+	if (cursor_switch || open_menu) {
+		Unity::CGameObject* UIHelpers = Unity::GameObject::Find("UIHelpers");
+		if (!UIHelpers) {
+			failed = true;
+		}
+
+		Unity::CComponent* UI = UIHelpers->GetComponent("UIHelpers");
+		if (!UI) {
+			failed = true;
+		}
 	}
 
 	ImGui_ImplDX11_NewFrame();
@@ -108,10 +126,20 @@ HRESULT __stdcall hookD3D11Present(IDXGISwapChain* pSwapChain, UINT SyncInterval
 	ImGui::NewFrame();
 
 	if (open_menu) {
+		if (!failed) {
+			UI->CallMethodSafe<void*>("ShowMouseCursor");
+			cursor_switch = true;
+		}
 		DrawMenu(open_menu);
+	}
+	else if (!failed && cursor_switch) {
+		UI->CallMethodSafe<void*>("HideMouseCursor");
+		cursor_switch = false;
 	}
 
 	ImGui::GetIO().MouseDrawCursor = open_menu;
+
+	ESP::PlayerESP();
 
 	ImGui::EndFrame();
 	ImGui::Render();
