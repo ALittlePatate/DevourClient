@@ -4,6 +4,8 @@
 # Discord server [here](https://discord.gg/2amMFvqjYd)
 
 # /!\ READ THIS
+many people are comming here (thanks btw) and asking about the cheat. NO the MelonLoader version of the cheat DOES NOT WORK. We are working on this new version using C++. This takes time but you can follow along on the github page or in annoncements features-state update-logs channels in the discord. We do not have an ETA at the moment.
+
 This is the branch for the V2 of the cheat, this branch will be the one updated from now.
 The v2 is still in development.
 
