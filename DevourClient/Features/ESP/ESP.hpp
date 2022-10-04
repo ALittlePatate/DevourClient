@@ -2,4 +2,5 @@
 
 namespace ESP {
 	void PlayerESP();
+	void ItemESP();
 }

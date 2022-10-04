@@ -111,7 +111,7 @@ void DrawVisualsTab() {
 		ImGui::EndPopup();
 	}
 
-	ImGui::Checkbox("Demon ESP", &settings::item_esp);
+	ImGui::Checkbox("Demon ESP", &settings::demon_esp);
 	ImGui::SameLine();
 	bool open_dcolor_popup = ImGui::ColorButton("despcolor", ImVec4(settings::demon_esp_color[0], settings::demon_esp_color[1], settings::demon_esp_color[2], settings::demon_esp_color[3]));
 	if (open_dcolor_popup)

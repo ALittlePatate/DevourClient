@@ -142,6 +142,7 @@ HRESULT __stdcall hookD3D11Present(IDXGISwapChain* pSwapChain, UINT SyncInterval
 	ImGui::GetIO().MouseDrawCursor = open_menu;
 
 	ESP::PlayerESP();
+	ESP::ItemESP();
 
 	ImGui::EndFrame();
 	ImGui::Render();
