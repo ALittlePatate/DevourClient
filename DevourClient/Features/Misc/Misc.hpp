@@ -15,4 +15,5 @@ namespace Misc {
     void CarryItem(const char* itemName);
     void PlayerSpeed(int speed);
     void SpawnAnimal(const char* animalName);
+    void ForceStart();
 }
