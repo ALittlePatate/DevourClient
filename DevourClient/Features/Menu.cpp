@@ -294,7 +294,7 @@ void DrawMiscTab() {
 	}
 
 	if (ImGui::Button("Force start game")) {
-		//force start
+		Misc::ForceStart();
 	}
 
 	ImGui::Checkbox("Unlock all", &settings::unlock_all);
