@@ -289,6 +289,14 @@ void DrawMiscTab() {
 		//Unlock Achievements
 	}
 
+	if (ImGui::Button("Burn a ritual object")) {
+		//burn a ritual object
+	}
+
+	if (ImGui::Button("Force start game")) {
+		//force start
+	}
+
 	ImGui::Checkbox("Unlock all", &settings::unlock_all);
 
 	ImGui::Checkbox("Spoof level", &settings::spoof_level);
