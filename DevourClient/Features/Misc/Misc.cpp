@@ -256,3 +256,27 @@ void Misc::SpawnAnimal(const char* animalName) {
         return;
     }
 }
+
+void Misc::ForceStart() {
+    Unity::CGameObject* MenuController = Unity::GameObject::Find("MenuController");
+
+    if (!MenuController) {
+        return;
+    }
+
+    Unity::CComponent* Menu = MenuController->GetComponent("Horror.Menu");
+
+    if (!Menu) {
+        return;
+    }
+
+    Unity::CComponent* player = Players::LocalPlayer->GetComponent("BoltEntity");
+    
+    if (!player) {
+        return;
+    }
+
+    // check if player is host or not
+
+    Menu->CallMethodSafe<void*>("OnLobbyStartButtonClick");
+}
