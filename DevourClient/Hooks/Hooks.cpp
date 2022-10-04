@@ -69,13 +69,10 @@ LRESULT __stdcall WndProc(const HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lPar
 
 static bool pressed = false;
 bool initonce = false;
-static bool failed = false;
 static bool cursor_switch = false;
-Unity::CComponent* UI = NULL;
 ID3D11RenderTargetView* mainRenderTargetViewD3D11 = NULL;
 
 HRESULT __stdcall hookD3D11Present(IDXGISwapChain* pSwapChain, UINT SyncInterval, UINT Flags) {
-	failed = false;
 	if (!initonce)
 	{
 		if (SUCCEEDED(pSwapChain->GetDevice(__uuidof(ID3D11Device), (void**)&pDevice)))
@@ -109,33 +106,38 @@ HRESULT __stdcall hookD3D11Present(IDXGISwapChain* pSwapChain, UINT SyncInterval
 		pressed = false;
 	}
 
-	if (cursor_switch || open_menu) {
-		Unity::CGameObject* UIHelpers = Unity::GameObject::Find("UIHelpers");
-		if (!UIHelpers) {
-			failed = true;
-		}
-
-		Unity::CComponent* UI = UIHelpers->GetComponent("UIHelpers");
-		if (!UI) {
-			failed = true;
-		}
-	}
-
 	ImGui_ImplDX11_NewFrame();
 	ImGui_ImplWin32_NewFrame();
 	ImGui::NewFrame();
 
+	/*
+	seems that there are issues with opening the menu in the pause menu
+	the cursor will still be visible but locked in the middle of the screen
+	//TOFIX
+	*/
+
 	if (open_menu) {
-		if (!failed) {
-			UI->CallMethodSafe<void*>("ShowMouseCursor");
-			cursor_switch = true;
-		}
+		/*Unity::CGameObject* UIHelpers = Unity::GameObject::Find("UIHelpers");
+		if (UIHelpers) {
+			Unity::CComponent* UI = UIHelpers->GetComponent("UIHelpers");
+			if (UI) {
+				UI->CallMethodSafe<void*>("ShowMouseCursor");
+				cursor_switch = true;
+			}
+		}*/
+		
 		DrawMenu(open_menu);
 	}
-	else if (!failed && cursor_switch) {
-		UI->CallMethodSafe<void*>("HideMouseCursor");
-		cursor_switch = false;
-	}
+	/*if (!open_menu && cursor_switch) {
+		Unity::CGameObject* UIHelpers = Unity::GameObject::Find("UIHelpers");
+		if (UIHelpers) {
+			Unity::CComponent* UI = UIHelpers->GetComponent("UIHelpers");
+			if (UI) {
+				UI->CallMethodSafe<void*>("HideMouseCursor");
+				cursor_switch = false;
+			}
+		}
+	}*/
 
 	ImGui::GetIO().MouseDrawCursor = open_menu;
 
