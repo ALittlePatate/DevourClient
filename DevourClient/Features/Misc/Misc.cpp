@@ -171,14 +171,6 @@ void Misc::CarryItem(const char* item) {
     if (item == "Food") {
         setItemName = "SurvivalRottenFood";
     }
-    if (item == "Egg (dirty)") {
-        // clean egg example: "Egg-Clean-<int>"
-        // dirty egg example: "Egg-Dirty-<int>"
-        setItemName = "Egg-Dirty-1";
-    }
-    if (item == "Egg (clean)") {
-        setItemName = "Egg-Clean-1";
-    }
     if (item == "Bleach") {
         setItemName = "SurvivalBleach";
     }
@@ -195,7 +187,38 @@ void Misc::CarryItem(const char* item) {
     if (item == "Matchbox") {
         setItemName = "Matchbox-3";
     }
-
+    if (item == "Egg-1") {
+        // clean egg example: "Egg-Clean-<int>"
+        // dirty egg example: "Egg-Dirty-<int>"
+        setItemName = "Egg-Clean-1";
+    }
+    if (item == "Egg-2") {
+        setItemName = "Egg-Clean-2";
+    }
+    if (item == "Egg-3") {
+        setItemName = "Egg-Clean-3";
+    }
+    if (item == "Egg-4") {
+        setItemName = "Egg-Clean-4";
+    }
+    if (item == "Egg-5") {
+        setItemName = "Egg-Clean-5";
+    }
+    if (item == "Egg-6") {
+        setItemName = "Egg-Clean-6";
+    }
+    if (item == "Egg-7") {
+        setItemName = "Egg-Clean-7";
+    }
+    if (item == "Egg-8") {
+        setItemName = "Egg-Clean-8";
+    }
+    if (item == "Egg-9") {
+        setItemName = "Egg-Clean-9";
+    }
+    if (item == "Egg-10") {
+        setItemName = "Egg-Clean-10";
+    }
 
     try {
         Unity::CComponent* NolanBehaviour = Players::LocalPlayer->GetComponent("NolanBehaviour");
