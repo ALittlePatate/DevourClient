@@ -290,7 +290,11 @@ void DrawMiscTab() {
 	}
 
 	if (ImGui::Button("Burn a ritual object")) {
-		//burn a ritual object
+		Misc::BurnRitualObj(false);
+	}
+	
+	if (ImGui::Button("Burn all ritual objects")) {
+		Misc::BurnRitualObj(true);
 	}
 
 	if (ImGui::Button("Force start game")) {
