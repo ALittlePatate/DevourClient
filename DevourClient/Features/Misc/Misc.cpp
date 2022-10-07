@@ -448,9 +448,6 @@ void Misc::KnockoutPlayers(bool killYourself) {
 
                 AzazelSamComp->CallMethodSafe<void*>("OnKnockout", AzazaelSam, player);
             }
-
-            AzazelSamComp->CallMethodSafe<void*>("OnKnockout", AzazaelSam, Players::LocalPlayer);
-
         }
 
         Unity::CGameObject* AzazelZara = Unity::GameObject::Find("AzazelZara(Clone)");
