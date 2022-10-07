@@ -305,6 +305,14 @@ void DrawMiscTab() {
 		//Unlock Achievements
 	}
 
+	if (ImGui::Button("Revive Yourself")) {
+		Misc::Revive(false);
+	}
+
+	if (ImGui::Button("Revive Everyone")) {
+		Misc::Revive(true);
+	}
+	
 	ImGui::Checkbox("Unlock all", &settings::unlock_all);
 
 	ImGui::Checkbox("Spoof level", &settings::spoof_level);
