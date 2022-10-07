@@ -386,3 +386,25 @@ void Misc::BurnRitualObj(bool burnAll) {
         return;
     } 
 }
+
+void Misc::ShootPlayers() {
+    Unity::CGameObject* AzazaelSam = Unity::GameObject::Find("AzazelSam(Clone)");
+
+    if (!AzazaelSam) {
+        return;
+    }
+
+    Unity::CComponent* AzazelSamBehaviour = AzazaelSam->GetComponent("AzazelSamBehaviour");
+
+    if (!AzazelSamBehaviour) {
+        return;
+    }
+
+    for (Unity::CGameObject* player : Players::PlayerList) {
+        if (!player || player == Players::LocalPlayer) {
+            continue;
+        }
+
+        AzazelSamBehaviour->CallMethodSafe<void*>("OnShootPlayer", player, true);
+    }
+}
