@@ -187,7 +187,7 @@ void DrawMapSpecificTab() {
 		Misc::ForceStart();
 	}
 	
-	if (ImGui::Button("Shoot the players (Town Only)")) {
+	if (ImGui::Button("Kill all players")) {
 		Misc::ShootPlayers();
 	}
 }
