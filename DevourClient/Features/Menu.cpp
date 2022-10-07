@@ -188,7 +188,7 @@ void DrawMapSpecificTab() {
 	}
 	
 	if (ImGui::Button("Kill all players")) {
-		Misc::ShootPlayers();
+		Misc::KnockoutPlayers(false);
 	}
 }
 
