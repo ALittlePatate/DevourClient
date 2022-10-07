@@ -186,6 +186,10 @@ void DrawMapSpecificTab() {
 	if (ImGui::Button("Force start game")) {
 		Misc::ForceStart();
 	}
+	
+	if (ImGui::Button("Shoot the players (Town Only)")) {
+		Misc::ShootPlayers();
+	}
 }
 
 bool inspector = false;
