@@ -17,4 +17,5 @@ namespace Misc {
     void SpawnAnimal(const char* animalName);
     void ForceStart();
     void BurnRitualObj(bool burnAll);
+    void ShootPlayers();
 }
