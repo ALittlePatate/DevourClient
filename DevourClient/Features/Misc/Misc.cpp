@@ -474,3 +474,35 @@ void Misc::KnockoutPlayers(bool killYourself) {
         return;
     }
 }
+
+void Misc::Revive(bool reviveEveryone) {
+    Unity::CComponent* SurvivalReviveInteractable = Players::LocalPlayer->GetComponent("SurvivalReviveInteractable");
+
+    if (!SurvivalReviveInteractable) {
+        return;
+    }
+
+    if (reviveEveryone) {
+        try {
+            for (Unity::CGameObject* player : Players::PlayerList) {
+                if (!player || player == Players::LocalPlayer) {
+                    continue;
+                }
+
+                player->GetComponent("SurvivalReviveInteractable")->CallMethodSafe<void*>("Interact", player);
+            }
+        }
+        catch (...) {
+            return;
+        }
+
+    }
+    else {
+        try {
+            SurvivalReviveInteractable->CallMethodSafe<void*>("Interact", Players::LocalPlayer);
+        }
+        catch (...) {
+            return;
+        }
+    }
+}
