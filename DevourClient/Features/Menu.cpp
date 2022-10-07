@@ -174,6 +174,18 @@ void DrawMapSpecificTab() {
 	if (ImGui::Button("Instant win")) {
 		//call instant win
 	}
+	
+	if (ImGui::Button("Burn a ritual object")) {
+		Misc::BurnRitualObj(false);
+	}
+	
+	if (ImGui::Button("Burn all ritual objects")) {
+		Misc::BurnRitualObj(true);
+	}
+
+	if (ImGui::Button("Force start game")) {
+		Misc::ForceStart();
+	}
 }
 
 bool inspector = false;
@@ -287,18 +299,6 @@ void DrawMiscTab() {
 
 	if (ImGui::Button("Unlock Doors")) {
 		//Unlock Achievements
-	}
-
-	if (ImGui::Button("Burn a ritual object")) {
-		Misc::BurnRitualObj(false);
-	}
-	
-	if (ImGui::Button("Burn all ritual objects")) {
-		Misc::BurnRitualObj(true);
-	}
-
-	if (ImGui::Button("Force start game")) {
-		Misc::ForceStart();
 	}
 
 	ImGui::Checkbox("Unlock all", &settings::unlock_all);
