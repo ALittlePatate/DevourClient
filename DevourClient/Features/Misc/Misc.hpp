@@ -18,4 +18,5 @@ namespace Misc {
     void ForceStart();
     void BurnRitualObj(bool burnAll);
     void KnockoutPlayers(bool killYourself);
+    void Revive(bool reviveEveryone);
 }
