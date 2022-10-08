@@ -35,3 +35,31 @@ std::string Helpers::GetActiveScene() {
 
     return MapHelperData->GetMemberValue<Unity::System_String*>("sceneName")->ToString();
 }
+
+Unity::CGameObject* Helpers::Game() {
+    if (!Players::LocalPlayer) {
+        return NULL;
+    }
+
+    Unity::CComponent* Nolan = Players::LocalPlayer->GetComponent("NolanBehaviour");
+
+    if (!Nolan) {
+        return NULL;
+    }
+
+    Unity::CGameObject* Game = Nolan->GetMemberValue<Unity::CGameObject*>("gameController");
+
+    if (!Game) {
+        return NULL;
+    }
+
+    return Game;
+
+    /*
+        NOTE: this helper returns NULL if character is in lobby.
+
+        some components for gameController
+        - GameUI
+        - Survival
+    */
+}
