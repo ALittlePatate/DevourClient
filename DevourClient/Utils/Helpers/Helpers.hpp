@@ -11,4 +11,5 @@ namespace Helpers {
   bool isPlayerCrawling();
   bool IsInGame();
   std::string GetActiveScene();
+  Unity::CGameObject* Game();
 }
