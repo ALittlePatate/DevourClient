@@ -508,6 +508,7 @@ void Misc::Revive(bool reviveEveryone) {
 }
 
 void Misc::SkipLongInteract() {
+    /*
     Unity::CGameObject* SurvivalAltarDevour = Unity::GameObject::Find("SurvivalAltar");
 
     if (SurvivalAltarDevour) {
@@ -558,4 +559,5 @@ void Misc::SkipLongInteract() {
             return;
         }
     }
+    */
 }
