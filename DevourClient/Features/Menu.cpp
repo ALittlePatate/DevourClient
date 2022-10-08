@@ -317,6 +317,10 @@ void DrawMiscTab() {
 		Misc::Revive(true);
 	}
 	
+	if (ImGui::Button("TP Keys")) {
+		Misc::TPKeys();
+	}
+	
 	ImGui::Checkbox("Unlock all", &settings::unlock_all);
 
 	ImGui::Checkbox("Spoof level", &settings::spoof_level);
