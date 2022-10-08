@@ -1,6 +1,7 @@
 #include "Misc.hpp"
 #include "../../Utils/Output/Output.hpp"
 #include "../../Utils/Helpers/Helpers.hpp"
+#include "../../Utils/Objects/Objects.hpp"
 #include <time.h>
 
 void Misc::SetRank(int rank) {
@@ -560,4 +561,16 @@ void Misc::SkipLongInteract() {
         }
     }
     */
+}
+
+void Misc::TPKeys() {
+    for (Unity::CGameObject* object : Objects::ObjectList) {
+        if (!object || !object->m_CachedPtr) {
+            continue;
+        }
+
+        if (object->GetName()->ToString() == IL2CPP::String::New("Key(Clone)")->ToString()) {
+            object->GetTransform()->SetLocalPosition(Players::LocalPlayer->GetTransform()->GetPosition());
+        }
+    }
 }
