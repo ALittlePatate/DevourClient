@@ -309,83 +309,95 @@ void Misc::BurnRitualObj(bool burnAll) {
 
     // check if player is host or not
 
-    try {
+    std::string currentMap = Helpers::GetActiveScene();
 
-        // Map: Devour
+    if (currentMap == IL2CPP::String::New("Menu")->ToString()) {
+        return;
+    }
+
+    if (currentMap == IL2CPP::String::New("Devour")->ToString()) {
         Unity::CGameObject* DevourAltar = Unity::GameObject::Find("SurvivalAltar");
 
-        if (DevourAltar) {
-            Unity::CComponent* DevourAltarData = DevourAltar->GetComponent("SurvivalObjectBurnController");
-
-            if (!DevourAltarData) {
-                return;
-            }
-
-            if (burnAll) {
-                DevourAltarData->CallMethodSafe<void*>("SkipToGoat", 10);
-            }
-            else {
-                DevourAltarData->CallMethodSafe<void*>("BurnGoat");
-            }
+        if (!DevourAltar) {
+            return;
         }
 
-        // Map: Inn
-        Unity::CGameObject* InnAltar = Unity::GameObject::Find("InnMapController");
+        Unity::CComponent* DevourAltarData = DevourAltar->GetComponent("SurvivalObjectBurnController");
 
-        if (InnAltar) {
-            Unity::CComponent* InnAltarData = InnAltar->GetComponent("InnMapController");
-
-            if (!InnAltarData) {
-                return;
-            }
-
-            if (burnAll) {
-                InnAltarData->CallMethodSafe<void*>("SetProgressTo", 10);
-            }
-            else {
-                InnAltarData->CallMethodSafe<void*>("IncreaseProgress");
-            }
+        if (!DevourAltarData) {
+            return;
         }
 
-        // Map: Molly
-        Unity::CGameObject* MollyAltar = Unity::GameObject::Find("SurvivalAltarMolly");
-
-        if (MollyAltar) {
-            Unity::CComponent* MollyAltarData = MollyAltar->GetComponent("SurvivalMollyAltarController");
-
-            if (!MollyAltarData) {
-                return;
-            }
-
-            if (burnAll) {
-                MollyAltarData->CallMethodSafe<void*>("SkipToGoat", 10);
-            }
-            else {
-                MollyAltarData->CallMethodSafe<void*>("BurnGoat");
-            }
+        if (burnAll) {
+            DevourAltarData->CallMethodSafe<void*>("SkipToGoat", 10);
         }
-
-        // Map: Town
-        Unity::CGameObject* TownAltar = Unity::GameObject::Find("SurvivalAltarTown");
-
-        if (TownAltar) {
-            Unity::CComponent* TownAltarData = TownAltar->GetComponent("SurvivalTownAltarController");
-
-            if (!TownAltarData) {
-                return;
-            }
-
-            if (burnAll) {
-                TownAltarData->CallMethodSafe<void*>("SkipToGoat", 10);
-            }
-            else {
-                TownAltarData->CallMethodSafe<void*>("BurnGoat");
-            }
+        else {
+            DevourAltarData->CallMethodSafe<void*>("BurnGoat");
         }
     }
-    catch (...) {
-        return;
-    } 
+
+    if (currentMap == IL2CPP::String::New("Molly")->ToString()) {
+        Unity::CGameObject* MollyAltar = Unity::GameObject::Find("SurvivalAltarMolly");
+
+        if (!MollyAltar) {
+            return;
+        }
+
+        Unity::CComponent* MollyAltarData = MollyAltar->GetComponent("SurvivalMollyAltarController");
+
+        if (!MollyAltarData) {
+            return;
+        }
+
+        if (burnAll) {
+            MollyAltarData->CallMethodSafe<void*>("SkipToGoat", 10);
+        }
+        else {
+            MollyAltarData->CallMethodSafe<void*>("BurnGoat");
+        }
+    }
+
+    if (currentMap == IL2CPP::String::New("Inn")->ToString()) {
+        Unity::CGameObject* InnAltar = Unity::GameObject::Find("InnMapController");
+
+        if (!InnAltar) {
+            return;
+        }
+
+        Unity::CComponent* InnAltarData = InnAltar->GetComponent("InnMapController");
+
+        if (!InnAltarData) {
+            return;
+        }
+
+        if (burnAll) {
+            InnAltarData->CallMethodSafe<void*>("SetProgressTo", 10);
+        }
+        else {
+            InnAltarData->CallMethodSafe<void*>("IncreaseProgress");
+        }
+    }
+
+    if (currentMap == IL2CPP::String::New("Town")->ToString()) {
+        Unity::CGameObject* TownAltar = Unity::GameObject::Find("SurvivalAltarTown");
+
+        if (!TownAltar) {
+            return;
+        }
+
+        Unity::CComponent* TownAltarData = TownAltar->GetComponent("SurvivalTownAltarController");
+
+        if (!TownAltarData) {
+            return;
+        }
+
+        if (burnAll) {
+            TownAltarData->CallMethodSafe<void*>("SkipToGoat", 10);
+        }
+        else {
+            TownAltarData->CallMethodSafe<void*>("BurnGoat");
+        }
+    }
 }
 
 void Misc::KnockoutPlayers(bool killYourself) {
