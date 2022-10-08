@@ -506,3 +506,56 @@ void Misc::Revive(bool reviveEveryone) {
         }
     }
 }
+
+void Misc::SkipLongInteract() {
+    Unity::CGameObject* SurvivalAltarDevour = Unity::GameObject::Find("SurvivalAltar");
+
+    if (SurvivalAltarDevour) {
+        Unity::CComponent* SurvivalObjectBurnController = SurvivalAltarDevour->GetComponent("SurvivalObjectBurnController");
+
+        if (!SurvivalObjectBurnController) {
+            return;
+        }
+
+        try {
+            SurvivalObjectBurnController->CallMethodSafe<void*>("PourGasoline");
+        }
+        catch (...) {
+            return;
+        }
+    }
+
+    Unity::CGameObject* SurvivalAltarTown = Unity::GameObject::Find("SurvivalAltarTown");
+
+    if (SurvivalAltarTown) {
+        Unity::CComponent* SurvivalTownAltarController = SurvivalAltarTown->GetComponent("SurvivalTownAltarController");
+
+        if (!SurvivalTownAltarController) {
+            return;
+        }
+
+        try {
+            SurvivalTownAltarController->CallMethodSafe<void*>("PourGasoline");
+        }
+        catch (...) {
+            return;
+        }
+    }
+
+    Unity::CGameObject* SurvivalAltarMolly = Unity::GameObject::Find("SurvivalAltarMolly");
+
+    if (SurvivalAltarMolly) {
+        Unity::CComponent* SurvivalMollyAltarController = SurvivalAltarMolly->GetComponent("SurvivalMollyAltarController");
+
+        if (!SurvivalMollyAltarController) {
+            return;
+        }
+
+        try {
+            SurvivalMollyAltarController->CallMethodSafe<void*>("PlaceFuse");
+        }
+        catch (...) {
+            return;
+        }
+    }
+}
