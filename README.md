@@ -63,10 +63,6 @@ In order to get all of this working you need to generate the DevourClient.dll fi
 1. Inject the DevourClient.dll file located in `DevourClient\x64\Release` to DEVOUR with your favourite injector //TODO code an injector.
 2. Use INSERT to open the menu
 
-## Uninstallation
-
-0. Delete the folders `MelonLoader`, `Mods`, `Plugins`, `UserData`, and the file `version.dll` from `C:\Program Files (x86)\Steam\steamapps\common\Devour`
-
 ## Building from source
 
 0. Clone the repository (or Code -> Download Zip)
