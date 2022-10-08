@@ -63,6 +63,10 @@ In order to get all of this working you need to generate the DevourClient.dll fi
 1. Inject the DevourClient.dll file located in `DevourClient\x64\Release` to DEVOUR with your favourite injector //TODO code an injector.
 2. Use INSERT to open the menu
 
+Alternatively, you can watch this video :
+
+[![video image](https://img.youtube.com/vi/JmWgdBLQMU4/0.jpg)](https://www.youtube.com/watch?v=JmWgdBLQMU4)
+
 ## Building from source
 
 0. Clone the repository (or Code -> Download Zip)
