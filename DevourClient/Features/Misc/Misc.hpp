@@ -19,4 +19,5 @@ namespace Misc {
     void BurnRitualObj(bool burnAll);
     void KnockoutPlayers(bool killYourself);
     void Revive(bool reviveEveryone);
+    void SkipLongInteract();
 }
