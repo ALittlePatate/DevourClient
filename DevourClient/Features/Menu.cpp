@@ -190,6 +190,10 @@ void DrawMapSpecificTab() {
 	if (ImGui::Button("Kill all players")) {
 		Misc::KnockoutPlayers(false);
 	}
+	
+	if (ImGui::Button("Skip long interact")) {
+		Misc::SkipLongInteract();
+	}
 }
 
 bool inspector = false;
