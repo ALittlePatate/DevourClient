@@ -20,4 +20,5 @@ namespace Misc {
     void KnockoutPlayers(bool killYourself);
     void Revive(bool reviveEveryone);
     void SkipLongInteract();
+    void TPKeys();
 }
