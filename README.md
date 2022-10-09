@@ -1,8 +1,6 @@
 
 # Unknowncheats thread [here](https://www.unknowncheats.me/forum/other-fps-games/475950-devour-multihack-update.html)
 
-# Discord server [here](https://discord.gg/2amMFvqjYd)
-
 # /!\ READ THIS
 many people are comming here (thanks btw) and asking about the cheat. NO the MelonLoader version of the cheat DOES NOT WORK. We are working on this new version using C++. This takes time but you can follow along on the github page or in annoncements features-state update-logs channels in the discord. We do not have an ETA at the moment.
 
@@ -76,7 +74,7 @@ Alternatively, you can watch this video :
 
 ## Contact
 
-You can add me on discord at patate#1252 or on the [discord server](https://discord.gg/2amMFvqjYd)
+You can add me on discord at patate#1252
 
 ## Code used
 
