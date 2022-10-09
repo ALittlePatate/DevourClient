@@ -401,18 +401,38 @@ void Misc::BurnRitualObj(bool burnAll) {
 }
 
 void Misc::KnockoutPlayers(bool killYourself) {
-    try {
+    std::string currentMap = Helpers::GetActiveScene();
+
+    if (currentMap == IL2CPP::String::New("Menu")->ToString()) {
+        std::cout << "Menu" << std::endl;
+        return;
+    }
+
+    if (currentMap == IL2CPP::String::New("Devour")->ToString()) {
+
+        std::cout << "Devour" << std::endl;
+
+
+        if (!Players::LocalPlayer) {
+            return;
+        }
+
         Unity::CGameObject* AzazelAnna = Unity::GameObject::Find("SurvivalAnnaNew(Clone)");
 
-        if (AzazelAnna) {
-            Unity::CComponent* AzazelAnnaComp = AzazelAnna->GetComponent("SurvivalAzazelBehaviour");
+        if (!AzazelAnna) {
+            return;
+        }
 
-            if (!AzazelAnnaComp) {
-                return;
-            }
+        Unity::CComponent* AzazelAnnaComp = AzazelAnna->GetComponent("SurvivalAzazelBehaviour");
 
-            // check killYourself if true or false
+        if (!AzazelAnnaComp) {
+            return;
+        }
 
+        if (killYourself) {
+            AzazelAnnaComp->CallMethodSafe<void*>("OnKnockout", AzazelAnna, Players::LocalPlayer);
+        }
+        else {
             for (Unity::CGameObject* player : Players::PlayerList) {
                 if (!player || player == Players::LocalPlayer) {
                     continue;
@@ -421,18 +441,32 @@ void Misc::KnockoutPlayers(bool killYourself) {
                 AzazelAnnaComp->CallMethodSafe<void*>("OnKnockout", AzazelAnna, player);
             }
         }
+    }
+
+    if (currentMap == IL2CPP::String::New("Molly")->ToString()) {
+
+        std::cout << "Molly" << std::endl;
+
+        if (!Players::LocalPlayer) {
+            return;
+        }
 
         Unity::CGameObject* AzazelMolly = Unity::GameObject::Find("SurvivalAzazelMolly(Clone)");
 
-        if (AzazelMolly) {
-            Unity::CComponent* AzazelMollyComp = AzazelMolly->GetComponent("SurvivalAzazelBehaviour");
+        if (!AzazelMolly) {
+            return;
+        }
 
-            if (!AzazelMollyComp) {
-                return;
-            }
+        Unity::CComponent* AzazelMollyComp = AzazelMolly->GetComponent("SurvivalAzazelBehaviour");
 
-            // check killYourself if true or false
+        if (!AzazelMollyComp) {
+            return;
+        }
 
+        if (killYourself) {
+            AzazelMollyComp->CallMethodSafe<void*>("OnKnockout", AzazelMolly, Players::LocalPlayer);
+        }
+        else {
             for (Unity::CGameObject* player : Players::PlayerList) {
                 if (!player || player == Players::LocalPlayer) {
                     continue;
@@ -440,20 +474,34 @@ void Misc::KnockoutPlayers(bool killYourself) {
 
                 AzazelMollyComp->CallMethodSafe<void*>("OnKnockout", AzazelMolly, player);
             }
+        }
+    }
 
+    if (currentMap == IL2CPP::String::New("Town")->ToString()) {
+
+        std::cout << "Town" << std::endl;
+
+
+        if (!Players::LocalPlayer) {
+            return;
         }
 
         Unity::CGameObject* AzazaelSam = Unity::GameObject::Find("AzazelSam(Clone)");
 
-        if (AzazaelSam) {
-            Unity::CComponent* AzazelSamComp = AzazaelSam->GetComponent("AzazelSamBehaviour");
+        if (!AzazaelSam) {
+            return;
+        }
 
-            if (!AzazelSamComp) {
-                return;
-            }
+        Unity::CComponent* AzazelSamComp = AzazaelSam->GetComponent("AzazelSamBehaviour");
 
-            // check killYourself if true or false
+        if (!AzazelSamComp) {
+            return;
+        }
 
+        if (killYourself) {
+            AzazelSamComp->CallMethodSafe<void*>("OnKnockout", AzazaelSam, Players::LocalPlayer);
+        }
+        else {
             for (Unity::CGameObject* player : Players::PlayerList) {
                 if (!player || player == Players::LocalPlayer) {
                     continue;
@@ -462,18 +510,32 @@ void Misc::KnockoutPlayers(bool killYourself) {
                 AzazelSamComp->CallMethodSafe<void*>("OnKnockout", AzazaelSam, player);
             }
         }
+    }
+
+    if (currentMap == IL2CPP::String::New("Inn")->ToString()) {
+
+        std::cout << "Inn" << std::endl;
+
+        if (!Players::LocalPlayer) {
+            return;
+        }
 
         Unity::CGameObject* AzazelZara = Unity::GameObject::Find("AzazelZara(Clone)");
 
-        if (AzazelZara) {
-            Unity::CComponent* AzazelZaraComp = AzazelZara->GetComponent("AzazelZaraBehaviour");
+        if (!AzazelZara) {
+            return;
+        }
 
-            if (!AzazelZaraComp) {
-                return;
-            }
+        Unity::CComponent* AzazelZaraComp = AzazelZara->GetComponent("AzazelZaraBehaviour");
 
-            // check killYourself if true or false
+        if (!AzazelZaraComp) {
+            return;
+        }
 
+        if (killYourself) {
+            AzazelZaraComp->CallMethodSafe<void*>("OnKnockout", AzazelZara, Players::LocalPlayer);
+        }
+        else {
             for (Unity::CGameObject* player : Players::PlayerList) {
                 if (!player || player == Players::LocalPlayer) {
                     continue;
@@ -482,9 +544,6 @@ void Misc::KnockoutPlayers(bool killYourself) {
                 AzazelZaraComp->CallMethodSafe<void*>("OnKnockout", AzazelZara, player);
             }
         }
-    }
-    catch (...) {
-        return;
     }
 }
 
