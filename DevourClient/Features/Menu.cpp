@@ -187,8 +187,12 @@ void DrawMapSpecificTab() {
 		Misc::ForceStart();
 	}
 	
-	if (ImGui::Button("Kill all players")) {
+	if (ImGui::Button("Knock out everyone")) {
 		Misc::KnockoutPlayers(false);
+	}
+	
+	if (ImGui::Button("knock yourself out")) {
+		Misc::KnockoutPlayers(true);
 	}
 	
 	if (ImGui::Button("Skip long interact")) {
