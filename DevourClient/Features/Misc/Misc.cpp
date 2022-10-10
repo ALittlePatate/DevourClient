@@ -404,15 +404,11 @@ void Misc::KnockoutPlayers(bool killYourself) {
     std::string currentMap = Helpers::GetActiveScene();
 
     if (currentMap == IL2CPP::String::New("Menu")->ToString()) {
-        std::cout << "Menu" << std::endl;
         return;
     }
 
     if (currentMap == IL2CPP::String::New("Devour")->ToString()) {
-
-        std::cout << "Devour" << std::endl;
-
-
+        
         if (!Players::LocalPlayer) {
             return;
         }
@@ -444,8 +440,6 @@ void Misc::KnockoutPlayers(bool killYourself) {
     }
 
     if (currentMap == IL2CPP::String::New("Molly")->ToString()) {
-
-        std::cout << "Molly" << std::endl;
 
         if (!Players::LocalPlayer) {
             return;
@@ -479,9 +473,6 @@ void Misc::KnockoutPlayers(bool killYourself) {
 
     if (currentMap == IL2CPP::String::New("Town")->ToString()) {
 
-        std::cout << "Town" << std::endl;
-
-
         if (!Players::LocalPlayer) {
             return;
         }
@@ -513,8 +504,6 @@ void Misc::KnockoutPlayers(bool killYourself) {
     }
 
     if (currentMap == IL2CPP::String::New("Inn")->ToString()) {
-
-        std::cout << "Inn" << std::endl;
 
         if (!Players::LocalPlayer) {
             return;
