@@ -22,4 +22,5 @@ namespace Misc {
     void SkipLongInteract();
     void TPKeys();
     void ShootEveryone(bool shootEveryone, bool hit);
+    void Jumpscare(bool inHidingSpot);
 }
