@@ -195,6 +195,14 @@ void DrawMapSpecificTab() {
 		Misc::KnockoutPlayers(true);
 	}
 	
+	if (ImGui::Button("Shoot Everyone (Town)")) {
+		Misc::ShootEveryone(true, true);
+	}
+
+	if (ImGui::Button("Shoot Yourself (Town)")) {
+		Misc::ShootEveryone(false, true);
+	}
+	
 	if (ImGui::Button("Skip long interact")) {
 		Misc::SkipLongInteract();
 	}
