@@ -203,6 +203,10 @@ void DrawMapSpecificTab() {
 		Misc::ShootEveryone(false, true);
 	}
 	
+	if (ImGui::Button("Jumpscare Everyone")) {
+		Misc::Jumpscare(true);
+	}
+	
 	if (ImGui::Button("Skip long interact")) {
 		Misc::SkipLongInteract();
 	}
