@@ -634,3 +634,43 @@ void Misc::TPKeys() {
         }
     }
 }
+
+void Misc::ShootEveryone(bool shootEveryone, bool hit) {
+
+    std::string currentMap = Helpers::GetActiveScene();
+
+    if (currentMap == IL2CPP::String::New("Town")->ToString()) {
+        if (!Players::LocalPlayer) {
+            return;
+        }
+
+        Unity::CGameObject* Sam = Unity::GameObject::Find("AzazelSam(Clone)");
+
+        if (!Sam) {
+            return;
+        }
+
+        Unity::CComponent* SamBehaviour = Sam->GetComponent("AzazelSamBehaviour");
+
+        if (!SamBehaviour) {
+            return;
+        }
+
+
+        if (shootEveryone) {
+            for (Unity::CGameObject* player : Players::PlayerList) {
+                if (!player || player == Players::LocalPlayer) {
+                    continue;
+                }
+
+                SamBehaviour->CallMethodSafe<void*>("OnShootPlayer", player, hit);
+            }
+        }
+        else {
+            SamBehaviour->CallMethodSafe<void*>("OnShootPlayer", Players::LocalPlayer, hit);
+        }
+    }
+    else {
+        return;
+    }
+}
