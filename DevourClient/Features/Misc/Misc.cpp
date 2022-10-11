@@ -674,3 +674,107 @@ void Misc::ShootEveryone(bool shootEveryone, bool hit) {
         return;
     }
 }
+
+void Misc::Jumpscare(bool inHidingSpot) {
+    std::string currentMap = Helpers::GetActiveScene();
+
+    if (!Players::LocalPlayer) {
+        return;
+    }
+
+    if (currentMap == IL2CPP::String::New("Menu")->ToString()) {
+        return;
+    }
+
+    if (currentMap == IL2CPP::String::New("Devour")->ToString()) {
+
+        Unity::CGameObject* AzazelAnna = Unity::GameObject::Find("SurvivalAnnaNew(Clone)");
+
+        if (!AzazelAnna) {
+            return;
+        }
+
+        Unity::CComponent* AzazelAnnaComp = AzazelAnna->GetComponent("SurvivalAzazelBehaviour");
+
+        if (!AzazelAnnaComp) {
+            return;
+        }
+
+        for (Unity::CGameObject* player : Players::PlayerList) {
+            if (!player || player == Players::LocalPlayer) {
+                continue;
+            }
+
+            AzazelAnnaComp->CallMethodSafe<void*>("OnPickedUpPlayer", AzazelAnna, player, inHidingSpot);
+        }
+    }
+
+    if (currentMap == IL2CPP::String::New("Molly")->ToString()) {
+
+        Unity::CGameObject* AzazelMolly = Unity::GameObject::Find("SurvivalAzazelMolly(Clone)");
+
+        if (!AzazelMolly) {
+            return;
+        }
+
+        Unity::CComponent* AzazelMollyComp = AzazelMolly->GetComponent("SurvivalAzazelBehaviour");
+
+        if (!AzazelMollyComp) {
+            return;
+        }
+
+        for (Unity::CGameObject* player : Players::PlayerList) {
+            if (!player || player == Players::LocalPlayer) {
+                continue;
+            }
+
+            AzazelMollyComp->CallMethodSafe<void*>("OnPickedUpPlayer", AzazelMolly, player, inHidingSpot);
+        }
+    }
+
+    if (currentMap == IL2CPP::String::New("Town")->ToString()) {
+
+        Unity::CGameObject* AzazaelSam = Unity::GameObject::Find("AzazelSam(Clone)");
+
+        if (!AzazaelSam) {
+            return;
+        }
+
+        Unity::CComponent* AzazelSamComp = AzazaelSam->GetComponent("AzazelSamBehaviour");
+
+        if (!AzazelSamComp) {
+            return;
+        }
+
+        for (Unity::CGameObject* player : Players::PlayerList) {
+            if (!player || player == Players::LocalPlayer) {
+                continue;
+            }
+
+            AzazelSamComp->CallMethodSafe<void*>("OnPickedUpPlayer", AzazaelSam, player, inHidingSpot);
+        }
+    }
+
+    if (currentMap == IL2CPP::String::New("Inn")->ToString()) {
+
+        Unity::CGameObject* AzazelZara = Unity::GameObject::Find("AzazelZara(Clone)");
+
+        if (!AzazelZara) {
+            return;
+        }
+
+        Unity::CComponent* AzazelZaraComp = AzazelZara->GetComponent("AzazelZaraBehaviour");
+
+        if (!AzazelZaraComp) {
+            return;
+        }
+
+        for (Unity::CGameObject* player : Players::PlayerList) {
+            if (!player || player == Players::LocalPlayer) {
+                continue;
+            }
+
+            AzazelZaraComp->CallMethodSafe<void*>("OnPickedUpPlayer", AzazelZara, player, inHidingSpot);
+        }
+    }
+}
