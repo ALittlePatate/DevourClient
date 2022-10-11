@@ -21,4 +21,5 @@ namespace Misc {
     void Revive(bool reviveEveryone);
     void SkipLongInteract();
     void TPKeys();
+    void ShootEveryone(bool shootEveryone, bool hit);
 }
