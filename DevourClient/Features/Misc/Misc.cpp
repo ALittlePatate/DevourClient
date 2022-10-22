@@ -5,15 +5,21 @@
 #include <time.h>
 
 void Misc::SetRank(int rank) {
-    if (!Players::LocalPlayer) {
-        return;
-    }
+    try {
+        if (!Players::LocalPlayer) {
+            return;
+        }
 
-    Unity::CComponent* NolanRankController = Players::LocalPlayer->GetComponent("NolanRankController");
-    if (!NolanRankController) {
-        return;
+        Unity::CComponent* NolanRankController = Players::LocalPlayer->GetComponent("NolanRankController");
+        if (!NolanRankController) {
+            return;
+        }
+
+        NolanRankController->CallMethodSafe<void*>("SetRank", rank);
     }
-    NolanRankController->CallMethodSafe<void*>("SetRank", rank);
+    catch (...) {
+        settings::spoof_level = false;
+    }
 }
 
 void Misc::WalkInlobby(bool walk) {
