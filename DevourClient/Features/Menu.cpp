@@ -140,6 +140,10 @@ void DrawEntitiesTab() {
 	if (ImGui::Button("TP items to you")) {
 		//call tp items
 	}
+	
+	if (ImGui::Button("Freeze Azazel")) {
+		Misc::FreezeAzazel();
+	}
 
 	ImGui::Spacing();
 	ImGui::Text("Azazel & Demons");
