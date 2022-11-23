@@ -784,3 +784,42 @@ void Misc::Jumpscare(bool inHidingSpot) {
         }
     }
 }
+
+void Misc::FreezeAzazel() {
+    if (Helpers::GetActiveScene() == std::string("Menu")) {
+        return;
+    }
+
+    float azazelTimeScale = 1;
+
+    Unity::il2cppArray<Unity::CGameObject*>* Azazel = Unity::GameObject::FindWithTag("Azazel");
+
+    for (int j = 0; j < Azazel->m_uMaxLength + 1; j++)
+    {
+        if (!Azazel->operator[](j)) {
+            return;
+        }
+
+        Unity::CGameObject* AzazelObj = Azazel->operator[](j)->GetMemberValue<Unity::CGameObject*>("gameObject");
+
+        if (!AzazelObj) {
+            return;
+        }
+
+        Unity::CComponent* AzazelComp = AzazelObj->GetComponent("Opsive.UltimateCharacterController.Character.UltimateCharacterLocomotion");
+
+        if (AzazelComp != NULL) {
+            float currentAzazelTimeScale = AzazelComp->GetMemberValue<float>("TimeScale");
+
+            if (currentAzazelTimeScale == azazelTimeScale) {
+                AzazelComp->SetMemberValue<float>("TimeScale", 0);
+            }
+            else {
+                AzazelComp->SetMemberValue<float>("TimeScale", azazelTimeScale);
+            }
+        }
+        else {
+            return;
+        }
+    }
+}
