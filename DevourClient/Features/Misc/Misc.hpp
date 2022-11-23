@@ -23,4 +23,5 @@ namespace Misc {
     void TPKeys();
     void ShootEveryone(bool shootEveryone, bool hit);
     void Jumpscare(bool inHidingSpot);
+    void FreezeAzazel();
 }
