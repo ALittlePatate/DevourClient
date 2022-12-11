@@ -326,7 +326,7 @@ void DrawMiscTab() {
 	}
 
 	if (ImGui::Button("Unlock Doors")) {
-		//Unlock Achievements
+		Misc::UnlockDoors();
 	}
 
 	if (ImGui::Button("Revive Yourself")) {
