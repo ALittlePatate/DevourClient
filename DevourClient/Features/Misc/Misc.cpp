@@ -823,3 +823,34 @@ void Misc::FreezeAzazel() {
         }
     }
 }
+
+
+void Misc::UnlockDoors() {
+    if (Helpers::GetActiveScene() == std::string("Menu")) {
+        return;
+    }
+
+    Unity::il2cppArray<Unity::CGameObject*>* Interactable = Unity::GameObject::FindWithTag("Interactable");
+
+    for (int j = 0; j < Interactable->m_uMaxLength + 1; j++)
+    {
+        if (!Interactable->operator[](j)) {
+            return;
+        }
+
+        Unity::CGameObject* InteractableObj = Interactable->operator[](j)->GetMemberValue<Unity::CGameObject*>("gameObject");
+
+        if (!InteractableObj) {
+            return;
+        }
+
+        Unity::CComponent* DoorBehaviour = InteractableObj->GetComponent("Horror.DoorBehaviour");
+
+        if (DoorBehaviour != NULL) {
+            DoorBehaviour->CallMethodSafe<void*>("Unlock");
+        }
+        else {
+            return;
+        }
+    }
+}
