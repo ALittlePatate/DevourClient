@@ -138,8 +138,9 @@ namespace DevourClient.Hacks
 		{
 			Il2Cpp.NolanBehaviour nb = Player.GetPlayer();
 
-			Vector3 setNewPosition = nb.transform.position = new Vector3(0.0f, -100.0f, 0.0f);
-			nb.locomotion.SetPosition(setNewPosition);
+			Il2Cpp.SurvivalReviveInteractable _reviveInteractable = UnityEngine.Object.FindObjectOfType<Il2Cpp.SurvivalReviveInteractable>();
+
+			_reviveInteractable.Interact(nb.gameObject);
 		}
 	    
 	    public static void TPItems()
