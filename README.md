@@ -2,9 +2,6 @@
 
 # Discord server [here](https://discord.gg/2amMFvqjYd)
 
-# /!\ READ THIS
-This branch is no longer updated, the Halloween 2022 update made MelonLoader unsuable, the new version of the cheat is comming soon.
-
 # DevourClient
 
 I wasn't home for 2 days so i made that, i learnt a lot about C# programming and about Unity IL2CPP game hacking.
