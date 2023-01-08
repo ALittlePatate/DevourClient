@@ -6,8 +6,8 @@ using System.Runtime.InteropServices;
 using DevourClient.Helpers;
 using System.Linq;
 using System.Collections.Generic;
-using Opsive.UltimateCharacterController.Character;
-using Photon.Bolt;
+using Il2CppOpsive.UltimateCharacterController.Character;
+using Il2CppPhoton.Bolt;
 
 namespace DevourClient.Hacks
 {
@@ -15,9 +15,9 @@ namespace DevourClient.Hacks
     {
 		public static void Fly(float speed) //normal speed 5f
 		{
-			NolanBehaviour nb = Player.GetPlayer();
+			Il2Cpp.NolanBehaviour nb = Player.GetPlayer();
 			Vector3 pos = nb.transform.position;
-			RewiredHelpers helpers = UnityEngine.Object.FindObjectOfType<RewiredHelpers>();
+			Il2Cpp.RewiredHelpers helpers = UnityEngine.Object.FindObjectOfType<Il2Cpp.RewiredHelpers>();
 			if (Input.GetKey((KeyCode)System.Enum.Parse(typeof(KeyCode), helpers.GetCurrentBinding("Move Up").ToString().Replace(" ", ""))))
 			{
 				pos += nb.transform.forward * speed * Time.deltaTime;
@@ -45,51 +45,51 @@ namespace DevourClient.Hacks
 			nb.locomotion.SetPosition(pos, false);
 		}
 	    
-	    	public static void WalkInLobby(bool walk)
-        	{
-		  try {	
-                	if (Helpers.Entities.LocalPlayer_.GetComponent<UltimateCharacterLocomotionHandler>() == null)
-			{
-                    		Helpers.Entities.LocalPlayer_.AddComponent<UltimateCharacterLocomotionHandler>();
-                    		Helpers.Entities.LocalPlayer_.GetComponent<UltimateCharacterLocomotionHandler>().enabled = false;
-                	}
+	    public static void WalkInLobby(bool walk)
+        {
+			try {	
+				if (Helpers.Entities.LocalPlayer_.GetComponent<UltimateCharacterLocomotionHandler>() == null)
+				{
+                    Helpers.Entities.LocalPlayer_.AddComponent<UltimateCharacterLocomotionHandler>();
+                    Helpers.Entities.LocalPlayer_.GetComponent<UltimateCharacterLocomotionHandler>().enabled = false;
+                }
 
-               		Helpers.Entities.LocalPlayer_.GetComponent<UltimateCharacterLocomotionHandler>().enabled = walk;
-            	 }
-		catch { return; }	
-        	}
+               	Helpers.Entities.LocalPlayer_.GetComponent<UltimateCharacterLocomotionHandler>().enabled = walk;
+            }
+			catch { return; }	
+        }
 	    
-	    	public static void BurnRitualObj(string map, bool burnAll)
+	    public static void BurnRitualObj(string map, bool burnAll)
 		{
-		    SurvivalObjectBurnController _altar = UnityEngine.Object.FindObjectOfType<SurvivalObjectBurnController>();
-		    InnMapController _innMapController = UnityEngine.Object.FindObjectOfType<InnMapController>();
+			Il2Cpp.SurvivalObjectBurnController _altar = UnityEngine.Object.FindObjectOfType<Il2Cpp.SurvivalObjectBurnController>();
+			Il2Cpp.InnMapController _innMapController = UnityEngine.Object.FindObjectOfType<Il2Cpp.InnMapController>();
 
 		    if (map != "Inn")
 		    {
-			if (burnAll)
-			{
-			    _altar.SkipToGoat(10);
+				if (burnAll)
+				{
+					_altar.SkipToGoat(10);
+				}
+				else
+				{
+					_altar.BurnGoat();
+				}
 			}
+			
 			else
 			{
-			    _altar.BurnGoat();
+				if (burnAll){
+			 		_innMapController.SetProgressTo(10);
+				}
+				else{
+					_innMapController.IncreaseProgress();
+				}
 			}
-		    }
-			
-		    else
-		    {
-			if (burnAll){
-			 	_innMapController.SetProgressTo(10);
-			}
-			else{
-				_innMapController.IncreaseProgress();
-			}
-		    }
-        	}
+        }
 	    
-	    	public static void SpawnAzazel(PrefabId _azazelPrefabId)
+	    public static void SpawnAzazel(PrefabId _azazelPrefabId)
 		{
-			if (!Photon.Bolt.BoltNetwork.IsServer)
+			if (!Il2CppPhoton.Bolt.BoltNetwork.IsServer)
 			{
 				MelonLogger.Msg("You need to be host to spawn stuff !");
 				return;
@@ -100,12 +100,12 @@ namespace DevourClient.Hacks
 
 			_azazel = BoltNetwork.Instantiate(_azazelPrefabId, new Vector3(pos.x, pos.y, pos.z + 1f), Quaternion.identity);
 
-			_azazel.gameObject.GetComponent<SurvivalAzazelBehaviour>().Spawn();
+			_azazel.gameObject.GetComponent<Il2Cpp.SurvivalAzazelBehaviour>().Spawn();
 		}
 
 		public static void SpawnGoatOrRat(PrefabId _goatPrefabID)
 		{
-			if (!Photon.Bolt.BoltNetwork.IsServer)
+			if (!Il2CppPhoton.Bolt.BoltNetwork.IsServer)
 			{
 				MelonLogger.Msg("You need to be host to spawn stuff !");
 				return;
@@ -115,8 +115,8 @@ namespace DevourClient.Hacks
 			Vector3 pos = Player.GetPlayer().transform.position;
 
 			_goat = BoltNetwork.Instantiate(_goatPrefabID, new Vector3(pos.x, pos.y, pos.z + 1f), Quaternion.identity);
-			_goat.gameObject.GetComponent<GoatBehaviour>().Spawn();
-			BehaviorDesigner.Runtime.Behavior goat_behavior = _goat.gameObject.GetComponent<GoatBehaviour>().m_mainBehaviour;
+			_goat.gameObject.GetComponent<Il2Cpp.GoatBehaviour>().Spawn();
+			Il2CppBehaviorDesigner.Runtime.Behavior goat_behavior = _goat.gameObject.GetComponent<Il2Cpp.GoatBehaviour>().m_mainBehaviour;
 			goat_behavior.EnableBehavior();
 		}
 		
@@ -128,7 +128,7 @@ namespace DevourClient.Hacks
 
                 		for (int i = 0; i < fountains.Length; i++)
                 		{
-                    			fountains[i].GetComponent<InnFountainController>().Clean();
+                    			fountains[i].GetComponent<Il2Cpp.InnFountainController>().Clean();
                 		}
             		}
 			catch { return;  }
@@ -136,7 +136,7 @@ namespace DevourClient.Hacks
 	    
 		public static void AutoRespawn()
 		{
-			NolanBehaviour nb = Player.GetPlayer();
+			Il2Cpp.NolanBehaviour nb = Player.GetPlayer();
 
 			Vector3 setNewPosition = nb.transform.position = new Vector3(0.0f, -100.0f, 0.0f);
 			nb.locomotion.SetPosition(setNewPosition);
@@ -146,11 +146,11 @@ namespace DevourClient.Hacks
 		{
 		    try
 		    {
-			NolanBehaviour Nolan = Player.GetPlayer();
+				Il2Cpp.NolanBehaviour Nolan = Player.GetPlayer();
 
-			foreach (SurvivalInteractable item in Helpers.Entities.SurvivalInteractables)
-			{
-			    item.transform.position = Nolan.transform.position + Nolan.transform.forward * Random.RandomRange(1f, 3f);
+				foreach (Il2Cpp.SurvivalInteractable item in Helpers.Entities.SurvivalInteractables)
+				{
+					item.transform.position = Nolan.transform.position + Nolan.transform.forward * UnityEngine.Random.RandomRange(1f, 3f);
 				}
 		    }
 		    catch { }
@@ -158,18 +158,18 @@ namespace DevourClient.Hacks
 	    
 		public static void SetSteamName(string name)
 		{
-			Horror.Menu Menu_ = UnityEngine.Object.FindObjectOfType<Horror.Menu>();
+			Il2CppHorror.Menu Menu_ = UnityEngine.Object.FindObjectOfType<Il2CppHorror.Menu>();
 			Menu_.steamName = name;
 		}
 		public static void SetServerName(string name)
         {
-			Horror.Menu Menu_ = UnityEngine.Object.FindObjectOfType<Horror.Menu>();
+			Il2CppHorror.Menu Menu_ = UnityEngine.Object.FindObjectOfType<Il2CppHorror.Menu>();
 			Menu_.serverNameText.text = name;
 		}
 
 		public static void BigFlashlight(bool reset)
         {
-			NolanBehaviour Nolan = Player.GetPlayer();//UnityEngine.Object.FindObjectOfType<NolanBehaviour>();
+			Il2Cpp.NolanBehaviour Nolan = Player.GetPlayer();//UnityEngine.Object.FindObjectOfType<NolanBehaviour>();
 			if (Nolan == null)
             {
 				return;
@@ -198,7 +198,7 @@ namespace DevourClient.Hacks
 
 		public static void Fullbright(bool reset)
 		{
-			NolanBehaviour Nolan = Player.GetPlayer();//UnityEngine.Object.FindObjectOfType<NolanBehaviour>();
+			Il2Cpp.NolanBehaviour Nolan = Player.GetPlayer();//UnityEngine.Object.FindObjectOfType<NolanBehaviour>();
 			if (Nolan == null)
 			{
 				return;
@@ -228,7 +228,7 @@ namespace DevourClient.Hacks
 		}
 		public static void FlashlightColor(Color color)
         {
-			NolanBehaviour Nolan = Player.GetPlayer(); //UnityEngine.Object.FindObjectOfType<NolanBehaviour>();
+			Il2Cpp.NolanBehaviour Nolan = Player.GetPlayer(); //UnityEngine.Object.FindObjectOfType<NolanBehaviour>();
 			Light flashlightSpot = Nolan.flashlightSpot;
 
 			flashlightSpot.color = color;
@@ -236,9 +236,9 @@ namespace DevourClient.Hacks
 
 		public static void TPKeys()
         {
-			NolanBehaviour Nolan = Player.GetPlayer(); //UnityEngine.Object.FindObjectOfType<NolanBehaviour>();
+			Il2Cpp.NolanBehaviour Nolan = Player.GetPlayer(); //UnityEngine.Object.FindObjectOfType<NolanBehaviour>();
 
-			foreach (KeyBehaviour keyBehaviour in Helpers.Entities.Keys)
+			foreach (Il2Cpp.KeyBehaviour keyBehaviour in Helpers.Entities.Keys)
 			{
 				bool flag = keyBehaviour == null;
 				if (flag)
@@ -251,7 +251,7 @@ namespace DevourClient.Hacks
 
 		public static void SetRank(int rank)
         {
-			NolanRankController NolanRank = UnityEngine.Object.FindObjectOfType<NolanRankController>();
+			Il2Cpp.NolanRankController NolanRank = UnityEngine.Object.FindObjectOfType<Il2Cpp.NolanRankController>();
 
 			NolanRank.SetRank(rank);
 		}
@@ -260,14 +260,14 @@ namespace DevourClient.Hacks
         {
 			if (Helpers.Player.IsInGame())
 			{
-				GameUI game_ui_class = UnityEngine.Object.FindObjectOfType<GameUI>();
+				Il2Cpp.GameUI game_ui_class = UnityEngine.Object.FindObjectOfType<Il2Cpp.GameUI>();
 
 				game_ui_class.textChatInput.text = message;
 				game_ui_class.OnChatMessageSubmit();
 			}
 			else
 			{
-				Horror.Menu menu_class = UnityEngine.Object.FindObjectOfType<Horror.Menu>();
+				Il2CppHorror.Menu menu_class = UnityEngine.Object.FindObjectOfType<Il2CppHorror.Menu>();
 				menu_class.textChatInput.text = message;
 				menu_class.OnChatMessageSubmit();
 			}
@@ -275,7 +275,7 @@ namespace DevourClient.Hacks
 
 		public static void DespawnDemons()
 		{
-			foreach (SurvivalDemonBehaviour demon in Helpers.Entities.Demons)
+			foreach (Il2Cpp.SurvivalDemonBehaviour demon in Helpers.Entities.Demons)
 			{
 				if (demon != null)
 				{
@@ -286,7 +286,7 @@ namespace DevourClient.Hacks
 
 		public static void DespawnSpiders()
 		{
-			foreach (SpiderBehaviour spider in Helpers.Entities.Spiders)
+			foreach (Il2Cpp.SpiderBehaviour spider in Helpers.Entities.Spiders)
 			{
 				if (spider != null)
 				{
@@ -297,7 +297,7 @@ namespace DevourClient.Hacks
 
 		public static void DespawnGhosts()
 		{
-			foreach (GhostBehaviour ghost in Helpers.Entities.Ghosts)
+			foreach (Il2Cpp.GhostBehaviour ghost in Helpers.Entities.Ghosts)
 			{
 				if (ghost != null)
 				{
@@ -308,7 +308,7 @@ namespace DevourClient.Hacks
 
 		public static void ShowMessageBox(string message)
         {
-			Horror.Menu menu = UnityEngine.Object.FindObjectOfType<Horror.Menu>();
+			Il2CppHorror.Menu menu = UnityEngine.Object.FindObjectOfType<Il2CppHorror.Menu>();
 			menu.ShowMessageModal(message);
 		}
 		public static void PlaySound()
@@ -324,11 +324,11 @@ namespace DevourClient.Hacks
 			public PlayRandomAudioClip laughClips;
 			*/
 
-			PlayRandomAudioClip playRandomAudioClip = UnityEngine.Object.FindObjectOfType<PlayRandomAudioClip>();
-			NolanVoiceOvers nolanVoiceOvers = UnityEngine.Object.FindObjectOfType<NolanVoiceOvers>();
+			Il2Cpp.PlayRandomAudioClip playRandomAudioClip = UnityEngine.Object.FindObjectOfType<Il2Cpp.PlayRandomAudioClip>();
+			Il2Cpp.NolanVoiceOvers nolanVoiceOvers = UnityEngine.Object.FindObjectOfType<Il2Cpp.NolanVoiceOvers>();
 			playRandomAudioClip.delay = 0f;
 
-			int num = Random.RandomRangeInt(0, 10);
+			int num = UnityEngine.Random.RandomRangeInt(0, 10);
 			switch (num)
             {
 				case 0:
@@ -367,7 +367,7 @@ namespace DevourClient.Hacks
 		}
 		public static void InstantWin()
         {
-			Survival survival_class = UnityEngine.Object.FindObjectOfType<Survival>();
+			Il2Cpp.Survival survival_class = UnityEngine.Object.FindObjectOfType<Il2Cpp.Survival>();
 
 			try
             {

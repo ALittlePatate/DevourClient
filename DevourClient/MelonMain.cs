@@ -2,8 +2,12 @@
 using MelonLoader;
 using System.Threading;
 using DevourClient.Helpers;
-using Photon.Bolt;
+using Il2CppPhoton.Bolt;
 using System.Runtime.CompilerServices;
+using Il2CppHorror;
+
+[assembly: MelonInfo(typeof(DevourClient.Load), "DevourClient", "1", "ALittlePatate & Jadis")]
+[assembly: MelonGame("Straight Back Games", "DEVOUR")]
 
 namespace DevourClient
 {
@@ -36,7 +40,7 @@ namespace DevourClient
         bool demon_esp = false;
         bool fullbright = false;
 
-        public override void OnApplicationStart()
+        public override void OnInitializeMelon()
         {
             MelonLogger.Msg("For the Queen !");
             MelonCoroutines.Start(Helpers.Entities.GetLocalPlayer());
@@ -57,7 +61,7 @@ namespace DevourClient
             {
                 try
                 {
-                    GameUI gameUI = UnityEngine.Object.FindObjectOfType<GameUI>();
+                    Il2Cpp.GameUI gameUI = UnityEngine.Object.FindObjectOfType<Il2Cpp.GameUI>();
 
                     if (Settings.Settings.menu_enable)
                     {
@@ -138,7 +142,7 @@ namespace DevourClient
             {
                 try
                 {
-                    Helpers.Entities.LocalPlayer_.GetComponent<Opsive.UltimateCharacterController.Character.UltimateCharacterLocomotion>().TimeScale = this._PlayerSpeedMultiplier;
+                    Helpers.Entities.LocalPlayer_.GetComponent<Il2CppOpsive.UltimateCharacterController.Character.UltimateCharacterLocomotion>().TimeScale = this._PlayerSpeedMultiplier;
                 }
                 catch { return;  }
             }
@@ -173,7 +177,7 @@ namespace DevourClient
                             {
                                 //string playername = player.field_Private_PhotonView_0.field_Private_ObjectPublicObInBoStBoHaStObInHaUnique_0.field_Private_String_0;//player.photonView._Controller_k__BackingField.NickName;
 
-                                if (player.GetComponent<NolanBehaviour>().entity.IsOwner)
+                                if (player.GetComponent<Il2Cpp.NolanBehaviour>().entity.IsOwner)
                                 {
                                     continue;
                                 }
@@ -187,7 +191,7 @@ namespace DevourClient
 
                 if (this.goat_rat_esp)
                 {
-                    foreach (GoatBehaviour goat in Helpers.Entities.GoatsAndRats)
+                    foreach (Il2Cpp.GoatBehaviour goat in Helpers.Entities.GoatsAndRats)
                     {
                         if (goat != null)
                         {
@@ -218,7 +222,7 @@ namespace DevourClient
 
                 if (this.item_esp)
                 {
-                    foreach (SurvivalInteractable obj in Helpers.Entities.SurvivalInteractables)
+                    foreach (Il2Cpp.SurvivalInteractable obj in Helpers.Entities.SurvivalInteractables)
                     {
                         if (obj != null)
                         {
@@ -249,7 +253,7 @@ namespace DevourClient
                         }
                     }
 
-                    foreach (KeyBehaviour key in Helpers.Entities.Keys)
+                    foreach (Il2Cpp.KeyBehaviour key in Helpers.Entities.Keys)
                     {
                         if (key != null)
                         {
@@ -281,7 +285,7 @@ namespace DevourClient
 
                 if (this.demon_esp)
                 {
-                    foreach (SurvivalDemonBehaviour demon in Helpers.Entities.Demons)
+                    foreach (Il2Cpp.SurvivalDemonBehaviour demon in Helpers.Entities.Demons)
                     {
                         if (demon != null)
                         {
@@ -310,7 +314,7 @@ namespace DevourClient
                         }
                     }
 
-                    foreach (SpiderBehaviour spider in Helpers.Entities.Spiders)
+                    foreach (Il2Cpp.SpiderBehaviour spider in Helpers.Entities.Spiders)
                     {
                         if (spider != null)
                         {
@@ -339,7 +343,7 @@ namespace DevourClient
                         }
                     }
 
-                    foreach (GhostBehaviour ghost in Helpers.Entities.Ghosts)
+                    foreach (Il2Cpp.GhostBehaviour ghost in Helpers.Entities.Ghosts)
                     {
                         if (ghost != null)
                         {
@@ -371,7 +375,7 @@ namespace DevourClient
 
                 if (this.azazel_esp || this.azazel_snapline)
                 {
-                    foreach (SurvivalAzazelBehaviour survivalAzazel in Helpers.Entities.Azazels)
+                    foreach (Il2Cpp.SurvivalAzazelBehaviour survivalAzazel in Helpers.Entities.Azazels)
                     {
                         if (survivalAzazel != null)
                         {
@@ -633,7 +637,7 @@ namespace DevourClient
                         case "Menu":
                             if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 430, 120, 20), "Force Start"))
                             {
-                                Horror.Menu menu = UnityEngine.Object.FindObjectOfType<Horror.Menu>();
+                                Il2CppHorror.Menu menu = UnityEngine.Object.FindObjectOfType<Il2CppHorror.Menu>();
                                 menu.OnLobbyStartButtonClick();
                             }
                             return;
@@ -653,7 +657,7 @@ namespace DevourClient
                             {
                                 try
                                 {
-                                    NolanBehaviour nb = Player.GetPlayer();
+                                    Il2Cpp.NolanBehaviour nb = Player.GetPlayer();
 
                                     nb.TeleportTo(Helpers.Map.GetAzazel().transform.position, Quaternion.identity);
                                 }
@@ -685,7 +689,7 @@ namespace DevourClient
                             {
                                 try
                                 {
-                                    NolanBehaviour nb = Player.GetPlayer();
+                                    Il2Cpp.NolanBehaviour nb = Player.GetPlayer();
 
                                     nb.TeleportTo(Helpers.Map.GetAzazel().transform.position, Quaternion.identity);
                                 }
@@ -722,7 +726,7 @@ namespace DevourClient
                             {
                                 try
                                 {
-                                    NolanBehaviour nb = Player.GetPlayer();
+                                    Il2Cpp.NolanBehaviour nb = Player.GetPlayer();
 
                                     nb.TeleportTo(Helpers.Map.GetAzazel().transform.position, Quaternion.identity);
                                 }
@@ -753,7 +757,7 @@ namespace DevourClient
                             {
                                 try
                                 {
-                                    NolanBehaviour nb = Player.GetPlayer();
+                                    Il2Cpp.NolanBehaviour nb = Player.GetPlayer();
 
                                     nb.TeleportTo(Helpers.Map.GetAzazel().transform.position, Quaternion.identity);
                                 }

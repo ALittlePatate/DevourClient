@@ -4,7 +4,7 @@
     {
         public static void Achievements()
         {
-            AchievementHelpers ah = UnityEngine.Object.FindObjectOfType<AchievementHelpers>();
+            Il2Cpp.AchievementHelpers ah = UnityEngine.Object.FindObjectOfType<Il2Cpp.AchievementHelpers>();
 
 			/*
 		    string[] names = { "hasAchievedFusesUsed", "hasAchievedGasolineUsed", "hasAchievedNoKnockout", "hasCollectedAllPatches", "hasCollectedAllRoses",
@@ -37,7 +37,7 @@
         public static void Doors()
         {
             //Pour chaques portes, on les ouvre
-            foreach (Horror.DoorBehaviour doorBehaviour in UnityEngine.Object.FindObjectsOfType<Horror.DoorBehaviour>())
+            foreach (Il2CppHorror.DoorBehaviour doorBehaviour in UnityEngine.Object.FindObjectsOfType<Il2CppHorror.DoorBehaviour>())
             {
                 doorBehaviour.state.Locked = false;
                 if (doorBehaviour.IsOpen())

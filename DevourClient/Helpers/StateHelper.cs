@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using Opsive.UltimateCharacterController.Character;
+using Il2CppOpsive.UltimateCharacterController.Character;
 using System.Collections.Generic;
 using System.Collections;
 
@@ -9,7 +9,7 @@ namespace DevourClient.Helpers
     {
         public static bool IsInGame()
         {
-            OptionsHelpers optionsHelpers = UnityEngine.Object.FindObjectOfType<OptionsHelpers>();
+            Il2Cpp.OptionsHelpers optionsHelpers = UnityEngine.Object.FindObjectOfType<Il2Cpp.OptionsHelpers>();
             return optionsHelpers.inGame;
         }
         
@@ -18,19 +18,19 @@ namespace DevourClient.Helpers
             return GetPlayer() != null;
         }
         
-        public static NolanBehaviour GetPlayer()
+        public static Il2Cpp.NolanBehaviour GetPlayer()
         {
             if (Entities.LocalPlayer_ == null)
             {
                 return null;
             }
 
-            return Entities.LocalPlayer_.GetComponent<NolanBehaviour>();
+            return Entities.LocalPlayer_.GetComponent<Il2Cpp.NolanBehaviour>();
         }
         
         public static bool IsPlayerCrawling()
         {
-            NolanBehaviour nb = Player.GetPlayer();
+            Il2Cpp.NolanBehaviour nb = Player.GetPlayer();
 
             if (nb == null)
             {
@@ -51,13 +51,13 @@ namespace DevourClient.Helpers
      {
         public static GameObject LocalPlayer_;
         public static GameObject[] Players;
-        public static GoatBehaviour[] GoatsAndRats;
-        public static SurvivalInteractable[] SurvivalInteractables;
-        public static KeyBehaviour[] Keys;
-        public static SurvivalDemonBehaviour[] Demons;
-        public static SpiderBehaviour[] Spiders;
-        public static GhostBehaviour[] Ghosts;
-        public static SurvivalAzazelBehaviour[] Azazels;
+        public static Il2Cpp.GoatBehaviour[] GoatsAndRats;
+        public static Il2Cpp.SurvivalInteractable[] SurvivalInteractables;
+        public static Il2Cpp.KeyBehaviour[] Keys;
+        public static Il2Cpp.SurvivalDemonBehaviour[] Demons;
+        public static Il2Cpp.SpiderBehaviour[] Spiders;
+        public static Il2Cpp.GhostBehaviour[] Ghosts;
+        public static Il2Cpp.SurvivalAzazelBehaviour[] Azazels;
 
         public static IEnumerator GetLocalPlayer()
         {
@@ -67,7 +67,7 @@ namespace DevourClient.Helpers
 
                 for (int i = 0; i < currentPlayers.Length; i++)
                 {
-                    if (currentPlayers[i].GetComponent<NolanBehaviour>().entity.IsOwner)
+                    if (currentPlayers[i].GetComponent<Il2Cpp.NolanBehaviour>().entity.IsOwner)
                     {
                         LocalPlayer_ = currentPlayers[i];
                         break;
@@ -94,7 +94,7 @@ namespace DevourClient.Helpers
         {
             for (;;)
             {
-                GoatsAndRats = GoatBehaviour.FindObjectsOfType<GoatBehaviour>();
+                GoatsAndRats = Il2Cpp.GoatBehaviour.FindObjectsOfType<Il2Cpp.GoatBehaviour>();
 
                 // Wait 5 seconds before caching objects again.
                 yield return new WaitForSeconds(5f);
@@ -105,7 +105,7 @@ namespace DevourClient.Helpers
         {
             for (;;)
             {
-                SurvivalInteractables = SurvivalInteractable.FindObjectsOfType<SurvivalInteractable>();
+                SurvivalInteractables = Il2Cpp.SurvivalInteractable.FindObjectsOfType<Il2Cpp.SurvivalInteractable>();
 
                 // Wait 5 seconds before caching objects again.
                 yield return new WaitForSeconds(5f);
@@ -116,7 +116,7 @@ namespace DevourClient.Helpers
         {
             for (;;)
             {
-                Keys = KeyBehaviour.FindObjectsOfType<KeyBehaviour>();
+                Keys = Il2Cpp.KeyBehaviour.FindObjectsOfType<Il2Cpp.KeyBehaviour>();
 
                 // Wait 5 seconds before caching objects again.
                 yield return new WaitForSeconds(5f);
@@ -127,7 +127,7 @@ namespace DevourClient.Helpers
         {
             for (;;)
             {
-                Demons = SurvivalDemonBehaviour.FindObjectsOfType<SurvivalDemonBehaviour>();
+                Demons = Il2Cpp.SurvivalDemonBehaviour.FindObjectsOfType<Il2Cpp.SurvivalDemonBehaviour>();
 
                 // Wait 5 seconds before caching objects again.
                 yield return new WaitForSeconds(5f);
@@ -138,7 +138,7 @@ namespace DevourClient.Helpers
         {
             for (;;)
             {
-                Spiders = SpiderBehaviour.FindObjectsOfType<SpiderBehaviour>();
+                Spiders = Il2Cpp.SpiderBehaviour.FindObjectsOfType<Il2Cpp.SpiderBehaviour>();
 
                 // Wait 5 seconds before caching objects again.
                 yield return new WaitForSeconds(5f);
@@ -149,7 +149,7 @@ namespace DevourClient.Helpers
         {
             for (;;)
             {
-                Ghosts = GhostBehaviour.FindObjectsOfType<GhostBehaviour>();
+                Ghosts = Il2Cpp.GhostBehaviour.FindObjectsOfType<Il2Cpp.GhostBehaviour>();
 
                 // Wait 5 seconds before caching objects again.
                 yield return new WaitForSeconds(5f);
@@ -163,7 +163,7 @@ namespace DevourClient.Helpers
             */
             for (;;)
             {
-                Azazels = SurvivalAzazelBehaviour.FindObjectsOfType<SurvivalAzazelBehaviour>();
+                Azazels = Il2Cpp.SurvivalAzazelBehaviour.FindObjectsOfType<Il2Cpp.SurvivalAzazelBehaviour>();
 
                 // Wait 5 seconds before caching objects again.
                 yield return new WaitForSeconds(5f);

@@ -5,11 +5,11 @@ namespace DevourClient.Hooks
 {
     public class Hooks
     {
-	[HarmonyPatch(typeof(NolanBehaviour), "OnAttributeUpdateValue")]
+	[HarmonyPatch(typeof(Il2Cpp.NolanBehaviour), "OnAttributeUpdateValue")]
         static class NolanBehaviour_UV
         {
             [HarmonyPrefix]
-            static void Prefix(ref Opsive.UltimateCharacterController.Traits.Attribute attribute)
+            static void Prefix(ref Il2CppOpsive.UltimateCharacterController.Traits.Attribute attribute)
             {
                 if (Load.unlimitedUV && attribute.m_Name == "Battery")
                 {
@@ -19,11 +19,11 @@ namespace DevourClient.Hooks
             }
         }    
 	      
-        [HarmonyPatch(typeof(RankHelpers))]
-        [HarmonyPatch(nameof(RankHelpers.CalculateExpGain))] //annotation boiler plate to tell Harmony what to patch. Refer to docs.
+        [HarmonyPatch(typeof(Il2Cpp.RankHelpers))]
+        [HarmonyPatch(nameof(Il2Cpp.RankHelpers.CalculateExpGain))] //annotation boiler plate to tell Harmony what to patch. Refer to docs.
         static class RankHelpers_CalculateExpGain
         {
-            static void Postfix(ref RankHelpers.ExpGainInfo __result)
+            static void Postfix(ref Il2Cpp.RankHelpers.ExpGainInfo __result)
             {
                 if (Load.exp_modifier)
                 {
@@ -34,11 +34,11 @@ namespace DevourClient.Hooks
         }
         
 
-        [HarmonyPatch(typeof(Horror.Menu))]
-        [HarmonyPatch(nameof(Horror.Menu.SetupPerk))] //annotation boiler plate to tell Harmony what to patch. Refer to docs.
+        [HarmonyPatch(typeof(Il2CppHorror.Menu))]
+        [HarmonyPatch(nameof(Il2CppHorror.Menu.SetupPerk))] //annotation boiler plate to tell Harmony what to patch. Refer to docs.
         static class Horror_Menu_SetupPerk_Patch
         {
-            static void Prefix(ref CharacterPerk perk)
+            static void Prefix(ref Il2Cpp.CharacterPerk perk)
             {
                 /*
                     public int cost { get; set; }
@@ -56,11 +56,11 @@ namespace DevourClient.Hooks
             }
         }
 
-        [HarmonyPatch(typeof(Horror.Menu))]
-        [HarmonyPatch(nameof(Horror.Menu.SetupOutfit))] //annotation boiler plate to tell Harmony what to patch. Refer to docs.
+        [HarmonyPatch(typeof(Il2CppHorror.Menu))]
+        [HarmonyPatch(nameof(Il2CppHorror.Menu.SetupOutfit))] //annotation boiler plate to tell Harmony what to patch. Refer to docs.
         static class Horror_Menu_SetupOutfit_Patch
         {
-            static void Prefix(ref CharacterOutfit outfit)
+            static void Prefix(ref Il2Cpp.CharacterOutfit outfit)
             {
                 /*
                     public ulong currentPrice;
@@ -81,8 +81,8 @@ namespace DevourClient.Hooks
             }
         }
 
-        [HarmonyPatch(typeof(OptionsHelpers))]
-        [HarmonyPatch(nameof(OptionsHelpers.IsRobeUnlocked))] //annotation boiler plate to tell Harmony what to patch. Refer to docs.
+        [HarmonyPatch(typeof(Il2Cpp.OptionsHelpers))]
+        [HarmonyPatch(nameof(Il2Cpp.OptionsHelpers.IsRobeUnlocked))] //annotation boiler plate to tell Harmony what to patch. Refer to docs.
         static class OptionsHelpers_IsRobeUnlocked_Patch
         {
             static bool Prefix(ref string robe)
@@ -94,11 +94,11 @@ namespace DevourClient.Hooks
             }
         }
 
-        [HarmonyPatch(typeof(Horror.Menu))]
-        [HarmonyPatch(nameof(Horror.Menu.SetupFlashlight))] //annotation boiler plate to tell Harmony what to patch. Refer to docs.
+        [HarmonyPatch(typeof(Il2CppHorror.Menu))]
+        [HarmonyPatch(nameof(Il2CppHorror.Menu.SetupFlashlight))] //annotation boiler plate to tell Harmony what to patch. Refer to docs.
         static class Horror_Menu_SetLocked_Patch
         {
-            static void Prefix(CharacterFlashlight flashlight)
+            static void Prefix(Il2Cpp.CharacterFlashlight flashlight)
             {
                 /*
                 public bool isHidden { get; set; }
