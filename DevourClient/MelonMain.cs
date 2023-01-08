@@ -155,8 +155,9 @@ namespace DevourClient
             {
                 if (this.player_esp || this.player_snapline)
                 {
-                    foreach (GameObject player in Helpers.Entities.Players)
+                    foreach (BasePlayer Bplayer in Helpers.Entities.Players)
                     {
+                        GameObject player = Bplayer.p_GameObject;
                         if (player != null)
                         {
 
