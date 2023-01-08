@@ -6,6 +6,12 @@ using MelonLoader;
 
 namespace DevourClient.Helpers
 {
+    public class BasePlayer
+    {
+        public GameObject p_GameObject { get; set; } = default!;
+        public string Name { get; set; } = default!;
+        public string Id { get; set; } = default!;
+    }
     public class Player
     {
         public static bool IsInGame()
@@ -47,17 +53,12 @@ namespace DevourClient.Helpers
         }
         
     }
-    public class BasePlayer
-    {
-        public GameObject p_GameObject = default!;
-        public string Name = default!;
-        public string Id = default!;
-    }
-
+    
     public class Entities
     {
-        public static BasePlayer LocalPlayer_ = default!;
-        public static BasePlayer[] Players = default!;
+        public static BasePlayer LocalPlayer_ = new BasePlayer();
+        //public static BasePlayer[] Players = new BasePlayer[4];
+        public static GameObject[] Players = default!;
         public static Il2Cpp.GoatBehaviour[] GoatsAndRats = default!;
         public static Il2Cpp.SurvivalInteractable[] SurvivalInteractables = default!;
         public static Il2Cpp.KeyBehaviour[] Keys = default!;
@@ -90,6 +91,8 @@ namespace DevourClient.Helpers
         {
             for (;;)
             {
+                Players = GameObject.FindGameObjectsWithTag("Player");
+                /*
                 int i = 0;
                 foreach (GameObject p in GameObject.FindGameObjectsWithTag("Player"))
                 {
@@ -99,7 +102,6 @@ namespace DevourClient.Helpers
                     Il2Cpp.DissonancePlayerTracking dpt = p.gameObject.GetComponent<Il2Cpp.DissonancePlayerTracking>();
                     if (dpt != null)
                     {
-                        MelonLogger.Msg(dpt.state.PlayerName + " | " + dpt.state.PlayerId.ToString());
                         player_name = dpt.state.PlayerName;
                         player_id = dpt.state.PlayerId;
                     }
@@ -108,8 +110,9 @@ namespace DevourClient.Helpers
                     Players[i].Name = player_name;
                     Players[i].p_GameObject = p;
 
-                    i++;
+                    i++;  
                 }
+                */
 
                 // Wait 5 seconds before caching objects again.
                 yield return new WaitForSeconds(5f);
