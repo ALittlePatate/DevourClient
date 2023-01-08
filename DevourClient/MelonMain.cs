@@ -142,7 +142,7 @@ namespace DevourClient
             {
                 try
                 {
-                    Helpers.Entities.LocalPlayer_.GetComponent<Il2CppOpsive.UltimateCharacterController.Character.UltimateCharacterLocomotion>().TimeScale = this._PlayerSpeedMultiplier;
+                    Helpers.Entities.LocalPlayer_.p_GameObject.GetComponent<Il2CppOpsive.UltimateCharacterController.Character.UltimateCharacterLocomotion>().TimeScale = this._PlayerSpeedMultiplier;
                 }
                 catch { return;  }
             }

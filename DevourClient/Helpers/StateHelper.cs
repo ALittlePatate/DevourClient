@@ -21,12 +21,12 @@ namespace DevourClient.Helpers
         
         public static Il2Cpp.NolanBehaviour GetPlayer()
         {
-            if (Entities.LocalPlayer_ == null)
+            if (Entities.LocalPlayer_.p_GameObject == null)
             {
                 return null!;
             }
 
-            return Entities.LocalPlayer_.GetComponent<Il2Cpp.NolanBehaviour>();
+            return Entities.LocalPlayer_.p_GameObject.GetComponent<Il2Cpp.NolanBehaviour>();
         }
 
         public static bool IsPlayerCrawling()
@@ -55,8 +55,8 @@ namespace DevourClient.Helpers
     }
 
     public class Entities
-     {
-        public static GameObject LocalPlayer_ = default!;
+    {
+        public static BasePlayer LocalPlayer_ = default!;
         public static BasePlayer[] Players = default!;
         public static Il2Cpp.GoatBehaviour[] GoatsAndRats = default!;
         public static Il2Cpp.SurvivalInteractable[] SurvivalInteractables = default!;
@@ -76,7 +76,7 @@ namespace DevourClient.Helpers
                 {
                     if (currentPlayers[i].GetComponent<Il2Cpp.NolanBehaviour>().entity.IsOwner)
                     {
-                        LocalPlayer_ = currentPlayers[i];
+                        LocalPlayer_.p_GameObject = currentPlayers[i];
                         break;
                     }
                 }
