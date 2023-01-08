@@ -1,7 +1,5 @@
 # Unknowncheats thread [here](https://www.unknowncheats.me/forum/other-fps-games/475950-devour-multihack-update.html)
 
-# Discord server [here](https://discord.gg/2amMFvqjYd)
-
 # DevourClient
 
 I wasn't home for 2 days so i made that, i learnt a lot about C# programming and about Unity IL2CPP game hacking.
@@ -55,9 +53,10 @@ Everything about spoofing ehre (steam name, server name, level...) will persist 
 ## Installation
 In order to get all of this working you need to generate the DevourClient.dll file by building the source code.
 
-0. [Build the cheat from source](https://github.com/ALittlePatate/DevourClient#building-from-source).
-1. Put the DevourClient.dll file located in `DevourClient\bin\Release` inside `C:\Program Files (x86)\Steam\steamapps\common\Devour\Mods` folder.
-2. Start the game, now you have successfully installed DevourClient. Use INSERT to open the menu
+0. Install [.NET 6 SDK and runtime](https://dotnet.microsoft.com/en-us/download/dotnet/6.0).
+1. [Build the cheat from source](https://github.com/ALittlePatate/DevourClient#building-from-source).
+2. Put the DevourClient.dll file located in `DevourClient\bin\Release\net6.0` inside `C:\Program Files (x86)\Steam\steamapps\common\Devour\Mods` folder.
+3. Start the game, now you have successfully installed DevourClient. Use INSERT to open the menu
 
 ## Uninstallation
 
@@ -72,24 +71,23 @@ In order to get all of this working you need to generate the DevourClient.dll fi
 4. Open the solution file (DevourClient.sln) in Visual Studio
 5. Go to : Project --> Add a reference --> Browse --> Click on the browse button in the down right corner of the window.
 6. Add those files :
-* `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\MelonLoader.dll`
-* `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\0Harmony.dll`
-* `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\Managed\BehaviorDesigner.Runtime.dll`
-* `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\Managed\UnityEngine.IMGUIModule.dll`
-* `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\Managed\UnityEngine.InputLegacyModule.dll`
-* `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\Managed\bolt.user.dll`
-* `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\Managed\bolt.dll`
-* `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\Managed\UnityEngine.HotReloadModule.dll`
-* `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\Managed\UnityEngine.UI.dll`
-* `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\Managed\UnityEngine.dll`
-* `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\Managed\UnityEngine.CoreModule.dll`
-* `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\Managed\Il2Cppmscorlib.dll`
-* `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\Managed\Assembly-CSharp.dll`
-* `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\Managed\Opsive.UltimateCharacterController.dll`
-* `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\Managed\UnityEngine.InputModule.dll`
-* `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\Dependencies\Il2CppAssemblyGenerator\Il2CppUnhollower\UnhollowerBaseLib.dll`
-* `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\Dependencies\Il2CppAssemblyGenerator\Il2CppUnhollower\UnhollowerRuntimeLib.dll`
-7. Build the solutions in Release | Any CPU mode
+* `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\net6\MelonLoader.dll`
+* `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\net6\0Harmony.dll`
+* `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\net6\Il2CppInterop.Runtime.dll`
+* `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\Il2CppAssemblies\Assembly-CSharp.dll`
+* `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\Il2CppAssemblies\Il2CppOpsive.UltimateCharacterController.dll`
+* `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\Il2CppAssemblies\Il2CppBehaviorDesigner.Runtime.dll`
+* `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\Il2CppAssemblies\Il2Cppbolt.user.dll`
+* `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\Il2CppAssemblies\Il2Cppbolt.dll`
+* `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\Il2CppAssemblies\Il2Cppmscorlib.dll`
+* `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\Il2CppAssemblies\UnityEngine.IMGUIModule.dll`
+* `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\Il2CppAssemblies\UnityEngine.InputLegacyModule.dll`
+* `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\Il2CppAssemblies\UnityEngine.HotReloadModule.dll`
+* `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\Il2CppAssemblies\UnityEngine.UI.dll`
+* `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\Il2CppAssemblies\UnityEngine.dll`
+* `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\Il2CppAssemblies\UnityEngine.CoreModule.dll`
+* `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\Il2CppAssemblies\UnityEngine.InputModule.dll`
+7. Build the solutions in Release | Any CPU
 
 ## Contact
 
