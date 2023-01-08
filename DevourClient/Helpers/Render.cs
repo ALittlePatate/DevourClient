@@ -28,7 +28,7 @@ namespace DevourClient.Render
 			GUI.color = color2;
 		}
 
-		public static Texture2D lineTex;
+		public static Texture2D lineTex = default!;
 		public static void DrawLine(Vector2 pointA, Vector2 pointB, Color color, float width)
 		{
 			Matrix4x4 matrix = GUI.matrix;

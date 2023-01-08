@@ -22,7 +22,7 @@ namespace DevourClient.Helpers
         {
             if (Entities.LocalPlayer_ == null)
             {
-                return null;
+                return null!;
             }
 
             return Entities.LocalPlayer_.GetComponent<Il2Cpp.NolanBehaviour>();
@@ -49,15 +49,15 @@ namespace DevourClient.Helpers
      
      public class Entities
      {
-        public static GameObject LocalPlayer_;
-        public static GameObject[] Players;
-        public static Il2Cpp.GoatBehaviour[] GoatsAndRats;
-        public static Il2Cpp.SurvivalInteractable[] SurvivalInteractables;
-        public static Il2Cpp.KeyBehaviour[] Keys;
-        public static Il2Cpp.SurvivalDemonBehaviour[] Demons;
-        public static Il2Cpp.SpiderBehaviour[] Spiders;
-        public static Il2Cpp.GhostBehaviour[] Ghosts;
-        public static Il2Cpp.SurvivalAzazelBehaviour[] Azazels;
+        public static GameObject LocalPlayer_ = default!;
+        public static GameObject[] Players = default!;
+        public static Il2Cpp.GoatBehaviour[] GoatsAndRats = default!;
+        public static Il2Cpp.SurvivalInteractable[] SurvivalInteractables = default!;
+        public static Il2Cpp.KeyBehaviour[] Keys = default!;
+        public static Il2Cpp.SurvivalDemonBehaviour[] Demons = default!;
+        public static Il2Cpp.SpiderBehaviour[] Spiders = default!;
+        public static Il2Cpp.GhostBehaviour[] Ghosts = default!;
+        public static Il2Cpp.SurvivalAzazelBehaviour[] Azazels = default!;
 
         public static IEnumerator GetLocalPlayer()
         {

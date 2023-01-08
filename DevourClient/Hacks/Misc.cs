@@ -240,8 +240,7 @@ namespace DevourClient.Hacks
 
 			foreach (Il2Cpp.KeyBehaviour keyBehaviour in Helpers.Entities.Keys)
 			{
-				bool flag = keyBehaviour == null;
-				if (flag)
+				if (keyBehaviour == null)
 				{
 					return;
 				}
