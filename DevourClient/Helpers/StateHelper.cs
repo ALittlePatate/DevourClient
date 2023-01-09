@@ -2,7 +2,8 @@
 using Il2CppOpsive.UltimateCharacterController.Character;
 using System.Collections.Generic;
 using System.Collections;
-using MelonLoader;  
+using MelonLoader;
+using Il2CppPhoton.Bolt;
 
 namespace DevourClient.Helpers
 {
@@ -49,6 +50,7 @@ namespace DevourClient.Helpers
                 return;
             }
 
+            /*
             Il2Cpp.SurvivalAzazelBehaviour sab = Il2Cpp.SurvivalAzazelBehaviour.FindObjectOfType<Il2Cpp.SurvivalAzazelBehaviour>();
 
             if (sab == null)
@@ -57,6 +59,12 @@ namespace DevourClient.Helpers
             }
 
             sab.OnPickedUpPlayer(sab.gameObject, p_GameObject, false);
+            */
+
+            MelonLogger.Msg(Name);
+            p_GameObject.GetComponent<Il2Cpp.JumpScare>().Activate(p_GameObject.GetComponent<BoltEntity>());
+            //Il2Cpp.JumpScare _jumpscare = UnityEngine.Object.FindObjectOfType<Il2Cpp.JumpScare>();
+            //_jumpscare.Activate(p_GameObject.GetComponent<BoltEntity>());
         }
 
         public void LockInCage()
@@ -65,6 +73,9 @@ namespace DevourClient.Helpers
             {
                 return;
             }
+
+            BoltNetwork.Instantiate(BoltPrefabs.Cage, p_GameObject.transform.position, Quaternion.identity);
+
         }
 
         public void TP()
@@ -76,6 +87,22 @@ namespace DevourClient.Helpers
 
             Il2Cpp.NolanBehaviour nb = Player.GetPlayer();
             nb.TeleportTo(p_GameObject.transform.position, Quaternion.identity);
+        }
+
+        public void TPAzazel()
+        {
+            if (p_GameObject == null)
+            {
+                return;
+            }
+
+            Il2Cpp.SurvivalAzazelBehaviour sab = Il2Cpp.SurvivalAzazelBehaviour.FindObjectOfType<Il2Cpp.SurvivalAzazelBehaviour>();
+
+            if (sab == null)
+            {
+                return;
+            }
+            sab.gameObject.transform.position = p_GameObject.transform.position + p_GameObject.transform.forward;
         }
     }
     public class Player

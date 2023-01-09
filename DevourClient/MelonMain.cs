@@ -676,6 +676,11 @@ namespace DevourClient
                                 bp.LockInCage();
                             }
 
+                            if (GUI.Button(new Rect(Settings.Settings.x + 1080, Settings.Settings.y + 430 + i, 100, 20), "TP Azazel"))
+                            {
+                                bp.TPAzazel();
+                            }
+
                             i += 30;
                         }
                     }
