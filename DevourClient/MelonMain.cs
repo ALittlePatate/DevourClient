@@ -155,9 +155,14 @@ namespace DevourClient
             {
                 if (this.player_esp || this.player_snapline)
                 {
-                    foreach (GameObject player in Helpers.Entities.Players)
+                    foreach (Helpers.BasePlayer p in Helpers.Entities.Players)
                     {
-                        //GameObject player = Bplayer.p_GameObject;
+                        if (p == null)
+                        {
+                            continue;
+                        }
+
+                        GameObject player = p.p_GameObject;
                         if (player != null)
                         {
 
@@ -632,18 +637,22 @@ namespace DevourClient
                 if (Helpers.Map.GetActiveScene() != "")
                 {
                     GUI.Label(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 400, 200, 30), $"Functions for the map: {Helpers.Map.GetMapName(Helpers.Map.GetActiveScene())}");
-                    /*
+                    
                     if (Helpers.Map.GetActiveScene() != "Menu")
                     {
                         GUI.Label(new Rect(Settings.Settings.x + 580, Settings.Settings.y + 400, 150, 30), "Player list:");
                         int i = 0;
                         foreach (BasePlayer bp in Entities.Players)
                         {
+                            if (bp == null)
+                            {
+                                continue;
+                            }
+
                             GUI.Label(new Rect(Settings.Settings.x + 580, Settings.Settings.y + 430 + i, 150, 30), bp.Name);
                             i += 30;
                         }
                     }
-                    */
                     switch (Helpers.Map.GetActiveScene())
                     {
                         case "Menu":

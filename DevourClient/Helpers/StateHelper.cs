@@ -2,7 +2,7 @@
 using Il2CppOpsive.UltimateCharacterController.Character;
 using System.Collections.Generic;
 using System.Collections;
-using MelonLoader;
+using MelonLoader;  
 
 namespace DevourClient.Helpers
 {
@@ -56,9 +56,11 @@ namespace DevourClient.Helpers
     
     public class Entities
     {
+        public const int MAX_PLAYERS = 4; //can change with new updates/new hacks
+
         public static BasePlayer LocalPlayer_ = new BasePlayer();
-        //public static BasePlayer[] Players = new BasePlayer[4];
-        public static GameObject[] Players = default!;
+        public static BasePlayer[] Players = new BasePlayer[MAX_PLAYERS];
+        //public static GameObject[] Players = default!;
         public static Il2Cpp.GoatBehaviour[] GoatsAndRats = default!;
         public static Il2Cpp.SurvivalInteractable[] SurvivalInteractables = default!;
         public static Il2Cpp.KeyBehaviour[] Keys = default!;
@@ -91,10 +93,10 @@ namespace DevourClient.Helpers
         {
             for (;;)
             {
-                Players = GameObject.FindGameObjectsWithTag("Player");
-                /*
+                GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+
                 int i = 0;
-                foreach (GameObject p in GameObject.FindGameObjectsWithTag("Player"))
+                foreach (GameObject p in players)
                 {
                     string player_name = "";
                     string player_id = "-1";
@@ -106,13 +108,18 @@ namespace DevourClient.Helpers
                         player_id = dpt.state.PlayerId;
                     }
 
+                    if (Players[i] == null)
+                    {
+                        Players[i] = new BasePlayer();
+                    }
+
                     Players[i].Id = player_id;
                     Players[i].Name = player_name;
                     Players[i].p_GameObject = p;
 
                     i++;  
                 }
-                */
+                
 
                 // Wait 5 seconds before caching objects again.
                 yield return new WaitForSeconds(5f);
