@@ -188,7 +188,7 @@ namespace DevourClient
                                     continue;
                                 }
 
-                                Render.Render.DrawBoxESP(w2s_footpos, w2s_headpos, Settings.Settings.player_esp_color, "", this.player_snapline, this.player_esp);
+                                Render.Render.DrawBoxESP(w2s_footpos, w2s_headpos, Settings.Settings.player_esp_color, p.Name, this.player_snapline, this.player_esp);
                             }
 
                         }
@@ -651,27 +651,27 @@ namespace DevourClient
 
                             GUI.Label(new Rect(Settings.Settings.x + 580, Settings.Settings.y + 430 + i, 150, 30), bp.Name);
                             
-                            if (GUI.Button(new Rect(Settings.Settings.x + 650, Settings.Settings.y + 430, 60, 20), "Kill"))
+                            if (GUI.Button(new Rect(Settings.Settings.x + 650, Settings.Settings.y + 430 + i, 60, 20), "Kill"))
                             {
                                 bp.Kill();
                             }
 
-                            if (GUI.Button(new Rect(Settings.Settings.x + 710, Settings.Settings.y + 430, 80, 20), "Revive"))
+                            if (GUI.Button(new Rect(Settings.Settings.x + 710, Settings.Settings.y + 430 + i, 80, 20), "Revive"))
                             {
                                 bp.Revive();
                             }
 
-                            if (GUI.Button(new Rect(Settings.Settings.x + 790, Settings.Settings.y + 430, 100, 20), "Jumpscare"))
+                            if (GUI.Button(new Rect(Settings.Settings.x + 790, Settings.Settings.y + 430 + i, 100, 20), "Jumpscare"))
                             {
                                 bp.Jumpscare();
                             }
 
-                            if (GUI.Button(new Rect(Settings.Settings.x + 890, Settings.Settings.y + 430, 80, 20), "TP to"))
+                            if (GUI.Button(new Rect(Settings.Settings.x + 890, Settings.Settings.y + 430 + i, 80, 20), "TP to"))
                             {
                                 bp.TP();
                             }
 
-                            if (GUI.Button(new Rect(Settings.Settings.x + 970, Settings.Settings.y + 430, 110, 20), "Lock in cage"))
+                            if (GUI.Button(new Rect(Settings.Settings.x + 970, Settings.Settings.y + 430 + i, 110, 20), "Lock in cage"))
                             {
                                 bp.LockInCage();
                             }
