@@ -62,9 +62,9 @@ namespace DevourClient.Helpers
             */
 
             MelonLogger.Msg(Name);
-            p_GameObject.GetComponent<Il2Cpp.JumpScare>().Activate(p_GameObject.GetComponent<BoltEntity>());
-            //Il2Cpp.JumpScare _jumpscare = UnityEngine.Object.FindObjectOfType<Il2Cpp.JumpScare>();
-            //_jumpscare.Activate(p_GameObject.GetComponent<BoltEntity>());
+            Il2Cpp.JumpScare _jumpscare = UnityEngine.Object.FindObjectOfType<Il2Cpp.JumpScare>();
+            _jumpscare.player = p_GameObject;
+            _jumpscare.Activate(p_GameObject.GetComponent<BoltEntity>());
         }
 
         public void LockInCage()
@@ -102,7 +102,7 @@ namespace DevourClient.Helpers
             {
                 return;
             }
-            sab.gameObject.transform.position = p_GameObject.transform.position + p_GameObject.transform.forward;
+            sab.transform.position = p_GameObject.transform.position + p_GameObject.transform.forward;
         }
     }
     public class Player
