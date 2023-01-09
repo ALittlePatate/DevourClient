@@ -19,7 +19,14 @@ namespace DevourClient.Helpers
                 return;
             }
 
-            Il2Cpp.NolanBehaviour nb = p_GameObject.GetComponent<Il2Cpp.NolanBehaviour>();
+            Il2Cpp.SurvivalAzazelBehaviour sab = Il2Cpp.SurvivalAzazelBehaviour.FindObjectOfType<Il2Cpp.SurvivalAzazelBehaviour>();
+
+            if (sab == null)
+            {
+                return;
+            }
+
+            sab.OnKnockout(sab.gameObject, p_GameObject);
         }
 
         public void Revive()
