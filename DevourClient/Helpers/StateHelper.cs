@@ -41,6 +41,15 @@ namespace DevourClient.Helpers
             {
                 return;
             }
+
+            Il2Cpp.SurvivalAzazelBehaviour sab = Il2Cpp.SurvivalAzazelBehaviour.FindObjectOfType<Il2Cpp.SurvivalAzazelBehaviour>();
+
+            if (sab == null)
+            {
+                return;
+            }
+
+            sab.OnPickedUpPlayer(sab.gameObject, p_GameObject, false);
         }
 
         public void LockInCage()
