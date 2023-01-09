@@ -11,6 +11,56 @@ namespace DevourClient.Helpers
         public GameObject p_GameObject { get; set; } = default!;
         public string Name { get; set; } = default!;
         public string Id { get; set; } = default!;
+
+        public void Kill()
+        {
+            if (p_GameObject == null)
+            {
+                return;
+            }
+
+            Il2Cpp.NolanBehaviour nb = p_GameObject.GetComponent<Il2Cpp.NolanBehaviour>();
+        }
+
+        public void Revive()
+        {
+            if (p_GameObject == null)
+            {
+                return;
+            }
+
+            Il2Cpp.NolanBehaviour nb = p_GameObject.GetComponent<Il2Cpp.NolanBehaviour>();
+            Il2Cpp.SurvivalReviveInteractable _reviveInteractable = UnityEngine.Object.FindObjectOfType<Il2Cpp.SurvivalReviveInteractable>();
+
+            _reviveInteractable.Interact(nb.gameObject);
+        }
+
+        public void Jumpscare()
+        {
+            if (p_GameObject == null)
+            {
+                return;
+            }
+        }
+
+        public void LockInCage()
+        {
+            if (p_GameObject == null)
+            {
+                return;
+            }
+        }
+
+        public void TP()
+        {
+            if (p_GameObject == null)
+            {
+                return;
+            }
+
+            Il2Cpp.NolanBehaviour nb = Player.GetPlayer();
+            nb.TeleportTo(p_GameObject.transform.position, Quaternion.identity);
+        }
     }
     public class Player
     {

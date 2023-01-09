@@ -650,6 +650,32 @@ namespace DevourClient
                             }
 
                             GUI.Label(new Rect(Settings.Settings.x + 580, Settings.Settings.y + 430 + i, 150, 30), bp.Name);
+                            
+                            if (GUI.Button(new Rect(Settings.Settings.x + 650, Settings.Settings.y + 430, 60, 20), "Kill"))
+                            {
+                                bp.Kill();
+                            }
+
+                            if (GUI.Button(new Rect(Settings.Settings.x + 710, Settings.Settings.y + 430, 80, 20), "Revive"))
+                            {
+                                bp.Revive();
+                            }
+
+                            if (GUI.Button(new Rect(Settings.Settings.x + 790, Settings.Settings.y + 430, 100, 20), "Jumpscare"))
+                            {
+                                bp.Jumpscare();
+                            }
+
+                            if (GUI.Button(new Rect(Settings.Settings.x + 890, Settings.Settings.y + 430, 80, 20), "TP to"))
+                            {
+                                bp.TP();
+                            }
+
+                            if (GUI.Button(new Rect(Settings.Settings.x + 970, Settings.Settings.y + 430, 110, 20), "Lock in cage"))
+                            {
+                                bp.LockInCage();
+                            }
+
                             i += 30;
                         }
                     }
@@ -674,7 +700,7 @@ namespace DevourClient
                                 Hacks.Misc.BurnRitualObj(Helpers.Map.GetActiveScene(), true);
                             }
                             
-                            if (GUI.Button(new Rect(Settings.Settings.x + 290, Settings.Settings.y + 430, 120, 20), "TP Azazel"))
+                            if (GUI.Button(new Rect(Settings.Settings.x + 290, Settings.Settings.y + 430, 120, 20), "TP to Azazel"))
                             {
                                 try
                                 {
@@ -706,7 +732,7 @@ namespace DevourClient
                                 Hacks.Misc.BurnRitualObj(Helpers.Map.GetActiveScene(), true);
                             }
                             
-                            if (GUI.Button(new Rect(Settings.Settings.x + 290, Settings.Settings.y + 430, 120, 20), "TP Azazel"))
+                            if (GUI.Button(new Rect(Settings.Settings.x + 290, Settings.Settings.y + 430, 120, 20), "TP to Azazel"))
                             {
                                 try
                                 {
@@ -743,7 +769,7 @@ namespace DevourClient
                                 Hacks.Misc.CleanFountain();
                             }
                             
-                            if (GUI.Button(new Rect(Settings.Settings.x + 460, Settings.Settings.y + 430, 120, 20), "TP Azazel"))
+                            if (GUI.Button(new Rect(Settings.Settings.x + 460, Settings.Settings.y + 430, 120, 20), "TP to Azazel"))
                             {
                                 try
                                 {
@@ -774,7 +800,7 @@ namespace DevourClient
                                 Hacks.Misc.BurnRitualObj(Helpers.Map.GetActiveScene(), true);
                             }
                             
-                            if (GUI.Button(new Rect(Settings.Settings.x + 290, Settings.Settings.y + 430, 120, 20), "TP Azazel"))
+                            if (GUI.Button(new Rect(Settings.Settings.x + 290, Settings.Settings.y + 430, 120, 20), "TP to Azazel"))
                             {
                                 try
                                 {

@@ -142,8 +142,7 @@ namespace DevourClient.Hacks
 
 			_reviveInteractable.Interact(nb.gameObject);
 		}
-	    
-	    public static void TPItems()
+		public static void TPItems()
 		{
 		    try
 		    {
