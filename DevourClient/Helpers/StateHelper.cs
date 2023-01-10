@@ -96,13 +96,13 @@ namespace DevourClient.Helpers
                 return;
             }
 
-            Il2Cpp.SurvivalAzazelBehaviour sab = Il2Cpp.SurvivalAzazelBehaviour.FindObjectOfType<Il2Cpp.SurvivalAzazelBehaviour>();
+            UltimateCharacterLocomotion ucl = Helpers.Map.GetAzazel().GetComponent<UltimateCharacterLocomotion>();
 
-            if (sab == null)
+            try
             {
-                return;
+                ucl.SetPosition(p_GameObject.transform.position);
             }
-            sab.transform.position = p_GameObject.transform.position + p_GameObject.transform.forward;
+            catch { return; }
         }
     }
     public class Player
