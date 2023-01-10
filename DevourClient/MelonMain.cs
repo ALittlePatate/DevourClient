@@ -443,12 +443,12 @@ namespace DevourClient
 
                 if (GUI.Button(new Rect(Settings.Settings.x + 730, Settings.Settings.y + 280, 110, 20), "Bleach") && Player.IsInGameOrLobby())
                 {
-                    Hacks.Misc.CarryObject("SurvivalBleach");
+                    
                 }
 
                 if (GUI.Button(new Rect(Settings.Settings.x + 730, Settings.Settings.y + 310, 110, 20), "Ritual Book") && Player.IsInGameOrLobby())
                 {
-                    BoltNetwork.Instantiate(BoltPrefabs.SurvivalRitualBook, Player.GetPlayer().transform.position, Quaternion.identity);
+                    Hacks.Misc.CarryObject("RitualBook-Active-1");
                 }
 
                 if (GUI.Button(new Rect(Settings.Settings.x + 730, Settings.Settings.y + 340, 110, 20), "Matchbox") && Player.IsInGameOrLobby())
