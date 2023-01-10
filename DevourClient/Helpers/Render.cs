@@ -57,6 +57,24 @@ namespace DevourClient.Render
 			DrawLine(new Vector2(x, y + h), new Vector2(x + w, y + h), color, thickness);
 		}
 
+		public static void DrawNameESP(Vector3 pos, string name, Color color)
+        {
+			if (Camera.main == null)
+			{
+				return;
+			}
+
+			Vector3 vector = Camera.main.WorldToScreenPoint(pos);
+			if (vector.z > 0f)
+			{
+				vector.y = (float)Screen.height - (vector.y + 1f);
+				GUI.color = color;
+				GUI.DrawTexture(new Rect(new Vector2(vector.x, vector.y), new Vector2(5f, 5f)), Texture2D.whiteTexture, 0);
+				GUI.Label(new Rect(new Vector2(vector.x, vector.y), new Vector2(100f, 100f)), name);
+				GUI.color = Color.white;
+			}
+		}
+
 		public static void DrawBoxESP(Vector3 footpos, Vector3 headpos, Color color, string playername = "", bool snapline = false, bool esp = true, bool only_name = false)
 		{
 			float height = headpos.y - footpos.y;

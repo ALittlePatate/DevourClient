@@ -201,27 +201,7 @@ namespace DevourClient
                     {
                         if (goat != null)
                         {
-
-                            Vector3 pivotPos = goat.transform.position; //Pivot point NOT at the origin, at the center
-                            Vector3 playerFootPos; playerFootPos.x = pivotPos.x; playerFootPos.z = pivotPos.z; playerFootPos.y = pivotPos.y - 2f; //At the feet
-                            Vector3 playerHeadPos;
-                            playerHeadPos.x = pivotPos.x;
-                            playerHeadPos.z = pivotPos.z;
-                            playerHeadPos.y = pivotPos.y + 0.3f; //At the middle
-
-                            if (Camera.main == null)
-                            {
-                                continue;
-                            }
-
-                            Vector3 w2s_footpos = Camera.main.WorldToScreenPoint(playerFootPos);
-                            Vector3 w2s_headpos = Camera.main.WorldToScreenPoint(playerHeadPos);
-
-                            if (w2s_footpos.z > 0f)
-                            {
-                                Render.Render.DrawBoxESP(w2s_footpos, w2s_headpos, new Color(0.94f, 0.61f, 0.18f, 1.0f), goat.name.Replace("Survival", "").Replace("(Clone)", ""), false, false, true);
-                            }
-
+                            Render.Render.DrawNameESP(goat.transform.position, goat.name.Replace("Survival", "").Replace("(Clone)", ""), new Color(0.94f, 0.61f, 0.18f, 1.0f));
                         }
                     }
                 }
@@ -232,30 +212,7 @@ namespace DevourClient
                     {
                         if (obj != null)
                         {
-
-                            Vector3 pivotPos = obj.transform.position; //Pivot point NOT at the origin, at the center
-                            Vector3 playerFootPos; playerFootPos.x = pivotPos.x; playerFootPos.z = pivotPos.z; playerFootPos.y = pivotPos.y - 2f; //At the feet
-                            Vector3 playerHeadPos;
-                            playerHeadPos.x = pivotPos.x;
-                            playerHeadPos.z = pivotPos.z;
-                            playerHeadPos.y = pivotPos.y + 0.3f; //At the middle
-
-                            if (Camera.main == null)
-                            {
-                                continue;
-                            }
-
-                            Vector3 w2s_footpos = Camera.main.WorldToScreenPoint(playerFootPos);
-                            Vector3 w2s_headpos = Camera.main.WorldToScreenPoint(playerHeadPos);
-
-                            if (w2s_footpos.z > 0f)
-                            {
-                                //string playername = player.field_Private_PhotonView_0.field_Private_ObjectPublicObInBoStBoHaStObInHaUnique_0.field_Private_String_0;//player.photonView._Controller_k__BackingField.NickName;
-
-
-                                Render.Render.DrawBoxESP(w2s_footpos, w2s_headpos, new Color(1.0f, 1.0f, 1.0f), obj.prefabName.Replace("Survival", ""), false, false, true);
-                            }
-
+                            Render.Render.DrawNameESP(obj.transform.position, obj.prefabName.Replace("Survival", ""), new Color(1.0f, 1.0f, 1.0f));
                         }
                     }
 
@@ -263,28 +220,7 @@ namespace DevourClient
                     {
                         if (key != null)
                         {
-
-
-                            Vector3 pivotPos = key.transform.position; //Pivot point NOT at the origin, at the center
-                            Vector3 playerFootPos; playerFootPos.x = pivotPos.x; playerFootPos.z = pivotPos.z; playerFootPos.y = pivotPos.y - 2f; //At the feet
-                            Vector3 playerHeadPos;
-                            playerHeadPos.x = pivotPos.x;
-                            playerHeadPos.z = pivotPos.z;
-                            playerHeadPos.y = pivotPos.y + 0.3f; //At the middle
-
-                            if (Camera.main == null)
-                            {
-                                continue;
-                            }
-
-                            Vector3 w2s_footpos = Camera.main.WorldToScreenPoint(playerFootPos);
-                            Vector3 w2s_headpos = Camera.main.WorldToScreenPoint(playerHeadPos);
-
-                            if (w2s_footpos.z > 0f)
-                            {
-                                //string playername = player.field_Private_PhotonView_0.field_Private_ObjectPublicObInBoStBoHaStObInHaUnique_0.field_Private_String_0;//player.photonView._Controller_k__BackingField.NickName;
-                                Render.Render.DrawBoxESP(w2s_footpos, w2s_headpos, new Color(1.0f, 1.0f, 1.0f), "Key", false, false, true);
-                            }
+                            Render.Render.DrawNameESP(key.transform.position, "Key", new Color(1.0f, 1.0f, 1.0f));
                         }
                     }
                 }
@@ -295,28 +231,7 @@ namespace DevourClient
                     {
                         if (demon != null)
                         {
-
-
-                            Vector3 pivotPos = demon.transform.position; //Pivot point NOT at the origin, at the center
-                            Vector3 playerFootPos; playerFootPos.x = pivotPos.x; playerFootPos.z = pivotPos.z; playerFootPos.y = pivotPos.y - 2f; //At the feet
-                            Vector3 playerHeadPos;
-                            playerHeadPos.x = pivotPos.x;
-                            playerHeadPos.z = pivotPos.z;
-                            playerHeadPos.y = pivotPos.y + 0.3f; //At the middle
-
-                            if (Camera.main == null)
-                            {
-                                continue;
-                            }
-
-                            Vector3 w2s_footpos = Camera.main.WorldToScreenPoint(playerFootPos);
-                            Vector3 w2s_headpos = Camera.main.WorldToScreenPoint(playerHeadPos);
-
-                            if (w2s_footpos.z > 0f)
-                            {
-                                Render.Render.DrawBoxESP(w2s_footpos, w2s_headpos, new Color(1.0f, 0.0f, 0.0f, 1.0f), demon.name.Replace("Survival", "").Replace("(Clone)", ""), false, false, true);
-                            }
-
+                            Render.Render.DrawNameESP(demon.transform.position, demon.name.Replace("Survival", "").Replace("(Clone)", ""), new Color(1.0f, 0.0f, 0.0f, 1.0f));
                         }
                     }
 
@@ -324,28 +239,7 @@ namespace DevourClient
                     {
                         if (spider != null)
                         {
-
-
-                            Vector3 pivotPos = spider.transform.position; //Pivot point NOT at the origin, at the center
-                            Vector3 playerFootPos; playerFootPos.x = pivotPos.x; playerFootPos.z = pivotPos.z; playerFootPos.y = pivotPos.y - 2f; //At the feet
-                            Vector3 playerHeadPos;
-                            playerHeadPos.x = pivotPos.x;
-                            playerHeadPos.z = pivotPos.z;
-                            playerHeadPos.y = pivotPos.y + 0.3f; //At the middle
-
-                            if (Camera.main == null)
-                            {
-                                continue;
-                            }
-
-                            Vector3 w2s_footpos = Camera.main.WorldToScreenPoint(playerFootPos);
-                            Vector3 w2s_headpos = Camera.main.WorldToScreenPoint(playerHeadPos);
-
-                            if (w2s_footpos.z > 0f)
-                            {
-                                Render.Render.DrawBoxESP(w2s_footpos, w2s_headpos, new Color(1.0f, 0.0f, 0.0f, 1.0f), "Spider", false, false, true);
-                            }
-
+                            Render.Render.DrawNameESP(spider.transform.position, "Spider", new Color(1.0f, 0.0f, 0.0f, 1.0f));
                         }
                     }
 
@@ -353,28 +247,7 @@ namespace DevourClient
                     {
                         if (ghost != null)
                         {
-
-
-                            Vector3 pivotPos = ghost.transform.position; //Pivot point NOT at the origin, at the center
-                            Vector3 playerFootPos; playerFootPos.x = pivotPos.x; playerFootPos.z = pivotPos.z; playerFootPos.y = pivotPos.y - 2f; //At the feet
-                            Vector3 playerHeadPos;
-                            playerHeadPos.x = pivotPos.x;
-                            playerHeadPos.z = pivotPos.z;
-                            playerHeadPos.y = pivotPos.y + 0.3f; //At the middle
-
-                            if (Camera.main == null)
-                            {
-                                continue;
-                            }
-
-                            Vector3 w2s_footpos = Camera.main.WorldToScreenPoint(playerFootPos);
-                            Vector3 w2s_headpos = Camera.main.WorldToScreenPoint(playerHeadPos);
-
-                            if (w2s_footpos.z > 0f)
-                            {
-                                Render.Render.DrawBoxESP(w2s_footpos, w2s_headpos, new Color(1.0f, 0.0f, 0.0f, 1.0f), "Ghost", false, false, true);
-                            }
-
+                            Render.Render.DrawNameESP(ghost.transform.position, "Ghost", new Color(1.0f, 0.0f, 0.0f, 1.0f));
                         }
                     }
                 }
@@ -644,7 +517,7 @@ namespace DevourClient
                         int i = 0;
                         foreach (BasePlayer bp in Entities.Players)
                         {
-                            if (bp == null)
+                            if (bp == null || bp.Name == "")
                             {
                                 continue;
                             }
