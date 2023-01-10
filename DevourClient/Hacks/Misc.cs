@@ -103,21 +103,15 @@ namespace DevourClient.Hacks
 			_azazel.gameObject.GetComponent<Il2Cpp.SurvivalAzazelBehaviour>().Spawn();
 		}
 
-		public static void SpawnGoatOrRat(PrefabId _goatPrefabID)
+		public static void CarryObject(string name)
 		{
-			if (!Il2CppPhoton.Bolt.BoltNetwork.IsServer)
+			try
 			{
-				MelonLogger.Msg("You need to be host to spawn stuff !");
-				return;
-			}
+                NolanBehaviour nb = Helpers.Entities.LocalPlayer_.p_GameObject.GetComponent<NolanBehaviour>();
 
-			GameObject _goat;
-			Vector3 pos = Player.GetPlayer().transform.position;
-
-			_goat = BoltNetwork.Instantiate(_goatPrefabID, new Vector3(pos.x, pos.y, pos.z + 1f), Quaternion.identity);
-			_goat.gameObject.GetComponent<Il2Cpp.GoatBehaviour>().Spawn();
-			Il2CppBehaviorDesigner.Runtime.Behavior goat_behavior = _goat.gameObject.GetComponent<Il2Cpp.GoatBehaviour>().m_mainBehaviour;
-			goat_behavior.EnableBehavior();
+                nb.StartCarry(name);
+            }
+			catch { return; }
 		}
 		
 	    	public static void CleanFountain()
