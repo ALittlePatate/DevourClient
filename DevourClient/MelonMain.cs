@@ -408,32 +408,32 @@ namespace DevourClient
 
                 if (GUI.Button(new Rect(Settings.Settings.x + 730, Settings.Settings.y + 70, 110, 20), "Hay") && Player.IsInGameOrLobby())
                 {
-                    BoltNetwork.Instantiate(BoltPrefabs.SurvivalHay, Player.GetPlayer().transform.position, Quaternion.identity);
+                    Hacks.Misc.CarryObject("SurvivalHay");
                 }
 
                 if (GUI.Button(new Rect(Settings.Settings.x + 730, Settings.Settings.y + 100, 110, 20), "First Aid") && Player.IsInGameOrLobby())
                 {
-                    BoltNetwork.Instantiate(BoltPrefabs.SurvivalFirstAid, Player.GetPlayer().transform.position, Quaternion.identity);
+                    Hacks.Misc.CarryObject("SurvivalFirstAid");
                 }
 
                 if (GUI.Button(new Rect(Settings.Settings.x + 730, Settings.Settings.y + 130, 110, 20), "Battery") && Player.IsInGameOrLobby())
                 {
-                    BoltNetwork.Instantiate(BoltPrefabs.SurvivalBattery, Player.GetPlayer().transform.position, Quaternion.identity);
+                    Hacks.Misc.CarryObject("SurvivalBattery");
                 }
 
                 if (GUI.Button(new Rect(Settings.Settings.x + 730, Settings.Settings.y + 160, 110, 20), "Gasoline") && Player.IsInGameOrLobby())
                 {
-                    BoltNetwork.Instantiate(BoltPrefabs.SurvivalGasoline, Player.GetPlayer().transform.position, Quaternion.identity);
+                    Hacks.Misc.CarryObject("SurvivalGasoline");
                 }
 
                 if (GUI.Button(new Rect(Settings.Settings.x + 730, Settings.Settings.y + 190, 110, 20), "Fuse") && Player.IsInGameOrLobby())
                 {
-                    BoltNetwork.Instantiate(BoltPrefabs.SurvivalFuse, Player.GetPlayer().transform.position, Quaternion.identity);
+                    Hacks.Misc.CarryObject("SurvivalFuse");
                 }
 
                 if (GUI.Button(new Rect(Settings.Settings.x + 730, Settings.Settings.y + 220, 110, 20), "Food") && Player.IsInGameOrLobby())
                 {
-                    BoltNetwork.Instantiate(BoltPrefabs.SurvivalRottenFood, Player.GetPlayer().transform.position, Quaternion.identity);
+                    Hacks.Misc.CarryObject("SurvivalRottenFood");
                 }
 
                 if (GUI.Button(new Rect(Settings.Settings.x + 730, Settings.Settings.y + 250, 110, 20), "Egg") && Player.IsInGameOrLobby())
@@ -443,7 +443,7 @@ namespace DevourClient
 
                 if (GUI.Button(new Rect(Settings.Settings.x + 730, Settings.Settings.y + 280, 110, 20), "Bleach") && Player.IsInGameOrLobby())
                 {
-                    BoltNetwork.Instantiate(BoltPrefabs.SurvivalBleach, Player.GetPlayer().transform.position, Quaternion.identity);
+                    Hacks.Misc.CarryObject("SurvivalBleach");
                 }
 
                 if (GUI.Button(new Rect(Settings.Settings.x + 730, Settings.Settings.y + 310, 110, 20), "Ritual Book") && Player.IsInGameOrLobby())
@@ -453,19 +453,19 @@ namespace DevourClient
 
                 if (GUI.Button(new Rect(Settings.Settings.x + 730, Settings.Settings.y + 340, 110, 20), "Matchbox") && Player.IsInGameOrLobby())
                 {
-                    BoltNetwork.Instantiate(BoltPrefabs.SurvivalMatchbox, Player.GetPlayer().transform.position, Quaternion.identity);
+                    Hacks.Misc.CarryObject("Matchbox-3");
                 }
 
                 GUI.Label(new Rect(Settings.Settings.x + 880, Settings.Settings.y + 40, 120, 30), "Animals");
 
                 if (GUI.Button(new Rect(Settings.Settings.x + 880, Settings.Settings.y + 70, 110, 20), "Rat") && Player.IsInGameOrLobby())
                 {
-                    Hacks.Misc.SpawnGoatOrRat((PrefabId)BoltPrefabs.SurvivalRat);
+                    Hacks.Misc.CarryObject("SurvivalRat");
                 }
 
                 if (GUI.Button(new Rect(Settings.Settings.x + 880, Settings.Settings.y + 100, 110, 20), "Goat") && Player.IsInGameOrLobby())
                 {
-                    Hacks.Misc.SpawnGoatOrRat((PrefabId)BoltPrefabs.SurvivalGoat);
+                    Hacks.Misc.CarryObject("SurvivalGoat");
                 }
 
                 if (GUI.Button(new Rect(Settings.Settings.x + 880, Settings.Settings.y + 130, 110, 20), "Spider") && Player.IsInGameOrLobby())
