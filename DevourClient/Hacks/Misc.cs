@@ -183,13 +183,13 @@ namespace DevourClient.Hacks
 
 			if (reset)
 			{
-				flashlightSpot.intensity = 1.5f;
+				flashlightSpot.intensity = 1.4f;
 				flashlightSpot.range = 9f;
 				flashlightSpot.spotAngle = 70f;
 			}
 			else
 			{
-				flashlightSpot.intensity = 1.5f;
+				flashlightSpot.intensity = 1.1f;
 				flashlightSpot.range = 200f;
 				flashlightSpot.spotAngle = 90f;
 			}
@@ -212,17 +212,19 @@ namespace DevourClient.Hacks
 
 			if (reset)
 			{
-				flashlightSpot.intensity = 1.5f;
+				flashlightSpot.intensity = 1.4f;
 				flashlightSpot.range = 9f;
 				flashlightSpot.spotAngle = 70f;
 				flashlightSpot.type = LightType.Spot;
+				flashlightSpot.shadows = LightShadows.Soft;
 			}
 			else
 			{
-				flashlightSpot.intensity = 1.5f;
+				flashlightSpot.intensity = 1.1f;
 				flashlightSpot.range = 200f;
-				flashlightSpot.spotAngle = 180f;
+				flashlightSpot.spotAngle = 179f;
 				flashlightSpot.type = LightType.Point;
+				flashlightSpot.shadows = LightShadows.None;
 			}
 
 		}
