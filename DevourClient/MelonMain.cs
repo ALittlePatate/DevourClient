@@ -166,31 +166,12 @@ namespace DevourClient
                         if (player != null)
                         {
 
-
-                            Vector3 pivotPos = player.transform.position; //Pivot point NOT at the origin, at the center
-                            Vector3 playerFootPos; playerFootPos.x = pivotPos.x; playerFootPos.z = pivotPos.z; playerFootPos.y = pivotPos.y - 2f; //At the feet
-                            Vector3 playerHeadPos; playerHeadPos.x = pivotPos.x; playerHeadPos.z = pivotPos.z; playerHeadPos.y = pivotPos.y + 2f; //At the head
-
-                            if (Camera.main == null)
+                            if (player.GetComponent<Il2Cpp.NolanBehaviour>().entity.IsOwner)
                             {
                                 continue;
                             }
 
-                            Vector3 w2s_footpos = Camera.main.WorldToScreenPoint(playerFootPos);
-                            Vector3 w2s_headpos = Camera.main.WorldToScreenPoint(playerHeadPos);
-
-                            if (w2s_footpos.z > 0f)
-                            {
-                                //string playername = player.field_Private_PhotonView_0.field_Private_ObjectPublicObInBoStBoHaStObInHaUnique_0.field_Private_String_0;//player.photonView._Controller_k__BackingField.NickName;
-
-                                if (player.GetComponent<Il2Cpp.NolanBehaviour>().entity.IsOwner)
-                                {
-                                    continue;
-                                }
-
-                                Render.Render.DrawBoxESP(w2s_footpos, w2s_headpos, Settings.Settings.player_esp_color, p.Name, this.player_snapline, this.player_esp);
-                            }
-
+                            Render.Render.DrawBoxESP(player.transform.position, player.transform.GetComponentsInChildren<Transform>()[0], Settings.Settings.player_esp_color, p.Name, this.player_snapline, this.player_esp);
                         }
                     }
                 }
@@ -258,22 +239,7 @@ namespace DevourClient
                     {
                         if (survivalAzazel != null)
                         {
-
-
-                            Vector3 pivotPos = survivalAzazel.transform.position; //Pivot point NOT at the origin, at the center
-                            Vector3 playerFootPos; playerFootPos.x = pivotPos.x; playerFootPos.z = pivotPos.z; playerFootPos.y = pivotPos.y - 2f; //At the feet
-                            Vector3 playerHeadPos; playerHeadPos.x = pivotPos.x; playerHeadPos.z = pivotPos.z; playerHeadPos.y = pivotPos.y + 2f; //At the head
-
-                            if (Camera.main != null)
-                            {
-                                Vector3 w2s_footpos = Camera.main.WorldToScreenPoint(playerFootPos);
-                                Vector3 w2s_headpos = Camera.main.WorldToScreenPoint(playerHeadPos);
-
-                                if (w2s_footpos.z > 0f)
-                                {
-                                    Render.Render.DrawBoxESP(w2s_footpos, w2s_headpos, Settings.Settings.azazel_esp_color, "Azazel", this.azazel_snapline, this.azazel_esp);
-                                }
-                            }
+                            Render.Render.DrawBoxESP(survivalAzazel.transform.position, survivalAzazel.transform.GetComponentsInChildren<Transform>()[0], Settings.Settings.azazel_esp_color, "Azazel", this.azazel_snapline, this.azazel_esp);
                         }
                     }
                 }
