@@ -107,7 +107,7 @@ namespace DevourClient.Hacks
 		{
 			try
 			{
-                NolanBehaviour nb = Helpers.Entities.LocalPlayer_.p_GameObject.GetComponent<NolanBehaviour>();
+                Il2Cpp.NolanBehaviour nb = Helpers.Entities.LocalPlayer_.p_GameObject.GetComponent<Il2Cpp.NolanBehaviour>();
 
                 nb.StartCarry(name);
             }
