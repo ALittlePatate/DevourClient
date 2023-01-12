@@ -28,5 +28,17 @@
         {
             return Helpers.Entities.Azazels[0].gameObject;
         }
+        
+        public static void LoadMap(string mapName)
+        {
+            if (Il2CppPhoton.Bolt.BoltNetwork.IsServer)
+            {
+                Il2CppPhoton.Bolt.BoltNetwork.LoadScene(mapName);
+            }
+            else
+            {
+                DevourClient.Hacks.Misc.ShowMessageBox("You must be the host to use this command!");
+            }
+        }
     }
 }
