@@ -668,6 +668,63 @@ namespace DevourClient
                         default:
                             break;
                     }
+                    
+                    // load map
+                    switch (Helpers.Map.GetActiveScene())
+                    {
+                        case "Menu":
+                            GUI.Label(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 470, 100, 30), $"Load Map");
+
+
+                            if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 500, 100, 20), "Farmhouse"))
+                            {
+                                Helpers.Map.LoadMap("Devour");
+                            }
+
+                            if (GUI.Button(new Rect(Settings.Settings.x + 120, Settings.Settings.y + 500, 100, 20), "Asylum"))
+                            {
+                                Helpers.Map.LoadMap("Molly");
+                            }
+
+                            if (GUI.Button(new Rect(Settings.Settings.x + 230, Settings.Settings.y + 500, 100, 20), "Inn"))
+                            {
+                                Helpers.Map.LoadMap("Inn");
+                            }
+
+                            if (GUI.Button(new Rect(Settings.Settings.x + 340, Settings.Settings.y + 500, 100, 20), "Town"))
+                            {
+                                Helpers.Map.LoadMap("Town");
+                            }
+                            break;
+                        case "Devour":
+                        case "Molly":
+                        case "Inn":
+                        case "Town":
+                            GUI.Label(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 490, 100, 30), "Load Map");
+
+                            if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 520, 100, 20), "Farmhouse"))
+                            {
+                                Helpers.Map.LoadMap("Devour");
+                            }
+
+                            if (GUI.Button(new Rect(Settings.Settings.x + 120, Settings.Settings.y + 520, 100, 20), "Asylum"))
+                            {
+                                Helpers.Map.LoadMap("Molly");
+                            }
+
+                            if (GUI.Button(new Rect(Settings.Settings.x + 230, Settings.Settings.y + 520, 100, 20), "Inn"))
+                            {
+                                Helpers.Map.LoadMap("Inn");
+                            }
+
+                            if (GUI.Button(new Rect(Settings.Settings.x + 340, Settings.Settings.y + 520, 100, 20), "Town"))
+                            {
+                                Helpers.Map.LoadMap("Town");
+                            }
+                            break;
+                        default:             
+                            break;
+                    }
                 }
             }
         }
