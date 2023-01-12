@@ -34,10 +34,12 @@
             if (Il2CppPhoton.Bolt.BoltNetwork.IsServer)
             {
                 Il2CppPhoton.Bolt.BoltNetwork.LoadScene(mapName);
+                
+                MelonLoader.MelonLogger.Warning("Please press the button only once, it may take some time for the map to load.");
             }
             else
             {
-                DevourClient.Hacks.Misc.ShowMessageBox("You must be the host to use this command!");
+                MelonLoader.MelonLogger.Warning("You must be the host to use this command!");
             }
         }
     }
