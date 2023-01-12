@@ -523,6 +523,7 @@ namespace DevourClient
                             i += 30;
                         }
                     }
+                    
                     switch (Helpers.Map.GetActiveScene())
                     {
                         case "Menu":
@@ -531,7 +532,7 @@ namespace DevourClient
                                 Il2CppHorror.Menu menu = UnityEngine.Object.FindObjectOfType<Il2CppHorror.Menu>();
                                 menu.OnLobbyStartButtonClick();
                             }
-                            return;
+                            break;
                     
                         case "Devour":
                             if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 430, 120, 20), "Burn One Goat"))
@@ -563,7 +564,7 @@ namespace DevourClient
                                 Hacks.Misc.DespawnDemons();
                             }
 
-                            return;
+                            break;
 
                         case "Molly":
                             if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 430, 120, 20), "Burn One Rat"))
@@ -595,7 +596,7 @@ namespace DevourClient
                                 Hacks.Misc.DespawnDemons();
                             }
 
-                            return;
+                            break;
 
                         case "Inn":
                             if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 430, 120, 20), "Burn One Egg"))
@@ -631,7 +632,7 @@ namespace DevourClient
                             {
                                 Hacks.Misc.DespawnSpiders();
                             }
-                            return;
+                            break;
 
                         case "Town":
                             if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 430, 120, 20), "Burn One Book"))
@@ -662,10 +663,10 @@ namespace DevourClient
                             {
                                 Hacks.Misc.DespawnGhosts();
                             }
-                            return;
+                            break;
 
                         default:
-                            return;
+                            break;
                     }
                 }
             }
