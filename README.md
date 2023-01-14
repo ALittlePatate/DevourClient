@@ -51,7 +51,7 @@ Everything about spoofing ehre (steam name, server name, level...) will persist 
 * Fullbright
 
 ## Installation
-For my french fellas out there, 1tap2times made a French video tutorial for the installation of the Mod : [link](https://vimeo.com/789291797)<br>
+For my french fellas out there, 1tap2times made a French video tutorial for the installation of the Mod : [link](https://vimeo.com/789315436)<br>
 In order to get all of this working you need to generate the DevourClient.dll file by building the source code.
 
 0. Install [.NET 6 SDK and runtime](https://dotnet.microsoft.com/en-us/download/dotnet/6.0).
