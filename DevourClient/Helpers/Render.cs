@@ -92,6 +92,11 @@ namespace DevourClient.Render
 			if (esp)
             {
 				//ESP BOX
+				if (texture2 == null) //this should fix the UI disappearing & game crash 
+				{
+					texture2 = new Texture2D(2, 2, TextureFormat.ARGB32, false);
+				}
+
 				texture2.SetPixel(0, 0, color);
 				texture2.SetPixel(1, 0, color);
 				texture2.SetPixel(0, 1, color);
