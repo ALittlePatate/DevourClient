@@ -523,6 +523,7 @@ namespace DevourClient
                             i += 30;
                         }
                     }
+                    
                     switch (Helpers.Map.GetActiveScene())
                     {
                         case "Menu":
@@ -531,7 +532,7 @@ namespace DevourClient
                                 Il2CppHorror.Menu menu = UnityEngine.Object.FindObjectOfType<Il2CppHorror.Menu>();
                                 menu.OnLobbyStartButtonClick();
                             }
-                            return;
+                            break;
                     
                         case "Devour":
                             if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 430, 120, 20), "Burn One Goat"))
@@ -563,7 +564,7 @@ namespace DevourClient
                                 Hacks.Misc.DespawnDemons();
                             }
 
-                            return;
+                            break;
 
                         case "Molly":
                             if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 430, 120, 20), "Burn One Rat"))
@@ -595,7 +596,7 @@ namespace DevourClient
                                 Hacks.Misc.DespawnDemons();
                             }
 
-                            return;
+                            break;
 
                         case "Inn":
                             if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 430, 120, 20), "Burn One Egg"))
@@ -631,7 +632,7 @@ namespace DevourClient
                             {
                                 Hacks.Misc.DespawnSpiders();
                             }
-                            return;
+                            break;
 
                         case "Town":
                             if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 430, 120, 20), "Burn One Book"))
@@ -662,10 +663,67 @@ namespace DevourClient
                             {
                                 Hacks.Misc.DespawnGhosts();
                             }
-                            return;
+                            break;
 
                         default:
-                            return;
+                            break;
+                    }
+                    
+                    // load map
+                    switch (Helpers.Map.GetActiveScene())
+                    {
+                        case "Menu":
+                            GUI.Label(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 470, 100, 30), $"Load Map");
+
+
+                            if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 500, 100, 20), "Farmhouse"))
+                            {
+                                Helpers.Map.LoadMap("Devour");
+                            }
+
+                            if (GUI.Button(new Rect(Settings.Settings.x + 120, Settings.Settings.y + 500, 100, 20), "Asylum"))
+                            {
+                                Helpers.Map.LoadMap("Molly");
+                            }
+
+                            if (GUI.Button(new Rect(Settings.Settings.x + 230, Settings.Settings.y + 500, 100, 20), "Inn"))
+                            {
+                                Helpers.Map.LoadMap("Inn");
+                            }
+
+                            if (GUI.Button(new Rect(Settings.Settings.x + 340, Settings.Settings.y + 500, 100, 20), "Town"))
+                            {
+                                Helpers.Map.LoadMap("Town");
+                            }
+                            break;
+                        case "Devour":
+                        case "Molly":
+                        case "Inn":
+                        case "Town":
+                            GUI.Label(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 490, 100, 30), "Load Map");
+
+                            if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 520, 100, 20), "Farmhouse"))
+                            {
+                                Helpers.Map.LoadMap("Devour");
+                            }
+
+                            if (GUI.Button(new Rect(Settings.Settings.x + 120, Settings.Settings.y + 520, 100, 20), "Asylum"))
+                            {
+                                Helpers.Map.LoadMap("Molly");
+                            }
+
+                            if (GUI.Button(new Rect(Settings.Settings.x + 230, Settings.Settings.y + 520, 100, 20), "Inn"))
+                            {
+                                Helpers.Map.LoadMap("Inn");
+                            }
+
+                            if (GUI.Button(new Rect(Settings.Settings.x + 340, Settings.Settings.y + 520, 100, 20), "Town"))
+                            {
+                                Helpers.Map.LoadMap("Town");
+                            }
+                            break;
+                        default:             
+                            break;
                     }
                 }
             }

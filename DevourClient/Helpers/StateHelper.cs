@@ -50,7 +50,6 @@ namespace DevourClient.Helpers
                 return;
             }
 
-            /*
             Il2Cpp.SurvivalAzazelBehaviour sab = Il2Cpp.SurvivalAzazelBehaviour.FindObjectOfType<Il2Cpp.SurvivalAzazelBehaviour>();
 
             if (sab == null)
@@ -59,12 +58,13 @@ namespace DevourClient.Helpers
             }
 
             sab.OnPickedUpPlayer(sab.gameObject, p_GameObject, false);
-            */
 
+            /*
             MelonLogger.Msg(Name);
             Il2Cpp.JumpScare _jumpscare = UnityEngine.Object.FindObjectOfType<Il2Cpp.JumpScare>();
             _jumpscare.player = p_GameObject;
             _jumpscare.Activate(p_GameObject.GetComponent<BoltEntity>());
+            */
         }
 
         public void LockInCage()
