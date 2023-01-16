@@ -367,7 +367,7 @@ namespace DevourClient.Hacks
 		
 		public static void FreezeAzazel()
 		{
-			if (!BoltNetwork.IsServer || Helpers.Map.GetActiveScene() == "Menu")
+			if (Helpers.Map.GetActiveScene() == "Menu")
 			{
 				return;
 			}
