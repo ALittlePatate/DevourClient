@@ -378,10 +378,8 @@ namespace DevourClient
 
             if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 110, 130, 30), "Freeze azazel"))
             {
-                MelonLogger.Msg("Freeze azazel");
-                return;
+                Hacks.Misc.FreezeAzazel();
             }
-
 
             GUI.Label(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 150, 120, 30), "Azazel & Demons");
 
