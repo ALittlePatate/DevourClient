@@ -247,7 +247,10 @@ namespace DevourClient.Hacks
 		public static void SetRank(int rank)
         {
 			Il2Cpp.NolanRankController NolanRank = UnityEngine.Object.FindObjectOfType<Il2Cpp.NolanRankController>();
-
+			if (NolanRank == null)
+            {
+				return;
+            }
 			NolanRank.SetRank(rank);
 		}
 
