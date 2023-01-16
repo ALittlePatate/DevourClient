@@ -11,34 +11,48 @@ using Il2CppHorror;
 
 namespace DevourClient
 {
+    enum CurrentTab : int
+    {
+        Visuals = 0,
+        Entities = 1,
+        Map = 2,
+        ESP = 3,
+        Items = 4,
+        Misc = 5,
+        Players = 6
+    }
+    
     public class Load : MelonMod
     {
-        bool flashlight_toggle = false;
-        bool flashlight_colorpick = false;
-        bool player_esp_colorpick = false;
-        bool azazel_esp_colorpick = false;
-        bool level_70 = false;
-        bool level_666 = false;
-        bool change_server_name = false;
-        bool change_steam_name = false;
-        bool fly = false;
-        float fly_speed = 5;
-        bool fastMove = false;
-        float _PlayerSpeedMultiplier = 1;
-        public bool _IsAutoRespawn = false;
+        static Rect windowRect = new Rect(Settings.Settings.x + 10, Settings.Settings.y + 10, 700, 700);
+        static CurrentTab current_tab = CurrentTab.Visuals;
+    
+        static bool flashlight_toggle = false;
+        static bool flashlight_colorpick = false;
+        static bool player_esp_colorpick = false;
+        static bool azazel_esp_colorpick = false;
+        static bool spoofLevel = false;
+        static float spoofLevelValue = 0;
+        static bool change_server_name = false;
+        static bool change_steam_name = false;
+        static bool fly = false;
+        static float fly_speed = 5;
+        static bool fastMove = false;
+        static float _PlayerSpeedMultiplier = 1;
+        public static bool _IsAutoRespawn = false;
         public static bool unlimitedUV = false;
         public static bool exp_modifier = false;
         public static float exp = 1000f;
         public static bool _walkInLobby = false;
-        bool player_esp = false;
-        bool player_snapline = false;
-        bool azazel_esp = false;
-        bool azazel_snapline = false;
-        bool spam_message = false;
-        bool item_esp = false;
-        bool goat_rat_esp = false;
-        bool demon_esp = false;
-        bool fullbright = false;
+        static bool player_esp = false;
+        static bool player_snapline = false;
+        static bool azazel_esp = false;
+        static bool azazel_snapline = false;
+        static bool spam_message = false;
+        static bool item_esp = false;
+        static bool goat_rat_esp = false;
+        static bool demon_esp = false;
+        static bool fullbright = false;
 
         public override void OnInitializeMelon()
         {
@@ -77,55 +91,48 @@ namespace DevourClient
                 Settings.Settings.menu_enable = !Settings.Settings.menu_enable;
             }
 
-            if (this.flashlight_toggle && Player.IsInGame() && !this.fullbright)
+            if (flashlight_toggle && Player.IsInGame() && !fullbright)
             {
                 Hacks.Misc.BigFlashlight(false);
             }
-            else if (!this.flashlight_toggle && Player.IsInGame() && !this.fullbright)
+            else if (!flashlight_toggle && Player.IsInGame() && !fullbright)
             {
                 Hacks.Misc.BigFlashlight(true);
             }
 
-            if (this.fullbright && Player.IsInGame() && !this.flashlight_toggle)
+            if (fullbright && Player.IsInGame() && !flashlight_toggle)
             {
                 Hacks.Misc.Fullbright(false);
             }
-            else if (!this.fullbright && Player.IsInGame() && !this.flashlight_toggle)
+            else if (!fullbright && Player.IsInGame() && !flashlight_toggle)
             {
                 Hacks.Misc.Fullbright(true);
             }
 
-            if (this.spam_message)
+            if (spam_message)
             {
                 MelonLogger.Msg("done");
                 Hacks.Misc.MessageSpam(Settings.Settings.message_to_spam);
             }
 
-            if (this.level_70 != this.level_666 && !Player.IsInGame())
+            if (spoofLevel)
             {
-                if (this.level_70)
-                {
-                    Hacks.Misc.SetRank(70);
-                }
-                else
-                {
-                    Hacks.Misc.SetRank(666);
-                }
+                Hacks.Misc.SetRank((int)spoofLevelValue);
             }
 
-            if (this.change_server_name && !Player.IsInGame())
+            if (change_server_name && !Player.IsInGame())
             {
                 Hacks.Misc.SetServerName("patate on top !");
             }
 
-            if (this.change_steam_name && !Player.IsInGame())
+            if (change_steam_name && !Player.IsInGame())
             {
                 Hacks.Misc.SetSteamName("patate");
             }
 
-            if (this.fly && Player.IsInGameOrLobby())
+            if (fly && Player.IsInGameOrLobby())
             {
-                Hacks.Misc.Fly(this.fly_speed);
+                Hacks.Misc.Fly(fly_speed);
             }
             
             if(Player.IsInGame() && _IsAutoRespawn && Helpers.Player.IsPlayerCrawling())
@@ -138,11 +145,11 @@ namespace DevourClient
                 Hacks.Misc.WalkInLobby(_walkInLobby);
             }
             
-            if (this.fastMove)
+            if (fastMove)
             {
                 try
                 {
-                    Helpers.Entities.LocalPlayer_.p_GameObject.GetComponent<Il2CppOpsive.UltimateCharacterController.Character.UltimateCharacterLocomotion>().TimeScale = this._PlayerSpeedMultiplier;
+                    Helpers.Entities.LocalPlayer_.p_GameObject.GetComponent<Il2CppOpsive.UltimateCharacterController.Character.UltimateCharacterLocomotion>().TimeScale = _PlayerSpeedMultiplier;
                 }
                 catch { return;  }
             }
@@ -150,10 +157,20 @@ namespace DevourClient
 
         public override void OnGUI()
         {
+            GUI.backgroundColor = Color.grey;
+
+            GUI.skin.button.normal.background = GUIHelper.MakeTex(2, 2, Color.black);
+            GUI.skin.button.normal.textColor = Color.white;
+
+            GUI.skin.button.hover.background = GUIHelper.MakeTex(2, 2, Color.green);
+            GUI.skin.button.hover.textColor = Color.black;
+
+            GUI.skin.toggle.onNormal.textColor = Color.yellow;
+        
             //from https://www.unknowncheats.me/forum/unity/437277-mono-internal-optimisation-tips.html
             if (UnityEngine.Event.current.type == EventType.Repaint)
             {
-                if (this.player_esp || this.player_snapline)
+                if (player_esp || player_snapline)
                 {
                     foreach (Helpers.BasePlayer p in Helpers.Entities.Players)
                     {
@@ -171,12 +188,12 @@ namespace DevourClient
                                 continue;
                             }
 
-                            Render.Render.DrawBoxESP(player.transform.position, player.transform.GetComponentsInChildren<Transform>()[0], Settings.Settings.player_esp_color, p.Name, this.player_snapline, this.player_esp);
+                            Render.Render.DrawBoxESP(player.transform.position, player.transform.GetComponentsInChildren<Transform>()[0], Settings.Settings.player_esp_color, p.Name, player_snapline, player_esp);
                         }
                     }
                 }
 
-                if (this.goat_rat_esp)
+                if (goat_rat_esp)
                 {
                     foreach (Il2Cpp.GoatBehaviour goat in Helpers.Entities.GoatsAndRats)
                     {
@@ -187,7 +204,7 @@ namespace DevourClient
                     }
                 }
 
-                if (this.item_esp)
+                if (item_esp)
                 {
                     foreach (Il2Cpp.SurvivalInteractable obj in Helpers.Entities.SurvivalInteractables)
                     {
@@ -206,7 +223,7 @@ namespace DevourClient
                     }
                 }
 
-                if (this.demon_esp)
+                if (demon_esp)
                 {
                     foreach (Il2Cpp.SurvivalDemonBehaviour demon in Helpers.Entities.Demons)
                     {
@@ -233,13 +250,13 @@ namespace DevourClient
                     }
                 }
 
-                if (this.azazel_esp || this.azazel_snapline)
+                if (azazel_esp || azazel_snapline)
                 {
                     foreach (Il2Cpp.SurvivalAzazelBehaviour survivalAzazel in Helpers.Entities.Azazels)
                     {
                         if (survivalAzazel != null)
                         {
-                            Render.Render.DrawBoxESP(survivalAzazel.transform.position, survivalAzazel.transform.GetComponentsInChildren<Transform>()[0], Settings.Settings.azazel_esp_color, "Azazel", this.azazel_snapline, this.azazel_esp);
+                            Render.Render.DrawBoxESP(survivalAzazel.transform.position, survivalAzazel.transform.GetComponentsInChildren<Transform>()[0], Settings.Settings.azazel_esp_color, "Azazel", azazel_snapline, azazel_esp);
                         }
                     }
                 }
@@ -248,484 +265,639 @@ namespace DevourClient
 
             if (Settings.Settings.menu_enable) //Si on appuie sur INSERT
             {
-                GUI.Label(new Rect(Settings.Settings.x + 450, Settings.Settings.y, 100, 30), "Devour Client"); //Titre du menu
-                this.flashlight_toggle = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 100, 150, 20), this.flashlight_toggle, "Big Flashlight"); //Checkbox Flashlight
-                this.spam_message = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 250, 150, 20), this.spam_message, "Chat Spam"); //Checkbox Chat Spam
-                this.level_70 = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 190, 150, 20), this.level_70, "Level 70"); //Checkbox lvl 70
-                this.level_666 = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 220, 150, 20), this.level_666, "Level 666"); //Checkbox lvl 70
-                this.change_server_name = GUI.Toggle(new Rect(Settings.Settings.x + 200, Settings.Settings.y + 40, 150, 20), this.change_server_name, "Change server name"); //Checkbox servername
-                this.change_steam_name = GUI.Toggle(new Rect(Settings.Settings.x + 200, Settings.Settings.y + 70, 150, 20), this.change_steam_name, "Change steam name"); //Checkbox servername
-                this.fly = GUI.Toggle(new Rect(Settings.Settings.x + 200, Settings.Settings.y + 100, 150, 20), this.fly, "Fly"); //Checkbox fly
-                this.fly_speed = GUI.HorizontalSlider(new Rect(Settings.Settings.x + 200, Settings.Settings.y + 130, 100, 10), this.fly_speed, 5f, 20f); //Slider for the fly speed
-                GUI.Label(new Rect(Settings.Settings.x + 310, Settings.Settings.y + 125, 100, 30), this.fly_speed.ToString()); //Prints the value of the slider;
-                this._IsAutoRespawn = GUI.Toggle(new Rect(Settings.Settings.x + 200, Settings.Settings.y + 190, 150, 20), this._IsAutoRespawn, "Auto-Respawn");
-                
-                Load.exp_modifier = GUI.Toggle(new Rect(Settings.Settings.x + 390, Settings.Settings.y + 40, 150, 20), Load.exp_modifier, "Exp Modifier");
-                Load.exp = GUI.HorizontalSlider(new Rect(Settings.Settings.x + 390, Settings.Settings.y + 70, 100, 10), Load.exp, 1000f, 3000f); //Slider for the fly speed
-                GUI.Label(new Rect(Settings.Settings.x + 500, Settings.Settings.y + 65, 100, 30), Load.exp.ToString()); //Prints the value of the slider;
+                windowRect = GUI.Window(0, windowRect, (GUI.WindowFunction)Tabs, "DevourClient"); 
+            }   
+        }
+        
+        public static void Tabs(int windowID)
+        {
+            if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 20, 95, 40), "Visuals"))
+            {
+                current_tab = CurrentTab.Visuals;
+            }
 
-                this.player_esp = GUI.Toggle(new Rect(Settings.Settings.x + 390, Settings.Settings.y + 100, 150, 20), this.player_esp, "Player ESP");
-                this.player_snapline = GUI.Toggle(new Rect(Settings.Settings.x + 390, Settings.Settings.y + 130, 150, 20), this.player_snapline, "Player Snapline");
+            
+            if (GUI.Button(new Rect(Settings.Settings.x + 105, Settings.Settings.y + 20, 95, 40), "Entites"))
+            {
+                current_tab = CurrentTab.Entities;
+            }
 
-                this.azazel_esp = GUI.Toggle(new Rect(Settings.Settings.x + 390, Settings.Settings.y + 190, 150, 20), this.azazel_esp, "Azazel ESP");
-                this.azazel_snapline = GUI.Toggle(new Rect(Settings.Settings.x + 390, Settings.Settings.y + 220, 150, 20), this.azazel_snapline, "Azazel Snapline");
+            if (GUI.Button(new Rect(Settings.Settings.x + 200, Settings.Settings.y + 20, 95, 40), "Map Specific"))
+            {
+                current_tab = CurrentTab.Map;
+            }
 
-                this.item_esp = GUI.Toggle(new Rect(Settings.Settings.x + 390, Settings.Settings.y + 280, 150, 20), this.item_esp, "Item ESP");
-                this.goat_rat_esp = GUI.Toggle(new Rect(Settings.Settings.x + 390, Settings.Settings.y + 310, 150, 20), this.goat_rat_esp, "Goat/Rat ESP");
-                this.demon_esp = GUI.Toggle(new Rect(Settings.Settings.x + 390, Settings.Settings.y + 340, 150, 20), this.demon_esp, "Demon ESP");
+            if (GUI.Button(new Rect(Settings.Settings.x + 295, Settings.Settings.y + 20, 95, 40), "ESP"))
+            {
+                current_tab = CurrentTab.ESP;
+            }
 
-                Load.unlimitedUV = GUI.Toggle(new Rect(Settings.Settings.x + 200, Settings.Settings.y + 220, 150, 20), Load.unlimitedUV, "Unlimited UV");
-                Load._walkInLobby = GUI.Toggle(new Rect(Settings.Settings.x + 200, Settings.Settings.y + 250, 150, 20), Load._walkInLobby, "Walk In Lobby");
-                
-                this.fastMove = GUI.Toggle(new Rect(Settings.Settings.x + 200, Settings.Settings.y + 280, 150, 20), this.fastMove, "Player Speed");
-                this._PlayerSpeedMultiplier = GUI.HorizontalSlider(new Rect(Settings.Settings.x + 200, Settings.Settings.y + 310, 100, 10), this._PlayerSpeedMultiplier, 1f, 10f);
-                GUI.Label(new Rect(Settings.Settings.x + 310, Settings.Settings.y + 305, 100, 30), this._PlayerSpeedMultiplier.ToString());
+            if (GUI.Button(new Rect(Settings.Settings.x + 390, Settings.Settings.y + 20, 95, 40), "Items"))
+            {
+                current_tab = CurrentTab.Items;
+            }
 
-                this.fullbright = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 340, 150, 20), this.fullbright, "Fullbright");
+            if (GUI.Button(new Rect(Settings.Settings.x + 485, Settings.Settings.y + 20, 95, 40), "Misc"))
+            {
+                current_tab = CurrentTab.Misc;
+            }
 
-                if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 40, 150, 20), "Unlock Achievements"))
+            if (GUI.Button(new Rect(Settings.Settings.x + 580, Settings.Settings.y + 20, 95, 40), "Player"))
+            {
+                current_tab = CurrentTab.Players;
+            }
+            
+
+            switch (current_tab)
+            {
+                case CurrentTab.Visuals:
+                    VisualsTab();
+                    break;
+                case CurrentTab.Entities:
+                    EntitiesTab();
+                    break;
+                case CurrentTab.Map:
+                    MapSpecificTab();
+                    break;
+                case CurrentTab.ESP:
+                    EspTab();
+                    break;
+                case CurrentTab.Items:
+                    ItemsTab();
+                    break;
+                case CurrentTab.Misc:
+                    MiscTab();
+                    break;
+                case CurrentTab.Players:
+                    PlayersTab();
+                    break;
+
+            }
+
+            GUI.DragWindow();
+        }
+
+        // features
+        private static void VisualsTab()
+        {
+            // draw visuals
+
+            flashlight_toggle = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 70, 120, 30), flashlight_toggle, "Big Flashlight");
+            fullbright = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 100, 120, 30), fullbright, "Fullbright");
+            unlimitedUV = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 130, 130, 30), unlimitedUV, "Unlimited UV Light");
+
+
+            if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 160, 130, 30), "Flashlight Color"))
+            {
+                flashlight_colorpick = !flashlight_colorpick;
+                MelonLogger.Msg("Flashlight color picker : " + flashlight_colorpick.ToString());
+
+            }
+
+            if (flashlight_colorpick)
+            {
+                Color flashlight_color_input = DevourClient.Helpers.GUIHelper.ColorPick("Flashlight Color", Settings.Settings.flashlight_color);
+                Settings.Settings.flashlight_color = flashlight_color_input;
+
+                if (Player.IsInGame())
                 {
-                    Thread AchievementsThread = new Thread(
-                        new ThreadStart(Hacks.Unlock.Achievements));
-                    AchievementsThread.Start();
-
-                    MelonLogger.Msg("Achievements Unlocked !");
+                    Hacks.Misc.FlashlightColor(flashlight_color_input);
                 }
+            }
+        }
 
-                if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 70, 150, 20), "Unlock Doors") && Player.IsInGame())
+        private static void EntitiesTab()
+        {
+            //draw entities
+
+            if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 70, 130, 30), "TP items to you"))
+            {
+                Hacks.Misc.TPItems();
+                MelonLogger.Msg("TP Items!");
+            }
+
+            if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 110, 130, 30), "Freeze azazel"))
+            {
+                MelonLogger.Msg("Freeze azazel");
+                return;
+            }
+
+
+            GUI.Label(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 150, 120, 30), "Azazel & Demons");
+
+            // azazel
+
+            if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 180, 60, 25), "Sam") && Player.IsInGameOrLobby() && BoltNetwork.IsServer)
+            {
+                Hacks.Misc.SpawnAzazel((PrefabId)BoltPrefabs.AzazelSam);
+            }
+
+            if (GUI.Button(new Rect(Settings.Settings.x + 80, Settings.Settings.y + 180, 60, 25), "Molly") && Player.IsInGameOrLobby() && BoltNetwork.IsServer)
+            {
+                Hacks.Misc.SpawnAzazel((PrefabId)BoltPrefabs.SurvivalAzazelMolly);
+            }
+
+            if (GUI.Button(new Rect(Settings.Settings.x + 150, Settings.Settings.y + 180, 60, 25), "Anna") && Player.IsInGameOrLobby() && BoltNetwork.IsServer)
+            {
+                BoltNetwork.Instantiate(BoltPrefabs.SurvivalAnnaNew, Player.GetPlayer().transform.position, Quaternion.identity);
+            }
+
+            if (GUI.Button(new Rect(Settings.Settings.x + 220, Settings.Settings.y + 180, 60, 25), "Zara") && Player.IsInGameOrLobby() && BoltNetwork.IsServer)
+            {
+                BoltNetwork.Instantiate(BoltPrefabs.AzazelZara, Player.GetPlayer().transform.position, Quaternion.identity);
+            }
+
+            // demon
+
+            if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 220, 60, 25), "Ghost") && Player.IsInGameOrLobby() && BoltNetwork.IsServer)
+            {
+                BoltNetwork.Instantiate(BoltPrefabs.Ghost, Player.GetPlayer().transform.position, Quaternion.identity);
+            }
+
+            if (GUI.Button(new Rect(Settings.Settings.x + 80, Settings.Settings.y + 220, 60, 25), "Inmate") && Player.IsInGameOrLobby() && BoltNetwork.IsServer)
+            {
+                BoltNetwork.Instantiate(BoltPrefabs.SurvivalInmate, Player.GetPlayer().transform.position, Quaternion.identity);
+            }
+
+            if (GUI.Button(new Rect(Settings.Settings.x + 150, Settings.Settings.y + 220, 60, 25), "Demon") && Player.IsInGameOrLobby() && BoltNetwork.IsServer)
+            {
+                BoltNetwork.Instantiate(BoltPrefabs.SurvivalDemon, Player.GetPlayer().transform.position, Quaternion.identity);
+            }
+
+            // Animal
+
+            if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 260, 60, 25), "Rat"))
+            {
+                if (BoltNetwork.IsServer && !Player.IsInGame())
                 {
-                    Hacks.Unlock.Doors();
-
-                    MelonLogger.Msg("Doors Unlocked !");
-                }
-
-                if (GUI.Button(new Rect(Settings.Settings.x + 390, Settings.Settings.y + 250, 150, 20), "Azazel ESP Color"))
-                {
-                    azazel_esp_colorpick = !azazel_esp_colorpick;
-                    MelonLogger.Msg("azazel_esp_colorpick color picker : " + azazel_esp_colorpick.ToString());
-
-                }
-
-                if (azazel_esp_colorpick)
-                {
-                    Color azazel_esp_colorpick_color_input = DevourClient.Helpers.GUIHelper.ColorPick("Azazel ESP Color", Settings.Settings.azazel_esp_color);
-                    Settings.Settings.azazel_esp_color = azazel_esp_colorpick_color_input;
-                }
-
-                if (GUI.Button(new Rect(Settings.Settings.x + 390, Settings.Settings.y + 160, 150, 20), "Player ESP Color"))
-                {
-                    player_esp_colorpick = !player_esp_colorpick;
-                    MelonLogger.Msg("player_esp_colorpick color picker : " + player_esp_colorpick.ToString());
-
-                }
-
-                if (player_esp_colorpick)
-                {
-                    Color player_esp_colorpick_color_input = DevourClient.Helpers.GUIHelper.ColorPick("Player ESP Color", Settings.Settings.player_esp_color);
-                    Settings.Settings.player_esp_color = player_esp_colorpick_color_input;
-                }
-
-                if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 130, 150, 20), "Flashlight Color")) 
-                {
-                    flashlight_colorpick = !flashlight_colorpick;
-                    MelonLogger.Msg("Flashlight color picker : "+ flashlight_colorpick.ToString());
-
-                }
-
-                if (flashlight_colorpick)
-                {
-                    Color flashlight_color_input = DevourClient.Helpers.GUIHelper.ColorPick("Flashlight Color", Settings.Settings.flashlight_color);
-                    Settings.Settings.flashlight_color = flashlight_color_input;
-
-                    if (Player.IsInGame())
+                    try
                     {
-                        Hacks.Misc.FlashlightColor(flashlight_color_input);
+                        BoltNetwork.Instantiate(BoltPrefabs.SurvivalRat, Player.GetPlayer().transform.position, Quaternion.identity);
                     }
+                    catch { }
                 }
 
-                if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 160, 150, 20), "TP Keys") && Player.IsInGame())
+                if (Player.IsInGame() && !Player.IsPlayerCrawling())
                 {
-                    Hacks.Misc.TPKeys();
-                    MelonLogger.Msg("Here are your keys !");
+                    try
+                    {
+                        Hacks.Misc.CarryObject("SurvivalRat");
+                    }
+                    catch { }
                 }
+            }
 
-                if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 280, 150, 20), "Instant Win") && Player.IsInGame())
+            if (GUI.Button(new Rect(Settings.Settings.x + 80, Settings.Settings.y + 260, 60, 25), "Goat"))
+            {
+                if (BoltNetwork.IsServer && !Player.IsInGame())
                 {
-                    Hacks.Misc.InstantWin();
-                    MelonLogger.Msg("EZ Win");
+                    try
+                    {
+                        BoltNetwork.Instantiate(BoltPrefabs.SurvivalGoat, Player.GetPlayer().transform.position, Quaternion.identity);
+                    }
+                    catch { }
                 }
-                
-                if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 310, 150, 20), "TP Items") && Player.IsInGame())
+
+                if (Player.IsInGame() && !Player.IsPlayerCrawling())
                 {
-                    Hacks.Misc.TPItems();
-                    MelonLogger.Msg("TP Items !");
+                    try
+                    {
+                        Hacks.Misc.CarryObject("SurvivalGoat");
+                    }
+                    catch { }
                 }
+            }
 
-                if (GUI.Button(new Rect(Settings.Settings.x + 200, Settings.Settings.y + 160, 150, 20), "Random sound"))
+            if (GUI.Button(new Rect(Settings.Settings.x + 150, Settings.Settings.y + 260, 60, 25), "Spider") && BoltNetwork.IsServer && Player.IsInGameOrLobby())
+            {
+                BoltNetwork.Instantiate(BoltPrefabs.Spider, Player.GetPlayer().transform.position, Quaternion.identity);
+            }
+        }
+
+        private static void MapSpecificTab()
+        {
+            if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 70, 150, 30), "Instant Win") && Player.IsInGame() && BoltNetwork.IsSinglePlayer)
+            {
+                Hacks.Misc.InstantWin();
+                MelonLogger.Msg("EZ Win");
+            }
+
+            if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 110, 150, 30), "Burn a ritual object"))
+            {
+                Hacks.Misc.BurnRitualObj(Helpers.Map.GetActiveScene(), false);
+            }
+
+            if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 150, 150, 30), "Burn all ritual objects"))
+            {
+                Hacks.Misc.BurnRitualObj(Helpers.Map.GetActiveScene(), true);
+            }
+
+            switch (Helpers.Map.GetActiveScene())
+            {
+                case "Menu":
+                    if (GUI.Button(new Rect(Settings.Settings.x + 190, Settings.Settings.y + 70, 150, 30), "Force Start Game") && BoltNetwork.IsServer && !Player.IsInGame())
+                    {
+                        Il2CppHorror.Menu menu = UnityEngine.Object.FindObjectOfType<Il2CppHorror.Menu>();
+                        menu.OnLobbyStartButtonClick();
+                    }
+                    break;
+
+                case "Devour":
+                    if (GUI.Button(new Rect(Settings.Settings.x + 190, Settings.Settings.y + 70, 150, 30), "TP to Azazel"))
+                    {
+                        try
+                        {
+                            Il2Cpp.NolanBehaviour nb = Player.GetPlayer();
+
+                            nb.TeleportTo(Helpers.Map.GetAzazel().transform.position, Quaternion.identity);
+                        }
+                        catch
+                        {
+                            MelonLogger.Msg("Azazel not found !");
+                        }
+                    }
+
+                    if (GUI.Button(new Rect(Settings.Settings.x + 190, Settings.Settings.y + 110, 150, 30), "Despawn Demons"))
+                    {
+                        Hacks.Misc.DespawnDemons();
+                    }
+                    break;
+                case "Molly":
+                    if (GUI.Button(new Rect(Settings.Settings.x + 190, Settings.Settings.y + 70, 150, 30), "TP to Azazel"))
+                    {
+                        try
+                        {
+                            Il2Cpp.NolanBehaviour nb = Player.GetPlayer();
+
+                            nb.TeleportTo(Helpers.Map.GetAzazel().transform.position, Quaternion.identity);
+                        }
+                        catch
+                        {
+                            MelonLogger.Msg("Azazel not found !");
+                        }
+                    }
+
+                    if (GUI.Button(new Rect(Settings.Settings.x + 190, Settings.Settings.y + 110, 150, 30), "Despawn Inmates"))
+                    {
+                        Hacks.Misc.DespawnDemons();
+                    }
+                    break;
+                case "Inn":
+                    if (GUI.Button(new Rect(Settings.Settings.x + 190, Settings.Settings.y + 70, 150, 30), "TP to Azazel"))
+                    {
+                        try
+                        {
+                            Il2Cpp.NolanBehaviour nb = Player.GetPlayer();
+
+                            nb.TeleportTo(Helpers.Map.GetAzazel().transform.position, Quaternion.identity);
+                        }
+                        catch
+                        {
+                            MelonLogger.Msg("Azazel not found !");
+                        }
+                    }
+
+                    if (GUI.Button(new Rect(Settings.Settings.x + 190, Settings.Settings.y + 110, 150, 30), "Clean The Fountains"))
+                    {
+                        Hacks.Misc.CleanFountain();
+                    }
+
+                    if (GUI.Button(new Rect(Settings.Settings.x + 190, Settings.Settings.y + 150, 150, 30), "Despawn Spiders"))
+                    {
+                        Hacks.Misc.DespawnSpiders();
+                    }
+                    break;
+
+                case "Town":
+                    if (GUI.Button(new Rect(Settings.Settings.x + 190, Settings.Settings.y + 70, 150, 30), "TP to Azazel"))
+                    {
+                        try
+                        {
+                            Il2Cpp.NolanBehaviour nb = Player.GetPlayer();
+
+                            nb.TeleportTo(Helpers.Map.GetAzazel().transform.position, Quaternion.identity);
+                        }
+                        catch
+                        {
+                            MelonLogger.Msg("Azazel not found !");
+                        }
+                    }
+
+                    if (GUI.Button(new Rect(Settings.Settings.x + 190, Settings.Settings.y + 110, 150, 30), "Despawn Ghosts"))
+                    {
+                        Hacks.Misc.DespawnGhosts();
+                    }
+                    break;
+            }
+
+            // load map
+            GUI.Label(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 210, 100, 30), "Load Map: ");
+
+            if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 240, 100, 30), "Farmhouse") && BoltNetwork.IsServer)
+            {
+                Helpers.Map.LoadMap("Devour");
+            }
+
+            if (GUI.Button(new Rect(Settings.Settings.x + 120, Settings.Settings.y + 240, 100, 30), "Asylum") && BoltNetwork.IsServer)
+            {
+                Helpers.Map.LoadMap("Molly");
+            }
+
+            if (GUI.Button(new Rect(Settings.Settings.x + 230, Settings.Settings.y + 240, 100, 30), "Inn") && BoltNetwork.IsServer)
+            {
+                Helpers.Map.LoadMap("Inn");
+            }
+
+            if (GUI.Button(new Rect(Settings.Settings.x + 340, Settings.Settings.y + 240, 100, 30), "Town") && BoltNetwork.IsServer)
+            {
+                Helpers.Map.LoadMap("Town");
+            }
+
+            
+        }
+
+        private static void EspTab()
+        {
+            player_esp = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 70, 150, 20), player_esp, "Player ESP");
+            player_snapline = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 100, 150, 20), player_snapline, "Player Snapline");
+
+            azazel_esp = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 140, 150, 20), azazel_esp, "Azazel ESP");
+            azazel_snapline = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 170, 150, 20), azazel_snapline, "Azazel Snapline");
+
+            item_esp = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 210, 150, 20), item_esp, "Item ESP");
+            goat_rat_esp = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 240, 150, 20), goat_rat_esp, "Goat/Rat ESP");
+            demon_esp = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 270, 150, 20), demon_esp, "Demon ESP");
+        }
+
+        private static void ItemsTab()
+        {
+            GUI.Label(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 70, 120, 30), "Items");
+
+            if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 100, 80, 25), "Hay"))
+            {
+                if (BoltNetwork.IsServer && !Player.IsInGame())
                 {
-                    Hacks.Misc.PlaySound();
-                    MelonLogger.Msg("Playing a random sound !");
+                    BoltNetwork.Instantiate(BoltPrefabs.SurvivalHay, Player.GetPlayer().transform.position, Quaternion.identity);
                 }
-                
-                GUI.Label(new Rect(Settings.Settings.x + 580, Settings.Settings.y + 40, 150, 30), "Azazel & Demons");
-
-                if (GUI.Button(new Rect(Settings.Settings.x + 580, Settings.Settings.y + 70, 120, 20), "Sam") && Player.IsInGameOrLobby())
-                {
-                    Hacks.Misc.SpawnAzazel((PrefabId)BoltPrefabs.AzazelSam);
-                }
-
-                if (GUI.Button(new Rect(Settings.Settings.x + 580, Settings.Settings.y + 100, 120, 20), "Molly") && Player.IsInGameOrLobby())
-                {
-                    Hacks.Misc.SpawnAzazel((PrefabId)BoltPrefabs.SurvivalAzazelMolly);
-                }
-
-                if (GUI.Button(new Rect(Settings.Settings.x + 580, Settings.Settings.y + 130, 120, 20), "Anna") && Player.IsInGameOrLobby())
-                {
-                    BoltNetwork.Instantiate(BoltPrefabs.SurvivalAnnaNew, Player.GetPlayer().transform.position, Quaternion.identity);
-                }
-
-                if (GUI.Button(new Rect(Settings.Settings.x + 580, Settings.Settings.y + 160, 120, 20), "Demon") && Player.IsInGameOrLobby())
-                {
-                    BoltNetwork.Instantiate(BoltPrefabs.SurvivalDemon, Player.GetPlayer().transform.position, Quaternion.identity);
-                }
-
-                if (GUI.Button(new Rect(Settings.Settings.x + 580, Settings.Settings.y + 190, 120, 20), "Ghost") && Player.IsInGameOrLobby())
-                {
-                    BoltNetwork.Instantiate(BoltPrefabs.Ghost, Player.GetPlayer().transform.position, Quaternion.identity);
-                }
-
-                if (GUI.Button(new Rect(Settings.Settings.x + 580, Settings.Settings.y + 220, 120, 20), "Inmate") && Player.IsInGameOrLobby())
-                {
-                    BoltNetwork.Instantiate(BoltPrefabs.SurvivalInmate, Player.GetPlayer().transform.position, Quaternion.identity);
-                }
-
-                if (GUI.Button(new Rect(Settings.Settings.x + 580, Settings.Settings.y + 250, 120, 20), "Zara") && Player.IsInGameOrLobby())
-                {
-                    BoltNetwork.Instantiate(BoltPrefabs.AzazelZara, Player.GetPlayer().transform.position, Quaternion.identity);
-                }
-
-                GUI.Label(new Rect(Settings.Settings.x + 730, Settings.Settings.y + 40, 120, 30), "Items");
-
-                if (GUI.Button(new Rect(Settings.Settings.x + 730, Settings.Settings.y + 70, 110, 20), "Hay") && Player.IsInGameOrLobby())
+                else
                 {
                     Hacks.Misc.CarryObject("SurvivalHay");
                 }
+            }
 
-                if (GUI.Button(new Rect(Settings.Settings.x + 730, Settings.Settings.y + 100, 110, 20), "First Aid") && Player.IsInGameOrLobby())
+            if (GUI.Button(new Rect(Settings.Settings.x + 100, Settings.Settings.y + 100, 80, 25), "First aid"))
+            {
+                if (BoltNetwork.IsServer && !Player.IsInGame())
+                {
+                    BoltNetwork.Instantiate(BoltPrefabs.SurvivalFirstAid, Player.GetPlayer().transform.position, Quaternion.identity);
+                }
+                else
                 {
                     Hacks.Misc.CarryObject("SurvivalFirstAid");
                 }
+            }
 
-                if (GUI.Button(new Rect(Settings.Settings.x + 730, Settings.Settings.y + 130, 110, 20), "Battery") && Player.IsInGameOrLobby())
+            if (GUI.Button(new Rect(Settings.Settings.x + 190, Settings.Settings.y + 100, 80, 25), "Battery"))
+            {
+                if (BoltNetwork.IsServer && !Player.IsInGame())
+                {
+                    BoltNetwork.Instantiate(BoltPrefabs.SurvivalBattery, Player.GetPlayer().transform.position, Quaternion.identity);
+                }
+                else
                 {
                     Hacks.Misc.CarryObject("SurvivalBattery");
                 }
+            }
 
-                if (GUI.Button(new Rect(Settings.Settings.x + 730, Settings.Settings.y + 160, 110, 20), "Gasoline") && Player.IsInGameOrLobby())
+            if (GUI.Button(new Rect(Settings.Settings.x + 280, Settings.Settings.y + 100, 80, 25), "Gasoline"))
+            {
+                if (BoltNetwork.IsServer && !Player.IsInGame())
+                {
+                    BoltNetwork.Instantiate(BoltPrefabs.SurvivalGasoline, Player.GetPlayer().transform.position, Quaternion.identity);
+                }
+                else
                 {
                     Hacks.Misc.CarryObject("SurvivalGasoline");
                 }
+            }
 
-                if (GUI.Button(new Rect(Settings.Settings.x + 730, Settings.Settings.y + 190, 110, 20), "Fuse") && Player.IsInGameOrLobby())
+            if (GUI.Button(new Rect(Settings.Settings.x + 370, Settings.Settings.y + 100, 80, 25), "Fuse"))
+            {
+                if (BoltNetwork.IsServer && !Player.IsInGame())
+                {
+                    BoltNetwork.Instantiate(BoltPrefabs.SurvivalFuse, Player.GetPlayer().transform.position, Quaternion.identity);
+                }
+                else
                 {
                     Hacks.Misc.CarryObject("SurvivalFuse");
                 }
+            }
 
-                if (GUI.Button(new Rect(Settings.Settings.x + 730, Settings.Settings.y + 220, 110, 20), "Food") && Player.IsInGameOrLobby())
+            if (GUI.Button(new Rect(Settings.Settings.x + 460, Settings.Settings.y + 100, 80, 25), "Food"))
+            {
+                if (BoltNetwork.IsServer && !Player.IsInGame())
+                {
+                    BoltNetwork.Instantiate(BoltPrefabs.SurvivalRottenFood, Player.GetPlayer().transform.position, Quaternion.identity);
+                }
+                else
                 {
                     Hacks.Misc.CarryObject("SurvivalRottenFood");
                 }
+            }
 
-                if (GUI.Button(new Rect(Settings.Settings.x + 730, Settings.Settings.y + 250, 110, 20), "Egg") && Player.IsInGameOrLobby())
+            if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 140, 80, 25), "Bleach"))
+            {
+                if (BoltNetwork.IsServer && !Player.IsInGame())
                 {
-                    BoltNetwork.Instantiate(BoltPrefabs.SurvivalEgg, Player.GetPlayer().transform.position, Quaternion.identity);
+                    BoltNetwork.Instantiate(BoltPrefabs.SurvivalBleach, Player.GetPlayer().transform.position, Quaternion.identity);
                 }
-
-                if (GUI.Button(new Rect(Settings.Settings.x + 730, Settings.Settings.y + 280, 110, 20), "Bleach") && Player.IsInGameOrLobby())
+                else
                 {
-                    
+                    Hacks.Misc.CarryObject("SurvivalBleach");
                 }
+            }
 
-                if (GUI.Button(new Rect(Settings.Settings.x + 730, Settings.Settings.y + 310, 110, 20), "Ritual Book") && Player.IsInGameOrLobby())
+            if (GUI.Button(new Rect(Settings.Settings.x + 100, Settings.Settings.y + 140, 80, 25), "Ritual Book"))
+            {
+                if (BoltNetwork.IsServer && !Player.IsInGame())
+                {
+                    BoltNetwork.Instantiate(BoltPrefabs.SurvivalRitualBook, Player.GetPlayer().transform.position, Quaternion.identity);
+                }
+                else
                 {
                     Hacks.Misc.CarryObject("RitualBook-Active-1");
                 }
+            }
 
-                if (GUI.Button(new Rect(Settings.Settings.x + 730, Settings.Settings.y + 340, 110, 20), "Matchbox") && Player.IsInGameOrLobby())
+            if (GUI.Button(new Rect(Settings.Settings.x + 190, Settings.Settings.y + 140, 80, 25), "Matchbox"))
+            {
+                if (BoltNetwork.IsServer && !Player.IsInGame())
+                {
+                    BoltNetwork.Instantiate(BoltPrefabs.SurvivalMatchbox, Player.GetPlayer().transform.position, Quaternion.identity);
+                }
+                else
                 {
                     Hacks.Misc.CarryObject("Matchbox-3");
                 }
+            }
 
-                GUI.Label(new Rect(Settings.Settings.x + 880, Settings.Settings.y + 40, 120, 30), "Animals");
+            if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 180, 80, 25), "Egg-1"))
+            {
+                Hacks.Misc.CarryObject("Egg-Clean-1");
+            }
 
-                if (GUI.Button(new Rect(Settings.Settings.x + 880, Settings.Settings.y + 70, 110, 20), "Rat") && Player.IsInGameOrLobby())
-                {
-                    Hacks.Misc.CarryObject("SurvivalRat");
-                }
+            if (GUI.Button(new Rect(Settings.Settings.x + 100, Settings.Settings.y + 180, 80, 25), "Egg-2"))
+            {
+                Hacks.Misc.CarryObject("Egg-Clean-2");
+            }
 
-                if (GUI.Button(new Rect(Settings.Settings.x + 880, Settings.Settings.y + 100, 110, 20), "Goat") && Player.IsInGameOrLobby())
-                {
-                    Hacks.Misc.CarryObject("SurvivalGoat");
-                }
+            if (GUI.Button(new Rect(Settings.Settings.x + 190, Settings.Settings.y + 180, 80, 25), "Egg-3"))
+            {
+                Hacks.Misc.CarryObject("Egg-Clean-3");
+            }
 
-                if (GUI.Button(new Rect(Settings.Settings.x + 880, Settings.Settings.y + 130, 110, 20), "Spider") && Player.IsInGameOrLobby())
+            if (GUI.Button(new Rect(Settings.Settings.x + 280, Settings.Settings.y + 180, 80, 25), "Egg-4"))
+            {
+                Hacks.Misc.CarryObject("Egg-Clean-4");
+            }
+
+            if (GUI.Button(new Rect(Settings.Settings.x + 370, Settings.Settings.y + 180, 80, 25), "Egg-5"))
+            {
+                Hacks.Misc.CarryObject("Egg-Clean-5");
+            }
+
+            if (GUI.Button(new Rect(Settings.Settings.x + 460, Settings.Settings.y + 180, 80, 25), "Egg-6"))
+            {
+                Hacks.Misc.CarryObject("Egg-Clean-6");
+            }
+
+            if (GUI.Button(new Rect(Settings.Settings.x + 550, Settings.Settings.y + 180, 80, 25), "Egg-7"))
+            {
+                Hacks.Misc.CarryObject("Egg-Clean-7");
+            }
+
+            if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 210, 80, 25), "Egg-8"))
+            {
+                Hacks.Misc.CarryObject("Egg-Clean-8");
+            }
+
+            if (GUI.Button(new Rect(Settings.Settings.x + 100, Settings.Settings.y + 210, 80, 25), "Egg-9"))
+            {
+                Hacks.Misc.CarryObject("Egg-Clean-9");
+            }
+
+            if (GUI.Button(new Rect(Settings.Settings.x + 190, Settings.Settings.y + 210, 80, 25), "Egg-10"))
+            {
+                Hacks.Misc.CarryObject("Egg-Clean-10");
+            }
+        }
+
+        private static void MiscTab()
+        {
+            if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 70, 150, 30), "Unlock Achievements"))
+            {
+                Thread AchievementsThread = new Thread(new ThreadStart(Hacks.Unlock.Achievements));
+                AchievementsThread.Start();
+
+                MelonLogger.Msg("Achievements Unlocked!");
+            }
+
+            if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 110, 150, 30), "Unlock Doors"))
+            {
+                Hacks.Unlock.Doors();
+
+                MelonLogger.Msg("Doors Unlocked!");
+            }
+
+            if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 150, 150, 30), "TP Keys") && Player.IsInGame())
+            {
+                Hacks.Misc.TPKeys();
+                MelonLogger.Msg("Here are your keys!");
+            }
+
+            if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 190, 150, 30), "Make Random Noise"))
+            {
+                Hacks.Misc.PlaySound();
+                MelonLogger.Msg("Playing a random sound!");
+            }
+
+            spam_message = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 240, 140, 30), spam_message, "Chat spam");
+            change_steam_name = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 270, 140, 30), change_steam_name, "Change Steam Name");
+            change_server_name = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 300, 140, 30), change_server_name, "Change Server Name");
+            _walkInLobby = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 330, 140, 30), _walkInLobby, "Walk In Lobby");
+            _IsAutoRespawn = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 360, 140, 30), _IsAutoRespawn, "Auto Respawn");
+
+            fly = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 400, 150, 20), fly, "Fly");
+            fly_speed = GUI.HorizontalSlider(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 430, 100, 10), fly_speed, 5f, 20f);
+            GUI.Label(new Rect(Settings.Settings.x + 120, Settings.Settings.y + 425, 100, 30), ((int)fly_speed).ToString());
+
+
+            spoofLevel = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 470, 150, 20), spoofLevel, "Spoof Level");
+            spoofLevelValue = GUI.HorizontalSlider(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 500, 100, 10), spoofLevelValue, 0f, 666f);
+            GUI.Label(new Rect(Settings.Settings.x + 120, Settings.Settings.y + 495, 100, 30), ((int)spoofLevelValue).ToString());
+
+
+            exp_modifier = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 540, 150, 20), exp_modifier, "EXP Modifier");
+            exp = GUI.HorizontalSlider(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 570, 100, 10), exp, 1000f, 3000f);
+            GUI.Label(new Rect(Settings.Settings.x + 120, Settings.Settings.y + 565, 100, 30), ((int)exp).ToString());
+
+
+            fastMove = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 610, 150, 20), fastMove, "Player Speed");
+            _PlayerSpeedMultiplier = GUI.HorizontalSlider(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 640, 100, 10), _PlayerSpeedMultiplier, (int)1f, (int)10f);
+            GUI.Label(new Rect(Settings.Settings.x + 120, Settings.Settings.y + 635, 100, 30), ((int)_PlayerSpeedMultiplier).ToString());
+        }
+
+        private static void PlayersTab()
+        {
+            if (Helpers.Map.GetActiveScene() != "Menu")
+            {
+                GUI.Label(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 70, 150, 30), "Player list:");
+                int i = 0;
+                foreach (BasePlayer bp in Entities.Players)
                 {
-                    BoltNetwork.Instantiate(BoltPrefabs.Spider, Player.GetPlayer().transform.position, Quaternion.identity);
-                }
-                
-                if (Helpers.Map.GetActiveScene() != "")
-                {
-                    GUI.Label(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 400, 200, 30), $"Functions for the map: {Helpers.Map.GetMapName(Helpers.Map.GetActiveScene())}");
-                    
-                    if (Helpers.Map.GetActiveScene() != "Menu")
+                    if (bp == null || bp.Name == "")
                     {
-                        GUI.Label(new Rect(Settings.Settings.x + 580, Settings.Settings.y + 400, 150, 30), "Player list:");
-                        int i = 0;
-                        foreach (BasePlayer bp in Entities.Players)
-                        {
-                            if (bp == null || bp.Name == "")
-                            {
-                                continue;
-                            }
-
-                            GUI.Label(new Rect(Settings.Settings.x + 580, Settings.Settings.y + 430 + i, 150, 30), bp.Name);
-                            
-                            if (GUI.Button(new Rect(Settings.Settings.x + 650, Settings.Settings.y + 430 + i, 60, 20), "Kill"))
-                            {
-                                bp.Kill();
-                            }
-
-                            if (GUI.Button(new Rect(Settings.Settings.x + 710, Settings.Settings.y + 430 + i, 80, 20), "Revive"))
-                            {
-                                bp.Revive();
-                            }
-
-                            if (GUI.Button(new Rect(Settings.Settings.x + 790, Settings.Settings.y + 430 + i, 100, 20), "Jumpscare"))
-                            {
-                                bp.Jumpscare();
-                            }
-
-                            if (GUI.Button(new Rect(Settings.Settings.x + 890, Settings.Settings.y + 430 + i, 80, 20), "TP to"))
-                            {
-                                bp.TP();
-                            }
-
-                            if (GUI.Button(new Rect(Settings.Settings.x + 970, Settings.Settings.y + 430 + i, 110, 20), "Lock in cage"))
-                            {
-                                bp.LockInCage();
-                            }
-
-                            if (GUI.Button(new Rect(Settings.Settings.x + 1080, Settings.Settings.y + 430 + i, 100, 20), "TP Azazel"))
-                            {
-                                bp.TPAzazel();
-                            }
-
-                            i += 30;
-                        }
+                        continue;
                     }
-                    
-                    switch (Helpers.Map.GetActiveScene())
+
+                    GUI.Label(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 110 + i, 150, 30), bp.Name);
+
+                    if (GUI.Button(new Rect(Settings.Settings.x + 70, Settings.Settings.y + 105 + i, 60, 30), "Kill"))
                     {
-                        case "Menu":
-                            if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 430, 120, 20), "Force Start"))
-                            {
-                                Il2CppHorror.Menu menu = UnityEngine.Object.FindObjectOfType<Il2CppHorror.Menu>();
-                                menu.OnLobbyStartButtonClick();
-                            }
-                            break;
-                    
-                        case "Devour":
-                            if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 430, 120, 20), "Burn One Goat"))
-                            {
-                                Hacks.Misc.BurnRitualObj(Helpers.Map.GetActiveScene(), false);
-                            }
-
-                            if (GUI.Button(new Rect(Settings.Settings.x + 150, Settings.Settings.y + 430, 120, 20), "Burn All Goats"))
-                            {
-                                Hacks.Misc.BurnRitualObj(Helpers.Map.GetActiveScene(), true);
-                            }
-                            
-                            if (GUI.Button(new Rect(Settings.Settings.x + 290, Settings.Settings.y + 430, 120, 20), "TP to Azazel"))
-                            {
-                                try
-                                {
-                                    Il2Cpp.NolanBehaviour nb = Player.GetPlayer();
-
-                                    nb.TeleportTo(Helpers.Map.GetAzazel().transform.position, Quaternion.identity);
-                                }
-                                catch
-                                {
-                                    MelonLogger.Msg("Azazel not found !");
-                                }
-                            }
-
-                            if (GUI.Button(new Rect(Settings.Settings.x + 290, Settings.Settings.y + 460, 120, 20), "Despawn demons"))
-                            {
-                                Hacks.Misc.DespawnDemons();
-                            }
-
-                            break;
-
-                        case "Molly":
-                            if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 430, 120, 20), "Burn One Rat"))
-                            {
-                                Hacks.Misc.BurnRitualObj(Helpers.Map.GetActiveScene(), false);
-                            }
-
-                            if (GUI.Button(new Rect(Settings.Settings.x + 150, Settings.Settings.y + 430, 120, 20), "Burn All Rats"))
-                            {
-                                Hacks.Misc.BurnRitualObj(Helpers.Map.GetActiveScene(), true);
-                            }
-                            
-                            if (GUI.Button(new Rect(Settings.Settings.x + 290, Settings.Settings.y + 430, 120, 20), "TP to Azazel"))
-                            {
-                                try
-                                {
-                                    Il2Cpp.NolanBehaviour nb = Player.GetPlayer();
-
-                                    nb.TeleportTo(Helpers.Map.GetAzazel().transform.position, Quaternion.identity);
-                                }
-                                catch
-                                {
-                                    MelonLogger.Msg("Azazel not found !");
-                                }
-                            }
-
-                            if (GUI.Button(new Rect(Settings.Settings.x + 290, Settings.Settings.y + 460, 120, 20), "Despawn demons"))
-                            {
-                                Hacks.Misc.DespawnDemons();
-                            }
-
-                            break;
-
-                        case "Inn":
-                            if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 430, 120, 20), "Burn One Egg"))
-                            {
-                                Hacks.Misc.BurnRitualObj(Helpers.Map.GetActiveScene(), false);
-                            }
-
-                            if (GUI.Button(new Rect(Settings.Settings.x + 150, Settings.Settings.y + 430, 120, 20), "Burn All Eggs"))
-                            {
-                                Hacks.Misc.BurnRitualObj(Helpers.Map.GetActiveScene(), true);
-                            }
-                            
-                            if (GUI.Button(new Rect(Settings.Settings.x + 290, Settings.Settings.y + 430, 150, 20), "Clean The Fountains"))
-                            {
-                                Hacks.Misc.CleanFountain();
-                            }
-                            
-                            if (GUI.Button(new Rect(Settings.Settings.x + 460, Settings.Settings.y + 430, 120, 20), "TP to Azazel"))
-                            {
-                                try
-                                {
-                                    Il2Cpp.NolanBehaviour nb = Player.GetPlayer();
-
-                                    nb.TeleportTo(Helpers.Map.GetAzazel().transform.position, Quaternion.identity);
-                                }
-                                catch
-                                {
-                                    MelonLogger.Msg("Azazel not found !");
-                                }                            
-                            }
-
-                            if (GUI.Button(new Rect(Settings.Settings.x + 290, Settings.Settings.y + 460, 120, 20), "Despawn spiders"))
-                            {
-                                Hacks.Misc.DespawnSpiders();
-                            }
-                            break;
-
-                        case "Town":
-                            if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 430, 120, 20), "Burn One Book"))
-                            {
-                                Hacks.Misc.BurnRitualObj(Helpers.Map.GetActiveScene(), false);
-                            }
-
-                            if (GUI.Button(new Rect(Settings.Settings.x + 150, Settings.Settings.y + 430, 120, 20), "Burn All Books"))
-                            {
-                                Hacks.Misc.BurnRitualObj(Helpers.Map.GetActiveScene(), true);
-                            }
-                            
-                            if (GUI.Button(new Rect(Settings.Settings.x + 290, Settings.Settings.y + 430, 120, 20), "TP to Azazel"))
-                            {
-                                try
-                                {
-                                    Il2Cpp.NolanBehaviour nb = Player.GetPlayer();
-
-                                    nb.TeleportTo(Helpers.Map.GetAzazel().transform.position, Quaternion.identity);
-                                }
-                                catch
-                                {
-                                    MelonLogger.Msg("Azazel not found !");
-                                }
-                            }
-
-                            if (GUI.Button(new Rect(Settings.Settings.x + 290, Settings.Settings.y + 460, 120, 20), "Despawn ghosts"))
-                            {
-                                Hacks.Misc.DespawnGhosts();
-                            }
-                            break;
-
-                        default:
-                            break;
+                        bp.Kill();
                     }
-                    
-                    // load map
-                    switch (Helpers.Map.GetActiveScene())
+
+                    if (GUI.Button(new Rect(Settings.Settings.x + 140, Settings.Settings.y + 105 + i, 60, 30), "Revive"))
                     {
-                        case "Menu":
-                            GUI.Label(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 470, 100, 30), $"Load Map");
-
-
-                            if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 500, 100, 20), "Farmhouse"))
-                            {
-                                Helpers.Map.LoadMap("Devour");
-                            }
-
-                            if (GUI.Button(new Rect(Settings.Settings.x + 120, Settings.Settings.y + 500, 100, 20), "Asylum"))
-                            {
-                                Helpers.Map.LoadMap("Molly");
-                            }
-
-                            if (GUI.Button(new Rect(Settings.Settings.x + 230, Settings.Settings.y + 500, 100, 20), "Inn"))
-                            {
-                                Helpers.Map.LoadMap("Inn");
-                            }
-
-                            if (GUI.Button(new Rect(Settings.Settings.x + 340, Settings.Settings.y + 500, 100, 20), "Town"))
-                            {
-                                Helpers.Map.LoadMap("Town");
-                            }
-                            break;
-                        case "Devour":
-                        case "Molly":
-                        case "Inn":
-                        case "Town":
-                            GUI.Label(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 490, 100, 30), "Load Map");
-
-                            if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 520, 100, 20), "Farmhouse"))
-                            {
-                                Helpers.Map.LoadMap("Devour");
-                            }
-
-                            if (GUI.Button(new Rect(Settings.Settings.x + 120, Settings.Settings.y + 520, 100, 20), "Asylum"))
-                            {
-                                Helpers.Map.LoadMap("Molly");
-                            }
-
-                            if (GUI.Button(new Rect(Settings.Settings.x + 230, Settings.Settings.y + 520, 100, 20), "Inn"))
-                            {
-                                Helpers.Map.LoadMap("Inn");
-                            }
-
-                            if (GUI.Button(new Rect(Settings.Settings.x + 340, Settings.Settings.y + 520, 100, 20), "Town"))
-                            {
-                                Helpers.Map.LoadMap("Town");
-                            }
-                            break;
-                        default:             
-                            break;
+                        bp.Revive();
                     }
+
+                    if (GUI.Button(new Rect(Settings.Settings.x + 210, Settings.Settings.y + 105 + i, 90, 30), "Jumpscare"))
+                    {
+                        bp.Jumpscare();
+                    }
+
+                    if (GUI.Button(new Rect(Settings.Settings.x + 310, Settings.Settings.y + 105 + i, 60, 30), "TP to"))
+                    {
+                        bp.TP();
+                    }
+
+                    if (GUI.Button(new Rect(Settings.Settings.x + 380, Settings.Settings.y + 105 + i, 100, 30), "Lock in cage"))
+                    {
+                        bp.LockInCage();
+                    }
+
+                    if (GUI.Button(new Rect(Settings.Settings.x + 490, Settings.Settings.y + 105 + i, 90, 30), "TP Azazel"))
+                    {
+                        bp.TPAzazel();
+                    }
+
+                    i += 30;
                 }
+            }
+            else
+            {
+                GUI.Label(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 70, 150, 30), "---------");
             }
         }
     }
