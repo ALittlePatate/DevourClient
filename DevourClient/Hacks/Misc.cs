@@ -309,6 +309,7 @@ namespace DevourClient.Hacks
 			Il2CppHorror.Menu menu = UnityEngine.Object.FindObjectOfType<Il2CppHorror.Menu>();
 			menu.ShowMessageModal(message);
 		}
+		
 		public static void PlaySound()
         {
 			/*
@@ -363,6 +364,39 @@ namespace DevourClient.Hacks
 					return;
             }
 		}
+		
+		public static void FreezeAzazel()
+		{
+			if (!BoltNetwork.IsServer || Helpers.Map.GetActiveScene() == "Menu")
+			{
+				return;
+			}
+
+			try
+			{
+				if (Helpers.Map.GetAzazel() == null) {
+					return;
+				}
+
+				UltimateCharacterLocomotion _azazelLocomotion = Helpers.Map.GetAzazel().GetComponent<UltimateCharacterLocomotion>();
+
+				if (_azazelLocomotion == null)
+				{
+					return;
+				}
+
+				if (_azazelLocomotion.TimeScale == 1.0f)
+				{
+					_azazelLocomotion.TimeScale = 0f;
+				}
+				else
+				{
+                    _azazelLocomotion.TimeScale = 1.0f;
+                }
+            }
+			catch { }
+		}
+		
 		public static void InstantWin()
         {
 			Il2Cpp.Survival survival_class = UnityEngine.Object.FindObjectOfType<Il2Cpp.Survival>();
