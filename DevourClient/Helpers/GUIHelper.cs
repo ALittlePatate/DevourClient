@@ -10,13 +10,16 @@ namespace DevourClient.Helpers
 
         public static Color ColorPick(string title, Color color)
         {
-            GUI.Label(new Rect(Screen.width - 120, 65, 100, 30), title);
-            R = GUI.VerticalSlider(new Rect(Screen.width - 100, 90, 30, 100), color.r, 0f, 1f);
-            G = GUI.VerticalSlider(new Rect(Screen.width - 70, 90, 30, 100), color.g, 0f, 1f);
-            B = GUI.VerticalSlider(new Rect(Screen.width - 40, 90, 30, 100), color.b, 0f, 1f);
-            GUI.Label(new Rect(Screen.width - 100, 190, 30, 30), "R");
-            GUI.Label(new Rect(Screen.width - 70, 190, 30, 30), "G");
-            GUI.Label(new Rect(Screen.width - 39, 190, 30, 30), "B");
+            GUI.Label(new Rect(Settings.Settings.x + 195, Settings.Settings.y + 70, 250, 30), title);
+
+            R = GUI.VerticalSlider(new Rect(Settings.Settings.x + 240, Settings.Settings.y + 100, 30, 90), color.r, 0f, 1f);
+            G = GUI.VerticalSlider(new Rect(Settings.Settings.x + 270, Settings.Settings.y + 100, 30, 90), color.g, 0f, 1f);
+            B = GUI.VerticalSlider(new Rect(Settings.Settings.x + 300, Settings.Settings.y + 100, 30, 90), color.b, 0f, 1f);
+
+            GUI.Label(new Rect(Settings.Settings.x + 240, Settings.Settings.y + 190, 30, 30), "R");
+            GUI.Label(new Rect(Settings.Settings.x + 270, Settings.Settings.y + 190, 30, 30), "G");
+            GUI.Label(new Rect(Settings.Settings.x + 300, Settings.Settings.y + 190, 30, 30), "B");
+            
             color = new Color(R, G, B, 1);
             GUI.color = color;
 
@@ -29,7 +32,7 @@ namespace DevourClient.Helpers
                 GUI.Box(position, GUIContent.none);
             }
 
-            DrawPreview(new Rect(Screen.width - 130, 90, 20, 100), color);
+            DrawPreview(new Rect(Settings.Settings.x + 195, Settings.Settings.y + 100, 20, 90), color);
 
             return color;
         }
