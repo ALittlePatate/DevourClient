@@ -76,6 +76,20 @@ namespace DevourClient.Hacks
 				}
 			}
 			
+			if(map == "Slaughterhouse")
+			{
+				Il2Cpp.SlaughterhouseAltarController _slaughterhouseAltarController = UnityEngine.Object.FindObjectOfType<Il2Cpp.SlaughterhouseAltarController>();
+
+				if (burnAll)
+				{
+					_slaughterhouseAltarController.BurnGoat();
+				}
+				else
+				{
+					_slaughterhouseAltarController.SkipToGoat(10);
+				}
+			}
+			
 			else
 			{
 				if (burnAll){
