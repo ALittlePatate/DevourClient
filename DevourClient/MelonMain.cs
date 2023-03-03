@@ -404,6 +404,13 @@ namespace DevourClient
             {
                 BoltNetwork.Instantiate(BoltPrefabs.AzazelZara, Player.GetPlayer().transform.position, Quaternion.identity);
             }
+            
+            /*
+            if (GUI.Button(new Rect(Settings.Settings.x + 290, Settings.Settings.y + 180, 60, 25), "Nathan") && Player.IsInGameOrLobby() && BoltNetwork.IsServer)
+            {
+                BoltNetwork.Instantiate(BoltPrefabs.AzazelNathan, Player.GetPlayer().transform.position, Quaternion.identity);
+            }
+            */
 
             // demon
 
@@ -421,6 +428,13 @@ namespace DevourClient
             {
                 BoltNetwork.Instantiate(BoltPrefabs.SurvivalDemon, Player.GetPlayer().transform.position, Quaternion.identity);
             }
+            
+            /*
+            if (GUI.Button(new Rect(Settings.Settings.x + 220, Settings.Settings.y + 220, 60, 25), "Boar") && Player.IsInGameOrLobby() && BoltNetwork.IsServer)
+            {
+                BoltNetwork.Instantiate(BoltPrefabs.Boar, Player.GetPlayer().transform.position, Quaternion.identity);
+            }
+            */
 
             // Animal
 
@@ -470,6 +484,27 @@ namespace DevourClient
             {
                 BoltNetwork.Instantiate(BoltPrefabs.Spider, Player.GetPlayer().transform.position, Quaternion.identity);
             }
+            
+            /*if (GUI.Button(new Rect(Settings.Settings.x + 220, Settings.Settings.y + 260, 60, 25), "Pig"))
+            {
+                if (BoltNetwork.IsServer && !Player.IsInGame())
+                {
+                    try
+                    {
+                        BoltNetwork.Instantiate(BoltPrefabs.SurvivalPig, Player.GetPlayer().transform.position, Quaternion.identity);
+                    }
+                    catch { }
+                }
+
+                if (Player.IsInGame() && !Player.IsPlayerCrawling())
+                {
+                    try
+                    {
+                        Hacks.Misc.CarryObject("SurvivalPig");
+                    }
+                    catch { }
+                }
+            }*/
         }
 
         private static void MapSpecificTab()
@@ -702,6 +737,18 @@ namespace DevourClient
                     Hacks.Misc.CarryObject("SurvivalRottenFood");
                 }
             }
+            
+            /*if (GUI.Button(new Rect(Settings.Settings.x + 550, Settings.Settings.y + 100, 80, 25), "Bone"))
+            {
+                if (BoltNetwork.IsServer && !Player.IsInGame())
+                {
+                    BoltNetwork.Instantiate(BoltPrefabs.SurvivalBone, Player.GetPlayer().transform.position, Quaternion.identity);
+                }
+                else
+                {
+                    Hacks.Misc.CarryObject("SurvivalBone");
+                }
+            }*/
 
             if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 140, 80, 25), "Bleach"))
             {
