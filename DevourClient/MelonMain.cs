@@ -90,22 +90,42 @@ namespace DevourClient
                 Settings.Settings.menu_enable = !Settings.Settings.menu_enable;
             }
 
-            if (flashlight_toggle && Player.IsInGame() && !fullbright)
+            if (Player.IsInGame())
             {
-                Hacks.Misc.BigFlashlight(false);
-            }
-            else if (!flashlight_toggle && Player.IsInGame() && !fullbright)
-            {
-                Hacks.Misc.BigFlashlight(true);
-            }
+                if (flashlight_toggle && !fullbright)
+                {
+                    Hacks.Misc.BigFlashlight(false);
+                }
+                else if (!flashlight_toggle && !fullbright)
+                {
+                    Hacks.Misc.BigFlashlight(true);
+                }
 
-            if (fullbright && Player.IsInGame() && !flashlight_toggle)
-            {
-                Hacks.Misc.Fullbright(false);
+                if (fullbright && !flashlight_toggle)
+                {
+                    Hacks.Misc.Fullbright(false);
+                }
+                else if (!fullbright && !flashlight_toggle)
+                {
+                    Hacks.Misc.Fullbright(true);
+                }
+
+                if (_IsAutoRespawn && Helpers.Player.IsPlayerCrawling())
+                {
+                    Hacks.Misc.AutoRespawn();
+                }
             }
-            else if (!fullbright && Player.IsInGame() && !flashlight_toggle)
+            else
             {
-                Hacks.Misc.Fullbright(true);
+                if (change_server_name)
+                {
+                    Hacks.Misc.SetServerName("patate on top !");
+                }
+
+                if (change_steam_name)
+                {
+                    Hacks.Misc.SetSteamName("patate");
+                }
             }
 
             if (spam_message)
@@ -119,16 +139,6 @@ namespace DevourClient
                 Hacks.Misc.SetRank((int)spoofLevelValue);
             }
 
-            if (change_server_name && !Player.IsInGame())
-            {
-                Hacks.Misc.SetServerName("patate on top !");
-            }
-
-            if (change_steam_name && !Player.IsInGame())
-            {
-                Hacks.Misc.SetSteamName("patate");
-            }
-
             if (Input.GetKeyDown(Settings.Settings.flyKey))
             {
                 fly = !fly;
@@ -137,11 +147,6 @@ namespace DevourClient
             if (fly && Player.IsInGameOrLobby())
             {
                 Hacks.Misc.Fly(fly_speed);
-            }
-            
-            if(Player.IsInGame() && _IsAutoRespawn && Helpers.Player.IsPlayerCrawling())
-            {
-                Hacks.Misc.AutoRespawn();                
             }
             
             if (Helpers.Map.GetActiveScene() == "Menu")
