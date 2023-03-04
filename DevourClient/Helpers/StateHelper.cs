@@ -137,12 +137,7 @@ namespace DevourClient.Helpers
                 return false;
             }
 
-            if (nb.IsCrawling())
-            {
-                return true;
-            }
-
-            return false;
+            return nb.IsCrawling();
         }
         
     }
