@@ -19,6 +19,8 @@
                     return "Inn";
                 case "Town":
                     return "Town";
+                case "Slaughterhouse":
+                    return "Slaughterhouse";
                 default:
                     return "Menu";
             }
