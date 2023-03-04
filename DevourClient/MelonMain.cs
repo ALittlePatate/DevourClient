@@ -76,7 +76,6 @@ namespace DevourClient
                 try
                 {
                     Il2Cpp.GameUI gameUI = UnityEngine.Object.FindObjectOfType<Il2Cpp.GameUI>();
-
                     if (Settings.Settings.menu_enable)
                     {
                         gameUI.HideMouseCursor();
@@ -128,6 +127,11 @@ namespace DevourClient
             if (change_steam_name && !Player.IsInGame())
             {
                 Hacks.Misc.SetSteamName("patate");
+            }
+
+            if (Input.GetKeyDown(Settings.Settings.flyKey))
+            {
+                fly = !fly;
             }
 
             if (fly && Player.IsInGameOrLobby())
@@ -872,7 +876,12 @@ namespace DevourClient
             _walkInLobby = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 330, 140, 30), _walkInLobby, "Walk In Lobby");
             _IsAutoRespawn = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 360, 140, 30), _IsAutoRespawn, "Auto Respawn");
 
-            fly = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 400, 150, 20), fly, "Fly");
+            fly = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 400, 40, 20), fly, "Fly");
+            if (GUI.Button(new Rect(Settings.Settings.x + 60, Settings.Settings.y + 400, 40, 20), Settings.Settings.flyKey.ToString()))
+            {
+                Settings.Settings.flyKey = Settings.Settings.GetKey();
+            }
+
             fly_speed = GUI.HorizontalSlider(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 430, 100, 10), fly_speed, 5f, 20f);
             GUI.Label(new Rect(Settings.Settings.x + 120, Settings.Settings.y + 425, 100, 30), ((int)fly_speed).ToString());
 

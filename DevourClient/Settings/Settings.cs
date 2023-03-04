@@ -14,5 +14,23 @@ namespace DevourClient.Settings
         public static Color azazel_esp_color = new Color(1.00f, 0.00f, 0.00f, 1);
         public static float speed = 1f;
         public const string message_to_spam = "Deez Nutz";
+        public static KeyCode flyKey = KeyCode.None;
+
+        public static KeyCode GetKey()
+        {
+            Thread.Sleep(50); //TOFIX tried using anyKeydown, no success
+            foreach (KeyCode vkey in System.Enum.GetValues(typeof(KeyCode)))
+            {
+                if (Input.GetKey(vkey))
+                {
+                    if (vkey != KeyCode.Delete)
+                    {
+                        return vkey;
+                    }
+                }
+            }
+
+            return KeyCode.None;
+        }
     }
 }
