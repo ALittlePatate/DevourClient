@@ -167,11 +167,21 @@ namespace DevourClient.Hacks
 		public static void SetSteamName(string name)
 		{
 			Il2CppHorror.Menu Menu_ = UnityEngine.Object.FindObjectOfType<Il2CppHorror.Menu>();
+			if (Menu_ == null)
+            {
+				return;
+            }
+
 			Menu_.steamName = name;
 		}
 		public static void SetServerName(string name)
         {
 			Il2CppHorror.Menu Menu_ = UnityEngine.Object.FindObjectOfType<Il2CppHorror.Menu>();
+			if (Menu_ == null)
+			{
+				return;
+			}
+
 			Menu_.serverNameText.text = name;
 		}
 
