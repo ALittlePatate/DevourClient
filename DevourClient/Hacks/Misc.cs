@@ -424,29 +424,20 @@ namespace DevourClient.Hacks
 		public static void InstantWin()
         {
 			Il2Cpp.Survival survival_class = UnityEngine.Object.FindObjectOfType<Il2Cpp.Survival>();
+			string map_name = Map.GetMapName(Map.GetActiveScene());
 
-			try
+			if (map_name == "Menu")
             {
-				survival_class.PlayEnding("InnWin");
-			}
-			catch
-            {
-				try
-                {
-					survival_class.PlayEnding("AsylumWin");
-				}
-				catch
-                {
-					try
-                    {
-						survival_class.PlayEnding("TownWin");
-					}
-					catch
-                    {
-						survival_class.PlayEnding("Win");
-					}
-				}
+				return;
             }
+
+			if (map_name == "Farmhouse")
+            {
+				survival_class.PlayEnding("Win");
+				return;
+			}
+
+			survival_class.PlayEnding(map_name+"Win");
 		}
     }
 }
