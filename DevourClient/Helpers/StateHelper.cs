@@ -144,10 +144,10 @@ namespace DevourClient.Helpers
     
     public class Entities
     {
-        public const int MAX_PLAYERS = 4; //can change with new updates/new hacks
+        public static int MAX_PLAYERS = 4; //will change by calling CreateCustomizedLobby
 
         public static BasePlayer LocalPlayer_ = new BasePlayer();
-        public static BasePlayer[] Players = new BasePlayer[MAX_PLAYERS];
+        public static BasePlayer[] Players = new BasePlayer[MAX_PLAYERS]; //i hope this doesn't break
         //public static GameObject[] Players = default!;
         public static Il2Cpp.GoatBehaviour[] GoatsAndRats = default!;
         public static Il2Cpp.SurvivalInteractable[] SurvivalInteractables = default!;
