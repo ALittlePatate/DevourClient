@@ -38,8 +38,10 @@ Everything about spoofing ehre (steam name, server name, level...) will persist 
 * Always carrying a medkit
 * Change your exp at the end of the game, changing it is permanant !
 * Player ESP (with a home made color picker)
+* Player skeleton ESP
 * Player snaplines (with a home made color picker)
 * Azazel ESP (with a home made color picker)
+* Azazel Skeleton ESP
 * Azazel snapline (with a home made color picker)
 * Item ESP
 * Demon ESP
@@ -49,6 +51,7 @@ Everything about spoofing ehre (steam name, server name, level...) will persist 
 * Walk in the lobby
 * Change the player's speed
 * Fullbright
+* Create a lobby with no player limit
 
 ## Installation
 For my french fellas out there, 1tap2times made a French video tutorial for the installation of the Mod : [link](https://vimeo.com/789315436)<br>

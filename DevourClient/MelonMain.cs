@@ -40,6 +40,7 @@ namespace DevourClient
         static float fly_speed = 5;
         static bool fastMove = false;
         static float _PlayerSpeedMultiplier = 1;
+        public static float lobbySize = 4;
         public static bool _IsAutoRespawn = false;
         public static bool unlimitedUV = false;
         public static bool exp_modifier = false;
@@ -939,6 +940,17 @@ namespace DevourClient
             fastMove = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 610, 150, 20), fastMove, "Player Speed");
             _PlayerSpeedMultiplier = GUI.HorizontalSlider(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 640, 100, 10), _PlayerSpeedMultiplier, (int)1f, (int)10f);
             GUI.Label(new Rect(Settings.Settings.x + 120, Settings.Settings.y + 635, 100, 30), ((int)_PlayerSpeedMultiplier).ToString());
+
+            GUI.Label(new Rect(Settings.Settings.x + 295, Settings.Settings.y + 70, 150, 30), "Max players");
+            lobbySize = GUI.HorizontalSlider(new Rect(Settings.Settings.x + 295, Settings.Settings.y + 90, 100, 10), lobbySize, (int)0f, (int)30f);
+            GUI.Label(new Rect(Settings.Settings.x + 405, Settings.Settings.y + 85, 100, 30), ((int)lobbySize).ToString());
+
+            if (GUI.Button(new Rect(Settings.Settings.x + 285, Settings.Settings.y + 110, 150, 30), "Create server"))
+            {
+                MelonLogger.Msg("Creating the server...");
+                Hacks.Misc.CreateCustomizedLobby((int)lobbySize);
+                MelonLogger.Msg("Done !");
+            }
         }
 
         private static void PlayersTab()
