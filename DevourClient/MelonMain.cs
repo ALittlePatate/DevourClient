@@ -6,6 +6,7 @@ using Il2CppPhoton.Bolt;
 using System.Runtime.CompilerServices;
 using Il2CppHorror;
 
+[assembly: VerifyLoaderVersion(6, 0, 0, true)] //Minimum MelonLoader version is V6.0.0, sanity check for people who use 5.7 and wonder why it crashes :)
 [assembly: MelonInfo(typeof(DevourClient.Load), "DevourClient", "1", "ALittlePatate & Jadis")]
 [assembly: MelonGame("Straight Back Games", "DEVOUR")]
 
