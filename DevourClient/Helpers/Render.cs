@@ -63,6 +63,11 @@ namespace DevourClient.Render
 		}
 		public static void DrawBones(Transform bone1, Transform bone2, Color c)
 		{
+			if (!Camera.main) //fix the crash maybe
+            {
+				return;
+            }
+
 			Vector3 w1 = Camera.main.WorldToScreenPoint(bone1.position);
 			Vector3 w2 = Camera.main.WorldToScreenPoint(bone2.position);
 
