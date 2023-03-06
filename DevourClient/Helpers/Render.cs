@@ -67,14 +67,6 @@ namespace DevourClient.Render
 			GUI.DrawTexture(new Rect(x, y, width, height), text);
 		}
 
-		public static void RectOutlined(float x, float y, float width, float height, Texture2D text, float thickness = 1f)
-		{
-			RectFilled(x, y, thickness, height, text);
-			RectFilled(x + width - thickness, y, thickness, height, text);
-			RectFilled(x + thickness, y, width - thickness * 2f, thickness, text);
-			RectFilled(x + thickness, y + height - thickness, width - thickness * 2f, thickness, text);
-		}
-
 		static void DrawBox(float x, float y, float w, float h, Color color, float thickness)
 		{
 			Render.DrawLine(new Vector2(x, y), new Vector2(x + w, y), color, thickness);
