@@ -167,6 +167,12 @@ namespace DevourClient.Hacks
 		public static void CreateCustomizedLobby(Il2CppUdpKit.Platform.Photon.PhotonRegion.Regions __region = Il2CppUdpKit.Platform.Photon.PhotonRegion.Regions.BEST_REGION, int lobbySize = 4, bool isPrivate = false)
         {
 			Entities.MAX_PLAYERS = lobbySize; //max players in the lobby
+			
+			Il2CppHorror.Menu _menu = UnityEngine.Object.FindObjectOfType<Il2CppHorror.Menu>();
+
+			CanvasGroup _loadingCanvasGroup = _menu.loadingCanvasGroup;
+			CanvasGroup _hostCanvasGroup = _menu.hostCanvasGroup;
+			CanvasGroup _mainMenuCanvasGroup = _menu.mainMenuCanvasGroup;
 
 			Il2CppUdpKit.Platform.PhotonPlatformConfig __photonPlatformConfig = new Il2CppUdpKit.Platform.PhotonPlatformConfig();
             __photonPlatformConfig.Region = Il2CppUdpKit.Platform.Photon.PhotonRegion.regions[__region];
@@ -174,12 +180,16 @@ namespace DevourClient.Hacks
 			BoltLauncher.SetUdpPlatform(new Il2CppUdpKit.Platform.PhotonPlatform(__photonPlatformConfig));
 
             BoltConfig __config = UnityEngine.Object.FindObjectOfType<Il2CppHorror.Menu>().boltConfig;
-			Toggle __toggle = UnityEngine.Object.FindObjectOfType<Il2CppHorror.Menu>().hostPrivateServer;
+			Toggle __toggle = _menu.hostPrivateServer;
 
 			__toggle.isOn = isPrivate;
             __config.serverConnectionLimit = lobbySize;
 
 			BoltLauncher.StartServer(__config, null);
+			
+			Il2CppHorror.Menu.ShowCanvasGroup(_loadingCanvasGroup, true);
+            Il2CppHorror.Menu.ShowCanvasGroup(_hostCanvasGroup, false);
+            Il2CppHorror.Menu.ShowCanvasGroup(_mainMenuCanvasGroup, false);
         }
 		
 		public static void SetSteamName(string name)
