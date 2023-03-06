@@ -676,14 +676,34 @@ namespace DevourClient
             player_esp = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 70, 150, 20), player_esp, "Player ESP");
             player_skel_esp = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 100, 150, 20), player_skel_esp, "Skeleton ESP");
             player_snapline = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 130, 150, 20), player_snapline, "Player Snapline");
+            if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 160, 130, 30), "Player ESP Color"))
+            {
+                player_esp_colorpick = !player_esp_colorpick;
+            }
 
-            azazel_esp = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 170, 150, 20), azazel_esp, "Azazel ESP");
-            azazel_skel_esp = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 200, 150, 20), azazel_skel_esp, "Skeleton ESP");
-            azazel_snapline = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 230, 150, 20), azazel_snapline, "Azazel Snapline");
+            if (player_esp_colorpick)
+            {
+                Color player_esp_color_input = GUIHelper.ColorPick("Player ESP Color", Settings.Settings.player_esp_color);
+                Settings.Settings.player_esp_color = player_esp_color_input;
+            }
 
-            item_esp = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 270, 150, 20), item_esp, "Item ESP");
-            goat_rat_esp = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 300, 150, 20), goat_rat_esp, "Goat/Rat ESP");
-            demon_esp = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 330, 150, 20), demon_esp, "Demon ESP");
+            azazel_esp = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 200, 150, 20), azazel_esp, "Azazel ESP");
+            azazel_skel_esp = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 230, 150, 20), azazel_skel_esp, "Skeleton ESP");
+            azazel_snapline = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 260, 150, 20), azazel_snapline, "Azazel Snapline");
+            if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 290, 130, 30), "Azazel ESP Color"))
+            {
+                azazel_esp_colorpick = !azazel_esp_colorpick;
+            }
+
+            if (azazel_esp_colorpick)
+            {
+                Color azazel_esp_color_input = GUIHelper.ColorPick("Azazel ESP Color", Settings.Settings.azazel_esp_color);
+                Settings.Settings.azazel_esp_color = azazel_esp_color_input;
+            }
+
+            item_esp = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 330, 150, 20), item_esp, "Item ESP");
+            goat_rat_esp = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 360, 150, 20), goat_rat_esp, "Goat/Rat ESP");
+            demon_esp = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 390, 150, 20), demon_esp, "Demon ESP");
         }
 
         private static void ItemsTab()
