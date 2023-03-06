@@ -164,6 +164,21 @@ namespace DevourClient.Hacks
 		    catch { }
 		}
 	    
+		public static void CreateCustomizedLobby(Il2CppUdpKit.Platform.Photon.PhotonRegion.Regions __region, int lobbySize = 4)
+        {
+
+            Il2CppUdpKit.Platform.PhotonPlatformConfig __photonPlatformConfig = new Il2CppUdpKit.Platform.PhotonPlatformConfig();
+            __photonPlatformConfig.Region = Il2CppUdpKit.Platform.Photon.PhotonRegion.regions[__region];
+
+            BoltLauncher.SetUdpPlatform(new Il2CppUdpKit.Platform.PhotonPlatform(__photonPlatformConfig));
+
+            BoltConfig __config = UnityEngine.Object.FindObjectOfType<Il2CppHorror.Menu>().boltConfig;
+
+            __config.serverConnectionLimit = lobbySize;
+
+            BoltLauncher.StartServer(__config, null);
+        }
+		
 		public static void SetSteamName(string name)
 		{
 			Il2CppHorror.Menu Menu_ = UnityEngine.Object.FindObjectOfType<Il2CppHorror.Menu>();
