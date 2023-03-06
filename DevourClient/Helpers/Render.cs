@@ -112,6 +112,11 @@ namespace DevourClient.Render
 
 		public static void DrawBoxESP(GameObject it, float footOffset, float headOffset, string name, Color color, bool snapline = false, bool esp = false, float nameOffset = -0.5f, float widthOffset = 2.0f)
         {
+			if (!it || !Camera.main)
+            {
+				return;
+            }
+
 			Vector3 footpos = Camera.main.WorldToScreenPoint(new Vector3(it.transform.position.x, it.transform.position.y + footOffset, it.transform.position.z));
 			Vector3 headpos = Camera.main.WorldToScreenPoint(new Vector3(it.transform.position.x, it.transform.position.y + headOffset, it.transform.position.z));
 			Vector3 namepos = Camera.main.WorldToScreenPoint(new Vector3(it.transform.position.x, it.transform.position.y + nameOffset, it.transform.position.z));
