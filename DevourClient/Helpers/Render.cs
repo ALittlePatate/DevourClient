@@ -61,10 +61,40 @@ namespace DevourClient.Render
 				GUI.color = Color.white;
 			}
 		}
-
-		public static void RectFilled(float x, float y, float width, float height, Texture2D text)
+		public static void DrawBones(Transform bone1, Transform bone2, Color c)
 		{
-			GUI.DrawTexture(new Rect(x, y, width, height), text);
+			Vector3 w1 = Camera.main.WorldToScreenPoint(bone1.position);
+			Vector3 w2 = Camera.main.WorldToScreenPoint(bone2.position);
+
+			if (w1.z > 0.0f && w2.z > 0.0f)
+            {
+				DrawLine(new Vector2(w1.x, Screen.height - w1.y), new Vector2(w2.x, Screen.height - w2.y), c, 2f);
+			}
+		}
+
+		public static void DrawAllBones(List<Transform> b, Color c)
+		{
+			DrawBones(b[0], b[1], c);
+			DrawBones(b[1], b[2], c);
+			DrawBones(b[2], b[3], c);
+
+			DrawBones(b[1], b[4], c);
+			DrawBones(b[4], b[5], c);
+			DrawBones(b[5], b[6], c);
+			DrawBones(b[6], b[7], c);
+
+			DrawBones(b[1], b[8], c);
+			DrawBones(b[8], b[9], c);
+			DrawBones(b[9], b[10], c);
+			DrawBones(b[10], b[11], c);
+
+			DrawBones(b[3], b[12], c);
+			DrawBones(b[12], b[13], c);
+			DrawBones(b[13], b[14], c);
+
+			DrawBones(b[3], b[15], c);
+			DrawBones(b[15], b[16], c);
+			DrawBones(b[16], b[17], c);
 		}
 
 		static void DrawBox(float x, float y, float w, float h, Color color, float thickness)

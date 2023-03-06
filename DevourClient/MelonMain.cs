@@ -46,8 +46,10 @@ namespace DevourClient
         public static float exp = 1000f;
         public static bool _walkInLobby = false;
         static bool player_esp = false;
+        static bool player_skel_esp = false;
         static bool player_snapline = false;
         static bool azazel_esp = false;
+        static bool azazel_skel_esp = false;
         static bool azazel_snapline = false;
         static bool spam_message = false;
         static bool item_esp = false;
@@ -180,7 +182,7 @@ namespace DevourClient
             //from https://www.unknowncheats.me/forum/unity/437277-mono-internal-optimisation-tips.html
             if (UnityEngine.Event.current.type == EventType.Repaint)
             {
-                if (player_esp || player_snapline)
+                if (player_esp || player_snapline || player_skel_esp)
                 {
                     foreach (Helpers.BasePlayer p in Helpers.Entities.Players)
                     {
@@ -192,12 +194,17 @@ namespace DevourClient
                         GameObject player = p.p_GameObject;
                         if (player != null)
                         {
-
-                            if (player.GetComponent<Il2Cpp.NolanBehaviour>().entity.IsOwner)
+                            Il2Cpp.NolanBehaviour nb = player.GetComponent<Il2Cpp.NolanBehaviour>();
+                            if (nb.entity.IsOwner)
                             {
                                 continue;
                             }
 
+                            if (player_skel_esp)
+                            {
+                                Render.Render.DrawAllBones(Hacks.Misc.GetAllBones(nb.animator), Settings.Settings.azazel_esp_color);
+                            }
+                            
                             Render.Render.DrawBoxESP(player, -0.25f, 1.75f, p.Name, Settings.Settings.player_esp_color, player_snapline, player_esp);
                         }
                     }
@@ -260,12 +267,17 @@ namespace DevourClient
                     }
                 }
 
-                if (azazel_esp || azazel_snapline)
+                if (azazel_esp || azazel_snapline || azazel_skel_esp)
                 {
                     foreach (Il2Cpp.SurvivalAzazelBehaviour survivalAzazel in Helpers.Entities.Azazels)
                     {
                         if (survivalAzazel != null)
                         {
+                            if (azazel_skel_esp)
+                            {
+                                Render.Render.DrawAllBones(Hacks.Misc.GetAllBones(survivalAzazel.animator), Settings.Settings.azazel_esp_color);
+                            }
+                            
                             Render.Render.DrawBoxESP(survivalAzazel.gameObject, -0.25f, 2.0f, "Azazel", Settings.Settings.azazel_esp_color, azazel_snapline, azazel_esp);
                         }
                     }
@@ -662,14 +674,16 @@ namespace DevourClient
         private static void EspTab()
         {
             player_esp = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 70, 150, 20), player_esp, "Player ESP");
-            player_snapline = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 100, 150, 20), player_snapline, "Player Snapline");
+            player_skel_esp = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 100, 150, 20), player_skel_esp, "Skeleton ESP");
+            player_snapline = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 130, 150, 20), player_snapline, "Player Snapline");
 
-            azazel_esp = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 140, 150, 20), azazel_esp, "Azazel ESP");
-            azazel_snapline = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 170, 150, 20), azazel_snapline, "Azazel Snapline");
+            azazel_esp = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 170, 150, 20), azazel_esp, "Azazel ESP");
+            azazel_skel_esp = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 200, 150, 20), azazel_skel_esp, "Skeleton ESP");
+            azazel_snapline = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 230, 150, 20), azazel_snapline, "Azazel Snapline");
 
-            item_esp = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 210, 150, 20), item_esp, "Item ESP");
-            goat_rat_esp = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 240, 150, 20), goat_rat_esp, "Goat/Rat ESP");
-            demon_esp = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 270, 150, 20), demon_esp, "Demon ESP");
+            item_esp = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 270, 150, 20), item_esp, "Item ESP");
+            goat_rat_esp = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 300, 150, 20), goat_rat_esp, "Goat/Rat ESP");
+            demon_esp = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 330, 150, 20), demon_esp, "Demon ESP");
         }
 
         private static void ItemsTab()

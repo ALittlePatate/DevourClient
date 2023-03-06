@@ -214,6 +214,37 @@ namespace DevourClient.Hacks
 			
 		}
 
+		public static List<Transform> GetAllBones(Animator a)
+		{
+			List<Transform> Bones = new List<Transform>
+			{
+				a.GetBoneTransform(HumanBodyBones.Head), // 0
+                a.GetBoneTransform(HumanBodyBones.Neck), // 1
+                a.GetBoneTransform(HumanBodyBones.Spine), // 2
+                a.GetBoneTransform(HumanBodyBones.Hips), // 3
+
+                a.GetBoneTransform(HumanBodyBones.LeftShoulder), // 4
+                a.GetBoneTransform(HumanBodyBones.LeftUpperArm), // 5
+                a.GetBoneTransform(HumanBodyBones.LeftLowerArm), // 6
+                a.GetBoneTransform(HumanBodyBones.LeftHand), // 7
+
+                a.GetBoneTransform(HumanBodyBones.RightShoulder), // 8
+                a.GetBoneTransform(HumanBodyBones.RightUpperArm), // 9
+                a.GetBoneTransform(HumanBodyBones.RightLowerArm), // 10
+                a.GetBoneTransform(HumanBodyBones.RightHand), // 11
+
+                a.GetBoneTransform(HumanBodyBones.LeftUpperLeg), // 12
+                a.GetBoneTransform(HumanBodyBones.LeftLowerLeg), // 13
+                a.GetBoneTransform(HumanBodyBones.LeftFoot), // 14
+
+                a.GetBoneTransform(HumanBodyBones.RightUpperLeg), // 15
+                a.GetBoneTransform(HumanBodyBones.RightLowerLeg), // 16
+                a.GetBoneTransform(HumanBodyBones.RightFoot) // 17
+            };
+
+			return Bones;
+		}
+
 		public static void Fullbright(bool reset)
 		{
 			Il2Cpp.NolanBehaviour Nolan = Player.GetPlayer();//UnityEngine.Object.FindObjectOfType<NolanBehaviour>();
