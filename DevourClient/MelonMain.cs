@@ -198,7 +198,7 @@ namespace DevourClient
                                 continue;
                             }
 
-                            Render.Render.DrawBoxESP(player.transform.position, player.transform.GetComponentsInChildren<Transform>()[0], Settings.Settings.player_esp_color, p.Name, player_snapline, player_esp);
+                            Render.Render.DrawBoxESP(player, -0.25f, 1.75f, p.Name, Settings.Settings.player_esp_color, player_snapline, player_esp);
                         }
                     }
                 }
@@ -266,7 +266,7 @@ namespace DevourClient
                     {
                         if (survivalAzazel != null)
                         {
-                            Render.Render.DrawBoxESP(survivalAzazel.transform.position, survivalAzazel.transform.GetComponentsInChildren<Transform>()[0], Settings.Settings.azazel_esp_color, "Azazel", azazel_snapline, azazel_esp);
+                            Render.Render.DrawBoxESP(survivalAzazel.gameObject, -0.25f, 2.0f, "Azazel", Settings.Settings.azazel_esp_color, azazel_snapline, azazel_esp);
                         }
                     }
                 }

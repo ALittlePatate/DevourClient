@@ -12,12 +12,6 @@ namespace DevourClient.Render
 	{
 		public static GUIStyle StringStyle { get; set; } = new GUIStyle(GUI.skin.label);
 
-		public static Color Color
-		{
-			get { return GUI.color; }
-			set { GUI.color = value; }
-		}
-
 		public static void DrawString(Vector2 position, Color color, string label, bool centered = true)
 		{
 			var content = new GUIContent(label);
@@ -81,51 +75,32 @@ namespace DevourClient.Render
 			RectFilled(x + thickness, y + height - thickness, width - thickness * 2f, thickness, text);
 		}
 
-		public static void Box(float x, float y, float width, float height, Texture2D text, float thickness = 1f)
+		static void DrawBox(float x, float y, float w, float h, Color color, float thickness)
 		{
-			RectOutlined(x - width / 2f, y - height, width, height, text, thickness);
+			Render.DrawLine(new Vector2(x, y), new Vector2(x + w, y), color, thickness);
+			Render.DrawLine(new Vector2(x, y), new Vector2(x, y + h), color, thickness);
+			Render.DrawLine(new Vector2(x + w, y), new Vector2(x + w, y + h), color, thickness);
+			Render.DrawLine(new Vector2(x, y + h), new Vector2(x + w, y + h), color, thickness);
 		}
 
-		public static Texture2D texture2 = new Texture2D(2, 2, TextureFormat.ARGB32, false);
-		public static void DrawBoxESP(Vector3 pos, Transform child, Color color, string name, bool snapline = false, bool esp = false)
-		{
-			if (esp)
-            {
-				//ESP BOX
-				if (texture2 == null) //this should fix the UI disappearing & game crash 
-				{
-					texture2 = new Texture2D(2, 2, TextureFormat.ARGB32, false);
-				}
+		public static void DrawBoxESP(GameObject it, float footOffset, float headOffset, string name, Color color, bool snapline = false, bool esp = false, float nameOffset = -0.5f, float widthOffset = 2.0f)
+        {
+			Vector3 footpos = Camera.main.WorldToScreenPoint(new Vector3(it.transform.position.x, it.transform.position.y + footOffset, it.transform.position.z));
+			Vector3 headpos = Camera.main.WorldToScreenPoint(new Vector3(it.transform.position.x, it.transform.position.y + headOffset, it.transform.position.z));
+			Vector3 namepos = Camera.main.WorldToScreenPoint(new Vector3(it.transform.position.x, it.transform.position.y + nameOffset, it.transform.position.z));
 
-				texture2.SetPixel(0, 0, color);
-				texture2.SetPixel(1, 0, color);
-				texture2.SetPixel(0, 1, color);
-				texture2.SetPixel(1, 1, color);
-				texture2.Apply();
+			if (esp && footpos.z > 0.0f)
+			{
+				float height = (headpos.y - footpos.y);
+				float width = height / widthOffset;
 
-
-				child.transform.position = new Vector3(child.transform.position.x, child.transform.position.y + 2.0f, child.transform.position.z);
-
-				Vector3 w2s = Camera.main.WorldToScreenPoint(pos);
-				Vector3 w2s2 = Camera.main.WorldToScreenPoint(child.position);
-				float num = Mathf.Abs(w2s.y - w2s2.y);
-				Box(w2s.x, Screen.height - w2s.y, num / 1.8f, num, texture2, 1f);
-
-				DrawString(new Vector2(w2s.x, Screen.height - w2s2.y + child.transform.position.y - 10.0f), color, name);
+				DrawBox(footpos.x - (width / 2), (float)Screen.height - footpos.y - height, width, height, color, 2.0f);
+				DrawString(new Vector2(namepos.x, (float)Screen.height - namepos.y), color, name);
 			}
 
-
-			// Snapline
-			if (snapline)
+			if (snapline && footpos.z > 0f)
 			{
-				Vector3 pivotPos = pos;
-				Vector3 playerFootPos; playerFootPos.x = pivotPos.x; playerFootPos.z = pivotPos.z; playerFootPos.y = pivotPos.y; //At the feet
-				Vector3 w2s_footpos = Camera.main.WorldToScreenPoint(playerFootPos);
-
-				if (w2s_footpos.z > 0f)
-				{
-					Render.DrawLine(new Vector2((float)(Screen.width / 2), (float)(Screen.height / 2)), new Vector2(w2s_footpos.x, (float)Screen.height - w2s_footpos.y), color, 2f);
-				}
+				Render.DrawLine(new Vector2((float)(Screen.width / 2), (float)(Screen.height / 2)), new Vector2(footpos.x, (float)Screen.height - footpos.y), color, 2f);
 			}
 		}
 	}
