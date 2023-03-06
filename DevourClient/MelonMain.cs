@@ -202,7 +202,7 @@ namespace DevourClient
 
                             if (player_skel_esp)
                             {
-                                Render.Render.DrawAllBones(Hacks.Misc.GetAllBones(nb.animator), Settings.Settings.azazel_esp_color);
+                                Render.Render.DrawAllBones(Hacks.Misc.GetAllBones(nb.animator), Settings.Settings.player_esp_color);
                             }
                             
                             Render.Render.DrawBoxESP(player, -0.25f, 1.75f, p.Name, Settings.Settings.player_esp_color, player_snapline, player_esp);
