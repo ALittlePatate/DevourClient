@@ -91,6 +91,7 @@ In order to get all of this working you need to generate the DevourClient.dll fi
 * `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\Il2CppAssemblies\Il2Cppudpkit.common.dll`
 * `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\Il2CppAssemblies\Il2Cppudpkit.dll`
 * `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\Il2CppAssemblies\Il2Cppudpkit.platform.photon.dll`
+* `C:\Program Files (x86)\Steam\steamapps\common\Devour\MelonLoader\Il2CppAssemblies\UnityEngine.AnimationModule.dll`
 7. Build the solutions in Release | Any CPU
 
 ## Contact
