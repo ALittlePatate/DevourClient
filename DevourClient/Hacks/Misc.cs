@@ -164,7 +164,7 @@ namespace DevourClient.Hacks
 		    catch { }
 		}
 	    
-		public static void CreateCustomizedLobby(Il2CppUdpKit.Platform.Photon.PhotonRegion.Regions __region = Il2CppUdpKit.Platform.Photon.PhotonRegion.Regions.BEST_REGION, int lobbySize = 4)
+		public static void CreateCustomizedLobby(Il2CppUdpKit.Platform.Photon.PhotonRegion.Regions __region = Il2CppUdpKit.Platform.Photon.PhotonRegion.Regions.BEST_REGION, int lobbySize = 4, bool isPrivate = false)
         {
 
             Il2CppUdpKit.Platform.PhotonPlatformConfig __photonPlatformConfig = new Il2CppUdpKit.Platform.PhotonPlatformConfig();
@@ -173,7 +173,9 @@ namespace DevourClient.Hacks
 			BoltLauncher.SetUdpPlatform(new Il2CppUdpKit.Platform.PhotonPlatform(__photonPlatformConfig));
 
             BoltConfig __config = UnityEngine.Object.FindObjectOfType<Il2CppHorror.Menu>().boltConfig;
+			Toggle __toggle = UnityEngine.Object.FindObjectOfType<Il2CppHorror.Menu>().hostPrivateServer;
 
+			__toggle.isOn = isPrivate;
             __config.serverConnectionLimit = lobbySize;
 
 			BoltLauncher.StartServer(__config, null);
