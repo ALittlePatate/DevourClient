@@ -68,9 +68,13 @@ namespace DevourClient.Render
 				return;
             }
 
+			if (!bone1 || !bone2)
+            {
+				return;
+			}
+			
 			Vector3 w1 = Camera.main.WorldToScreenPoint(bone1.position);
 			Vector3 w2 = Camera.main.WorldToScreenPoint(bone2.position);
-
 			if (w1.z > 0.0f && w2.z > 0.0f)
             {
 				DrawLine(new Vector2(w1.x, Screen.height - w1.y), new Vector2(w2.x, Screen.height - w2.y), c, 2f);
