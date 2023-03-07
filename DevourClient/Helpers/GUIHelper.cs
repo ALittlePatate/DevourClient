@@ -21,15 +21,15 @@ namespace DevourClient.Helpers
             GUI.Label(new Rect(Settings.Settings.x + 300, Settings.Settings.y + 190, 30, 30), "B");
             
             color = new Color(R, G, B, 1);
-            GUI.color = color;
 
             void DrawPreview(Rect position, Color color_to_draw)
             {
                 Texture2D texture = new Texture2D(1, 1);
-                texture.SetPixel(0, 0, color);
+                texture.SetPixel(0, 0, color_to_draw);
                 texture.Apply();
-                GUI.skin.box.normal.background = texture;
-                GUI.Box(position, GUIContent.none);
+                GUIStyle boxStyle = new GUIStyle(GUI.skin.box);
+                boxStyle.normal.background = texture;
+                GUI.Box(position, GUIContent.none, boxStyle);
             }
 
             DrawPreview(new Rect(Settings.Settings.x + 195, Settings.Settings.y + 100, 20, 90), color);
