@@ -57,6 +57,7 @@ namespace DevourClient
         static bool goat_rat_esp = false;
         static bool demon_esp = false;
         static bool fullbright = false;
+        static bool need_fly_reset = false;
 
         public override void OnInitializeMelon()
         {
@@ -148,9 +149,41 @@ namespace DevourClient
                 fly = !fly;
             }
 
-            if (fly && Player.IsInGameOrLobby())
+            if (Player.IsInGameOrLobby())
             {
-                Hacks.Misc.Fly(fly_speed);
+                if (fly && !need_fly_reset)
+                {
+                    Il2Cpp.NolanBehaviour nb = Player.GetPlayer();
+                    if (nb)
+                    {
+                        Collider coll = nb.GetComponentInChildren<Collider>();
+                        if (coll)
+                        {
+                            coll.enabled = false;
+                            need_fly_reset = true;
+                        } 
+                    }
+                }
+
+                else if (!fly && need_fly_reset)
+                {
+                    Il2Cpp.NolanBehaviour nb = Player.GetPlayer();
+                    if (nb)
+                    {
+                        Collider coll = nb.GetComponentInChildren<Collider>();
+                        if (coll)
+                        {
+                            coll.enabled = true;
+                            need_fly_reset = false;
+                        }
+                    }
+                }
+
+                if (fly)
+                {
+                    Hacks.Misc.Fly(fly_speed);
+                }
+
             }
             
             if (Helpers.Map.GetActiveScene() == "Menu")
