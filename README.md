@@ -2,10 +2,7 @@
 
 # DevourClient
 
-I wasn't home for 2 days so i made that, i learnt a lot about C# programming and about Unity IL2CPP game hacking.
-DevourClient is a rather uncommon cheat for Devour, i've seen multiple cheats for this game but they all had some boring features such as ESP and stuff.
-This cheat hasn't many features and some of them may broke with the time, but hey, spaming the chat with "Deez Nutz" is funny.
-Also don't mind french comments lol, google translate is your friend !
+Very based cheat for the game Devour.
 
 ## Detection rate
 
