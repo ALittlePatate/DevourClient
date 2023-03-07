@@ -27,11 +27,10 @@ Everything about spoofing ehre (steam name, server name, level...) will persist 
 * Achievements unlocker (couldn't do all of them, my code is crashing for some reasons at some point, i may fix it, for now it's commented out)
 * Doors unlocker (should work fine, though it doesn't seem to work sometimes)
 * Keys teleporter
-* LV 70 (puts you to the max level of the game !)
-* LV 666 (secret level, thanks to the guy who told me it exists lol)
+* LV spoofer
 * Steam name spoofer (sets it to "patate", again no input text :/)
 * Server name spoofer (sets it to "patate on top !", again no input text :/)
-* Fly !! YES ! YOU CAN FLY ! You can also change the speed of it (left shift : down, space : up, up arrow : forward, back arrow : backward, left arrow : left, right arrow : right)
+* Fly
 * Unlock all, including flashlights, perks, outfits. Active by default, can't be turned off, no persistance.
 * Instant Win (allows you to win instantaniously on any map, works in singleplayer, but not as a client. May be working as host)
 * Random Sound (make your character play a random acting sound)
