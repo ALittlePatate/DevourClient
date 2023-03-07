@@ -387,6 +387,28 @@ namespace DevourClient.Hacks
 			}
 		}
 
+		public static void DespawnBoars()
+		{
+			foreach (Il2Cpp.BoarBehaviour boar in Helpers.Entities.Boars)
+			{
+				if (boar != null)
+				{
+					boar.Despawn();
+				}
+			}
+		}
+
+		public static void DespawnCorpses()
+		{
+			foreach (Il2Cpp.CorpseBehaviour corpse in Helpers.Entities.Corpses)
+			{
+				if (corpse != null)
+				{
+					corpse.Despawn();
+				}
+			}
+		}
+
 		public static void ShowMessageBox(string message)
         {
 			Il2CppHorror.Menu menu = UnityEngine.Object.FindObjectOfType<Il2CppHorror.Menu>();

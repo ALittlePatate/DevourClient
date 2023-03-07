@@ -69,6 +69,8 @@ namespace DevourClient
             MelonCoroutines.Start(Helpers.Entities.GetDemons());
             MelonCoroutines.Start(Helpers.Entities.GetSpiders());
             MelonCoroutines.Start(Helpers.Entities.GetGhosts());
+            MelonCoroutines.Start(Helpers.Entities.GetBoars());
+            MelonCoroutines.Start(Helpers.Entities.GetCorpses());
             MelonCoroutines.Start(Helpers.Entities.GetAzazels());
             MelonCoroutines.Start(Helpers.Entities.GetAllPlayers());
         }
@@ -299,6 +301,22 @@ namespace DevourClient
                             Render.Render.DrawNameESP(ghost.transform.position, "Ghost", new Color(1.0f, 0.0f, 0.0f, 1.0f));
                         }
                     }
+
+                    foreach (Il2Cpp.BoarBehaviour boar in Helpers.Entities.Boars)
+                    {
+                        if (boar != null)
+                        {
+                            Render.Render.DrawNameESP(boar.transform.position, "Boar", new Color(1.0f, 0.0f, 0.0f, 1.0f));
+                        }
+                    }
+
+                    foreach (Il2Cpp.CorpseBehaviour corpse in Helpers.Entities.Corpses)
+                    {
+                        if (corpse != null)
+                        {
+                            Render.Render.DrawNameESP(corpse.transform.position, "Corpse", new Color(1.0f, 0.0f, 0.0f, 1.0f));
+                        }
+                    }
                 }
 
                 if (azazel_esp || azazel_snapline || azazel_skel_esp)
@@ -461,12 +479,10 @@ namespace DevourClient
                 BoltNetwork.Instantiate(BoltPrefabs.AzazelZara, Player.GetPlayer().transform.position, Quaternion.identity);
             }
             
-            /*
             if (GUI.Button(new Rect(Settings.Settings.x + 290, Settings.Settings.y + 180, 60, 25), "Nathan") && Player.IsInGameOrLobby() && BoltNetwork.IsServer)
             {
                 BoltNetwork.Instantiate(BoltPrefabs.AzazelNathan, Player.GetPlayer().transform.position, Quaternion.identity);
             }
-            */
 
             // demon
 
@@ -485,12 +501,10 @@ namespace DevourClient
                 BoltNetwork.Instantiate(BoltPrefabs.SurvivalDemon, Player.GetPlayer().transform.position, Quaternion.identity);
             }
             
-            /*
             if (GUI.Button(new Rect(Settings.Settings.x + 220, Settings.Settings.y + 220, 60, 25), "Boar") && Player.IsInGameOrLobby() && BoltNetwork.IsServer)
             {
                 BoltNetwork.Instantiate(BoltPrefabs.Boar, Player.GetPlayer().transform.position, Quaternion.identity);
             }
-            */
 
             // Animal
 
@@ -540,8 +554,8 @@ namespace DevourClient
             {
                 BoltNetwork.Instantiate(BoltPrefabs.Spider, Player.GetPlayer().transform.position, Quaternion.identity);
             }
-            
-            /*if (GUI.Button(new Rect(Settings.Settings.x + 220, Settings.Settings.y + 260, 60, 25), "Pig"))
+
+            if (GUI.Button(new Rect(Settings.Settings.x + 220, Settings.Settings.y + 290, 60, 25), "Pig"))
             {
                 if (BoltNetwork.IsServer && !Player.IsInGame())
                 {
@@ -560,7 +574,17 @@ namespace DevourClient
                     }
                     catch { }
                 }
-            }*/
+            }
+
+            if (GUI.Button(new Rect(Settings.Settings.x + 150, Settings.Settings.y + 320, 60, 25), "Boar") && BoltNetwork.IsServer && Player.IsInGameOrLobby())
+            {
+                BoltNetwork.Instantiate(BoltPrefabs.Boar, Player.GetPlayer().transform.position, Quaternion.identity);
+            }
+
+            if (GUI.Button(new Rect(Settings.Settings.x + 150, Settings.Settings.y + 350, 60, 25), "Corpse") && BoltNetwork.IsServer && Player.IsInGameOrLobby())
+            {
+                BoltNetwork.Instantiate(BoltPrefabs.Corpse, Player.GetPlayer().transform.position, Quaternion.identity);
+            }
         }
 
         private static void MapSpecificTab()
@@ -675,6 +699,32 @@ namespace DevourClient
                     if (GUI.Button(new Rect(Settings.Settings.x + 190, Settings.Settings.y + 110, 150, 30), "Despawn Ghosts"))
                     {
                         Hacks.Misc.DespawnGhosts();
+                    }
+                    break;
+
+                case "Slaughterhouse":
+                    if (GUI.Button(new Rect(Settings.Settings.x + 190, Settings.Settings.y + 70, 150, 30), "TP to Azazel"))
+                    {
+                        try
+                        {
+                            Il2Cpp.NolanBehaviour nb = Player.GetPlayer();
+
+                            nb.TeleportTo(Helpers.Map.GetAzazel().transform.position, Quaternion.identity);
+                        }
+                        catch
+                        {
+                            MelonLogger.Msg("Azazel not found !");
+                        }
+                    }
+
+                    if (GUI.Button(new Rect(Settings.Settings.x + 190, Settings.Settings.y + 110, 150, 30), "Despawn Boars"))
+                    {
+                        Hacks.Misc.DespawnBoars();
+                    }
+
+                    if (GUI.Button(new Rect(Settings.Settings.x + 190, Settings.Settings.y + 140, 150, 30), "Despawn Corpses"))
+                    {
+                        Hacks.Misc.DespawnCorpses();
                     }
                     break;
             }
@@ -816,7 +866,7 @@ namespace DevourClient
                 }
             }
             
-            /*if (GUI.Button(new Rect(Settings.Settings.x + 550, Settings.Settings.y + 100, 80, 25), "Bone"))
+            if (GUI.Button(new Rect(Settings.Settings.x + 550, Settings.Settings.y + 100, 80, 25), "Bone"))
             {
                 if (BoltNetwork.IsServer && !Player.IsInGame())
                 {
@@ -826,7 +876,7 @@ namespace DevourClient
                 {
                     Hacks.Misc.CarryObject("SurvivalBone");
                 }
-            }*/
+            }
 
             if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 140, 80, 25), "Bleach"))
             {
