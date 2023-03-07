@@ -506,6 +506,11 @@ namespace DevourClient
                 BoltNetwork.Instantiate(BoltPrefabs.Boar, Player.GetPlayer().transform.position, Quaternion.identity);
             }
 
+            if (GUI.Button(new Rect(Settings.Settings.x + 290, Settings.Settings.y + 220, 60, 25), "Corpse") && BoltNetwork.IsServer && Player.IsInGameOrLobby())
+            {
+                BoltNetwork.Instantiate(BoltPrefabs.Corpse, Player.GetPlayer().transform.position, Quaternion.identity);
+            }
+
             // Animal
 
             if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 260, 60, 25), "Rat"))
@@ -555,7 +560,7 @@ namespace DevourClient
                 BoltNetwork.Instantiate(BoltPrefabs.Spider, Player.GetPlayer().transform.position, Quaternion.identity);
             }
 
-            if (GUI.Button(new Rect(Settings.Settings.x + 220, Settings.Settings.y + 290, 60, 25), "Pig"))
+            if (GUI.Button(new Rect(Settings.Settings.x + 220, Settings.Settings.y + 260, 60, 25), "Pig"))
             {
                 if (BoltNetwork.IsServer && !Player.IsInGame())
                 {
@@ -574,16 +579,6 @@ namespace DevourClient
                     }
                     catch { }
                 }
-            }
-
-            if (GUI.Button(new Rect(Settings.Settings.x + 150, Settings.Settings.y + 320, 60, 25), "Boar") && BoltNetwork.IsServer && Player.IsInGameOrLobby())
-            {
-                BoltNetwork.Instantiate(BoltPrefabs.Boar, Player.GetPlayer().transform.position, Quaternion.identity);
-            }
-
-            if (GUI.Button(new Rect(Settings.Settings.x + 150, Settings.Settings.y + 350, 60, 25), "Corpse") && BoltNetwork.IsServer && Player.IsInGameOrLobby())
-            {
-                BoltNetwork.Instantiate(BoltPrefabs.Corpse, Player.GetPlayer().transform.position, Quaternion.identity);
             }
         }
 
@@ -722,7 +717,7 @@ namespace DevourClient
                         Hacks.Misc.DespawnBoars();
                     }
 
-                    if (GUI.Button(new Rect(Settings.Settings.x + 190, Settings.Settings.y + 140, 150, 30), "Despawn Corpses"))
+                    if (GUI.Button(new Rect(Settings.Settings.x + 190, Settings.Settings.y + 150, 150, 30), "Despawn Corpses"))
                     {
                         Hacks.Misc.DespawnCorpses();
                     }
