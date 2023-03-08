@@ -65,7 +65,7 @@ In order to get all of this working you need to generate the DevourClient.dll fi
 ## Building from source
 
 0. Clone the repository (or Code -> Download Zip)
-1. Install [MelonLoader](https://github.com/LavaGang/MelonLoader/releases) to Devour.
+1. Install [MelonLoader](https://github.com/LavaGang/MelonLoader/releases) V0.6.0 (go to Settings -> tick "Show ALPHA Pre-Releases") to Devour.
 2. Start your game. A cmd should appear, don't close it, MelonLoader is installing and decompiling Devour's game assemblies.
 3. Wait for the process to finish, once it's done close the game.
 4. Open the solution file (DevourClient.sln) in Visual Studio
