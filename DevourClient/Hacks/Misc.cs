@@ -488,7 +488,7 @@ namespace DevourClient.Hacks
 					return;
 				}
 
-				if (_azazelLocomotion.TimeScale == 1.0f)
+				if (_azazelLocomotion.TimeScale > 0.0f) //seems like _azazelLocomotion.TimeScale is never == 1.0f for Sam
 				{
 					_azazelLocomotion.TimeScale = 0f;
 				}
