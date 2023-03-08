@@ -165,9 +165,7 @@ namespace DevourClient.Hacks
 		}
 	    
 		public static void CreateCustomizedLobby(int lobbySize = 4, bool isPrivate = false, Il2CppUdpKit.Platform.Photon.PhotonRegion.Regions __region = Il2CppUdpKit.Platform.Photon.PhotonRegion.Regions.BEST_REGION)
-        {
-			Entities.MAX_PLAYERS = lobbySize; //max players in the lobby
-			
+        {			
 			Il2CppHorror.Menu _menu = UnityEngine.Object.FindObjectOfType<Il2CppHorror.Menu>();
 
 			CanvasGroup _loadingCanvasGroup = _menu.loadingCanvasGroup;

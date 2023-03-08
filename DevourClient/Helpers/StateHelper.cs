@@ -147,8 +147,7 @@ namespace DevourClient.Helpers
         public static int MAX_PLAYERS = 4; //will change by calling CreateCustomizedLobby
 
         public static BasePlayer LocalPlayer_ = new BasePlayer();
-        public static BasePlayer[] Players = new BasePlayer[MAX_PLAYERS]; //i hope this doesn't break
-        //public static GameObject[] Players = default!;
+        public static BasePlayer[] Players = default!;
         public static Il2Cpp.GoatBehaviour[] GoatsAndRats = default!;
         public static Il2Cpp.SurvivalInteractable[] SurvivalInteractables = default!;
         public static Il2Cpp.KeyBehaviour[] Keys = default!;
@@ -184,6 +183,7 @@ namespace DevourClient.Helpers
             for (;;)
             {
                 GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+                Players = new BasePlayer[players.Length];
 
                 int i = 0;
                 foreach (GameObject p in players)
