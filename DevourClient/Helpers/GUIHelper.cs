@@ -49,5 +49,28 @@ namespace DevourClient.Helpers
             result.Apply();
             return result;
         }
+        
+        public static Texture2D GetCircularTexture(int width, int height)
+        {
+            Texture2D texture = new Texture2D(width, height);
+            for (int x = 0; x < texture.width; x++)
+            {
+                for (int y = 0; y < texture.height; y++)
+                {
+                    if (Vector2.Distance(new Vector2(x, y), new Vector2(texture.width / 2, texture.height / 2)) <= texture.width / 2)
+                    {
+                        texture.SetPixel(x, y, Color.white);
+                    }
+                    else
+                    {
+                        texture.SetPixel(x, y, Color.clear);
+                    }
+                }
+            }
+
+            texture.Apply();
+
+            return texture;
+        }
     }
 }
