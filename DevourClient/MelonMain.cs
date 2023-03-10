@@ -58,6 +58,8 @@ namespace DevourClient
         static bool demon_esp = false;
         static bool fullbright = false;
         static bool need_fly_reset = false;
+        static bool crosshair = false;
+        static Texture2D crosshairTexture;
 
         public override void OnInitializeMelon()
         {
@@ -73,6 +75,13 @@ namespace DevourClient
             MelonCoroutines.Start(Helpers.Entities.GetCorpses());
             MelonCoroutines.Start(Helpers.Entities.GetAzazels());
             MelonCoroutines.Start(Helpers.Entities.GetAllPlayers());
+        }
+        
+        public override void OnSceneWasInitialized(int buildIndex, string sceneName)
+        {
+            MelonLogger.Warning($"{sceneName}[{buildIndex}] initialized..");
+
+            crosshairTexture = Helpers.GUIHelper.GetCircularTexture(5, 5);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -336,6 +345,16 @@ namespace DevourClient
                 }
             }
             
+            if (crosshair && Player.IsInGame() && !Player.IsPlayerCrawling())
+            {
+
+                float crosshairSize = 4;
+
+                float xMin = (Settings.Settings.width) - (crosshairSize / 2);
+                float yMin = (Settings.Settings.height) - (crosshairSize / 2);
+
+                GUI.DrawTexture(new Rect(xMin, yMin, crosshairSize, crosshairSize), crosshairTexture);
+            }
 
             if (Settings.Settings.menu_enable) //Si on appuie sur INSERT
             {
@@ -419,9 +438,10 @@ namespace DevourClient
             flashlight_toggle = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 70, 120, 30), flashlight_toggle, "Big Flashlight");
             fullbright = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 100, 120, 30), fullbright, "Fullbright");
             unlimitedUV = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 130, 130, 30), unlimitedUV, "Unlimited UV Light");
+            crosshair = GUI.Toggle(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 160, 130, 30), crosshair, "Crosshair");
 
 
-            if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 160, 130, 30), "Flashlight Color"))
+            if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 190, 130, 30), "Flashlight Color"))
             {
                 flashlight_colorpick = !flashlight_colorpick;
                 MelonLogger.Msg("Flashlight color picker : " + flashlight_colorpick.ToString());
