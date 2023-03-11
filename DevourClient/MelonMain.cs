@@ -59,11 +59,15 @@ namespace DevourClient
         static bool fullbright = false;
         static bool need_fly_reset = false;
         static bool crosshair = false;
-        static Texture2D crosshairTexture;
+        static bool in_game_cache = false;
+        static Texture2D crosshairTexture = default!;
 
         public override void OnInitializeMelon()
         {
             MelonLogger.Msg("For the Queen !");
+
+            crosshairTexture = Helpers.GUIHelper.GetCircularTexture(5, 5);
+
             MelonCoroutines.Start(Helpers.Entities.GetLocalPlayer());
             MelonCoroutines.Start(Helpers.Entities.GetGoatsAndRats());
             MelonCoroutines.Start(Helpers.Entities.GetSurvivalInteractables());
@@ -75,13 +79,6 @@ namespace DevourClient
             MelonCoroutines.Start(Helpers.Entities.GetCorpses());
             MelonCoroutines.Start(Helpers.Entities.GetAzazels());
             MelonCoroutines.Start(Helpers.Entities.GetAllPlayers());
-        }
-        
-        public override void OnSceneWasInitialized(int buildIndex, string sceneName)
-        {
-            MelonLogger.Warning($"{sceneName}[{buildIndex}] initialized..");
-
-            crosshairTexture = Helpers.GUIHelper.GetCircularTexture(5, 5);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -130,6 +127,11 @@ namespace DevourClient
                 {
                     Hacks.Misc.AutoRespawn();
                 }
+
+                if (crosshair && !in_game_cache)
+                {
+                    in_game_cache = true;
+                }
             }
             else
             {
@@ -141,6 +143,11 @@ namespace DevourClient
                 if (change_steam_name)
                 {
                     Hacks.Misc.SetSteamName("patate");
+                }
+
+                if (crosshair && in_game_cache)
+                {
+                    in_game_cache = false;
                 }
             }
 
@@ -343,17 +350,21 @@ namespace DevourClient
                         }
                     }
                 }
-            }
-            
-            if (crosshair && Player.IsInGame() && !Player.IsPlayerCrawling())
-            {
 
-                float crosshairSize = 4;
+                if (crosshair && in_game_cache) //&& !Player.IsPlayerCrawling())
+                {
+                    const float crosshairSize = 4;
 
-                float xMin = (Settings.Settings.width) - (crosshairSize / 2);
-                float yMin = (Settings.Settings.height) - (crosshairSize / 2);
+                    float xMin = (Settings.Settings.width) - (crosshairSize / 2);
+                    float yMin = (Settings.Settings.height) - (crosshairSize / 2);
 
-                GUI.DrawTexture(new Rect(xMin, yMin, crosshairSize, crosshairSize), crosshairTexture);
+                    if (crosshairTexture == null)
+                    {
+                        crosshairTexture = Helpers.GUIHelper.GetCircularTexture(5, 5);
+                    }
+
+                    GUI.DrawTexture(new Rect(xMin, yMin, crosshairSize, crosshairSize), crosshairTexture);
+                }
             }
 
             if (Settings.Settings.menu_enable) //Si on appuie sur INSERT
@@ -767,7 +778,10 @@ namespace DevourClient
                 Helpers.Map.LoadMap("Town");
             }
 
-            
+            if (GUI.Button(new Rect(Settings.Settings.x + 450, Settings.Settings.y + 240, 100, 30), "Slaughterhouse") && BoltNetwork.IsServer)
+            {
+                Helpers.Map.LoadMap("Slaughterhouse");
+            }
         }
 
         private static void EspTab()
