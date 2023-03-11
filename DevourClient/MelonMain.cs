@@ -548,20 +548,12 @@ namespace DevourClient
             {
                 if (BoltNetwork.IsServer && !Player.IsInGame())
                 {
-                    try
-                    {
-                        BoltNetwork.Instantiate(BoltPrefabs.SurvivalRat, Player.GetPlayer().transform.position, Quaternion.identity);
-                    }
-                    catch { }
+                    BoltNetwork.Instantiate(BoltPrefabs.SurvivalRat, Player.GetPlayer().transform.position, Quaternion.identity);
                 }
 
                 if (Player.IsInGame() && !Player.IsPlayerCrawling())
                 {
-                    try
-                    {
-                        Hacks.Misc.CarryObject("SurvivalRat");
-                    }
-                    catch { }
+                    Hacks.Misc.CarryObject("SurvivalRat");
                 }
             }
 
@@ -569,20 +561,12 @@ namespace DevourClient
             {
                 if (BoltNetwork.IsServer && !Player.IsInGame())
                 {
-                    try
-                    {
-                        BoltNetwork.Instantiate(BoltPrefabs.SurvivalGoat, Player.GetPlayer().transform.position, Quaternion.identity);
-                    }
-                    catch { }
+                    BoltNetwork.Instantiate(BoltPrefabs.SurvivalGoat, Player.GetPlayer().transform.position, Quaternion.identity);
                 }
 
                 if (Player.IsInGame() && !Player.IsPlayerCrawling())
                 {
-                    try
-                    {
-                        Hacks.Misc.CarryObject("SurvivalGoat");
-                    }
-                    catch { }
+                    Hacks.Misc.CarryObject("SurvivalGoat");
                 }
             }
 
@@ -595,20 +579,12 @@ namespace DevourClient
             {
                 if (BoltNetwork.IsServer && !Player.IsInGame())
                 {
-                    try
-                    {
-                        BoltNetwork.Instantiate(BoltPrefabs.SurvivalPig, Player.GetPlayer().transform.position, Quaternion.identity);
-                    }
-                    catch { }
+                    BoltNetwork.Instantiate(BoltPrefabs.SurvivalPig, Player.GetPlayer().transform.position, Quaternion.identity);
                 }
 
                 if (Player.IsInGame() && !Player.IsPlayerCrawling())
                 {
-                    try
-                    {
-                        Hacks.Misc.CarryObject("SurvivalPig");
-                    }
-                    catch { }
+                    Hacks.Misc.CarryObject("SurvivalPig");
                 }
             }
         }

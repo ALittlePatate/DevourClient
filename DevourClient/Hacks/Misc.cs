@@ -47,58 +47,64 @@ namespace DevourClient.Hacks
 	    
 	    public static void WalkInLobby(bool walk)
         {
-			try {	
-				if (Helpers.Entities.LocalPlayer_.p_GameObject.GetComponent<UltimateCharacterLocomotionHandler>() == null)
-				{
-                    Helpers.Entities.LocalPlayer_.p_GameObject.AddComponent<UltimateCharacterLocomotionHandler>();
-                    Helpers.Entities.LocalPlayer_.p_GameObject.GetComponent<UltimateCharacterLocomotionHandler>().enabled = false;
-                }
-
-               	Helpers.Entities.LocalPlayer_.p_GameObject.GetComponent<UltimateCharacterLocomotionHandler>().enabled = walk;
+			GameObject LocalPlayer = Helpers.Entities.LocalPlayer_.p_GameObject;
+			if (LocalPlayer == null)
+            {
+				return;
             }
-			catch { return; }	
-        }
+
+			//GetComponent called only once as AddComponent returns a component
+			UltimateCharacterLocomotionHandler cmp = Helpers.Entities.LocalPlayer_.p_GameObject.GetComponent<UltimateCharacterLocomotionHandler>();
+
+			if (cmp == null)
+			{
+				cmp = LocalPlayer.AddComponent<UltimateCharacterLocomotionHandler>();
+                cmp.enabled = false;
+            }
+
+			cmp.enabled = walk;
+		}
 	    
 	    public static void BurnRitualObj(string map, bool burnAll)
 		{
-			Il2Cpp.SurvivalObjectBurnController _altar = UnityEngine.Object.FindObjectOfType<Il2Cpp.SurvivalObjectBurnController>();
-			Il2Cpp.InnMapController _innMapController = UnityEngine.Object.FindObjectOfType<Il2Cpp.InnMapController>();
+			//map controllers SHOULDN'T be null but we never know, if smth break, add a nullptr check	
+			switch (map)
+            {
+				case "Inn":
+					Il2Cpp.InnMapController _innMapController = UnityEngine.Object.FindObjectOfType<Il2Cpp.InnMapController>();
+                    if (burnAll){
+                        _innMapController.SetProgressTo(10);
+                    }
+                    else{
+                        _innMapController.IncreaseProgress();
+                    }
+					break;
 
-		    if (map != "Inn")
-		    {
-				if (burnAll)
-				{
-					_altar.SkipToGoat(10);
-				}
-				else
-				{
-					_altar.BurnGoat();
-				}
-			}
-			
-			if(map == "Slaughterhouse")
-			{
-				Il2Cpp.SlaughterhouseAltarController _slaughterhouseAltarController = UnityEngine.Object.FindObjectOfType<Il2Cpp.SlaughterhouseAltarController>();
+				case "Slaughterhouse":
+                    Il2Cpp.SlaughterhouseAltarController _slaughterhouseAltarController = UnityEngine.Object.FindObjectOfType<Il2Cpp.SlaughterhouseAltarController>();
 
-				if (burnAll)
-				{
-					_slaughterhouseAltarController.BurnGoat();
-				}
-				else
-				{
-					_slaughterhouseAltarController.SkipToGoat(10);
-				}
-			}
-			
-			else
-			{
-				if (burnAll){
-			 		_innMapController.SetProgressTo(10);
-				}
-				else{
-					_innMapController.IncreaseProgress();
-				}
-			}
+                    if (burnAll)
+                    {
+                        _slaughterhouseAltarController.BurnGoat();
+                    }
+                    else
+                    {
+                        _slaughterhouseAltarController.SkipToGoat(10);
+                    }
+					break;
+
+				default:
+					Il2Cpp.SurvivalObjectBurnController _altar = UnityEngine.Object.FindObjectOfType<Il2Cpp.SurvivalObjectBurnController>();
+                    if (burnAll)
+                    {
+                        _altar.SkipToGoat(10);
+                    }
+                    else
+                    {
+                        _altar.BurnGoat();
+                    }
+					break;
+            }
         }
 	    
 	    public static void SpawnAzazel(PrefabId _azazelPrefabId)
@@ -119,58 +125,44 @@ namespace DevourClient.Hacks
 
 		public static void CarryObject(string name)
 		{
-			try
-			{
-                Il2Cpp.NolanBehaviour nb = Helpers.Entities.LocalPlayer_.p_GameObject.GetComponent<Il2Cpp.NolanBehaviour>();
+			Il2Cpp.NolanBehaviour nb = Helpers.Entities.LocalPlayer_.p_GameObject.GetComponent<Il2Cpp.NolanBehaviour>();
 
-                nb.StartCarry(name);
+			nb.StartCarry(name);
+		}
+
+        public static void CleanFountain()
+        {
+            GameObject[] fountains = GameObject.FindGameObjectsWithTag("InnFountain");
+
+            foreach (GameObject fountain in fountains)
+            {
+                fountain.GetComponent<Il2Cpp.InnFountainController>().Clean();
             }
-			catch { return; }
-		}
-		
-	    	public static void CleanFountain()
-		{
-			try
-			{
-                		GameObject[] fountains = GameObject.FindGameObjectsWithTag("InnFountain");
+        }
 
-                		for (int i = 0; i < fountains.Length; i++)
-                		{
-                    			fountains[i].GetComponent<Il2Cpp.InnFountainController>().Clean();
-                		}
-            		}
-			catch { return;  }
-		}
-	    
-		public static void AutoRespawn()
+        public static void AutoRespawn()
 		{
 			Il2Cpp.NolanBehaviour nb = Player.GetPlayer();
 
-			Il2Cpp.SurvivalReviveInteractable _reviveInteractable = UnityEngine.Object.FindObjectOfType<Il2Cpp.SurvivalReviveInteractable>();
-
+			Il2Cpp.SurvivalReviveInteractable _reviveInteractable = UnityEngine.Object.FindObjectOfType<Il2Cpp.SurvivalReviveInteractable>(); //probably can't be null
+				
 			_reviveInteractable.Interact(nb.gameObject);
 		}
 		public static void TPItems()
 		{
-		    try
-		    {
-				Il2Cpp.NolanBehaviour Nolan = Player.GetPlayer();
+            Il2Cpp.NolanBehaviour Nolan = Player.GetPlayer();
 
-				foreach (Il2Cpp.SurvivalInteractable item in Helpers.Entities.SurvivalInteractables)
-				{
-					item.transform.position = Nolan.transform.position + Nolan.transform.forward * UnityEngine.Random.RandomRange(1f, 3f);
-				}
-		    }
-		    catch { }
+            foreach (Il2Cpp.SurvivalInteractable item in Helpers.Entities.SurvivalInteractables)
+            {
+                item.transform.position = Nolan.transform.position + Nolan.transform.forward * UnityEngine.Random.RandomRange(1f, 3f);
+            }
 		}
 	    
 		public static void CreateCustomizedLobby(int lobbySize = 4, bool isPrivate = false, Il2CppUdpKit.Platform.Photon.PhotonRegion.Regions __region = Il2CppUdpKit.Platform.Photon.PhotonRegion.Regions.BEST_REGION)
         {			
-			Il2CppHorror.Menu _menu = UnityEngine.Object.FindObjectOfType<Il2CppHorror.Menu>();
+			//TODO : make it so we can specify a password for a private lobby
 
-			CanvasGroup _loadingCanvasGroup = _menu.loadingCanvasGroup;
-			CanvasGroup _hostCanvasGroup = _menu.hostCanvasGroup;
-			CanvasGroup _mainMenuCanvasGroup = _menu.mainMenuCanvasGroup;
+			Il2CppHorror.Menu _menu = UnityEngine.Object.FindObjectOfType<Il2CppHorror.Menu>();
 
 			Il2CppUdpKit.Platform.PhotonPlatformConfig __photonPlatformConfig = new Il2CppUdpKit.Platform.PhotonPlatformConfig();
             __photonPlatformConfig.Region = Il2CppUdpKit.Platform.Photon.PhotonRegion.regions[__region];
@@ -185,9 +177,9 @@ namespace DevourClient.Hacks
 
 			BoltLauncher.StartServer(__config, null);
 			
-			Il2CppHorror.Menu.ShowCanvasGroup(_loadingCanvasGroup, true);
-            Il2CppHorror.Menu.ShowCanvasGroup(_hostCanvasGroup, false);
-            Il2CppHorror.Menu.ShowCanvasGroup(_mainMenuCanvasGroup, false);
+			Il2CppHorror.Menu.ShowCanvasGroup(_menu.loadingCanvasGroup, true);
+            Il2CppHorror.Menu.ShowCanvasGroup(_menu.hostCanvasGroup, false);
+            Il2CppHorror.Menu.ShowCanvasGroup(_menu.mainMenuCanvasGroup, false);
         }
 		
 		public static void SetSteamName(string name)
@@ -213,7 +205,7 @@ namespace DevourClient.Hacks
 
 		public static void BigFlashlight(bool reset)
         {
-			Il2Cpp.NolanBehaviour Nolan = Player.GetPlayer();//UnityEngine.Object.FindObjectOfType<NolanBehaviour>();
+			Il2Cpp.NolanBehaviour Nolan = Player.GetPlayer();
 			if (Nolan == null)
             {
 				return;
@@ -273,7 +265,7 @@ namespace DevourClient.Hacks
 
 		public static void Fullbright(bool reset)
 		{
-			Il2Cpp.NolanBehaviour Nolan = Player.GetPlayer();//UnityEngine.Object.FindObjectOfType<NolanBehaviour>();
+			Il2Cpp.NolanBehaviour Nolan = Player.GetPlayer();
 			if (Nolan == null)
 			{
 				return;
@@ -305,7 +297,7 @@ namespace DevourClient.Hacks
 		}
 		public static void FlashlightColor(Color color)
         {
-			Il2Cpp.NolanBehaviour Nolan = Player.GetPlayer(); //UnityEngine.Object.FindObjectOfType<NolanBehaviour>();
+			Il2Cpp.NolanBehaviour Nolan = Player.GetPlayer();
 			Light flashlightSpot = Nolan.flashlightSpot;
 
 			flashlightSpot.color = color;
@@ -313,7 +305,8 @@ namespace DevourClient.Hacks
 
 		public static void TPKeys()
         {
-			Il2Cpp.NolanBehaviour Nolan = Player.GetPlayer(); //UnityEngine.Object.FindObjectOfType<NolanBehaviour>();
+			//TOFIX: spawn manually the missing key in slaughterhouse
+			Il2Cpp.NolanBehaviour Nolan = Player.GetPlayer();
 
 			foreach (Il2Cpp.KeyBehaviour keyBehaviour in Helpers.Entities.Keys)
 			{
@@ -337,6 +330,7 @@ namespace DevourClient.Hacks
 
 		public static void MessageSpam(string message)
         {
+			//TOFIX : not spamming anymore :/
 			if (Helpers.Player.IsInGame())
 			{
 				Il2Cpp.GameUI game_ui_class = UnityEngine.Object.FindObjectOfType<Il2Cpp.GameUI>();
@@ -409,23 +403,13 @@ namespace DevourClient.Hacks
 
 		public static void ShowMessageBox(string message)
         {
+			//not used, might be useful, some day
 			Il2CppHorror.Menu menu = UnityEngine.Object.FindObjectOfType<Il2CppHorror.Menu>();
 			menu.ShowMessageModal(message);
 		}
 		
 		public static void PlaySound()
         {
-			/*
-			public PlayRandomAudioClip yesClips;
-			public PlayRandomAudioClip noClips;
-			public PlayRandomAudioClip beckonClips;
-			public PlayRandomAudioClip showOffClips;
-			public PlayRandomAudioClip screamClips;
-			public PlayRandomAudioClip pickupClips;
-			public PlayRandomAudioClip burnGoatClips;
-			public PlayRandomAudioClip laughClips;
-			*/
-
 			Il2Cpp.PlayRandomAudioClip playRandomAudioClip = UnityEngine.Object.FindObjectOfType<Il2Cpp.PlayRandomAudioClip>();
 			Il2Cpp.NolanVoiceOvers nolanVoiceOvers = UnityEngine.Object.FindObjectOfType<Il2Cpp.NolanVoiceOvers>();
 			playRandomAudioClip.delay = 0f;
@@ -475,29 +459,25 @@ namespace DevourClient.Hacks
 				return;
 			}
 
-			try
-			{
-				if (Helpers.Map.GetAzazel() == null) {
-					return;
-				}
-
-				UltimateCharacterLocomotion _azazelLocomotion = Helpers.Map.GetAzazel().GetComponent<UltimateCharacterLocomotion>();
-
-				if (_azazelLocomotion == null)
-				{
-					return;
-				}
-
-				if (_azazelLocomotion.TimeScale > 0.0f) //seems like _azazelLocomotion.TimeScale is never == 1.0f for Sam
-				{
-					_azazelLocomotion.TimeScale = 0f;
-				}
-				else
-				{
-                    _azazelLocomotion.TimeScale = 1.0f;
-                }
+            if (Helpers.Map.GetAzazel() == null) {
+                return;
             }
-			catch { }
+
+            UltimateCharacterLocomotion _azazelLocomotion = Helpers.Map.GetAzazel().GetComponent<UltimateCharacterLocomotion>();
+
+            if (_azazelLocomotion == null)
+            {
+                return;
+            }
+
+            if (_azazelLocomotion.TimeScale > 0.0f) 
+            {
+                _azazelLocomotion.TimeScale = 0f; //host only (?)
+            }
+            else
+            {
+                _azazelLocomotion.TimeScale = 1.0f;
+            }
 		}
 		
 		public static void InstantWin()

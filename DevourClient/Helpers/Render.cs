@@ -83,27 +83,27 @@ namespace DevourClient.Render
 
 		public static void DrawAllBones(List<Transform> b, Color c)
 		{
-			DrawBones(b[0], b[1], c);
-			DrawBones(b[1], b[2], c);
-			DrawBones(b[2], b[3], c);
+			DrawBones(b[0], b[1], c); //head, neck
+			DrawBones(b[1], b[2], c); //neck, spine
+			DrawBones(b[2], b[3], c); //spine, hips
 
-			DrawBones(b[1], b[4], c);
-			DrawBones(b[4], b[5], c);
-			DrawBones(b[5], b[6], c);
-			DrawBones(b[6], b[7], c);
+			DrawBones(b[1], b[4], c); //neck, left shoulder
+			DrawBones(b[4], b[5], c); //left shoulder, left upper arm
+			DrawBones(b[5], b[6], c); //left upper arm, left lower arm
+			DrawBones(b[6], b[7], c); //left lower arm, left hand
 
-			DrawBones(b[1], b[8], c);
-			DrawBones(b[8], b[9], c);
-			DrawBones(b[9], b[10], c);
-			DrawBones(b[10], b[11], c);
+			DrawBones(b[1], b[8], c); //neck, right shoulder
+			DrawBones(b[8], b[9], c); //right shoulder, right upper arm 
+			DrawBones(b[9], b[10], c); //right upper arm, right lower arm
+			DrawBones(b[10], b[11], c); //right lower arm, right hand
+			
+			DrawBones(b[3], b[12], c); //hips, left upper leg
+			DrawBones(b[12], b[13], c); //left upper leg, left lower leg
+			DrawBones(b[13], b[14], c); //left lower leg, left foot
 
-			DrawBones(b[3], b[12], c);
-			DrawBones(b[12], b[13], c);
-			DrawBones(b[13], b[14], c);
-
-			DrawBones(b[3], b[15], c);
-			DrawBones(b[15], b[16], c);
-			DrawBones(b[16], b[17], c);
+			DrawBones(b[3], b[15], c); //hips, right upper leg
+			DrawBones(b[15], b[16], c); //right upper leg, right lower leg
+			DrawBones(b[16], b[17], c); //right lower leg, right foot
 		}
 
 		static void DrawBox(float x, float y, float w, float h, Color color, float thickness)
