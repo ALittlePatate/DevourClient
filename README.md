@@ -50,7 +50,8 @@ Everything about spoofing ehre (steam name, server name, level...) will persist 
 * Create a lobby with no player limit
 
 ## Installation
-For my french fellas out there, 1tap2times made a French video tutorial for the installation of the Mod : [link](https://vimeo.com/789315436)<br>
+For my French fellas out there, 1tap2times made a French video tutorial for the installation of the Mod : [link](https://vimeo.com/789315436)<br>
+For my German friends, KiwiJuice02 made a german video tutorial right here : [link](https://www.youtube.com/watch?v=Ntablvo6y-I)<br>
 In order to get all of this working you need to generate the DevourClient.dll file by building the source code.
 
 0. Install [.NET 6 SDK and runtime](https://dotnet.microsoft.com/en-us/download/dotnet/6.0).
