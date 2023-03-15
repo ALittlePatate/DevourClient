@@ -45,6 +45,12 @@ namespace DevourClient.Helpers
 
         public void Jumpscare()
         {
+            if (!BoltNetwork.IsServer)
+            {
+                MelonLogger.Msg("You need to be server !");
+                return;
+            }
+
             if (p_GameObject == null)
             {
                 return;
