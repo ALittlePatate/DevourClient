@@ -67,11 +67,14 @@ namespace DevourClient.Hacks
 	    
 	    public static void BurnRitualObj(string map, bool burnAll)
 		{
-			//map controllers SHOULDN'T be null but we never know, if smth break, add a nullptr check	
 			switch (map)
             {
 				case "Inn":
 					Il2Cpp.InnMapController _innMapController = UnityEngine.Object.FindObjectOfType<Il2Cpp.InnMapController>();
+                    if (!_innMapController) {
+                        return;
+                    }
+
                     if (burnAll){
                         _innMapController.SetProgressTo(10);
                     }
@@ -82,6 +85,9 @@ namespace DevourClient.Hacks
 
 				case "Slaughterhouse":
                     Il2Cpp.SlaughterhouseAltarController _slaughterhouseAltarController = UnityEngine.Object.FindObjectOfType<Il2Cpp.SlaughterhouseAltarController>();
+                    if (!_slaughterhouseAltarController) {
+                        return;
+                    }
 
                     if (burnAll)
                     {
@@ -95,6 +101,10 @@ namespace DevourClient.Hacks
 
 				default:
 					Il2Cpp.SurvivalObjectBurnController _altar = UnityEngine.Object.FindObjectOfType<Il2Cpp.SurvivalObjectBurnController>();
+                    if (!_altar) {
+                        return;
+                    }
+
                     if (burnAll)
                     {
                         _altar.SkipToGoat(10);
