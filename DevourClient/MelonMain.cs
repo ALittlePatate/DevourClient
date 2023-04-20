@@ -797,9 +797,15 @@ namespace DevourClient
 
         private static void ItemsTab()
         {
-            GUI.Label(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 70, 120, 30), "Items");
+            GUILayout.BeginHorizontal();
 
-            if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 100, 80, 25), "Hay"))
+            GUILayout.BeginVertical();
+
+            GUILayout.Label("Items");
+
+            Settings.Settings.itemsScrollPosition = GUILayout.BeginScrollView(Settings.Settings.itemsScrollPosition, GUILayout.Width(340), GUILayout.Height(200));
+
+            if (GUILayout.Button("Hay"))
             {
                 if (BoltNetwork.IsServer && !Player.IsInGame())
                 {
@@ -811,7 +817,7 @@ namespace DevourClient
                 }
             }
 
-            if (GUI.Button(new Rect(Settings.Settings.x + 100, Settings.Settings.y + 100, 80, 25), "First aid"))
+            if (GUILayout.Button("First aid"))
             {
                 if (BoltNetwork.IsServer && !Player.IsInGame())
                 {
@@ -823,7 +829,7 @@ namespace DevourClient
                 }
             }
 
-            if (GUI.Button(new Rect(Settings.Settings.x + 190, Settings.Settings.y + 100, 80, 25), "Battery"))
+            if (GUILayout.Button("Battery"))
             {
                 if (BoltNetwork.IsServer && !Player.IsInGame())
                 {
@@ -835,7 +841,7 @@ namespace DevourClient
                 }
             }
 
-            if (GUI.Button(new Rect(Settings.Settings.x + 280, Settings.Settings.y + 100, 80, 25), "Gasoline"))
+            if (GUILayout.Button("Gasoline"))
             {
                 if (BoltNetwork.IsServer && !Player.IsInGame())
                 {
@@ -847,7 +853,7 @@ namespace DevourClient
                 }
             }
 
-            if (GUI.Button(new Rect(Settings.Settings.x + 370, Settings.Settings.y + 100, 80, 25), "Fuse"))
+            if (GUILayout.Button("Fuse"))
             {
                 if (BoltNetwork.IsServer && !Player.IsInGame())
                 {
@@ -859,7 +865,7 @@ namespace DevourClient
                 }
             }
 
-            if (GUI.Button(new Rect(Settings.Settings.x + 460, Settings.Settings.y + 100, 80, 25), "Food"))
+            if (GUILayout.Button("Food"))
             {
                 if (BoltNetwork.IsServer && !Player.IsInGame())
                 {
@@ -870,9 +876,10 @@ namespace DevourClient
                     Hacks.Misc.CarryObject("SurvivalRottenFood");
                 }
             }
-            
-            if (GUI.Button(new Rect(Settings.Settings.x + 550, Settings.Settings.y + 100, 80, 25), "Bone"))
+
+            if (GUILayout.Button("Bone"))
             {
+
                 if (BoltNetwork.IsServer && !Player.IsInGame())
                 {
                     BoltNetwork.Instantiate(BoltPrefabs.SurvivalBone, Player.GetPlayer().transform.position, Quaternion.identity);
@@ -883,7 +890,7 @@ namespace DevourClient
                 }
             }
 
-            if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 140, 80, 25), "Bleach"))
+            if (GUILayout.Button("Bleach"))
             {
                 if (BoltNetwork.IsServer && !Player.IsInGame())
                 {
@@ -895,19 +902,7 @@ namespace DevourClient
                 }
             }
 
-            if (GUI.Button(new Rect(Settings.Settings.x + 100, Settings.Settings.y + 140, 80, 25), "Ritual Book"))
-            {
-                if (BoltNetwork.IsServer && !Player.IsInGame())
-                {
-                    BoltNetwork.Instantiate(BoltPrefabs.SurvivalRitualBook, Player.GetPlayer().transform.position, Quaternion.identity);
-                }
-                else
-                {
-                    Hacks.Misc.CarryObject("RitualBook-Active-1");
-                }
-            }
-
-            if (GUI.Button(new Rect(Settings.Settings.x + 190, Settings.Settings.y + 140, 80, 25), "Matchbox"))
+            if (GUILayout.Button("Matchbox"))
             {
                 if (BoltNetwork.IsServer && !Player.IsInGame())
                 {
@@ -919,55 +914,82 @@ namespace DevourClient
                 }
             }
 
-            if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 180, 80, 25), "Egg-1"))
+
+            GUILayout.EndScrollView();
+            GUILayout.EndVertical();
+
+            GUILayout.BeginVertical();
+
+            GUILayout.Label("Rituel Objects");
+
+            Settings.Settings.rituelObjectsScrollPosition = GUILayout.BeginScrollView(Settings.Settings.rituelObjectsScrollPosition, GUILayout.Width(340), GUILayout.Height(200));
+
+            if (GUILayout.Button("Egg-1"))
             {
                 Hacks.Misc.CarryObject("Egg-Clean-1");
             }
 
-            if (GUI.Button(new Rect(Settings.Settings.x + 100, Settings.Settings.y + 180, 80, 25), "Egg-2"))
+            if (GUILayout.Button("Egg-2"))
             {
                 Hacks.Misc.CarryObject("Egg-Clean-2");
             }
 
-            if (GUI.Button(new Rect(Settings.Settings.x + 190, Settings.Settings.y + 180, 80, 25), "Egg-3"))
+            if (GUILayout.Button("Egg-3"))
             {
                 Hacks.Misc.CarryObject("Egg-Clean-3");
             }
 
-            if (GUI.Button(new Rect(Settings.Settings.x + 280, Settings.Settings.y + 180, 80, 25), "Egg-4"))
+            if (GUILayout.Button("Egg-4"))
             {
                 Hacks.Misc.CarryObject("Egg-Clean-4");
             }
 
-            if (GUI.Button(new Rect(Settings.Settings.x + 370, Settings.Settings.y + 180, 80, 25), "Egg-5"))
+            if (GUILayout.Button("Egg-5"))
             {
                 Hacks.Misc.CarryObject("Egg-Clean-5");
             }
 
-            if (GUI.Button(new Rect(Settings.Settings.x + 460, Settings.Settings.y + 180, 80, 25), "Egg-6"))
+            if (GUILayout.Button("Egg-6"))
             {
                 Hacks.Misc.CarryObject("Egg-Clean-6");
             }
 
-            if (GUI.Button(new Rect(Settings.Settings.x + 550, Settings.Settings.y + 180, 80, 25), "Egg-7"))
+            if (GUILayout.Button("Egg-7"))
             {
                 Hacks.Misc.CarryObject("Egg-Clean-7");
             }
 
-            if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 210, 80, 25), "Egg-8"))
+            if (GUILayout.Button("Egg-8"))
             {
                 Hacks.Misc.CarryObject("Egg-Clean-8");
             }
 
-            if (GUI.Button(new Rect(Settings.Settings.x + 100, Settings.Settings.y + 210, 80, 25), "Egg-9"))
+            if (GUILayout.Button("Egg-9"))
             {
                 Hacks.Misc.CarryObject("Egg-Clean-9");
             }
 
-            if (GUI.Button(new Rect(Settings.Settings.x + 190, Settings.Settings.y + 210, 80, 25), "Egg-10"))
+            if (GUILayout.Button("Egg-10"))
             {
                 Hacks.Misc.CarryObject("Egg-Clean-10");
             }
+
+            if (GUILayout.Button("Ritual Book"))
+            {
+                if (BoltNetwork.IsServer && !Player.IsInGame())
+                {
+                    BoltNetwork.Instantiate(BoltPrefabs.SurvivalRitualBook, Player.GetPlayer().transform.position, Quaternion.identity);
+                }
+                else
+                {
+                    Hacks.Misc.CarryObject("RitualBook-Active-1");
+                }
+            }
+
+            GUILayout.EndScrollView();
+            GUILayout.EndVertical();
+
+            GUILayout.EndHorizontal();
         }
 
         private static void MiscTab()
