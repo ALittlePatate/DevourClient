@@ -15,7 +15,9 @@ namespace DevourClient.Settings
         public static float speed = 1f;
         public const string message_to_spam = "Deez Nutz";
         public static KeyCode flyKey = KeyCode.None;
-
+        public static Vector2 itemsScrollPosition = Vector2.zero;
+        public static Vector2 rituelObjectsScrollPosition = Vector2.zero;
+        
         public static KeyCode GetKey()
         {
             Thread.Sleep(50); //TOFIX tried using anyKeydown, no success
