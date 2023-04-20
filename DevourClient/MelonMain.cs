@@ -377,37 +377,37 @@ namespace DevourClient
         {
             GUILayout.BeginHorizontal();
             
-            if (GUILayout.Button("Visual"))
+            if (GUILayout.Button("Visual") || Input.GetKeyDown(KeyCode.F1))
             {
                 current_tab = CurrentTab.Visuals;
             }
             
-            if (GUILayout.Button("Entites"))
+            if (GUILayout.Button("Entites") || Input.GetKeyDown(KeyCode.F2))
             {
                 current_tab = CurrentTab.Entities;
             }
             
-            if (GUILayout.Button("Map Specific"))
+            if (GUILayout.Button("Map Specific") || Input.GetKeyDown(KeyCode.F3))
             {
                 current_tab = CurrentTab.Map;
             }
             
-            if (GUILayout.Button("ESP"))
+            if (GUILayout.Button("ESP") || Input.GetKeyDown(KeyCode.F4))
             {
                 current_tab = CurrentTab.ESP;
             }
             
-            if (GUILayout.Button("Items"))
+            if (GUILayout.Button("Items") || Input.GetKeyDown(KeyCode.F5))
             {
                 current_tab = CurrentTab.Items;
             }
             
-            if (GUILayout.Button("Misc"))
+            if (GUILayout.Button("Misc") || Input.GetKeyDown(KeyCode.F6))
             {
                 current_tab = CurrentTab.Misc;
             }
 
-            if (GUILayout.Button("Player"))
+            if (GUILayout.Button("Player") || Input.GetKeyDown(KeyCode.F7))
             {
                 current_tab = CurrentTab.Players;
             }
