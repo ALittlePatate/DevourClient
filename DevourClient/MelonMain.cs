@@ -992,6 +992,265 @@ namespace DevourClient
             GUILayout.EndVertical();
 
             GUILayout.EndHorizontal();
+            
+            GUILayout.BeginVertical();
+
+            GUILayout.Label("Spawnable Prefabs");
+
+            Settings.Settings.stuffsScrollPosition = GUILayout.BeginScrollView(Settings.Settings.stuffsScrollPosition, GUILayout.Width(680), GUILayout.Height(230));
+
+            if (GUILayout.Button("Animal_Gate"))
+            {
+                if (BoltNetwork.IsServer)
+                {
+                    BoltNetwork.Instantiate(BoltPrefabs.Animal_Gate, Player.GetPlayer().transform.position, Quaternion.identity);
+                }
+            }
+
+            if (GUILayout.Button("AsylumDoor"))
+            {
+                if (BoltNetwork.IsServer)
+                {
+                    BoltNetwork.Instantiate(BoltPrefabs.AsylumDoor, Player.GetPlayer().transform.position, Quaternion.identity);
+                }
+            }
+
+            if (GUILayout.Button("AsylumDoubleDoor"))
+            {
+                if (BoltNetwork.IsServer)
+                {
+                    BoltNetwork.Instantiate(BoltPrefabs.AsylumDoubleDoor, Player.GetPlayer().transform.position, Quaternion.identity);
+                }
+            }
+
+            if (GUILayout.Button("AsylumWhiteDoor"))
+            {
+                if (BoltNetwork.IsServer)
+                {
+                    BoltNetwork.Instantiate(BoltPrefabs.AsylumWhiteDoor, Player.GetPlayer().transform.position, Quaternion.identity);
+                }
+            }
+
+
+            if (GUILayout.Button("DevourDoorBack"))
+            {
+                if (BoltNetwork.IsServer)
+                {
+                    BoltNetwork.Instantiate(BoltPrefabs.DevourDoorBack, Player.GetPlayer().transform.position, Quaternion.identity);
+                }
+            }
+
+            if (GUILayout.Button("DevourDoorMain"))
+            {
+                if (BoltNetwork.IsServer)
+                {
+                    BoltNetwork.Instantiate(BoltPrefabs.DevourDoorMain, Player.GetPlayer().transform.position, Quaternion.identity);
+                }
+            }
+
+            if (GUILayout.Button("DevourDoorRoom"))
+            {
+                if (BoltNetwork.IsServer)
+                {
+                    BoltNetwork.Instantiate(BoltPrefabs.DevourDoorRoom, Player.GetPlayer().transform.position, Quaternion.identity);
+                }
+            }
+
+            if (GUILayout.Button("Elevator_Door"))
+            {
+                if (BoltNetwork.IsServer)
+                {
+                    BoltNetwork.Instantiate(BoltPrefabs.Elevator_Door, Player.GetPlayer().transform.position, Quaternion.identity);
+                }
+            }
+
+            if (GUILayout.Button("InnDoor"))
+            {
+                if (BoltNetwork.IsServer)
+                {
+                    BoltNetwork.Instantiate(BoltPrefabs.InnDoor, Player.GetPlayer().transform.position, Quaternion.identity);
+                }
+            }
+
+            if (GUILayout.Button("InnDoubleDoor"))
+            {
+                if (BoltNetwork.IsServer)
+                {
+                    BoltNetwork.Instantiate(BoltPrefabs.InnDoubleDoor, Player.GetPlayer().transform.position, Quaternion.identity);
+                }
+            }
+
+            if (GUILayout.Button("InnShojiDoor"))
+            {
+                if (BoltNetwork.IsServer)
+                {
+                    BoltNetwork.Instantiate(BoltPrefabs.InnShojiDoor, Player.GetPlayer().transform.position, Quaternion.identity);
+                }
+            }
+
+            if (GUILayout.Button("InnShrine"))
+            {
+                if (BoltNetwork.IsServer)
+                {
+                    BoltNetwork.Instantiate(BoltPrefabs.InnShrine, Player.GetPlayer().transform.position, Quaternion.identity);
+                }
+            }
+
+            if (GUILayout.Button("InnWardrobe"))
+            {
+                if (BoltNetwork.IsServer)
+                {
+                    BoltNetwork.Instantiate(BoltPrefabs.InnWardrobe, Player.GetPlayer().transform.position, Quaternion.identity);
+                }
+            }
+
+            if (GUILayout.Button("InnWoodenDoor"))
+            {
+                if (BoltNetwork.IsServer)
+                {
+                    BoltNetwork.Instantiate(BoltPrefabs.InnWoodenDoor, Player.GetPlayer().transform.position, Quaternion.identity);
+                }
+            }
+
+            if (GUILayout.Button("PigExcrement"))
+            {
+                if (BoltNetwork.IsServer)
+                {
+                    BoltNetwork.Instantiate(BoltPrefabs.PigExcrement, Player.GetPlayer().transform.position, Quaternion.identity);
+                }
+            }
+
+            if (GUILayout.Button("SlaughterhouseFireEscapeDoor"))
+            {
+                if (BoltNetwork.IsServer)
+                {
+                    BoltNetwork.Instantiate(BoltPrefabs.SlaughterhouseFireEscapeDoor, Player.GetPlayer().transform.position, Quaternion.identity);
+                }
+            }
+
+            if (GUILayout.Button("SurvivalAltarMolly"))
+            {
+                if (BoltNetwork.IsServer)
+                {
+                    BoltNetwork.Instantiate(BoltPrefabs.SurvivalAltarMolly, Player.GetPlayer().transform.position, Quaternion.identity);
+                }
+            }
+
+            if (GUILayout.Button("SurvivalAltarSlaughterhouse"))
+            {
+                if (BoltNetwork.IsServer)
+                {
+                    BoltNetwork.Instantiate(BoltPrefabs.SurvivalAltarSlaughterhouse, Player.GetPlayer().transform.position, Quaternion.identity);
+                }
+            }
+
+            if (GUILayout.Button("SurvivalAltarTown"))
+            {
+                if (BoltNetwork.IsServer)
+                {
+                    BoltNetwork.Instantiate(BoltPrefabs.SurvivalAltarTown, Player.GetPlayer().transform.position, Quaternion.identity);
+                }
+            }
+
+
+            if (GUILayout.Button("SurvivalCultist"))
+            {
+                if (BoltNetwork.IsServer)
+                {
+                    BoltNetwork.Instantiate(BoltPrefabs.SurvivalCultist, Player.GetPlayer().transform.position, Quaternion.identity);
+                }
+            }
+
+            if (GUILayout.Button("SurvivalKai"))
+            {
+                if (BoltNetwork.IsServer)
+                {
+                    BoltNetwork.Instantiate(BoltPrefabs.SurvivalKai, Player.GetPlayer().transform.position, Quaternion.identity);
+                }
+            }
+
+            if (GUILayout.Button("SurvivalNathan"))
+            {
+                if (BoltNetwork.IsServer)
+                {
+                    BoltNetwork.Instantiate(BoltPrefabs.SurvivalNathan, Player.GetPlayer().transform.position, Quaternion.identity);
+                }
+            }
+
+            if (GUILayout.Button("SurvivalMolly"))
+            {
+                if (BoltNetwork.IsServer)
+                {
+                    BoltNetwork.Instantiate(BoltPrefabs.SurvivalMolly, Player.GetPlayer().transform.position, Quaternion.identity);
+                }
+            }
+
+            if (GUILayout.Button("SurvivalRose"))
+            {
+                if (BoltNetwork.IsServer)
+                {
+                    BoltNetwork.Instantiate(BoltPrefabs.SurvivalRose, Player.GetPlayer().transform.position, Quaternion.identity);
+                }
+            }
+
+            if (GUILayout.Button("SurvivalSmashableWindow"))
+            {
+                if (BoltNetwork.IsServer)
+                {
+                    BoltNetwork.Instantiate(BoltPrefabs.SurvivalSmashableWindow, Player.GetPlayer().transform.position, Quaternion.identity);
+                }
+            }
+
+            if (GUILayout.Button("TownDoor"))
+            {
+                if (BoltNetwork.IsServer)
+                {
+                    BoltNetwork.Instantiate(BoltPrefabs.TownDoor, Player.GetPlayer().transform.position, Quaternion.identity);
+                }
+            }
+
+            if (GUILayout.Button("TownDoor2"))
+            {
+                if (BoltNetwork.IsServer)
+                {
+                    BoltNetwork.Instantiate(BoltPrefabs.TownDoor2, Player.GetPlayer().transform.position, Quaternion.identity);
+                }
+            }
+
+            if (GUILayout.Button("TownPentagram"))
+            {
+                if (BoltNetwork.IsServer)
+                {
+                    BoltNetwork.Instantiate(BoltPrefabs.TownPentagram, Player.GetPlayer().transform.position, Quaternion.identity);
+                }
+            }
+
+            if (GUILayout.Button("TrashCan"))
+            {
+                if (BoltNetwork.IsServer)
+                {
+                    BoltNetwork.Instantiate(BoltPrefabs.TrashCan, Player.GetPlayer().transform.position, Quaternion.identity);
+                }
+            }
+
+            if (GUILayout.Button("Truck_Shutter"))
+            {
+                if (BoltNetwork.IsServer)
+                {
+                    BoltNetwork.Instantiate(BoltPrefabs.Truck_Shutter, Player.GetPlayer().transform.position, Quaternion.identity);
+                }
+            }
+
+            if (GUILayout.Button("TV"))
+            {
+                if (BoltNetwork.IsServer)
+                {
+                    BoltNetwork.Instantiate(BoltPrefabs.TV, Player.GetPlayer().transform.position, Quaternion.identity);
+                }
+            }
+
+            GUILayout.EndVertical();
+            GUILayout.EndHorizontal();
         }
 
         private static void MiscTab()
