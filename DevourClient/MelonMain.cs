@@ -375,43 +375,45 @@ namespace DevourClient
         
         public static void Tabs(int windowID)
         {
-            if (GUI.Button(new Rect(Settings.Settings.x + 10, Settings.Settings.y + 20, 95, 40), "Visuals"))
+            GUILayout.BeginHorizontal();
+            
+            if (GUILayout.Button("Visual"))
             {
                 current_tab = CurrentTab.Visuals;
             }
-
             
-            if (GUI.Button(new Rect(Settings.Settings.x + 105, Settings.Settings.y + 20, 95, 40), "Entites"))
+            if (GUILayout.Button("Entites"))
             {
                 current_tab = CurrentTab.Entities;
             }
-
-            if (GUI.Button(new Rect(Settings.Settings.x + 200, Settings.Settings.y + 20, 95, 40), "Map Specific"))
+            
+            if (GUILayout.Button("Map Specific"))
             {
                 current_tab = CurrentTab.Map;
             }
-
-            if (GUI.Button(new Rect(Settings.Settings.x + 295, Settings.Settings.y + 20, 95, 40), "ESP"))
+            
+            if (GUILayout.Button("ESP"))
             {
                 current_tab = CurrentTab.ESP;
             }
-
-            if (GUI.Button(new Rect(Settings.Settings.x + 390, Settings.Settings.y + 20, 95, 40), "Items"))
+            
+            if (GUILayout.Button("Items"))
             {
                 current_tab = CurrentTab.Items;
             }
-
-            if (GUI.Button(new Rect(Settings.Settings.x + 485, Settings.Settings.y + 20, 95, 40), "Misc"))
+            
+            if (GUILayout.Button("Misc"))
             {
                 current_tab = CurrentTab.Misc;
             }
 
-            if (GUI.Button(new Rect(Settings.Settings.x + 580, Settings.Settings.y + 20, 95, 40), "Player"))
+            if (GUILayout.Button("Player"))
             {
                 current_tab = CurrentTab.Players;
             }
-            
 
+            GUILayout.EndHorizontal();
+            
             switch (current_tab)
             {
                 case CurrentTab.Visuals:
