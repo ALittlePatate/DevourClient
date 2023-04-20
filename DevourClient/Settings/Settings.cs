@@ -17,6 +17,7 @@ namespace DevourClient.Settings
         public static KeyCode flyKey = KeyCode.None;
         public static Vector2 itemsScrollPosition = Vector2.zero;
         public static Vector2 rituelObjectsScrollPosition = Vector2.zero;
+        public static Vector2 stuffsScrollPosition = Vector2.zero;
         
         public static KeyCode GetKey()
         {
