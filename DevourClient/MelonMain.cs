@@ -805,7 +805,7 @@ namespace DevourClient
 
             GUILayout.Label("Items");
 
-            Settings.Settings.itemsScrollPosition = GUILayout.BeginScrollView(Settings.Settings.itemsScrollPosition, GUILayout.Width(340), GUILayout.Height(200));
+            Settings.Settings.itemsScrollPosition = GUILayout.BeginScrollView(Settings.Settings.itemsScrollPosition, GUILayout.Width(220), GUILayout.Height(190));
 
             if (GUILayout.Button("Hay"))
             {
@@ -924,7 +924,7 @@ namespace DevourClient
 
             GUILayout.Label("Rituel Objects");
 
-            Settings.Settings.rituelObjectsScrollPosition = GUILayout.BeginScrollView(Settings.Settings.rituelObjectsScrollPosition, GUILayout.Width(340), GUILayout.Height(200));
+            Settings.Settings.rituelObjectsScrollPosition = GUILayout.BeginScrollView(Settings.Settings.rituelObjectsScrollPosition, GUILayout.Width(220), GUILayout.Height(190));
 
             if (GUILayout.Button("Egg-1"))
             {
@@ -990,14 +990,12 @@ namespace DevourClient
 
             GUILayout.EndScrollView();
             GUILayout.EndVertical();
-
-            GUILayout.EndHorizontal();
             
             GUILayout.BeginVertical();
 
             GUILayout.Label("Spawnable Prefabs");
 
-            Settings.Settings.stuffsScrollPosition = GUILayout.BeginScrollView(Settings.Settings.stuffsScrollPosition, GUILayout.Width(680), GUILayout.Height(230));
+            Settings.Settings.stuffsScrollPosition = GUILayout.BeginScrollView(Settings.Settings.stuffsScrollPosition, GUILayout.Width(220), GUILayout.Height(190));
 
             if (GUILayout.Button("Animal_Gate"))
             {
@@ -1248,7 +1246,8 @@ namespace DevourClient
                     BoltNetwork.Instantiate(BoltPrefabs.TV, Player.GetPlayer().transform.position, Quaternion.identity);
                 }
             }
-
+            
+            GUILayout.EndScrollView();
             GUILayout.EndVertical();
             GUILayout.EndHorizontal();
         }
