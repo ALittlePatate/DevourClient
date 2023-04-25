@@ -74,9 +74,9 @@ namespace DevourClient
         public override void OnInitializeMelon()
         {
             MelonLogger.Msg("For the Queen !");
-            MelonLogger.Msg("Made with <3 by patate and Jadis.");
-            MelonLogger.Msg("Github : https://github.com/ALittlePatate/DevourClient");
-            MelonLogger.Msg("Note : if you payed for this you most likely got scammed.");
+            MelonLogger.Warning("Made with <3 by patate and Jadis.");
+            MelonLogger.Warning("Github : https://github.com/ALittlePatate/DevourClient");
+            MelonLogger.Warning("Note : if you payed for this you most likely got scammed.");
 
             crosshairTexture = Helpers.GUIHelper.GetCircularTexture(5, 5);
 
