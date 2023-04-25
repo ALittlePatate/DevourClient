@@ -1,4 +1,13 @@
-﻿using UnityEngine;
+﻿/*
+Note about license. As stated in the GPL FAQ :
+You are allowed to sell copies of the modified program commercially, but only under the terms of the GNU GPL.
+Thus, for instance, you must make the source code available to the users of the program as described in the GPL,
+and they must be allowed to redistribute and modify it as described in the GPL.
+
+If you decide to modify and then sell this software you have to agree with the GPL 3 license thus making the source code available.
+*/
+
+using UnityEngine;
 using MelonLoader;
 using System.Threading;
 using DevourClient.Helpers;
@@ -65,6 +74,9 @@ namespace DevourClient
         public override void OnInitializeMelon()
         {
             MelonLogger.Msg("For the Queen !");
+            MelonLogger.Msg("Made with <3 by patate and Jadis.");
+            MelonLogger.Msg("Github : https://github.com/ALittlePatate/DevourClient");
+            MelonLogger.Msg("Note : if you payed for this you most likely got scammed.");
 
             crosshairTexture = Helpers.GUIHelper.GetCircularTexture(5, 5);
 
