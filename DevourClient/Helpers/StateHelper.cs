@@ -110,6 +110,24 @@ namespace DevourClient.Helpers
             }
             catch { return; }
         }
+
+        public void ShootPlayer()
+        {
+            if (!BoltNetwork.IsServer){
+               MelonLogger.Msg("You need to be server !");
+               return;
+            }
+
+            if (p_GameObject == null){
+               return;
+            }
+                
+            Il2Cpp.AzazelSamBehaviour _azazelSam = UnityEngine.Object.FindObjectOfType<Il2Cpp.AzazelSamBehaviour>();
+                
+            if (_azazelSam){
+               _azazelSam.OnShootPlayer(p_GameObject, true);  
+            }
+        }
     }
     public class Player
     {
