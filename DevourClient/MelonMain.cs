@@ -1380,6 +1380,13 @@ namespace DevourClient
                         bp.TPAzazel();
                     }
 
+                    if(Helpers.Map.GetActiveScene() == "Town"){
+                        if (GUI.Button(new Rect(Settings.Settings.x + 590, Settings.Settings.y + 105 + i, 90, 30), "Shoot Player"))
+                        {
+                            bp.ShootPlayer();
+                        }
+                    }
+
                     i += 30;
                 }
             }
