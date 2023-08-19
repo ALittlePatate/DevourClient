@@ -379,37 +379,37 @@ namespace DevourClient
         {
             GUILayout.BeginHorizontal();
             
-            if (GUILayout.Button("Visual") || Input.GetKeyDown(KeyCode.F1))
+            if (GUILayout.Button("Visual", GUILayout.Height(40)) || Input.GetKeyDown(KeyCode.F1))
             {
                 current_tab = CurrentTab.Visuals;
             }
             
-            if (GUILayout.Button("Entites") || Input.GetKeyDown(KeyCode.F2))
+            if (GUILayout.Button("Entites", GUILayout.Height(40)) || Input.GetKeyDown(KeyCode.F2))
             {
                 current_tab = CurrentTab.Entities;
             }
             
-            if (GUILayout.Button("Map Specific") || Input.GetKeyDown(KeyCode.F3))
+            if (GUILayout.Button("Map Specific", GUILayout.Height(40)) || Input.GetKeyDown(KeyCode.F3))
             {
                 current_tab = CurrentTab.Map;
             }
             
-            if (GUILayout.Button("ESP") || Input.GetKeyDown(KeyCode.F4))
+            if (GUILayout.Button("ESP", GUILayout.Height(40)) || Input.GetKeyDown(KeyCode.F4))
             {
                 current_tab = CurrentTab.ESP;
             }
             
-            if (GUILayout.Button("Items") || Input.GetKeyDown(KeyCode.F5))
+            if (GUILayout.Button("Items", GUILayout.Height(40)) || Input.GetKeyDown(KeyCode.F5))
             {
                 current_tab = CurrentTab.Items;
             }
             
-            if (GUILayout.Button("Misc") || Input.GetKeyDown(KeyCode.F6))
+            if (GUILayout.Button("Misc", GUILayout.Height(40)) || Input.GetKeyDown(KeyCode.F6))
             {
                 current_tab = CurrentTab.Misc;
             }
 
-            if (GUILayout.Button("Player") || Input.GetKeyDown(KeyCode.F7))
+            if (GUILayout.Button("Player", GUILayout.Height(40)) || Input.GetKeyDown(KeyCode.F7))
             {
                 current_tab = CurrentTab.Players;
             }
