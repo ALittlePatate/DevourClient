@@ -233,16 +233,6 @@ namespace DevourClient
 
         public override void OnGUI()
         {
-            GUI.backgroundColor = Color.grey;
-
-            GUI.skin.button.normal.background = GUIHelper.MakeTex(2, 2, Color.black);
-            GUI.skin.button.normal.textColor = Color.white;
-
-            GUI.skin.button.hover.background = GUIHelper.MakeTex(2, 2, Color.green);
-            GUI.skin.button.hover.textColor = Color.black;
-
-            GUI.skin.toggle.onNormal.textColor = Color.yellow;
-        
             //from https://www.unknowncheats.me/forum/unity/437277-mono-internal-optimisation-tips.html
             if (UnityEngine.Event.current.type == EventType.Repaint)
             {
