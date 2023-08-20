@@ -1,5 +1,4 @@
 ﻿using HarmonyLib;
-using DevourClient;
 
 namespace DevourClient.Hooks
 {
@@ -11,7 +10,7 @@ namespace DevourClient.Hooks
             [HarmonyPrefix]
             static void Prefix(ref Il2CppOpsive.UltimateCharacterController.Traits.Attribute attribute)
             {
-                if (Load.unlimitedUV && attribute.m_Name == "Battery")
+                if (ClientMain.unlimitedUV && attribute.m_Name == "Battery")
                 {
                     attribute.m_Value = 100.0f;
                     return;
@@ -25,9 +24,9 @@ namespace DevourClient.Hooks
         {
             static void Postfix(ref Il2Cpp.RankHelpers.ExpGainInfo __result)
             {
-                if (Load.exp_modifier)
+                if (ClientMain.exp_modifier)
                 {
-                    __result.totalExp = (int)Load.exp;
+                    __result.totalExp = (int)ClientMain.exp;
                 }
                 return;
             }

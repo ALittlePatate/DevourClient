@@ -81,7 +81,6 @@ namespace DevourClient.Helpers
             }
 
             BoltNetwork.Instantiate(BoltPrefabs.Cage, p_GameObject.transform.position, Quaternion.identity);
-
         }
 
         public void TP()
@@ -104,28 +103,35 @@ namespace DevourClient.Helpers
 
             UltimateCharacterLocomotion ucl = Helpers.Map.GetAzazel().GetComponent<UltimateCharacterLocomotion>();
 
-            try
+            if (ucl)
             {
                 ucl.SetPosition(p_GameObject.transform.position);
             }
-            catch { return; }
+            else
+            {
+                MelonLogger.Error("Azazel not found!");
+                return;
+            }
         }
 
         public void ShootPlayer()
         {
-            if (!BoltNetwork.IsServer){
-               MelonLogger.Msg("You need to be server !");
-               return;
+            if (!BoltNetwork.IsServer)
+            {
+                MelonLogger.Msg("You need to be server !");
+                return;
             }
 
-            if (p_GameObject == null){
-               return;
+            if (p_GameObject == null)
+            {
+                return;
             }
-                
+
             Il2Cpp.AzazelSamBehaviour _azazelSam = UnityEngine.Object.FindObjectOfType<Il2Cpp.AzazelSamBehaviour>();
-                
-            if (_azazelSam){
-               _azazelSam.OnShootPlayer(p_GameObject, true);  
+
+            if (_azazelSam)
+            {
+                _azazelSam.OnShootPlayer(p_GameObject, true);
             }
         }
     }
@@ -136,12 +142,12 @@ namespace DevourClient.Helpers
             Il2Cpp.OptionsHelpers optionsHelpers = UnityEngine.Object.FindObjectOfType<Il2Cpp.OptionsHelpers>();
             return optionsHelpers.inGame;
         }
-        
+
         public static bool IsInGameOrLobby()
         {
             return GetPlayer() != null;
         }
-        
+
         public static Il2Cpp.NolanBehaviour GetPlayer()
         {
             if (Entities.LocalPlayer_.p_GameObject == null)
@@ -163,9 +169,9 @@ namespace DevourClient.Helpers
 
             return nb.IsCrawling();
         }
-        
+
     }
-    
+
     public class Entities
     {
         public static int MAX_PLAYERS = 4; //will change by calling CreateCustomizedLobby
@@ -184,7 +190,7 @@ namespace DevourClient.Helpers
 
         public static IEnumerator GetLocalPlayer()
         {
-            for (;;)
+            while (true)
             {
                 GameObject[] currentPlayers = GameObject.FindGameObjectsWithTag("Player");
 
@@ -201,10 +207,10 @@ namespace DevourClient.Helpers
                 yield return new WaitForSeconds(5f);
             }
         }
-         
+
         public static IEnumerator GetAllPlayers()
         {
-            for (;;)
+            while (true)
             {
                 GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
                 Players = new BasePlayer[players.Length];
@@ -231,9 +237,9 @@ namespace DevourClient.Helpers
                     Players[i].Name = player_name;
                     Players[i].p_GameObject = p;
 
-                    i++;  
+                    i++;
                 }
-                
+
 
                 // Wait 5 seconds before caching objects again.
                 yield return new WaitForSeconds(5f);
@@ -241,7 +247,7 @@ namespace DevourClient.Helpers
         }
         public static IEnumerator GetGoatsAndRats()
         {
-            for (;;)
+            while (true)
             {
                 GoatsAndRats = Il2Cpp.GoatBehaviour.FindObjectsOfType<Il2Cpp.GoatBehaviour>();
 
@@ -252,7 +258,7 @@ namespace DevourClient.Helpers
 
         public static IEnumerator GetSurvivalInteractables()
         {
-            for (;;)
+            while (true)
             {
                 SurvivalInteractables = Il2Cpp.SurvivalInteractable.FindObjectsOfType<Il2Cpp.SurvivalInteractable>();
 
@@ -263,7 +269,7 @@ namespace DevourClient.Helpers
 
         public static IEnumerator GetKeys()
         {
-            for (;;)
+            while (true)
             {
                 Keys = Il2Cpp.KeyBehaviour.FindObjectsOfType<Il2Cpp.KeyBehaviour>();
 
@@ -274,7 +280,7 @@ namespace DevourClient.Helpers
 
         public static IEnumerator GetDemons()
         {
-            for (;;)
+            while (true)
             {
                 Demons = Il2Cpp.SurvivalDemonBehaviour.FindObjectsOfType<Il2Cpp.SurvivalDemonBehaviour>();
 
@@ -285,7 +291,7 @@ namespace DevourClient.Helpers
 
         public static IEnumerator GetSpiders()
         {
-            for (;;)
+            while (true)
             {
                 Spiders = Il2Cpp.SpiderBehaviour.FindObjectsOfType<Il2Cpp.SpiderBehaviour>();
 
@@ -296,7 +302,7 @@ namespace DevourClient.Helpers
 
         public static IEnumerator GetGhosts()
         {
-            for (;;)
+            while (true)
             {
                 Ghosts = Il2Cpp.GhostBehaviour.FindObjectsOfType<Il2Cpp.GhostBehaviour>();
 
@@ -307,7 +313,7 @@ namespace DevourClient.Helpers
 
         public static IEnumerator GetBoars()
         {
-            for (; ; )
+            while (true)
             {
                 Boars = Il2Cpp.BoarBehaviour.FindObjectsOfType<Il2Cpp.BoarBehaviour>();
 
@@ -318,7 +324,7 @@ namespace DevourClient.Helpers
 
         public static IEnumerator GetCorpses()
         {
-            for (; ; )
+            while (true)
             {
                 Corpses = Il2Cpp.CorpseBehaviour.FindObjectsOfType<Il2Cpp.CorpseBehaviour>();
 
@@ -332,7 +338,7 @@ namespace DevourClient.Helpers
             /*
              * ikr AzazelS, because in case we spawn multiple we want the esp to render all of them
             */
-            for (;;)
+            while (true)
             {
                 Azazels = Il2Cpp.SurvivalAzazelBehaviour.FindObjectsOfType<Il2Cpp.SurvivalAzazelBehaviour>();
 

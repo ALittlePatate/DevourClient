@@ -121,16 +121,37 @@ namespace DevourClient.Hacks
 		{
 			if (!Il2CppPhoton.Bolt.BoltNetwork.IsServer)
 			{
-				MelonLogger.Msg("You need to be host to spawn stuff !");
+				Hacks.Misc.ShowMessageBox("You need to be host to spawn stuff !");
 				return;
 			}
 
-			GameObject _azazel;
-			Vector3 pos = Player.GetPlayer().transform.position;
+			GameObject _localPlayer = Helpers.Entities.LocalPlayer_.p_GameObject;
 
-			_azazel = BoltNetwork.Instantiate(_azazelPrefabId, new Vector3(pos.x, pos.y, pos.z + 1f), Quaternion.identity);
+			if (_localPlayer != null)
+			{
+                Vector3 pos = _localPlayer.transform.position;
 
-			_azazel.gameObject.GetComponent<Il2Cpp.SurvivalAzazelBehaviour>().Spawn();
+                GameObject _azazel;
+
+                _azazel = BoltNetwork.Instantiate(_azazelPrefabId, new Vector3(pos.x, pos.y, pos.z + 1f), Quaternion.identity);
+                Il2Cpp.SurvivalAzazelBehaviour azazelBehaviour = _azazel?.GetComponent<Il2Cpp.SurvivalAzazelBehaviour>();
+
+                if (_azazel != null)
+				{
+					if (azazelBehaviour != null)
+					{
+                        _azazel.gameObject.GetComponent<Il2Cpp.SurvivalAzazelBehaviour>().Spawn();
+					}
+					else
+					{
+						MelonLogger.Error("azazelBehaviour is null!");
+					}
+                }
+				else
+				{
+                    MelonLogger.Error("azazel is null!");
+                }
+            }
 		}
 
 		public static void CarryObject(string name)
