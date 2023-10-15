@@ -176,7 +176,7 @@ namespace DevourClient.Hacks
 			Il2Cpp.NolanBehaviour nb = Player.GetPlayer();
 
 			Il2Cpp.SurvivalReviveInteractable _reviveInteractable = UnityEngine.Object.FindObjectOfType<Il2Cpp.SurvivalReviveInteractable>(); //probably can't be null
-				
+
 			_reviveInteractable.Interact(nb.gameObject);
 		}
 		public static void TPItems()
