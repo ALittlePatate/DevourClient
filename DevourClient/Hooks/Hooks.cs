@@ -72,8 +72,6 @@ namespace DevourClient.Hooks
                 //MelonLoader.MelonLogger.Msg("currentPrice : " + outfit.currentPrice);
                 //MelonLoader.MelonLogger.Msg("isOwned : " + outfit.isOwned);
                 //MelonLoader.MelonLogger.Msg("isHidden : " + outfit.isHidden);
-                outfit.basePrice = 0;
-                outfit.currentPrice = 0;
                 outfit.isOwned = true;
                 outfit.isHidden = false;
                 return;
