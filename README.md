@@ -13,7 +13,7 @@ Well at this point i don't really know, i think there is some sort of native Uni
 
 ## Features
 Everything about spoofing ehre (steam name, server name, level...) will persist if you don't uncheck it (it will be reseted when you'll restart the game obv).
-* An IMGUI menu thanks to UnityEngine
+[+] An IMGUI menu thanks to UnityEngine
 * Fully compatible with the new IL2CPP version of the game
 * Detects if you're in game (with bad code lol), so no chances of crashing on main menu by activating features
 * Detects the map you are playing on (useful for the instant win)
