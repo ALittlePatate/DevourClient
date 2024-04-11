@@ -20,7 +20,7 @@ namespace Unity
 
 		System_String* GetName()
 		{
-			return reinterpret_cast<System_String*(UNITY_CALLING_CONVENTION)(void*)>(ObjectFunctions.m_pGetName)(this);
+			return reinterpret_cast<System_String * (UNITY_CALLING_CONVENTION)(void*)>(ObjectFunctions.m_pGetName)(this);
 		}
 	};
 
