@@ -28,12 +28,12 @@ namespace Unity
 
 		CComponent* GetComponent(const char* m_pName)
 		{
-			return reinterpret_cast<CComponent*(UNITY_CALLING_CONVENTION)(void*, System_String*)>(GameObjectFunctions.m_pGetComponent)(this, IL2CPP::String::New(m_pName));
+			return reinterpret_cast<CComponent * (UNITY_CALLING_CONVENTION)(void*, System_String*)>(GameObjectFunctions.m_pGetComponent)(this, IL2CPP::String::New(m_pName));
 		}
 
 		il2cppArray<CComponent*>* GetComponents(il2cppObject* m_pSystemType)
 		{
-			/* 
+			/*
 			0 - Object
 			1 - Type
 			2 - Use search type as array return type
@@ -71,7 +71,7 @@ namespace Unity
 
 		CTransform* GetTransform()
 		{
-			return reinterpret_cast<CTransform*(UNITY_CALLING_CONVENTION)(void*)>(GameObjectFunctions.m_pGetTransform)(this);
+			return reinterpret_cast<CTransform * (UNITY_CALLING_CONVENTION)(void*)>(GameObjectFunctions.m_pGetTransform)(this);
 		}
 
 		bool GetActive()
@@ -112,11 +112,11 @@ namespace Unity
 		};
 
 		void Initialize();
-		
+
 		CGameObject* CreatePrimitive(m_ePrimitiveType m_eType);
 
 		CGameObject* Find(const char* m_pName);
-		
+
 		il2cppArray<CGameObject*>* FindWithTag(const char* m_pTag);
 	}
 }

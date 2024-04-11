@@ -2,11 +2,11 @@
 
 namespace IL2CPP
 {
-	namespace Class
-	{
+    namespace Class
+    {
         Unity::il2cppFieldInfo* GetFields(Unity::il2cppClass* m_pClass, void** m_pIterator)
         {
-            return reinterpret_cast<Unity::il2cppFieldInfo*(IL2CPP_CALLING_CONVENTION)(void*, void**)>(Data.Functions.m_pClassGetFields)(m_pClass, m_pIterator);
+            return reinterpret_cast<Unity::il2cppFieldInfo * (IL2CPP_CALLING_CONVENTION)(void*, void**)>(Data.Functions.m_pClassGetFields)(m_pClass, m_pIterator);
         }
 
         void FetchFields(Unity::il2cppClass* m_pClass, std::vector<Unity::il2cppFieldInfo*>* m_pVector, void* m_pFieldIterator)
@@ -25,7 +25,7 @@ namespace IL2CPP
 
         Unity::il2cppMethodInfo* GetMethods(Unity::il2cppClass* m_pClass, void** m_pIterator)
         {
-            return reinterpret_cast<Unity::il2cppMethodInfo*(IL2CPP_CALLING_CONVENTION)(void*, void**)>(Data.Functions.m_pClassGetMethods)(m_pClass, m_pIterator);
+            return reinterpret_cast<Unity::il2cppMethodInfo * (IL2CPP_CALLING_CONVENTION)(void*, void**)>(Data.Functions.m_pClassGetMethods)(m_pClass, m_pIterator);
         }
 
         void FetchMethods(Unity::il2cppClass* m_pClass, std::vector<Unity::il2cppMethodInfo*>* m_pVector, void* m_pMethodIterator)
@@ -44,12 +44,12 @@ namespace IL2CPP
 
         Unity::il2cppType* GetType(Unity::il2cppClass* m_pClass)
         {
-            return reinterpret_cast<Unity::il2cppType*(IL2CPP_CALLING_CONVENTION)(void*)>(Data.Functions.m_pClassGetType)(m_pClass);
+            return reinterpret_cast<Unity::il2cppType * (IL2CPP_CALLING_CONVENTION)(void*)>(Data.Functions.m_pClassGetType)(m_pClass);
         }
 
         Unity::il2cppObject* GetSystemType(Unity::il2cppClass* m_pClass)
         {
-            return reinterpret_cast<Unity::il2cppObject*(IL2CPP_CALLING_CONVENTION)(void*)>(Data.Functions.m_pTypeGetObject)(GetType(m_pClass));
+            return reinterpret_cast<Unity::il2cppObject * (IL2CPP_CALLING_CONVENTION)(void*)>(Data.Functions.m_pTypeGetObject)(GetType(m_pClass));
         }
 
         Unity::il2cppObject* GetSystemType(const char* m_pClassName)
@@ -63,11 +63,11 @@ namespace IL2CPP
 
         Unity::il2cppClass* GetFromName(Unity::il2cppImage* m_pImage, const char* m_pNamespace, const char* m_pName)
         {
-            return reinterpret_cast<Unity::il2cppClass*(IL2CPP_CALLING_CONVENTION)(void*, const char*, const char*)>(Data.Functions.m_pClassFromName)(m_pImage, m_pNamespace, m_pName);
+            return reinterpret_cast<Unity::il2cppClass * (IL2CPP_CALLING_CONVENTION)(void*, const char*, const char*)>(Data.Functions.m_pClassFromName)(m_pImage, m_pNamespace, m_pName);
         }
 
-		Unity::il2cppClass* Find(const char* m_pName)
-		{
+        Unity::il2cppClass* Find(const char* m_pName)
+        {
             size_t m_sAssembliesCount = 0U;
             Unity::il2cppAssembly** m_pAssemblies = Domain::GetAssemblies(&m_sAssembliesCount);
             if (!m_pAssemblies || 0U >= m_sAssembliesCount) return nullptr;
@@ -101,7 +101,7 @@ namespace IL2CPP
 
             delete[] m_pNameSpace;
             return m_pClassReturn;
-		}
+        }
 
         void FetchClasses(std::vector<Unity::il2cppClass*>* m_pVector, const char* m_pModuleName, const char* m_pNamespace)
         {
@@ -127,7 +127,7 @@ namespace IL2CPP
                 size_t m_sClassesCount = reinterpret_cast<size_t(IL2CPP_CALLING_CONVENTION)(void*)>(Data.Functions.m_pImageGetClassCount)(m_pImage);
                 for (size_t i = 0U; m_sClassesCount > i; ++i)
                 {
-                    Unity::il2cppClass* m_pClass = reinterpret_cast<Unity::il2cppClass*(IL2CPP_CALLING_CONVENTION)(void*, size_t)>(Data.Functions.m_pImageGetClass)(m_pImage, i);
+                    Unity::il2cppClass* m_pClass = reinterpret_cast<Unity::il2cppClass * (IL2CPP_CALLING_CONVENTION)(void*, size_t)>(Data.Functions.m_pImageGetClass)(m_pImage, i);
                     if (m_pNamespace)
                     {
                         if (m_pNamespace[0] == '\0')
@@ -173,7 +173,7 @@ namespace IL2CPP
 
             void* GetMethodPointer(Unity::il2cppClass* m_pClass, const char* m_pMethodName, int m_iArgs)
             {
-                Unity::il2cppMethodInfo* pMethod = reinterpret_cast<Unity::il2cppMethodInfo*(IL2CPP_CALLING_CONVENTION)(void*, const char*, int)>(Data.Functions.m_pClassGetMethodFromName)(m_pClass, m_pMethodName, m_iArgs);
+                Unity::il2cppMethodInfo* pMethod = reinterpret_cast<Unity::il2cppMethodInfo * (IL2CPP_CALLING_CONVENTION)(void*, const char*, int)>(Data.Functions.m_pClassGetMethodFromName)(m_pClass, m_pMethodName, m_iArgs);
                 if (!pMethod) return nullptr;
 
                 return pMethod->m_pMethodPointer;
@@ -188,14 +188,14 @@ namespace IL2CPP
                 return nullptr;
             }
 
-	        void* GetMethodPointer(const char* m_pClassName, const char* m_pMethodName, std::initializer_list<const char*> m_vNames)
+            void* GetMethodPointer(const char* m_pClassName, const char* m_pMethodName, std::initializer_list<const char*> m_vNames)
             {
                 Unity::il2cppClass* m_pClass = Find(m_pClassName);
                 if (!m_pClass)
                     return nullptr;
 
-                int m_iNamesCount       = static_cast<int>(m_vNames.size());
-                const char** m_pNames   = const_cast<const char**>(m_vNames.begin());
+                int m_iNamesCount = static_cast<int>(m_vNames.size());
+                const char** m_pNames = const_cast<const char**>(m_vNames.begin());
 
                 void* m_pMethodIterator = nullptr;
                 while (1)
@@ -220,7 +220,7 @@ namespace IL2CPP
                 }
                 return nullptr;
             }
-		
+
             Unity::il2cppClass* FilterClass(std::vector<Unity::il2cppClass*>* m_pClasses, std::initializer_list<const char*> m_vNames, int m_iFoundCount)
             {
                 int m_iNamesCount = static_cast<int>(m_vNames.size());
@@ -285,5 +285,5 @@ namespace IL2CPP
                 return m_pMethodPointer;
             }
         }
-	}
+    }
 }
