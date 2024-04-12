@@ -1,18 +1,20 @@
 #include "Players.hpp"
 
 namespace Players {
-    std::vector<Unity::CGameObject*> PlayerList(NULL);
-    Unity::CGameObject* LocalPlayer = NULL;
+    //std::vector<Unity::CGameObject*> PlayerList(NULL);
+    //Unity::CGameObject* LocalPlayer = NULL;
 }
 
 
-void Players::GetPlayersThread() {
     /*
     * Will always lop and get the players + the localplayer
     * This runs in a separate thread to avoid lags because we're fetching the components
     * Used as a "cache" - sorta
     * I use this instead of my good old corroutine
     */
+
+void Players::GetPlayersThread() {
+    /*
     IL2CPP::Thread::Attach(IL2CPP::Domain::Get());
     while (1) {
         PlayerList.clear();
@@ -42,5 +44,5 @@ void Players::GetPlayersThread() {
 
         Sleep(5000); //FIXME //waiting 5 sec here to avoid crash cuz we're trying to get players when stuff load
     }
-    
+    */
 }

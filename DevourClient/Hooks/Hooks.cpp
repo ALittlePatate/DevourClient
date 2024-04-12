@@ -1,6 +1,5 @@
 #include "Hooks.hpp"
 #include "../Utils/Output/Output.hpp"
-#include "../Dependencies/IL2CPP_Resolver/il2cpp_resolver.hpp"
 #include "../Features/Menu.hpp"
 #include "../Features/ESP/ESP.hpp"
 #include "../dllmain.hpp"
@@ -86,7 +85,8 @@ HRESULT __stdcall hookD3D11Present(IDXGISwapChain* pSwapChain, UINT SyncInterval
 			pDevice->CreateRenderTargetView(pBackBuffer, NULL, &mainRenderTargetViewD3D11);
 			pBackBuffer->Release();
 			oWndProc = (WNDPROC)SetWindowLongPtr(window, GWLP_WNDPROC, (LONG_PTR)WndProc);
-			ImGui::CreateContext();
+			auto context = ImGui::CreateContext();
+			ImGui::SetCurrentContext(context);
 			InitStyle();
 			ImGui_ImplWin32_Init(window);
 			ImGui_ImplDX11_Init(pDevice, pContext);
@@ -157,13 +157,11 @@ DWORD_PTR* pContextVTable = NULL;
 DWORD_PTR* pDeviceVTable = NULL;
 IDXGISwapChain* pSwapChain;
 bool HookDX11() {
-	HMODULE hDXGIDLL = 0;
-	do
-	{
+	HMODULE hDXGIDLL = GetModuleHandle("dxgi.dll");
+	while (!hDXGIDLL) {
 		hDXGIDLL = GetModuleHandle("dxgi.dll");
-		Sleep(200);
-	} while (!hDXGIDLL);
-	Sleep(100);
+		Sleep(100);
+	}
 
 	oWndProc = (WNDPROC)SetWindowLongPtr(window, GWLP_WNDPROC, (LONG_PTR)WndProc);
 
@@ -242,14 +240,14 @@ bool InitializeHooks() {
 }
 
 void DisableHooks() {
+	SetWindowLongPtr(window, GWLP_WNDPROC, (LONG_PTR)(oWndProc));
+	if (pSwapChain) { pSwapChain->Release(); }
+	if (mainRenderTargetViewD3D11) { mainRenderTargetViewD3D11->Release(); mainRenderTargetViewD3D11 = NULL; }
+	if (pContext) { pContext->Release(); pContext = NULL; }
+	if (pDevice) { pDevice->Release(); pDevice = NULL; }
 	MH_DisableHook(MH_ALL_HOOKS);
 	MH_Uninitialize();
 	ImGui_ImplDX11_Shutdown();
 	ImGui_ImplWin32_Shutdown();
 	ImGui::DestroyContext();
-	if (mainRenderTargetViewD3D11) { mainRenderTargetViewD3D11->Release(); mainRenderTargetViewD3D11 = NULL; }
-	if (pContext) { pContext->Release(); pContext = NULL; }
-	if (pDevice) { pDevice->Release(); pDevice = NULL; }
-	pSwapChain->Release();
-	SetWindowLongPtr(window, GWLP_WNDPROC, (LONG_PTR)(oWndProc));
 }

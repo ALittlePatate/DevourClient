@@ -1,7 +1,8 @@
 #pragma once
-#include "../Dependencies/IL2CPP_Resolver/il2cpp_resolver.hpp"
+#include <vector>
+#include <string>
 
-
+/*
 namespace Dumper {
 	std::vector<Unity::CComponent*> DumpComponents();
 	std::vector<std::string> DumpComponentsString();
@@ -12,3 +13,4 @@ namespace Dumper {
 	std::vector<Unity::il2cppMethodInfo*> DumpMethods(std::string component, std::string classname);
 	std::vector<std::string> DumpMethodsString(std::string component, std::string classname);
 }
+*/

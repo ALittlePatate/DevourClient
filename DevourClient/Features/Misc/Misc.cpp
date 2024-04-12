@@ -5,6 +5,8 @@
 #include <time.h>
 
 void Misc::SetRank(int rank) {
+    return;
+    /*
     try {
         if (!Players::LocalPlayer) {
             return;
@@ -20,6 +22,7 @@ void Misc::SetRank(int rank) {
     catch (...) {
         settings::spoof_level = false;
     }
+    */
 }
 
 void Misc::WalkInlobby(bool walk) {
@@ -37,6 +40,8 @@ void Misc::WalkInlobby(bool walk) {
 }
 
 void Misc::UnlimitedUV(bool active) {
+    return;
+    /*
     try {
         Unity::CComponent* NolanBehaviour = Players::LocalPlayer->GetComponent("NolanBehaviour");
         if (!NolanBehaviour) {
@@ -47,9 +52,12 @@ void Misc::UnlimitedUV(bool active) {
     catch (...) {
         settings::unlimited_uv = false;
     }
+    */
 }
 
 void Misc::SetSteamName(std::string name) {
+    return;
+    /*
     Unity::CGameObject* MenuController = Unity::GameObject::Find("MenuController");
     if (!MenuController) {
         return;
@@ -61,9 +69,12 @@ void Misc::SetSteamName(std::string name) {
     }
 
     Menu->SetMemberValue<Unity::System_String*>("steamName", IL2CPP::String::New(name));
+    */
 }
 
 void Misc::SetServerName(std::string name) {
+    return;
+    /*
     Unity::CGameObject* MenuController = Unity::GameObject::Find("MenuController");
     if (!MenuController) {
         return;
@@ -80,9 +91,12 @@ void Misc::SetServerName(std::string name) {
     }
 
     serverNameText->SetMemberValue<Unity::System_String*>("m_Text", IL2CPP::String::New(name));
+    */
 }
 
 void Misc::PlayRandomSound() {
+    return;
+    /*
     Unity::CComponent* NolanVoiceOvers = Players::LocalPlayer->GetComponent("NolanVoiceOvers");
     if (!NolanVoiceOvers) {
         return;
@@ -119,7 +133,7 @@ void Misc::PlayRandomSound() {
         yesClips->CallMethodSafe<void*>("Play");
         break;
     }
-    /*
+
     case 2:
         nolanVoiceOvers.noClips.Play();
         return;
@@ -147,13 +161,15 @@ void Misc::PlayRandomSound() {
     case 10:
         nolanVoiceOvers.Scream();
         return;
-        */
     default:
         break;
     }
+    */
 }
 
 void Misc::CarryItem(const char* item) {
+    return;
+    /*
     if (Helpers::GetActiveScene() == std::string("Menu")) {
         return;
     }
@@ -239,9 +255,12 @@ void Misc::CarryItem(const char* item) {
         return;
         //print("Error!");
     }
+    */
 }
 
 void Misc::PlayerSpeed(int speed) {
+    return;
+    /*
     try {
         Unity::CComponent* UltimateCharacterLocomotion = Players::LocalPlayer->GetComponent("Opsive.UltimateCharacterController.Character.UltimateCharacterLocomotion");
 
@@ -254,9 +273,12 @@ void Misc::PlayerSpeed(int speed) {
         settings::change_player_speed = false;
         //print("[ERROR] speed error\n");
     }
+    */
 }
 
 void Misc::SpawnAnimal(const char* animalName) {
+    return;
+    /*
     if (Helpers::GetActiveScene() == std::string("Menu")) {
         return;
     }
@@ -285,9 +307,12 @@ void Misc::SpawnAnimal(const char* animalName) {
     catch (...) {
         return;
     }
+    */
 }
 
 void Misc::ForceStart() {
+    return;
+    /*
     Unity::CGameObject* MenuController = Unity::GameObject::Find("MenuController");
 
     if (!MenuController) {
@@ -309,10 +334,12 @@ void Misc::ForceStart() {
     // check if player is host or not
 
     Menu->CallMethodSafe<void*>("OnLobbyStartButtonClick");
+    */
 }
 
 void Misc::BurnRitualObj(bool burnAll) {
-
+    return;
+    /*
     // check if player is host or not
 
     std::string currentMap = Helpers::GetActiveScene();
@@ -404,9 +431,12 @@ void Misc::BurnRitualObj(bool burnAll) {
             TownAltarData->CallMethodSafe<void*>("BurnGoat");
         }
     }
+    */
 }
 
 void Misc::KnockoutPlayers(bool killYourself) {
+    return;
+    /*
     std::string currentMap = Helpers::GetActiveScene();
 
     if (currentMap == IL2CPP::String::New("Menu")->ToString()) {
@@ -540,9 +570,12 @@ void Misc::KnockoutPlayers(bool killYourself) {
             }
         }
     }
+    */
 }
 
 void Misc::Revive(bool reviveEveryone) {
+    return;
+    /*
     Unity::CComponent* SurvivalReviveInteractable = Players::LocalPlayer->GetComponent("SurvivalReviveInteractable");
 
     if (!SurvivalReviveInteractable) {
@@ -572,6 +605,7 @@ void Misc::Revive(bool reviveEveryone) {
             return;
         }
     }
+    */
 }
 
 void Misc::SkipLongInteract() {
@@ -630,6 +664,8 @@ void Misc::SkipLongInteract() {
 }
 
 void Misc::TPKeys() {
+    return;
+    /*
     for (Unity::CGameObject* object : Objects::ObjectList) {
         if (!object || !object->m_CachedPtr) {
             continue;
@@ -639,10 +675,12 @@ void Misc::TPKeys() {
             object->GetTransform()->SetLocalPosition(Players::LocalPlayer->GetTransform()->GetPosition());
         }
     }
+    */
 }
 
 void Misc::ShootEveryone(bool shootEveryone, bool hit) {
-
+    return;
+    /*
     std::string currentMap = Helpers::GetActiveScene();
 
     if (currentMap == IL2CPP::String::New("Town")->ToString()) {
@@ -679,9 +717,12 @@ void Misc::ShootEveryone(bool shootEveryone, bool hit) {
     else {
         return;
     }
+    */
 }
 
 void Misc::Jumpscare(bool inHidingSpot) {
+    return;
+    /*
     std::string currentMap = Helpers::GetActiveScene();
 
     if (!Players::LocalPlayer) {
@@ -783,9 +824,12 @@ void Misc::Jumpscare(bool inHidingSpot) {
             AzazelZaraComp->CallMethodSafe<void*>("OnPickedUpPlayer", AzazelZara, player, inHidingSpot);
         }
     }
+    */
 }
 
 void Misc::FreezeAzazel() {
+    return;
+    /*
     if (Helpers::GetActiveScene() == std::string("Menu")) {
         return;
     }
@@ -822,10 +866,13 @@ void Misc::FreezeAzazel() {
             return;
         }
     }
+    */
 }
 
 
 void Misc::UnlockDoors() {
+    return;
+    /*
     if (Helpers::GetActiveScene() == std::string("Menu")) {
         return;
     }
@@ -853,4 +900,5 @@ void Misc::UnlockDoors() {
             return;
         }
     }
+    */
 }

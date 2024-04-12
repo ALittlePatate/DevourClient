@@ -11,8 +11,6 @@
 #include "Utils/Players/Players.hpp"
 #include "Utils/Objects/Objects.hpp"
 
-#include <IL2CPP_Resolver/il2cpp_resolver.hpp>
-
 //Creating a global copy of hModule, used for EjectThread
 HMODULE myhModule;
 DWORD __stdcall EjectThread(LPVOID lpParameter) {
@@ -20,7 +18,6 @@ DWORD __stdcall EjectThread(LPVOID lpParameter) {
     CloseConsole();
     DisableHooks();
 
-    IL2CPP::Callback::Uninitialize();
     FreeLibraryAndExitThread(myhModule, 0); //Freeing the module, that's why we needed the myhModule variable
 }
 
@@ -33,16 +30,6 @@ DWORD WINAPI Main() {
     }
     else {
         print("[-] MH_Initialize failed, quitting...");
-        Sleep(300);
-        CreateThread(0, 0, EjectThread, 0, 0, 0); //Unhooking
-        return false;
-    }
-
-    if (IL2CPP::Initialize(true) && IL2CPP::Thread::Attach(IL2CPP::Domain::Get())) {
-        print("[+] Il2Cpp initialized\n");
-    }
-    else {
-        print("[-] Il2Cpp initialize failed, quitting...");
         Sleep(300);
         CreateThread(0, 0, EjectThread, 0, 0, 0); //Unhooking
         return false;
@@ -66,9 +53,6 @@ DWORD WINAPI Main() {
     GetWindowRect(hDesktop, &desktop);
     settings::height = desktop.right;
     settings::width = desktop.bottom;
-
-    IL2CPP::Callback::Initialize();
-    IL2CPP::Callback::OnUpdate::Add(OnUpdate);
 
     CreateThread(0, 0, (LPTHREAD_START_ROUTINE)Players::GetPlayersThread, 0, 0, 0);
     CreateThread(0, 0, (LPTHREAD_START_ROUTINE)Objects::GetObjectsThread, 0, 0, 0);

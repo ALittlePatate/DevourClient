@@ -2,11 +2,12 @@
 #include "../../Utils/Settings/Settings.hpp"
 #include "../../Utils/Players/Players.hpp"
 #include "../../Utils/Objects/Objects.hpp"
-#include "../../Dependencies/IL2CPP_Resolver/il2cpp_resolver.hpp"
 
 #include "../../Utils/Output/Output.hpp"
 
 void ESP::PlayerESP() {
+	return;
+	/*
 	if (settings::player_esp || settings::player_snaplines) {
 		for (Unity::CGameObject* player : Players::PlayerList) {
 			if (!player || player == Players::LocalPlayer) {
@@ -47,9 +48,12 @@ void ESP::PlayerESP() {
  			draw->AddRect(ImVec2(w2s_headpos.x, settings::width - w2s_headpos.y), ImVec2(w2s_footpos.x, settings::width - w2s_footpos.y), box);
 		}
 	}
+	*/
 }
 
 void ESP::ItemESP() {
+	return;
+	/*
 	if (settings::item_esp) {
 		IL2CPP::Thread::Attach(IL2CPP::Domain::Get());
 		for (Unity::CGameObject* object : Objects::ObjectList) {
@@ -96,4 +100,5 @@ void ESP::ItemESP() {
  			draw->AddRect(ImVec2(l, w2s_headpos.y), ImVec2(r, w2s_footpos.y), box);
 		}
 	}
+	*/
 }

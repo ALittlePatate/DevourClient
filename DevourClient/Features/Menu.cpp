@@ -6,6 +6,7 @@
 #include "Misc/Misc.hpp"
 
 #include <string>
+#include <vector>
 
 void InitStyle()
 {
@@ -231,7 +232,7 @@ void DrawInspector() {
 
 	ImGui::Text("Components");
 	if (ImGui::Button("Update##comp")) {
-		components = Dumper::DumpComponentsString();
+		//components = Dumper::DumpComponentsString();
 	}
 
 	ImGui::SetNextItemWidth(150.000f);
@@ -259,7 +260,7 @@ void DrawInspector() {
 	ImGui::Spacing();
 	ImGui::Text("Classes");
 	if (ImGui::Button("Update##class")) {
-		classes = Dumper::DumpClassesString(components[component_current_idx]);
+		//classes = Dumper::DumpClassesString(components[component_current_idx]);
 		current_comp = components[component_current_idx];
 	}
 
@@ -289,7 +290,7 @@ void DrawInspector() {
 	ImGui::Spacing();
 	ImGui::Text("Methods");
 	if (ImGui::Button("Update##Methods")) {
-		methods = Dumper::DumpMethodsString(current_comp, classes[class_current_idx]);
+		//methods = Dumper::DumpMethodsString(current_comp, classes[class_current_idx]);
 	}
 
 	ImGui::SetNextItemWidth(150.000f);

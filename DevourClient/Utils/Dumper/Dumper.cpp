@@ -1,6 +1,7 @@
 #include "Dumper.hpp"
 #include "../Output/Output.hpp"
 
+/*
 std::vector<Unity::il2cppMethodInfo*> Dumper::DumpMethods(std::string component, std::string classname) {
     std::vector<Unity::il2cppMethodInfo*> methods_to_return;
     Unity::CGameObject* component_obj = Unity::GameObject::Find(component.c_str());
@@ -20,6 +21,7 @@ std::vector<Unity::il2cppMethodInfo*> Dumper::DumpMethods(std::string component,
 
     return methods_to_return;
 }
+
 
 std::vector<std::string> Dumper::DumpMethodsString(std::string component, std::string classname) {
     std::vector<std::string> methods_to_return;
@@ -109,3 +111,4 @@ std::vector<std::string> Dumper::DumpComponentsString() {
 
     return compenents_to_return;
 }
+*/

@@ -1,10 +1,9 @@
 #pragma once
-#include "../Dependencies/IL2CPP_Resolver/il2cpp_resolver.hpp"
-
+#include <vector>
 
 namespace Players {
-	extern std::vector<Unity::CGameObject*> PlayerList;
-	extern Unity::CGameObject* LocalPlayer;
+	//extern std::vector<Unity::CGameObject*> PlayerList;
+	//extern Unity::CGameObject* LocalPlayer;
 
 	void GetPlayersThread();
 }

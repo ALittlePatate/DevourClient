@@ -1,8 +1,9 @@
 #include "Objects.hpp"
+#include <vector>
 #include "../../Utils/Helpers/Helpers.hpp"
 
 namespace Objects {
-    std::vector<Unity::CGameObject*> ObjectList(NULL);
+    //std::vector<Unity::CGameObject*> ObjectList(NULL);
 }
 
 void Objects::GetObjectsThread() {
@@ -13,6 +14,7 @@ void Objects::GetObjectsThread() {
     * I use this instead of my good old corroutine
     */
 
+    /*
     IL2CPP::Thread::Attach(IL2CPP::Domain::Get());
     while (1) {
         ObjectList.clear();
@@ -47,5 +49,5 @@ void Objects::GetObjectsThread() {
 
         Sleep(5000);
     }
-
+    */
 }
