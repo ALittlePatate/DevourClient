@@ -1,5 +1,11 @@
+#include <pch-il2cpp.h>
+
 #define WIN32_LEAN_AND_MEAN
 #include <Windows.h>
+
+#include <il2cpp-init.h>
+#include <il2cpp-appdata.h>
+
 #include <iostream>
 #include <vector>
 
@@ -10,6 +16,8 @@
 #include "Callbacks/OnUpdate.hpp"
 #include "Utils/Players/Players.hpp"
 #include "Utils/Objects/Objects.hpp"
+
+extern const LPCWSTR LOG_FILE = L"il2cpp-log.txt";
 
 //Creating a global copy of hModule, used for EjectThread
 HMODULE myhModule;
@@ -22,6 +30,7 @@ DWORD __stdcall EjectThread(LPVOID lpParameter) {
 }
 
 DWORD WINAPI Main() {
+    il2cpp_thread_attach(il2cpp_domain_get());
     OpenConsole();
     print("[+] Injected !\n");
 
@@ -68,6 +77,7 @@ BOOL APIENTRY DllMain(HMODULE hModule,
     switch (ul_reason_for_call)
     {
     case DLL_PROCESS_ATTACH:
+        init_il2cpp();
         myhModule = hModule;
         CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)Main, NULL, 0, NULL);
         break;
