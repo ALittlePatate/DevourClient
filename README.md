@@ -50,17 +50,15 @@ Everything about spoofing ehre (steam name, server name, level...) will persist 
 * Fullbright
 * Create a lobby with no player limit
 
-## Installation Tutorials
-
-## English Tutorial
+## English Installation Tutorial
 
 [link](https://docs.google.com/presentation/d/1YdIE5wwGWiJZ2RVughFYrlXUnFrxol-HI7QyLY_m0zc/edit#slide=id.p)<br>
 
-## French Tutorial
+## French Installation Tutorial
 
 [link](https://vimeo.com/789315436)<br>
 
-## German Video Turorial
+## German Video Installation Tutorial
 
 [link](https://www.youtube.com/watch?v=Ntablvo6y-I)<br>
 
