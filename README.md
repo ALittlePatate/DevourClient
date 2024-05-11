@@ -4,7 +4,7 @@
 Very based cheat for the game Devour.
 
 ## Devour Anti-Cheat Detection
-DevourClient - **Undetected 11.05.2024**
+DevourClient - **Undetected** 11.05.2024
 
 ## Menu
 ![menu screenshot](Screenshots/menu.png)
