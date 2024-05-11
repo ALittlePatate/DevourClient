@@ -2,7 +2,7 @@
 
 # DevourClient
 
-Very based cheat for the game Devour.
+The Best Devour Cheat !
 
 ## Anti-Cheat Support
 DEVOUR Anti-Cheat - **Undetected**
@@ -10,12 +10,14 @@ DEVOUR Anti-Cheat - **Undetected**
 ## Menu
 ![menu screenshot](Screenshots/menu.png)
 
-## Features
+## INFO
 Everything about spoofing ehre (steam name, server name, level...) will persist if you don't uncheck it (it will be reseted when you'll restart the game obv).
 * An IMGUI menu thanks to UnityEngine
 * Fully compatible with the new IL2CPP version of the game
 * Detects if you're in game (with bad code lol), so no chances of crashing on main menu by activating features
 * Detects the map you are playing on (useful for the instant win)
+
+## Features
 * Big Flashlight (allows your flashlight to light a lot more)
 * Flashlight color customization (with a home made color picker)
 * Unlimited UV light (thanks to [@jadis0x](https://github.com/jadis0x))
@@ -48,10 +50,24 @@ Everything about spoofing ehre (steam name, server name, level...) will persist 
 * Fullbright
 * Create a lobby with no player limit
 
-## Installation
-Raz did a great job at writing a guide on how to install the mod, linkie here : [link](https://docs.google.com/presentation/d/1YdIE5wwGWiJZ2RVughFYrlXUnFrxol-HI7QyLY_m0zc/edit#slide=id.p)<br>
-For my French fellas out there, 1tap2times made a French video tutorial for the installation of the Mod : [link](https://vimeo.com/789315436)<br>
-For my German friends, KiwiJuice02 made a german video tutorial right here : [link](https://www.youtube.com/watch?v=Ntablvo6y-I)<br>
+## Installation Tutorials
+
+## English Tutorial
+
+[link](https://docs.google.com/presentation/d/1YdIE5wwGWiJZ2RVughFYrlXUnFrxol-HI7QyLY_m0zc/edit#slide=id.p)<br>
+
+## French Tutorial
+
+[link](https://vimeo.com/789315436)<br>
+
+## German Video Turorial
+
+[link](https://www.youtube.com/watch?v=Ntablvo6y-I)<br>
+
+
+**If you have your own tutorial how to download DevourClient Cheat feel free to contact me on Discord: K4SPERSKY**
+
+
 In order to get all of this working you need to generate the DevourClient.dll file by building the source code.
 
 0. Install [.NET 6 SDK and runtime](https://dotnet.microsoft.com/en-us/download/dotnet/6.0).
