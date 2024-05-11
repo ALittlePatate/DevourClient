@@ -1,22 +1,22 @@
 # Unknowncheats thread [here](https://www.unknowncheats.me/forum/other-fps-games/475950-devour-multihack-update.html)
 
 # DevourClient
+The Best **FREE** Devour Cheat !
 
-Very based cheat for the game Devour.
-
-## Detection rate
-
-Well at this point i don't really know, i think there is some sort of native Unity anti cheat template but it doesn't seem active. You're fine, no anti cheat !
+## Devour Anti-Cheat
+DevourClient - **Undetected** 11.05.2024
 
 ## Menu
 ![menu screenshot](Screenshots/menu.png)
 
-## Features
+## DevourClient INFO
 Everything about spoofing ehre (steam name, server name, level...) will persist if you don't uncheck it (it will be reseted when you'll restart the game obv).
 * An IMGUI menu thanks to UnityEngine
 * Fully compatible with the new IL2CPP version of the game
 * Detects if you're in game (with bad code lol), so no chances of crashing on main menu by activating features
 * Detects the map you are playing on (useful for the instant win)
+
+## Features
 * Big Flashlight (allows your flashlight to light a lot more)
 * Flashlight color customization (with a home made color picker)
 * Unlimited UV light (thanks to [@jadis0x](https://github.com/jadis0x))
