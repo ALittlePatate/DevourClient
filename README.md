@@ -9,7 +9,7 @@ DevourClient - **Undetected** 11.05.2024
 ## Menu
 ![menu screenshot](Screenshots/menu.png)
 
-## Cheat INFO
+## DevourClient INFO
 Everything about spoofing ehre (steam name, server name, level...) will persist if you don't uncheck it (it will be reseted when you'll restart the game obv).
 * An IMGUI menu thanks to UnityEngine
 * Fully compatible with the new IL2CPP version of the game
