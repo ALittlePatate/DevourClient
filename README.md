@@ -1,7 +1,7 @@
 # Unknowncheats thread [here](https://www.unknowncheats.me/forum/other-fps-games/475950-devour-multihack-update.html)
 
 # DevourClient
-Very based cheat for the game Devour.
+The Best Devour Cheat !
 
 ## Devour Anti-Cheat
 DevourClient - **Undetected** 11.05.2024
