@@ -3,7 +3,7 @@
 # DevourClient
 Very based cheat for the game Devour.
 
-## Devour Anti-Cheat Detection
+## Devour Anti-Cheat
 DevourClient - **Undetected** 11.05.2024
 
 ## Menu
