@@ -4,9 +4,8 @@
 
 Very based cheat for the game Devour.
 
-## Detection rate
-
-Well at this point i don't really know, i think there is some sort of native Unity anti cheat template but it doesn't seem active. You're fine, no anti cheat !
+## Anti-Cheat Support
+DEVOUR Anti-Cheat - **Undetected**
 
 ## Menu
 ![menu screenshot](Screenshots/menu.png)
@@ -50,6 +49,7 @@ Everything about spoofing ehre (steam name, server name, level...) will persist 
 * Create a lobby with no player limit
 
 ## Installation
+Raz did a great job at writing a guide on how to install the mod, linkie here : [link](https://docs.google.com/presentation/d/1YdIE5wwGWiJZ2RVughFYrlXUnFrxol-HI7QyLY_m0zc/edit#slide=id.p)<br>
 For my French fellas out there, 1tap2times made a French video tutorial for the installation of the Mod : [link](https://vimeo.com/789315436)<br>
 For my German friends, KiwiJuice02 made a german video tutorial right here : [link](https://www.youtube.com/watch?v=Ntablvo6y-I)<br>
 In order to get all of this working you need to generate the DevourClient.dll file by building the source code.
