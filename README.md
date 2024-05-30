@@ -9,25 +9,32 @@ Not detected.
 ## Menu
 ![menu screenshot](screenshots/menu_screenshot.jpg)
 
-## Features
+## INFO
 
 * Fully compatible with the new IL2CPP version of the game
 * Detects if you're in game, so no chances of crashing on main menu by activating features
 * Detects the map you are playing on (useful for the instant win)
+
+## Features
+
+* Unlimited UV lightx
 * Fullbright (allows your flashlight to light a lot more)
-* Unlimited UV light
 * Player ESP
 * Player snaplines
-* Achievements unlocker
-* Doors unlocker
-* Unlock all, including flashlights, perks, outfits. Active by default, can't be turned off, no persistance.
-* Instant Win (working as host)
-* Change your exp at the end of the game, changing it is permanant !
 * Spawn any item
-* Change the player/azazel's speed
-* Revive yourself/everyone
-* Kill yourself/everyone
+* Force start game
+* Instant Win (working as host)
+* TP to Azazel
+* Fly (5.000 - 15.000)
+* EXP Modifier (0 - 5000)
+* Unlock all, including flashlights, perks, outfits. Active by default, can't be turned off, no persistance.
 * Disable long interact
+* Azazel Speed (0.000 - 15.000)
+* Unhook
+* Change Player Speed (0 - 10)
+* Revive yourself/everyone
+* Send jumpscare to Players
+* Kill yourself/everyone
 
 ## Building from source
 
