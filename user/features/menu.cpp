@@ -189,6 +189,10 @@ void DrawMapSpecificTab() {
 	if (ImGui::Button("Instant Win")) {
 		Misc::InstantWin();
 	}
+
+	if (ImGui::Button("TP To Azazel")) {
+		Misc::TpToAzazel();
+	}
 }
 
 bool inspector = false;
@@ -314,7 +318,7 @@ void DrawMiscTab() {
 	*/
 
 	ImGui::Checkbox("Fly", &settings::fly);
-	ImGui::SliderFloat("Speed: ", &settings::fly_speed, 1.f, 10.f);
+	ImGui::SliderFloat("Speed: ", &settings::fly_speed, 5.f, 15.f);
 
 	/*
 	if (ImGui::Button("Make random noise")) {

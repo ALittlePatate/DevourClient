@@ -115,20 +115,11 @@ void Run()
 	}
 
 	while (true) {
-		if (GetAsyncKeyState(VK_END) & 0x8000 || should_unhook) {
+		if (GetAsyncKeyState(VK_END) & 0x8000 || should_unhook)
 			break;
-		}
-
-		if (settings::fullBright) {
-			Misc::FullBright();
-		}
-
-		if (settings::fly) {
-			//Misc::Fly(settings::fly_speed);
-		}
 
 
-		std::this_thread::sleep_for(std::chrono::milliseconds(500));
+		std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 	}
 	CreateThread(0, 0, EjectThread, 0, 0, 0);
 }

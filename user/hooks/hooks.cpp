@@ -12,6 +12,7 @@
 #include "players/players.h"
 #include "UnityCore.h"
 #include "ClientHelper.h"
+#include "features/misc/misc.h"
 
 #pragma warning(push, 0) //important cuz dx11 throws so much warnings
 #include <d3d11.h>
@@ -633,6 +634,12 @@ HRESULT __stdcall hookD3D11Present(IDXGISwapChain* pSwapChain, UINT SyncInterval
 	
 	if (settings::player_esp)
 		ESP::RunPlayersESP();
+
+	if (settings::fly)
+		Misc::Fly(settings::fly_speed);
+		
+	if (settings::fullBright)
+		Misc::FullBright();
 
 	ImGui::GetIO().MouseDrawCursor = open_menu;
 

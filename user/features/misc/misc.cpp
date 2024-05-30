@@ -266,8 +266,8 @@ void Misc::FullBright()
 	if (nb != nullptr) {
 		app::Light* _flashlight = nb->fields.flashlightSpot;
 
-		app::Light_set_intensity(_flashlight, 0.7f, nullptr);
-		app::Light_set_range(_flashlight, 400.0f, nullptr);
+		app::Light_set_intensity(_flashlight, 0.8f, nullptr);
+		app::Light_set_range(_flashlight, 700.0f, nullptr);
 		app::Light_set_spotAngle(_flashlight, 179.0f, nullptr);
 
 		app::Light_set_shadows(_flashlight, app::LightShadows__Enum::None, nullptr);
@@ -435,6 +435,39 @@ void Misc::Kill(bool self) {
 					}
 				}
 			}
+		}
+	}
+}
+
+void Misc::TpToAzazel()
+{
+	std::string _scene = SceneName();
+
+	if (_scene == std::string("Menu")) return;
+
+	app::GameObject* go = Player::GetLocalPlayer();
+
+	if (go) {
+		app::NolanBehaviour* nb = Player::GetNolan();
+
+		if (nb == nullptr) return;
+
+		app::Survival* _survival = UnityCore::Object<app::Survival>::FindObjectOfType("Survival");
+		if (_survival == nullptr) return;
+
+		// get azazel
+		app::GameObject* azazelGo = GetAzazel(_survival);
+		if (azazelGo == nullptr) return;
+
+		// get transform of azazel
+		app::Transform* transform = app::GameObject_get_transform(azazelGo, nullptr);
+		if (transform == nullptr) return;
+
+		app::Vector3 v3 = app::Transform_get_position(transform, nullptr);
+		app::Quaternion rotation = app::Quaternion_get_identity(nullptr);
+
+		if (app::NolanBehaviour_TeleportTo != nullptr) {
+			app::NolanBehaviour_TeleportTo(nb, v3, rotation, false, nullptr);
 		}
 	}
 }

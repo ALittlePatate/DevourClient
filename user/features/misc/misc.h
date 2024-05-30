@@ -18,4 +18,5 @@ namespace Misc {
     void Jumpscare();
     void Kill(bool self);
     void RankSpoofer(int value);
+    void TpToAzazel();
 }

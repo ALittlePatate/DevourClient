@@ -35,7 +35,7 @@ namespace settings {
 	bool server_name_spoof = false;
 	std::string server_name = "Jadis0x";
 	bool fly = false;
-	float fly_speed = 1.f;
+	float fly_speed = 5.f;
 	bool unlock_all = true;
 	bool exp_modifier = false;
 	int new_exp = 2000;
