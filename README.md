@@ -31,7 +31,7 @@ Not detected.
 * Send Jumpscare To Players
 * Kill yourself/everyone
 
-# How To Install
+## How to Install
 
 [https://www.youtube.com/watch?v=uBwTqp5B4gU](https://www.youtube.com/watch?v=uBwTqp5B4gU)
 
