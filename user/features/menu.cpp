@@ -67,7 +67,7 @@ void DrawVisualsTab() {
 		ImGui::EndPopup();
 	}
 
-	ImGui::Checkbox("Player snaplines", &settings::player_snaplines);
+	ImGui::Checkbox("Player Snaplines", &settings::player_snaplines);
 	ImGui::SameLine();
 	bool open_pslcolor_popup = ImGui::ColorButton("playersncolor", ImVec4(settings::player_snaplines_color[0], settings::player_snaplines_color[1], settings::player_snaplines_color[2], settings::player_snaplines_color[3]));
 	if (open_pslcolor_popup)
@@ -337,7 +337,7 @@ void DrawMiscTab() {
 	ImGui::Checkbox("EXP Modifier", &settings::exp_modifier);
 	ImGui::SliderInt("Amount", &settings::new_exp, 0, 5000);
 
-	ImGui::Checkbox("Unlock all", &settings::unlock_all);
+	ImGui::Checkbox("Unlock All", &settings::unlock_all);
 	ImGui::Checkbox("Disable Long Interact", &settings::disable_longInteract);
 
 	ImGui::Checkbox("Azazel Speed", &settings::freeze_azazel);
@@ -359,7 +359,7 @@ void DrawMiscTab() {
 }
 
 void DrawPlayersTab() {
-	ImGui::Checkbox("Change player speed", &settings::change_player_speed);
+	ImGui::Checkbox("Change Player Speed", &settings::change_player_speed);
 	ImGui::SliderInt("Multiplier", &settings::new_speed, 0, 10);
 
 	if (ImGui::Button("Revive Players")) {
