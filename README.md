@@ -40,7 +40,7 @@ Not detected.
 
 ## How To Install
 
-[https://www.youtube.com/watch?v=uBwTqp5B4gU](https://www.youtube.com/watch?v=uBwTqp5B4gU)
+[https://www.youtube.com/watch?v=vIlQj3Xs-6g](https://www.youtube.com/watch?v=vIlQj3Xs-6g)
 
 ## Building from source
 
