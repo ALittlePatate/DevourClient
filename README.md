@@ -12,9 +12,16 @@ Not detected.
 ## Features
 
 * Unlimited UV light
-* Fullbright (allows your flashlight to light a lot more)
+* Fullbright
 * Player ESP
+* Player Skeleton ESP
 * Player Snaplines
+* Azazel ESP
+* Azazel Skeleton ESP
+* Azazel Snapline
+* Item ESP
+* Demon ESP
+* Goat/Rat ESP
 * Spawn any item
 * Force Start The Game
 * Instant Win
@@ -31,7 +38,7 @@ Not detected.
 * Send Jumpscare To Players
 * Kill yourself/everyone
 
-# How To Install
+## How To Install
 
 [https://www.youtube.com/watch?v=uBwTqp5B4gU](https://www.youtube.com/watch?v=uBwTqp5B4gU)
 
