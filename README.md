@@ -14,10 +14,10 @@ Not detected.
 * Unlimited UV light
 * Fullbright
 * Player ESP
-* Player Skeleton ESP
+* Player Skeleton ESP (SOON)
 * Player Snaplines
 * Azazel ESP
-* Azazel Skeleton ESP
+* Azazel Skeleton ESP (SOON)
 * Azazel Snapline
 * Item ESP
 * Demon ESP
@@ -40,7 +40,7 @@ Not detected.
 
 ## How To Install
 
-[https://www.youtube.com/watch?v=vIlQj3Xs-6g](https://www.youtube.com/watch?v=vIlQj3Xs-6g)
+[https://www.youtube.com/watch?v=uBwTqp5B4gU](https://www.youtube.com/watch?v=uBwTqp5B4gU)
 
 ## Building from source
 
