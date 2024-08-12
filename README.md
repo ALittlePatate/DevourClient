@@ -14,10 +14,10 @@ Not detected.
 * Unlimited UV light
 * Fullbright (allows your flashlight to light a lot more)
 * Player ESP
-* Player Skeleton ESP
+* Player Skeleton (SOON)
 * Player Snaplines
 * Azazel ESP
-* Azazel Skeleton ESP
+* Azazel Skeleton (SOON)
 * Azazel Snapline
 * Item ESP
 * Keys ESP
