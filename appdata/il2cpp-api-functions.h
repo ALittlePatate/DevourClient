@@ -1,5 +1,5 @@
 // Generated C++ file by Il2CppInspector - http://www.djkaty.com - https://github.com/djkaty
-// Target Unity version: 2021.2.0+
+// Target Unity version: 2021.2.0 - 2021.2.99
 
 #ifndef DO_API_NO_RETURN
 #define DO_API_NO_RETURN(r, n, p) DO_API(r,n,p)

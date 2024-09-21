@@ -98,6 +98,9 @@ void __stdcall hNolanBehaviour_Update(app::NolanBehaviour* __this, MethodInfo* m
 	if (SceneName() != "Menu") {
 		ESP::ents_goat = Object::FindObjectsOfType("GoatBehaviour", "");
 		ESP::ents_key = Object::FindObjectsOfType("KeyInteractable", "");
+
+		if(ESP::name_demon != "N/A")
+			ESP::ents_demon = Object::FindObjectsOfType(ESP::name_demon.c_str(), "");
 	}
 
 	if (settings::spoof_level && IsLocalPlayer(__this)) {

@@ -37,7 +37,7 @@ void il2cppi_new_console() {
 }
 
 void il2cpp_close_console() {
-    fclose((FILE *)stdout);
+    fclose((FILE*)stdout);
     FreeConsole();
 }
 
@@ -63,7 +63,7 @@ std::string il2cppi_to_string(app::String* str) {
 
 app::String* ConvertToSystemString(const char* str)
 {
-    Il2CppString* il2cpp_str =  il2cpp_string_new(str);
+    Il2CppString* il2cpp_str = il2cpp_string_new(str);
 
     app::String* system_string_str = reinterpret_cast<app::String*>(il2cpp_str);
 

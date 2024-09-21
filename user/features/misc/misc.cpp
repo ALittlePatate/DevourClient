@@ -55,7 +55,10 @@ void Misc::CarryItem(const char* itemName)
 		{"Egg 7", "Egg-Clean-7"},
 		{"Egg 8", "Egg-Clean-8"},
 		{"Egg 9", "Egg-Clean-9"},
-		{"Egg 10", "Egg-Clean-10"}
+		{"Egg 10", "Egg-Clean-10"},
+		{"Cake","SurvivalCake"},
+		{"Head","SurvivalHead"},
+		{"Spade","SurvivalSpade"}
 	};
 
 	std::string carryItem = itemMap[itemName];

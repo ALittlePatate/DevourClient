@@ -1,11 +1,11 @@
 #include "pch-il2cpp.h"
 
 #include "UnityEngine/Transform.h"
+#include <UnityEngine/Object.h>
 
 app::Transform* Transform::GetTransform(app::GameObject* go)
 {
-	if (!go || !app::GameObject_get_transform) return nullptr;
-
+	if (Object::IsNull(reinterpret_cast<app::Object_1*>(go)) || !app::GameObject_get_transform) return nullptr;
 	app::Transform* __transform = app::GameObject_get_transform(go, nullptr);
 
 	return __transform ? __transform : nullptr;
@@ -33,9 +33,9 @@ app::Vector3 Transform::GetRight(app::Transform* transform)
 	return app::Transform_get_right(transform, nullptr);
 }
 
-app::Vector3 Transform::GetEulerAngles(app::Quaternion__Boxed rotation)
+app::Vector3 Transform::GetEulerAngles(app::Quaternion* rotation)
 {
-	return app::Quaternion_get_eulerAngles(&rotation, nullptr);
+	return app::Quaternion_get_eulerAngles(rotation, nullptr);
 }
 
 app::Quaternion Transform::QuaternionEuler(app::Vector3 eulerAngles)

@@ -149,8 +149,8 @@ std::string GetAzazelName()
 
 float Time_DeltaTime()
 {
-	if (app::Time_get_deltaTime) {
-		return app::Time_get_deltaTime(nullptr);
+	if (app::Time_1_get_deltaTime) {
+		return app::Time_1_get_deltaTime(nullptr);
 	}
 
 	return 0.0f;

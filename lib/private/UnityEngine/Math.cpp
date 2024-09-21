@@ -3,7 +3,7 @@
 #include "UnityEngine/Math.h"
 #include <helpers.h>
 
-const char* Math::Vector3::ToString(app::Vector3__Boxed* v)
+const char* Math::Vector3::ToString(app::Vector3* v)
 {
 	app::String* str = app::Vector3_ToString(v, nullptr);
 

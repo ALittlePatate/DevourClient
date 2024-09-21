@@ -135,7 +135,7 @@ void ESP::RunAzazelESP() {
 void ESP::RunDemonESP() {
 	ImColor col = ImColor{ settings::demon_esp_color[0], settings::demon_esp_color[1], settings::demon_esp_color[2], settings::demon_esp_color[3] };
 
-	std::vector<std::string> demons_c = { "SurvivalDemonBehaviour", "SpiderBehaviour", "GhostBehaviour", "BoarBehaviour", "CorpseBehaviour" };
+	std::vector<std::string> demons_c = { "SurvivalDemonBehaviour", "SpiderBehaviour", "GhostBehaviour", "BoarBehaviour", "CorpseBehaviour"};
 
 	// There's might be a better way to do it, but i'm lazy : )
 	if (name_demon == "N/A") {
@@ -145,9 +145,6 @@ void ESP::RunDemonESP() {
 				name_demon = class_;
 			}
 		}		
-	}
-	else {
-		ents_demon = RefreshEntList(ents_demon, name_demon.c_str(), "");
 	}
 	
 	if (ents_demon == nullptr) return;

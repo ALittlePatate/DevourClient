@@ -37,19 +37,19 @@ void init_il2cpp()
 	using namespace app;
 
 	// Define IL2CPP API function addresses
-#define DO_API(r, n, p) n = (r (*) p)(baseAddress + n ## _ptr)
-#include "il2cpp-api-functions.h"
-#undef DO_API
+	#define DO_API(r, n, p) n = (r (*) p)(baseAddress + n ## _ptr)
+	#include "il2cpp-api-functions.h"
+	#undef DO_API
 
-// Define function addresses
-#define DO_APP_FUNC(a, r, n, p) n = (r (*) p)(baseAddress + a)
-#define DO_APP_FUNC_METHODINFO(a, n) n = (struct MethodInfo **)(baseAddress + a)
-#include "il2cpp-functions.h"
-#undef DO_APP_FUNC
-#undef DO_APP_FUNC_METHODINFO
+	// Define function addresses
+	#define DO_APP_FUNC(a, r, n, p) n = (r (*) p)(baseAddress + a)
+ 	#define DO_APP_FUNC_METHODINFO(a, n) n = (struct MethodInfo **)(baseAddress + a)
+	#include "il2cpp-functions.h"
+	#undef DO_APP_FUNC
+ 	#undef DO_APP_FUNC_METHODINFO
 
-// Define TypeInfo variables
-#define DO_TYPEDEF(a, n) n ## __TypeInfo = (n ## __Class**) (baseAddress + a);
-#include "il2cpp-types-ptr.h"
-#undef DO_TYPEDEF
+	// Define TypeInfo variables
+	#define DO_TYPEDEF(a, n) n ## __TypeInfo = (n ## __Class**) (baseAddress + a);
+	#include "il2cpp-types-ptr.h"
+	#undef DO_TYPEDEF
 }

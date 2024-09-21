@@ -41,7 +41,7 @@ template<typename T> bool il2cppi_is_initialized(T* metadataItem) {
     return *metadataItem != 0;
 #else
     // Metadata >=27 (Unity 2020.2)
-    return !((uintptr_t) *metadataItem & 1);
+    return !((uintptr_t)*metadataItem & 1);
 #endif
 }
 

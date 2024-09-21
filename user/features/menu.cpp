@@ -154,7 +154,7 @@ void DrawVisualsTab() {
 
 void DrawEntitiesTab() {
 	ImGui::Text("Items");
-	const char* items_items[] = { "Hay", "First aid", "Battery", "Gasoline", "Fuse", "Food", "Bleach", "Bone", "Ritual Book (in-active)", "Ritual Book (active)", "Matchbox", "Egg-1", "Egg-2", "Egg-3", "Egg-4", "Egg-5", "Egg-6", "Egg-7", "Egg-8", "Egg-9", "Egg-10" };
+	const char* items_items[] = { "Hay", "First aid", "Battery", "Gasoline", "Fuse", "Food", "Bleach", "Bone", "Ritual Book (in-active)", "Ritual Book (active)", "Matchbox", "Egg-1", "Egg-2", "Egg-3", "Egg-4", "Egg-5", "Egg-6", "Egg-7", "Egg-8", "Egg-9", "Egg-10","Cake","Head","Spade"};
 	static int item_current = 0;
 	ImGui::Combo("##i", &item_current, items_items, IM_ARRAYSIZE(items_items));
 	if (ImGui::Button("Spawn##i")) {
